@@ -19,7 +19,7 @@ public class Ship : MonoBehaviour {
     {
 		if (AmmoCount <= 0) return null;
         var bullet = Instantiate(BulletPrefab);
-        GetComponent<Rigidbody>().mass -= bullet.gameObject.GetComponent<Rigidbody>().mass;
+        //GetComponent<Rigidbody>().mass -= bullet.gameObject.GetComponent<Rigidbody>().mass;
         AmmoCount--;
         Destroy(bullet, 5.0f);
         return bullet;
