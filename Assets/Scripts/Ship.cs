@@ -17,7 +17,7 @@ public class Ship : MonoBehaviour {
 
     public GameObject GetBullet()
     {
-        if (AmmoCount <= 0) return null;
+		if (AmmoCount <= 0) return null;
         var bullet = Instantiate(BulletPrefab);
         GetComponent<Rigidbody>().mass -= bullet.gameObject.GetComponent<Rigidbody>().mass;
         AmmoCount--;
