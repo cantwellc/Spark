@@ -15,6 +15,11 @@ public class Ship : MonoBehaviour {
         }
     }
 
+    void addBullet()
+    {
+        AmmoCount++;
+    }
+
     public GameObject GetBullet()
     {
 		if (AmmoCount <= 0) return null;
@@ -22,6 +27,7 @@ public class Ship : MonoBehaviour {
         //GetComponent<Rigidbody>().mass -= bullet.gameObject.GetComponent<Rigidbody>().mass;
         AmmoCount--;
         Destroy(bullet, 5.0f);
+        Invoke("addBullet",5.0f);
         return bullet;
     }
 }
