@@ -5,6 +5,7 @@ public class Gun : MonoBehaviour {
 
     public Transform BulletSpawnTransform;
     public Ship Ship;
+	public float Damage;
 
     public float Speed;
 
@@ -13,6 +14,7 @@ public class Gun : MonoBehaviour {
         var bullet = Ship.GetBullet();
         if (bullet == null) return;
         bullet.transform.position = BulletSpawnTransform.position;
+		bullet.GetComponent<ShipBulletCollision> ().SetDamage (Damage);
         // Shoot backwards with completely elastic colision to let unity physics engine handle
         // conservation of momentum.
         bullet.GetComponent<Rigidbody>().velocity = Ship.Velocity + transform.TransformDirection(0.0f, 0.0f, -Speed);
