@@ -7,12 +7,31 @@ public class Ship : MonoBehaviour {
     public GameObject BulletPrefab;
     public int AmmoCount = 10;
 
+    Rigidbody _rigidBody;
+
     public Vector3 Velocity
     {
         get
         {
-            return GetComponent<Rigidbody>().velocity;
+            return _rigidBody.velocity;
         }
+        set
+        {
+            _rigidBody.velocity = value;
+        }
+    }
+
+    public float Mass
+    {
+        get
+        {
+            return _rigidBody.mass;
+        }
+    }
+
+    void Awake()
+    {
+        _rigidBody = GetComponent<Rigidbody>();
     }
 
     void addBullet()
@@ -24,7 +43,6 @@ public class Ship : MonoBehaviour {
     {
 		if (AmmoCount <= 0) return null;
         var bullet = Instantiate(BulletPrefab);
-        //GetComponent<Rigidbody>().mass -= bullet.gameObject.GetComponent<Rigidbody>().mass;
         AmmoCount--;
         Destroy(bullet, 5.0f);
         Invoke("addBullet",5.0f);
