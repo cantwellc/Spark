@@ -8,6 +8,7 @@ public class Ship : MonoBehaviour {
     public GameObject BulletPrefab;
     public int AmmoCount = 10;
 	public Text AmmoText;
+	public Text FuelText;
 
     Rigidbody _rigidBody;
 
@@ -22,7 +23,7 @@ public class Ship : MonoBehaviour {
             _rigidBody.velocity = value;
         }
     }
-
+		
     public float Mass
     {
         get
@@ -34,14 +35,31 @@ public class Ship : MonoBehaviour {
     void Awake()
     {
         _rigidBody = GetComponent<Rigidbody>();
-		InvokeRepeating("addBullet", 2.0f,2.0f);
+
     }
 
 	void addBullet()
     {
-        AmmoCount+=2;
-		AmmoText.text = "Ammo Left " + AmmoCount;
+        AmmoCount+=1;
+
     }
+	void Update()
+	{
+		//Cheat code
+		if (Input.GetKeyDown (KeyCode.B))
+		{
+			if (AmmoCount >= 300)
+			{
+				AmmoCount = 10;
+				AmmoText.text = "Total Fuel(Cheat Disabled) : " + AmmoCount;
+			} else
+			{
+				AmmoCount = 5550;
+				AmmoText.text = "Total Fuel(Cheat Enabled) : " + AmmoCount;
+			}
+			Invoke ("removeAmmoText", 1.0f);
+		}
+	}
 
     public GameObject GetBullet()
     {
@@ -52,9 +70,21 @@ public class Ship : MonoBehaviour {
 		}
         var bullet = Instantiate(BulletPrefab);
         AmmoCount--;
-		AmmoText.text = "Ammo Left " + AmmoCount;
         Destroy(bullet, 5.0f);
 
         return bullet;
     }
+
+	public void GetAmmo(int amount)
+	{
+		AmmoCount += amount;
+		AmmoText.text = "Total Fuel : " + AmmoCount;
+		Invoke ("removeAmmoText", 1.0f);
+
+
+	}
+	void removeAmmoText()
+	{
+		AmmoText.text = "";
+	}
 }

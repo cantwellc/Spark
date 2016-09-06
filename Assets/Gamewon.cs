@@ -15,6 +15,7 @@ public class Gamewon : MonoBehaviour {
 			"\n" +
 			"Press R to restart the level.";
 			finishCheck = true;
+
 		}
 
 	}
@@ -23,6 +24,7 @@ public class Gamewon : MonoBehaviour {
 		if (finishCheck && Input.GetKeyDown(KeyCode.R)) {
 			FinishText.text = "";
 			finishCheck = false;
+			Destroy (gameObject);
 			SceneManager.LoadScene ("DemoLevel");
 		}
 
