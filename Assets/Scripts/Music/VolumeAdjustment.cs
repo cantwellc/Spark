@@ -12,14 +12,14 @@ public class VolumeAdjustment : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.UpArrow)){
+		if(Input.GetKey(KeyCode.UpArrow)){
 			if(musicObject.volume < 1.0f){
-				musicObject.volume += 0.1f;
+				musicObject.volume += 0.5f*Time.deltaTime;
 			}
 		}
-		if (Input.GetKeyDown (KeyCode.DownArrow)) {
+		if (Input.GetKey (KeyCode.DownArrow)) {
 			if (musicObject.volume > 0.0f) {
-				musicObject.volume -=0.1f;
+				musicObject.volume -=0.5f*Time.deltaTime;
 			}
 		}
 	}

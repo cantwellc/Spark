@@ -10,6 +10,7 @@ public class CameraFollow : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{	//Offset between the players position and the cameras position
+		transform.position = new Vector3(TargetLocation.position.x,transform.position.y,TargetLocation.position.z);
 		offset = transform.position - TargetLocation.position;
 	}
 
