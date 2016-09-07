@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class Ship : MonoBehaviour {
 
@@ -58,6 +59,12 @@ public class Ship : MonoBehaviour {
 				AmmoText.text = "Total Fuel(Cheat Enabled) : " + AmmoCount;
 			}
 			Invoke ("removeAmmoText", 1.0f);
+		}
+
+		if (Input.GetKeyDown (KeyCode.K))
+		{
+			
+			SceneManager.LoadScene ("DemoLevel");
 		}
 	}
 
