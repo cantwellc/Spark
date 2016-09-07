@@ -53,19 +53,22 @@ public class Ship : MonoBehaviour {
 			{
 				AmmoCount = 10;
 				AmmoText.text = "Total Fuel(Cheat Disabled) : " + AmmoCount;
+				AmmoText.color = new Color(1.0f,0.6f,0.0f);
 			} else
 			{
 				AmmoCount = 5550;
 				AmmoText.text = "Total Fuel(Cheat Enabled) : " + AmmoCount;
+				AmmoText.color = new Color(1.0f,0.6f,0.0f);
 			}
 			Invoke ("removeAmmoText", 1.0f);
 		}
-
-		if (Input.GetKeyDown (KeyCode.K))
+		if (AmmoCount <= 0)
 		{
-			
-			SceneManager.LoadScene ("DemoLevel");
+			AmmoText.text = "You are out of Fuel!";
+			AmmoText.color = Color.red;
 		}
+
+
 	}
 
     public GameObject GetBullet()
@@ -86,10 +89,13 @@ public class Ship : MonoBehaviour {
 	{
 		AmmoCount += amount;
 		AmmoText.text = "Total Fuel : " + AmmoCount;
+		AmmoText.color = new Color(1.0f,0.6f,0.0f);
 		Invoke ("removeAmmoText", 1.0f);
 
 
 	}
+
+
 	void removeAmmoText()
 	{
 		AmmoText.text = "";

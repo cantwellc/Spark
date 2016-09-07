@@ -21,12 +21,18 @@ public class Gamewon : MonoBehaviour {
 	}
 	void Update(){
 
-		if (finishCheck && Input.GetKeyDown(KeyCode.R)) {
-			FinishText.text = "";
-			finishCheck = false;
-			Destroy (gameObject);
+		if (Input.GetKeyDown (KeyCode.R))
+		{
+			if (finishCheck)
+			{
+				FinishText.text = "";
+				finishCheck = false;
+
+			} 
 			SceneManager.LoadScene ("DemoLevel");
-		}
+			
+		} 
+
 
 	}
 
