@@ -22,5 +22,17 @@ public class VolumeAdjustment : MonoBehaviour {
 				musicObject.volume -=0.5f*Time.deltaTime;
 			}
 		}
+		if (Input.GetKeyDown (KeyCode.M))
+		{
+			if (musicObject.volume != 0.0f)
+			{
+				musicObject.volume = 0.0f;
+			} 
+			else
+			{
+				musicObject.volume = 0.5f;
+			}
+		}
+			
 	}
 }
