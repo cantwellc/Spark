@@ -4,7 +4,7 @@ using System.Collections;
 public class LookAtMouse : MonoBehaviour
 {
 
-    // speed is the rate at which the object will rotate
+    // speed is the rate at which the object will rotate (degree/second)
     public float speed;
 
     void FixedUpdate()
@@ -31,7 +31,8 @@ public class LookAtMouse : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(targetPoint - transform.position);
 
             // Smoothly rotate towards the target point.
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 
+                speed * Time.deltaTime/Quaternion.Angle(transform.rotation, targetRotation));
         }
     }
 }
