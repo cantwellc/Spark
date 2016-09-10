@@ -69,6 +69,7 @@ public class Ship : MonoBehaviour {
 		}
         else
         {
+            AmmoText.text = "Ammo count: " + AmmoCount;
         }
 
 
