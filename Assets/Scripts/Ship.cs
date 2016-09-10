@@ -67,6 +67,9 @@ public class Ship : MonoBehaviour {
 			AmmoText.text = "You are out of Fuel!";
 			AmmoText.color = Color.red;
 		}
+        else
+        {
+        }
 
 
 	}
