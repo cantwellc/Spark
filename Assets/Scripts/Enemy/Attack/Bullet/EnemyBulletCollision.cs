@@ -8,7 +8,6 @@ public class EnemyBulletCollision : MonoBehaviour
 
 	void Awake()
 	{
-		int x = 9;
 		_characterHealth= GameObject.FindGameObjectWithTag ("Character").GetComponent<Health> ();
 	}
 		
@@ -17,6 +16,10 @@ public class EnemyBulletCollision : MonoBehaviour
 		if (other.tag == "Character")
 		{
 			_characterHealth.TakeDamage (_damage);
+			Destroy (gameObject);
+		}
+		if (other.tag != "Enemy") 
+		{
 			Destroy (gameObject);
 		}
 	}

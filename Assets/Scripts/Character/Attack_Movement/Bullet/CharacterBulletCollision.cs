@@ -12,7 +12,11 @@ public class CharacterBulletCollision : MonoBehaviour
 		{
 			Health enemyHealth = other.GetComponent<Health> ();
 			enemyHealth.TakeDamage (_damage);
-
+			Destroy (gameObject);
+		}
+		if (other.tag != "Character" && other.tag != "Wall") 
+		{
+			Destroy (gameObject);
 		}
 	}
 	public void SetDamage(float amount)
