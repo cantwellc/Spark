@@ -89,18 +89,18 @@ public class Character : MonoBehaviour
 	public void AddFuel(int amount)
 	{
         _fuelReservoir.AddFuel(amount);
-		fuelCountText.text = "Total Fuel : " + _fuelReservoir.fuelCount;
+		//fuelCountText.text = "Total Fuel : " + _fuelReservoir.fuelCount;
 		Invoke ("RemoveFuelDepletedText", 1.0f);
 		Invoke ("RemoveFuelText", 1.0f);
 	}
 
 	void RemoveFuelText()
 	{
-		fuelCountText.text = "";
+		//fuelCountText.text = "";
 	}
 
 	void RemoveFuelDepletedText()
 	{
-		fuelDepletedText.text = "";
+		//fuelDepletedText.text = "";
 	}
 }

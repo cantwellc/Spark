@@ -13,9 +13,9 @@ public class GameWon : MonoBehaviour
 	{
 		if (col.tag == "Character") 
 		{
-			finishText.text = "You have passed the level!" +
-			"\n" +
-			"Press R to restart the level.";
+		//	finishText.text = "You have passed the level!" +
+		//	"\n" +
+		//	"Press R to restart the level.";
 			_finishCheck = true;
 		}
 
@@ -27,7 +27,7 @@ public class GameWon : MonoBehaviour
 		{
 			if (_finishCheck)
 			{
-				finishText.text = "";
+				//finishText.text = "";
 				_finishCheck = false;
 
 			} 
