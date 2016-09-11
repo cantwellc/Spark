@@ -4,7 +4,7 @@ using System.Collections;
 public class ScaleWithFuel : MonoBehaviour {
 
     public FuelReservoir fuelReservoir;
-    Transform _transform;
+    private Transform _transform;
 
     void Awake()
     {
