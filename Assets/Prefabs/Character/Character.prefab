@@ -62,9 +62,10 @@ GameObject:
   - 114: {fileID: 114000011648432712}
   - 136: {fileID: 136000011029382852}
   - 114: {fileID: 114000010605388620}
+  - 114: {fileID: 114000013323801728}
   m_Layer: 8
   m_Name: Character
-  m_TagString: Player
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,7 +260,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010904683788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.28, y: 0.649, z: 1.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -475,7 +476,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010904683788}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
@@ -605,7 +606,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1000011053225982, guid: 546ae90c487a3f94a8682690d9f3822f,
     type: 2}
-  fuelCount: 1000
   fuelDepletedText: {fileID: 0}
   fuelCountText: {fileID: 0}
 --- !u!114 &114000011152456952
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17390511c523b194d845e69ffbfbb644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 300
 --- !u!114 &114000011648432712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -644,8 +644,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawnTransform: {fileID: 4000013449851914}
   character: {fileID: 114000011135439484}
-  shotDelay: 0.1
-  damage: 0
+  shotDelay: 0.3
+  damage: 10
   speed: 5
 --- !u!114 &114000012224610370
 MonoBehaviour:
@@ -658,7 +658,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f074c3b6afb20b4d9ba404d99d81c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockPosition: 0
+  lockPosition: 1
+--- !u!114 &114000013323801728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010904683788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ae68027293d314db8f41104a14ef52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelCount: 500
+  fuelUseAmountForType: 050000000a000000
 --- !u!135 &135000011908879088
 SphereCollider:
   m_ObjectHideFlags: 1

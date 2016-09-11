@@ -8,11 +8,11 @@ public class Character : MonoBehaviour
 {
 
     public GameObject bulletPrefab;
-    public int fuelCount = 10;
 	public Text fuelDepletedText;
 	public Text fuelCountText;
 
     private Rigidbody _rigidBody;
+    private FuelReservoir _fuelReservoir;
 
     public Vector3 Velocity
     {
@@ -37,7 +37,7 @@ public class Character : MonoBehaviour
     void Awake()
     {
         _rigidBody = GetComponent<Rigidbody>();
-
+        _fuelReservoir = GetComponent<FuelReservoir>();
     }
 
 	void Update()
@@ -47,7 +47,7 @@ public class Character : MonoBehaviour
 			ToggleCheatCode ();
 		}
 			
-		if (fuelCount <= 0)
+		if (_fuelReservoir.fuelCount <= 0)
 		{
 			fuelDepletedText.text = "You are out of Fuel!";
 			fuelDepletedText.color = Color.red;
@@ -59,15 +59,15 @@ public class Character : MonoBehaviour
 	public void ToggleCheatCode()
 	{
 		RemoveFuelDepletedText ();
-		if (fuelCount >= 300)
+		if (_fuelReservoir.fuelCount >= 300)
 		{
-			fuelCount = 10;
-			fuelCountText.text = "Total Fuel(Cheat Disabled) : " + fuelCount;
+            _fuelReservoir.fuelCount = 10;
+			fuelCountText.text = "Total Fuel(Cheat Disabled) : " + _fuelReservoir.fuelCount;
 		} 
 		else
 		{
-			fuelCount = 5550;
-			fuelCountText.text = "Total Fuel(Cheat Enabled) : " + fuelCount;
+            _fuelReservoir.fuelCount = 5550;
+			fuelCountText.text = "Total Fuel(Cheat Enabled) : " + _fuelReservoir.fuelCount;
 		}
 		Invoke ("RemoveFuelText", 1.0f);
 	}
@@ -76,12 +76,11 @@ public class Character : MonoBehaviour
     public GameObject GetBullet()
     {
 		
-		if (fuelCount <= 0)
+		if (!_fuelReservoir.UseFuel(FuelReservoir.FuelUseType.PlasmaBullet))
 		{
 			return null;
 		}
 		var bullet = Instantiate(bulletPrefab);
-		fuelCount--;
         Destroy(bullet, 5.0f);
 
         return bullet;
@@ -89,8 +88,8 @@ public class Character : MonoBehaviour
 
 	public void AddFuel(int amount)
 	{
-		fuelCount += amount;
-		fuelCountText.text = "Total Fuel : " + fuelCount;
+        _fuelReservoir.AddFuel(amount);
+		fuelCountText.text = "Total Fuel : " + _fuelReservoir.fuelCount;
 		Invoke ("RemoveFuelDepletedText", 1.0f);
 		Invoke ("RemoveFuelText", 1.0f);
 	}
