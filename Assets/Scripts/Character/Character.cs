@@ -49,8 +49,8 @@ public class Character : MonoBehaviour
 			
 		if (_fuelReservoir.fuelCount <= 0)
 		{
-			fuelDepletedText.text = "You are out of Fuel!";
-			fuelDepletedText.color = Color.red;
+			//fuelDepletedText.text = "You are out of Fuel!";
+			//fuelDepletedText.color = Color.red;
 
 		}
 	}
@@ -62,14 +62,14 @@ public class Character : MonoBehaviour
 		if (_fuelReservoir.fuelCount >= 300)
 		{
             _fuelReservoir.fuelCount = 10;
-			fuelCountText.text = "Total Fuel(Cheat Disabled) : " + _fuelReservoir.fuelCount;
+			//fuelCountText.text = "Total Fuel(Cheat Disabled) : " + _fuelReservoir.fuelCount;
 		} 
 		else
 		{
             _fuelReservoir.fuelCount = 5550;
-			fuelCountText.text = "Total Fuel(Cheat Enabled) : " + _fuelReservoir.fuelCount;
+			//fuelCountText.text = "Total Fuel(Cheat Enabled) : " + _fuelReservoir.fuelCount;
 		}
-		Invoke ("RemoveFuelText", 1.0f);
+		//Invoke ("RemoveFuelText", 1.0f);
 	}
 
 

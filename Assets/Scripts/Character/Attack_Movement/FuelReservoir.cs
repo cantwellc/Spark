@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FuelReservoir : MonoBehaviour {
 
-    public int fuelCount = 500;
+    public int fuelCount = 5000;
     
     public enum FuelUseType
     {
