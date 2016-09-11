@@ -4,7 +4,9 @@ public class Gun : MonoBehaviour
 {
 
     public Transform bulletSpawnTransform;
+	public GameObject plasmaEffect;
 	public Character character;
+
     public float shotDelay;
 	public float damage;
     public float speed;
@@ -28,6 +30,7 @@ public class Gun : MonoBehaviour
     {
 		var bullet = character.GetBullet();
         if (bullet == null) return;
+		Instantiate (plasmaEffect, bulletSpawnTransform.position, bulletSpawnTransform.rotation);
 		bullet.transform.position = bulletSpawnTransform.position;
 		bullet.GetComponent<CharacterBulletCollision> ().SetDamage (damage);
         // Shoot backwards with completely elastic colision to let unity physics engine handle
