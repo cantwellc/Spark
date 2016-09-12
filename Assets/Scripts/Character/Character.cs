@@ -13,6 +13,7 @@ public class Character : MonoBehaviour
 
     private Rigidbody _rigidBody;
     private FuelReservoir _fuelReservoir;
+    private bool _cheatMode;
 
     public Vector3 Velocity
     {
@@ -42,10 +43,10 @@ public class Character : MonoBehaviour
 
 	void Update()
 	{
-		if (Input.GetKeyDown (KeyCode.B))
-		{
-			ToggleCheatCode ();
-		}
+		//if (Input.GetKeyDown (KeyCode.B))
+		//{
+		//	ToggleCheatCode ();
+		//}
 			
 		if (_fuelReservoir.fuelCount <= 0)
 		{
@@ -56,30 +57,37 @@ public class Character : MonoBehaviour
 	}
 
 	//Cheat code
-	public void ToggleCheatCode()
+	public bool ToggleCheatCode()
 	{
-		RemoveFuelDepletedText ();
-		if (_fuelReservoir.fuelCount >= 300)
-		{
-            _fuelReservoir.fuelCount = 10;
-			//fuelCountText.text = "Total Fuel(Cheat Disabled) : " + _fuelReservoir.fuelCount;
-		} 
-		else
-		{
-            _fuelReservoir.fuelCount = 5550;
-			//fuelCountText.text = "Total Fuel(Cheat Enabled) : " + _fuelReservoir.fuelCount;
-		}
-		//Invoke ("RemoveFuelText", 1.0f);
+        //RemoveFuelDepletedText ();
+        //if (_fuelReservoir.fuelCount >= 300)
+        //{
+        //          _fuelReservoir.fuelCount = 10;
+        //	//fuelCountText.text = "Total Fuel(Cheat Disabled) : " + _fuelReservoir.fuelCount;
+        //} 
+        //else
+        //{
+        //          _fuelReservoir.fuelCount = 5550;
+        //	//fuelCountText.text = "Total Fuel(Cheat Enabled) : " + _fuelReservoir.fuelCount;
+        //}
+        ////Invoke ("RemoveFuelText", 1.0f);
+
+        _cheatMode = !_cheatMode;
+
+        return _cheatMode;
+
 	}
 
 
     public GameObject GetBullet()
     {
-		
-		if (!_fuelReservoir.UseFuel(FuelReservoir.FuelUseType.PlasmaBullet))
-		{
-			return null;
-		}
+        if (!_cheatMode)
+        {
+            if (!_fuelReservoir.UseFuel(FuelReservoir.FuelUseType.PlasmaBullet))
+            {
+                return null;
+            }
+        }
 		var bullet = Instantiate(bulletPrefab);
         Destroy(bullet, 5.0f);
 
