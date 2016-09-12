@@ -288,6 +288,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 16759435}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &83327128 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000011135439484, guid: 6a180306481a2754dbaa55769a44d30c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1922695326}
+  m_Script: {fileID: 11500000, guid: 63d245d70ac27c34e91faa6dbe06f265, type: 3}
 --- !u!1 &146887831
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +630,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65c0ab10aa660bc4884eab60ea1cbfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notificationText: {fileID: 1979600946}
+  fuelCountText: {fileID: 1835793332}
+  ship: {fileID: 83327128}
 --- !u!4 &405700188
 Transform:
   m_ObjectHideFlags: 0
@@ -3376,7 +3385,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -38, y: 0}
+  m_AnchoredPosition: {x: -1, y: -286}
   m_SizeDelta: {x: 970, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1835793332
@@ -4020,7 +4029,7 @@ GameObject:
   - 222: {fileID: 1979600947}
   - 114: {fileID: 1979600946}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Notification Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4041,7 +4050,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 16, y: 244}
+  m_AnchoredPosition: {x: 14, y: 264}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1979600946
@@ -4076,7 +4085,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &1979600947
 CanvasRenderer:
   m_ObjectHideFlags: 0
