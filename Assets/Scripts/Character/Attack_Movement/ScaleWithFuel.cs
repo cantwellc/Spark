@@ -2,18 +2,28 @@
 using System.Collections;
 
 public class ScaleWithFuel : MonoBehaviour {
+    
+    public FuelReservoir _fuelReservoir;
 
-    public FuelReservoir fuelReservoir;
-    private Transform _transform;
+    private float _ratio;
+    private Transform _fuelTransform;
 
     void Awake()
     {
-        _transform = gameObject.transform;
+        _fuelTransform = GetComponent<Transform>();
+    }
+
+    void Start()
+    {
+        _ratio = (float)_fuelReservoir.fuelCount / _fuelReservoir.maxFuelCount;
+        _fuelTransform.localScale = new Vector3(_ratio, _ratio, _ratio);
+
     }
 
 	// Update is called once per frame
 	void Update () {
-        float ratio = (float) fuelReservoir.fuelCount / fuelReservoir.maxFuelCount;
-        _transform.localScale = new Vector3(ratio, ratio, ratio);
-	}
+        _ratio = (float)_fuelReservoir.fuelCount / _fuelReservoir.maxFuelCount;
+        _fuelTransform.localScale = new Vector3(_ratio, _ratio, _ratio);
+    }
+
 }
