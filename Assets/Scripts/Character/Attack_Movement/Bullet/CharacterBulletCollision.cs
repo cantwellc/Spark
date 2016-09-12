@@ -6,15 +6,15 @@ public class CharacterBulletCollision : MonoBehaviour
 
 	private float _damage;
 
-	void OnTriggerEnter(Collider other)
+	void OnCollisionEnter(Collision other)
 	{
-		if (other.tag == "Enemy")
+		if (other.gameObject.tag == "Enemy")
 		{
-			Health enemyHealth = other.GetComponent<Health> ();
+			Health enemyHealth = other.gameObject.GetComponent<Health> ();
 			enemyHealth.TakeDamage (_damage);
 			Destroy (gameObject);
 		}
-		if (other.tag != "Character" && other.tag != "Wall") 
+		if (other.gameObject.tag != "Character" && other.gameObject.tag != "Wall") 
 		{
 			Destroy (gameObject);
 		}

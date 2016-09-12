@@ -31,7 +31,7 @@ public class GameWon : MonoBehaviour
 				_finishCheck = false;
 
 			} 
-			SceneManager.LoadScene ("DemoLevel");
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		} 
 	}
 

@@ -16,10 +16,12 @@ public class EnemyBulletCollision : MonoBehaviour
 		if (other.tag == "Character")
 		{
 			_characterHealth.TakeDamage (_damage);
+
 			Destroy (gameObject);
 		}
 		if (other.tag != "Enemy") 
 		{
+			
 			Destroy (gameObject);
 		}
 	}

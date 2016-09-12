@@ -6,16 +6,18 @@ public class Gun : MonoBehaviour
     public Transform bulletSpawnTransform;
 	public GameObject plasmaEffect;
 	public Character character;
-
+	public AudioClip plasmaSfx;
     public float shotDelay;
 	public float damage;
     public float speed;
 
     private float _lastShotTime;
+	private AudioSource _audio;
 
     void Awake()
     {
         _lastShotTime = Time.time;
+		_audio = GetComponent<AudioSource> ();
     }
 
     void Update()
@@ -30,8 +32,11 @@ public class Gun : MonoBehaviour
     {
 		var bullet = character.GetBullet();
         if (bullet == null) return;
+
+		_audio.PlayOneShot (plasmaSfx);
 		GameObject plasmaEffectInstance=Instantiate (plasmaEffect, bulletSpawnTransform.position, bulletSpawnTransform.rotation) as GameObject;
 		Destroy (plasmaEffectInstance, 2.0f);
+
 		bullet.transform.position = bulletSpawnTransform.position;
 		bullet.GetComponent<CharacterBulletCollision> ().SetDamage (damage);
         // Shoot backwards with completely elastic colision to let unity physics engine handle
