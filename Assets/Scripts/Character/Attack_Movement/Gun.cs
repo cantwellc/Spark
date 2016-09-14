@@ -45,6 +45,7 @@ public class Gun : MonoBehaviour
 		var bV = character.Velocity + transform.TransformDirection(0.0f, 0.0f, speed);
         var sV = CalcShipVelocity(bV, bullet.GetComponent<Rigidbody>().mass);
 		character.Velocity = sV;
+        bV.y = 0;
         bullet.GetComponent<Rigidbody>().velocity = bV;
     }
 
@@ -53,7 +54,7 @@ public class Gun : MonoBehaviour
 		var shipV = character.Velocity;
         Vector3 result = new Vector3();
 		result.x = (shipV.x - bulletMass * bulletVelocity.x) / character.Mass;
-		result.y = (shipV.y - bulletMass * bulletVelocity.y) / character.Mass;
+        result.y = 0;//(shipV.y - bulletMass * bulletVelocity.y) / character.Mass;
 		result.z = (shipV.z - bulletMass * bulletVelocity.z) / character.Mass;
         return result;
     }
