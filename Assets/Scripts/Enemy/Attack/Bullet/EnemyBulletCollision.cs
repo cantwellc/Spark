@@ -11,15 +11,15 @@ public class EnemyBulletCollision : MonoBehaviour
 		_characterHealth= GameObject.FindGameObjectWithTag ("Character").GetComponent<Health> ();
 	}
 		
-	void OnTriggerEnter(Collider other)
+	void OnCollisionEnter(Collision other)
 	{
-		if (other.tag == "Character")
+		if (other.gameObject.tag == "Character")
 		{
 			_characterHealth.TakeDamage (_damage);
 
 			Destroy (gameObject);
 		}
-		if (other.tag != "Enemy") 
+		if (other.gameObject.tag != "Enemy") 
 		{
 			
 			Destroy (gameObject);
