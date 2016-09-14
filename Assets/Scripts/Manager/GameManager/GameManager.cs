@@ -22,16 +22,16 @@ public class GameManager : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            StartCoroutine(CheatModeMassage(ship.ToggleCheatCode()));
+            StartCoroutine(CheatModeMessage(ship.ToggleCheatCode()));
         }
     }
 
     void FixedUpdate()
     {
-        fuelCountText.text = _fuelReservoir.fuelCount + "/" + _fuelReservoir.maxFuelCount;
+		fuelCountText.text = "Fuel: " +_fuelReservoir.fuelCount + "/" + _fuelReservoir.maxFuelCount;
     }
 
-    IEnumerator CheatModeMassage(bool CheatMode)
+    IEnumerator CheatModeMessage(bool CheatMode)
     {
         if (CheatMode)
         {

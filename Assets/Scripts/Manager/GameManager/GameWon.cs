@@ -7,16 +7,15 @@ public class GameWon : MonoBehaviour
 {
 
 	public Text finishText;
+	public string nextScene;
 	private bool _finishCheck = false;
 
 	void OnTriggerEnter(Collider col)
 	{
 		if (col.tag == "Character") 
 		{
-		//	finishText.text = "You have passed the level!" +
-		//	"\n" +
-		//	"Press R to restart the level.";
 			_finishCheck = true;
+			SceneManager.LoadScene(nextScene);
 		}
 
 	}
@@ -27,9 +26,7 @@ public class GameWon : MonoBehaviour
 		{
 			if (_finishCheck)
 			{
-				//finishText.text = "";
 				_finishCheck = false;
-
 			} 
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		} 

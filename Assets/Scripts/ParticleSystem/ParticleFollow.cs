@@ -8,7 +8,7 @@ public class ParticleFollow : MonoBehaviour
 
 	void Start()
 	{
-		_characterBulletSpawnTransform = GameObject.Find ("BulletSpawnPoint").transform;
+		_characterBulletSpawnTransform = GameObject.Find ("CharacterBulletSpawnPoint").transform;
 	}
 
 
