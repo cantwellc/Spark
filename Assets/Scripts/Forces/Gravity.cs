@@ -5,12 +5,12 @@ using System;
 public class Gravity : MonoBehaviour 
 {
     public float strength = 6.25f;
-    private IList<GameObject> gravitationalObjectList = new List<GameObject>();
+    private IList<GameObject> _gravitationalObjectList = new List<GameObject>();
 
 	// Update is called once per frame
 	void Update () 
 	{
-        foreach(var other in gravitationalObjectList)
+        foreach(var other in _gravitationalObjectList)
         {
             other.GetComponent<Rigidbody>().AddForce(CalcGravity(other));
         }
@@ -19,13 +19,13 @@ public class Gravity : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Gravitational>() == null) return;
-        gravitationalObjectList.Add(other.gameObject);
+        _gravitationalObjectList.Add(other.gameObject);
     }
 
     void OnTriggerExit(Collider other)
     {
-        if ( !gravitationalObjectList.Contains(other.gameObject) ) return;
-        gravitationalObjectList.Remove(other.gameObject);
+        if ( !_gravitationalObjectList.Contains(other.gameObject) ) return;
+        _gravitationalObjectList.Remove(other.gameObject);
     }
 
 
