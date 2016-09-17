@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour 
 {
-    public Transform mouseTargetPlane;
+
+    public Transform targetMarker;
     public Transform bulletSpawnTransform;
 	public GameObject plasmaEffect;
 	public Character character;
@@ -16,12 +17,14 @@ public class Gun : MonoBehaviour
     private float _lastPrimaryShotTime;
     private float _lastSecondaryShotTime;
 	private AudioSource _audio;
+    private Plane _mouseTargetPlane;
 
     void Awake()
     {
         _lastPrimaryShotTime = Time.time;
         _lastSecondaryShotTime = Time.time;
 		_audio = GetComponent<AudioSource> ();
+        _mouseTargetPlane = new Plane(transform.up, transform.position);
     }
 
     void Update()
@@ -84,10 +87,10 @@ public class Gun : MonoBehaviour
     Vector3 GetTarget()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        float delta = ray.origin.y - mouseTargetPlane.transform.position.y;
-        Vector3 dirNorm = ray.direction / ray.direction.y;
-        Vector3 IntersectionPos = ray.origin - dirNorm * delta;
-        return IntersectionPos;
+        float rayDistance;
+        if (_mouseTargetPlane.Raycast(ray, out rayDistance))
+            targetMarker.position = ray.GetPoint(rayDistance);
+        return targetMarker.position;
     }
 
     public Vector3 CalcShipVelocity(Vector3 bulletVelocity, float bulletMass)
