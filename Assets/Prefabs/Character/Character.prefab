@@ -24,6 +24,7 @@ GameObject:
   - 114: {fileID: 114000012197618924}
   - 114: {fileID: 114000010865598916}
   - 114: {fileID: 114000013309097100}
+  - 114: {fileID: 114000012939261410}
   m_Layer: 0
   m_Name: Fuel
   m_TagString: Untagged
@@ -83,6 +84,7 @@ GameObject:
   - 136: {fileID: 136000011029382852}
   - 114: {fileID: 114000010605388620}
   - 114: {fileID: 114000013323801728}
+  - 114: {fileID: 114000012513490380}
   m_Layer: 8
   m_Name: Character
   m_TagString: Character
@@ -296,7 +298,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010904683788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2331114, y: 1, z: -7.1}
+  m_LocalPosition: {x: -0.28, y: 0.649, z: 1.98}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -796,6 +798,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockPosition: 1
+--- !u!114 &114000012513490380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010904683788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffaf0829401fe144992d6bc5ea123b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000012939261410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010243679626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f09b86b6b7220e34f9d9f2201bc99383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fuelReservoir: {fileID: 114000013323801728}
 --- !u!114 &114000013309097100
 MonoBehaviour:
   m_ObjectHideFlags: 1

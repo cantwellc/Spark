@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CameraFacingBillboard : MonoBehaviour
 {
-    public Camera m_Camera;
+    public Camera camera;
 
     void Update()
     {
-        transform.LookAt(transform.position + m_Camera.transform.rotation * Vector3.forward,
-        m_Camera.transform.rotation * Vector3.up);
+        transform.LookAt(transform.position + camera.transform.rotation * Vector3.forward,
+        camera.transform.rotation * Vector3.up);
     }
 }
