@@ -9,8 +9,10 @@ public class Character : MonoBehaviour
 
     public GameObject primaryFireProjectilePrefab;
     public GameObject secondaryFireProjectilePrefab;
+	public GameObject blackHoleExplosionPrefab;
 	public Text fuelDepletedText;
 	public Text fuelCountText;
+
 
     private Rigidbody _rigidBody;
     private FuelReservoir _fuelReservoir;
@@ -126,5 +128,9 @@ public class Character : MonoBehaviour
 	void RemoveFuelDepletedText()
 	{
 		//fuelDepletedText.text = "";
+	}
+	void OnDisable()
+	{
+		Instantiate (blackHoleExplosionPrefab, transform.position, transform.rotation);
 	}
 }
