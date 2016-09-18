@@ -10,13 +10,15 @@ public class Character : MonoBehaviour
     public GameObject primaryFireProjectilePrefab;
     public GameObject secondaryFireProjectilePrefab;
 	public GameObject blackHoleExplosionPrefab;
+	public AudioClip [] soundEffects;
 	public Text fuelDepletedText;
 	public Text fuelCountText;
 
 
     private Rigidbody _rigidBody;
-    private FuelReservoir _fuelReservoir;
+	private FuelReservoir _fuelReservoir;
     private bool _cheatMode;
+
 
     public Vector3 Velocity
     {
@@ -131,6 +133,7 @@ public class Character : MonoBehaviour
 	}
 	void OnDisable()
 	{
+		AudioSource.PlayClipAtPoint (soundEffects[0],Camera.main.transform.position,0.8f);
 		Instantiate (blackHoleExplosionPrefab, transform.position, transform.rotation);
 	}
 }
