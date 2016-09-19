@@ -1,24 +1,41 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class Gravity : MonoBehaviour 
 {
-    public float strength;
-    public GameObject character;
+    public float strength = 6.25f;
+    private IList<GameObject> _gravitationalObjectList = new List<GameObject>();
 
 	// Update is called once per frame
 	void Update () 
 	{
-        character.GetComponent<Rigidbody>().AddForce(CalcGravity());
+        foreach(var other in _gravitationalObjectList)
+        {
+            other.GetComponent<Rigidbody>().AddForce(CalcGravity(other));
+        }
 	}
 
-    private Vector3 CalcGravity()
+    void OnTriggerEnter(Collider other)
     {
-        Vector3 vec = character.transform.position - transform.position;
+        if (other.gameObject.GetComponent<Gravitational>() == null) return;
+        _gravitationalObjectList.Add(other.gameObject);
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if ( !_gravitationalObjectList.Contains(other.gameObject) ) return;
+        _gravitationalObjectList.Remove(other.gameObject);
+    }
+
+
+    private Vector3 CalcGravity(GameObject other)
+    {
+        Vector3 vec = other.transform.position - transform.position;
         float r2 = vec.sqrMagnitude;
         var norm = vec.normalized;
-        return - norm * strength / r2;
-
+        float m1= GetComponent<Rigidbody>().mass;
+        float m2 = other.GetComponent<Rigidbody>().mass;
+        return -norm * strength * m1 * m2 / r2;
     }
 }

@@ -10,7 +10,7 @@ public class Shoot : MonoBehaviour
     {
 		if (Input.GetKeyDown (KeyCode.Space))
 		{
-			gun.Shoot ();
+			gun.PrimaryFire ();
 		}
     }
 

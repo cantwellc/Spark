@@ -7,13 +7,18 @@ using UnityEngine.SceneManagement;
 public class Character : MonoBehaviour 
 {
 
-    public GameObject bulletPrefab;
+    public GameObject primaryFireProjectilePrefab;
+    public GameObject secondaryFireProjectilePrefab;
+	public GameObject blackHoleExplosionPrefab;
+	public AudioClip [] soundEffects;
 	public Text fuelDepletedText;
 	public Text fuelCountText;
 
+
     private Rigidbody _rigidBody;
-    private FuelReservoir _fuelReservoir;
+	private FuelReservoir _fuelReservoir;
     private bool _cheatMode;
+
 
     public Vector3 Velocity
     {
@@ -79,7 +84,7 @@ public class Character : MonoBehaviour
 	}
 
 
-    public GameObject GetBullet()
+    public GameObject GetPrimaryFireProjectile()
     {
         if (!_cheatMode)
         {
@@ -88,13 +93,28 @@ public class Character : MonoBehaviour
                 return null;
             }
         }
-		var bullet = Instantiate(bulletPrefab);
+		var bullet = Instantiate(primaryFireProjectilePrefab);
         Destroy(bullet, 5.0f);
 
         return bullet;
     }
 
-	public void AddFuel(int amount)
+    public GameObject GetSecondaryFireProjectile()
+    {
+        if (!_cheatMode)
+        {
+            if (!_fuelReservoir.UseFuel(FuelReservoir.FuelUseType.BlackHole))
+            {
+                return null;
+            }
+        }
+        var bullet = Instantiate(secondaryFireProjectilePrefab);
+        Destroy(bullet, 30.0f);
+
+        return bullet;
+    }
+
+    public void AddFuel(int amount)
 	{
         _fuelReservoir.AddFuel(amount);
 		//fuelCountText.text = "Total Fuel : " + _fuelReservoir.fuelCount;
@@ -110,5 +130,10 @@ public class Character : MonoBehaviour
 	void RemoveFuelDepletedText()
 	{
 		//fuelDepletedText.text = "";
+	}
+	void OnDisable()
+	{
+		AudioSource.PlayClipAtPoint (soundEffects[0],Camera.main.transform.position,0.8f);
+		Instantiate (blackHoleExplosionPrefab, transform.position, transform.rotation);
 	}
 }
