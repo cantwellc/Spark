@@ -22,7 +22,10 @@ public class BlackHoleBomb : MonoBehaviour {
     {
         var distance = (transform.position - target).magnitude;
         if (distance < threshold) Collapse();
-        if ((Time.time - _startTime) >= flightTime) Collapse();
+		if ((Time.time - _startTime) >= flightTime)
+		{
+			Collapse ();
+		}
     }
 
     private void Collapse()
