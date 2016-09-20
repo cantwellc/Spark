@@ -10,34 +10,22 @@ public class Gravity : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-        /*foreach(var other in _gravitationalObjectList)
+        foreach(var other in _gravitationalObjectList)
         {
             other.GetComponent<Rigidbody>().AddForce(CalcGravity(other));
-        }*/
+        }
 	}
 
     void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.GetComponent<Gravitational>() == null) return;
-        // _gravitationalObjectList.Add(other.gameObject);
-        if (other.GetComponent<Gravitational>() != null)
-        {
-            other.GetComponent<Rigidbody>().AddForce(CalcGravity(other.gameObject));
-        }
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        if(other.GetComponent<Gravitational>() != null)
-        {
-            other.GetComponent<Rigidbody>().AddForce(CalcGravity(other.gameObject));
-        }
+        if (other.gameObject.GetComponent<Gravitational>() == null) return;
+        _gravitationalObjectList.Add(other.gameObject);
     }
 
     void OnTriggerExit(Collider other)
     {
-        //if ( !_gravitationalObjectList.Contains(other.gameObject) ) return;
-        //_gravitationalObjectList.Remove(other.gameObject);
+        if ( !_gravitationalObjectList.Contains(other.gameObject) ) return;
+        _gravitationalObjectList.Remove(other.gameObject);
     }
 
 

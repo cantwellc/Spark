@@ -14,8 +14,7 @@ public class ParticleFollow : MonoBehaviour
 
 	void Update()
 	{
-        if(_characterBulletSpawnTransform)
-		    transform.position = _characterBulletSpawnTransform.position;
+		transform.position = _characterBulletSpawnTransform.position;
 	}
 
 
