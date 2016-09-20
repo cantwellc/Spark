@@ -122,7 +122,20 @@ public class Character : MonoBehaviour
 		Invoke ("RemoveFuelText", 1.0f);
 	}
 
-	void RemoveFuelText()
+    public void DestroyedByBlackHole()
+    {
+        AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
+        Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
+    }
+
+    public void DestroyedByBullet()
+    {
+        AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
+        Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
+    }
+
+
+    void RemoveFuelText()
 	{
 		//fuelCountText.text = "";
 	}
@@ -133,7 +146,5 @@ public class Character : MonoBehaviour
 	}
 	void OnDisable()
 	{
-		AudioSource.PlayClipAtPoint (soundEffects[0],Camera.main.transform.position,0.8f);
-		Instantiate (blackHoleExplosionPrefab, transform.position, transform.rotation);
 	}
 }
