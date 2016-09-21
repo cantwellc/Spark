@@ -20,7 +20,7 @@ public class EnemyBulletCollision : MonoBehaviour
 
 			Destroy (gameObject);
 		}
-		if (other.gameObject.tag != "Enemy" && other.gameObject.tag!="Plane") 
+		if (other.gameObject.tag != "Enemy" && other.gameObject.tag!="Plane" &&other.gameObject.tag!="Blackhole") 
 		{
 			
 			Destroy (gameObject);

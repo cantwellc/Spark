@@ -12,7 +12,7 @@ public class Blackhole : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	if(!enemy)
+		if(!enemy.activeSelf)
         {
             GetComponent<TextMesh>().text = "BLACKHOLE!";
             GetComponent<TextMesh>().color = Color.green;
