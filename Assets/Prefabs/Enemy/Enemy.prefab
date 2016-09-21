@@ -40,6 +40,8 @@ GameObject:
   - 114: {fileID: 114000011390919282}
   - 136: {fileID: 136000012315128726}
   - 114: {fileID: 114000011276851358}
+  - 54: {fileID: 54000010750140228}
+  - 114: {fileID: 114000012997612662}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -110,6 +112,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013522498592}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54000010750140228
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013522498592}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!114 &114000011276851358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,6 +153,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   rotationSpeed: 3
+--- !u!114 &114000012997612662
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013522498592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffaf0829401fe144992d6bc5ea123b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000013227495768
 MonoBehaviour:
   m_ObjectHideFlags: 1
