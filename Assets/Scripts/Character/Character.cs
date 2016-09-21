@@ -64,22 +64,8 @@ public class Character : MonoBehaviour
 	//Cheat code
 	public bool ToggleCheatCode()
 	{
-        //RemoveFuelDepletedText ();
-        //if (_fuelReservoir.fuelCount >= 300)
-        //{
-        //          _fuelReservoir.fuelCount = 10;
-        //	//fuelCountText.text = "Total Fuel(Cheat Disabled) : " + _fuelReservoir.fuelCount;
-        //} 
-        //else
-        //{
-        //          _fuelReservoir.fuelCount = 5550;
-        //	//fuelCountText.text = "Total Fuel(Cheat Enabled) : " + _fuelReservoir.fuelCount;
-        //}
-        ////Invoke ("RemoveFuelText", 1.0f);
-
         _cheatMode = !_cheatMode;
-
-        return _cheatMode;
+	    return _cheatMode;
 
 	}
 
