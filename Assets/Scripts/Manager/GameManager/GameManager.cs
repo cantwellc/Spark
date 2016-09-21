@@ -8,15 +8,22 @@ public class GameManager : MonoBehaviour {
     public Text notificationText;
     public Text fuelCountText;
     public Character ship;
-    public GameObject popupUI;
 
+    private GameObject _inGameUI;
+    private GameObject popupUI;
     private FuelReservoir _fuelReservoir;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
 
     // Use this for initialization
     void Start ()
     {
         notificationText.enabled = false;
         _fuelReservoir = ship.GetComponent<FuelReservoir>();
+        _inGameUI = GameObject.Find("In Game UI");
     }
 	
 	// Update is called once per frame
@@ -29,7 +36,7 @@ public class GameManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            enablePopup();
+            EnableRestartPopup();
         }
     }
 
@@ -54,13 +61,17 @@ public class GameManager : MonoBehaviour {
         notificationText.enabled = false;
     }
 
-    void enablePopup()
+    void EnableRestartPopup()
     {
         Time.timeScale = 0;
+        if (popupUI == null)
+        {
+            popupUI = _inGameUI.transform.Find("popup UI").gameObject;
+        }
         popupUI.SetActive(true);
     }
 
-    public void RetartClick()
+    public void RestartClick()
     {
         Time.timeScale = 1;
 
