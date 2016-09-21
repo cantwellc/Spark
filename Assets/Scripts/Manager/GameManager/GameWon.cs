@@ -22,15 +22,18 @@ public class GameWon : MonoBehaviour
 	void Update()
 	{
 
-		if (Input.GetKeyDown (KeyCode.R))
-		{
-			if (_finishCheck)
-			{
-				_finishCheck = false;
-			} 
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-		} 
+		//if (Input.GetKeyDown (KeyCode.R))
+		//{
+		//	if (_finishCheck)
+		//	{
+		//		_finishCheck = false;
+		//	} 
+		//	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		//} 
 	}
 
-
+    bool getFinish()
+    {
+        return _finishCheck;
+    }
 }
