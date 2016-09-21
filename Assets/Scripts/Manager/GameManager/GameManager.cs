@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
 
     void Awake()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
     }
 
     // Use this for initialization
@@ -36,7 +36,8 @@ public class GameManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            EnableRestartPopup();
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			//EnableRestartPopup();
         }
     }
 
