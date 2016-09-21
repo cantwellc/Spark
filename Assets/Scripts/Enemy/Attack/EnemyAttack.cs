@@ -26,7 +26,7 @@ public class EnemyAttack : MonoBehaviour
 		/*If we are close to the player , We Basically construct an imaginary sphere on the position of the Enemy with
 		senseRadius as its radius and check whether that sphere intersects with player (we only check players with setting layerMask to player */
 		//TODO: We invoke CheckSphere throughout the game, should be a better way than this
-		Debug.Log("Attacking");
+		//Debug.Log("Attacking");
 		if (Physics.CheckSphere (transform.position, senseRadius,layerMask))
 		{
 			//Fire the bullet;
@@ -41,7 +41,7 @@ public class EnemyAttack : MonoBehaviour
 
 	void OnDisable()
 	{
-		Debug.Log ("Disabling the script");
+		//Debug.Log ("Disabling the script");
 		CancelInvoke();
 
 	}

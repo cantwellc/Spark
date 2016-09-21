@@ -5,11 +5,7 @@ public class VolumeAdjustment : MonoBehaviour {
 	
 	public AudioSource musicObject;
 
-	void Start () 
-	{
-		musicObject = gameObject.GetComponent<AudioSource> ();
-	}
-	
+
 	void Update () 
 	{
 		if(Input.GetKey(KeyCode.UpArrow))
