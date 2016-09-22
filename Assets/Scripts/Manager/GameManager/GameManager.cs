@@ -7,14 +7,17 @@ public class GameManager : MonoBehaviour {
 
     public Text notificationText;
     public Text fuelCountText;
+
 	public Texture2D crosshairTexture;
 	private Rect _crosshairRect;
 	private int _mouseDissapearThreshold = 90;
-    public Character character;
 
-    private GameObject _inGameUI;
+	public Character character;
+	private GameObject _inGameUI;
     private GameObject popupUI;
     private FuelReservoir _fuelReservoir;
+
+
 
     void Awake()
     {
@@ -27,7 +30,8 @@ public class GameManager : MonoBehaviour {
         notificationText.enabled = false;
         _fuelReservoir = character.GetComponent<FuelReservoir>();
         _inGameUI = GameObject.Find("In Game UI");
-		Cursor.SetCursor (crosshairTexture,new Vector2(crosshairTexture.width/2,crosshairTexture.height/2),CursorMode.Auto);
+		Cursor.visible = false;
+		//Cursor.SetCursor (crosshairTexture,new Vector2(crosshairTexture.width/2,crosshairTexture.height/2),CursorMode.Auto);
     }
 	
 	// Update is called once per frame
@@ -43,30 +47,36 @@ public class GameManager : MonoBehaviour {
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 			//EnableRestartPopup();
         }
-		crosshairDrawing ();
+		//crosshairDrawing ();
     }
 
-
-
-
-	void crosshairDrawing()
+	void OnGUI()
 	{
+		_crosshairRect =  new Rect (Input.mousePosition.x-10,Screen.height- Input.mousePosition.y -10, 20, 20);
 		Vector3 characterScreenPos = Camera.main.WorldToScreenPoint (character.transform.position);
-		
-		//Check if the cursor is close
-		if (Mathf.Abs(characterScreenPos.x - Input.mousePosition.x) < _mouseDissapearThreshold && Mathf.Abs(characterScreenPos.y - Input.mousePosition.y)<_mouseDissapearThreshold)
+		Vector2 characterScreenPos2D = new Vector2 (characterScreenPos.x, characterScreenPos.y);
+		Vector2 mousePosition2D = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
+
+		if (Vector2.Distance (characterScreenPos2D, mousePosition2D) > _mouseDissapearThreshold)
 		{
 			
-			Cursor.visible = false;
+			_crosshairRect = new Rect (Input.mousePosition.x - 10, Screen.height - Input.mousePosition.y -10, 20, 20);
 		} 
+		//This means the crosshair is too close to the character
+		//We found a point in the circle with origin cx, An eulerAngleY which is Rotation of the ship+90 , because our model is 90 degrees in the unit circle
 		else
 		{
-			
-			Cursor.visible = true;
-			Cursor.SetCursor (crosshairTexture,new Vector2(crosshairTexture.width/2,crosshairTexture.height/2),CursorMode.Auto);
+			float cx = characterScreenPos2D.x;
+			float cy = characterScreenPos2D.y;
+			float r = _mouseDissapearThreshold + 1;
+			float eulerAngleY = character.transform.rotation.eulerAngles.y +90;
+			float angleInDegrees =  (eulerAngleY > 180.0f) ? eulerAngleY - 360.0f : eulerAngleY;
 
+			float a = angleInDegrees * Mathf.Deg2Rad;
+			Vector2 newCrosshairPosition = new Vector2 (cx - r * Mathf.Cos (a), cy + r * Mathf.Sin (a));
+			_crosshairRect = new Rect (newCrosshairPosition.x - 10, Screen.height - newCrosshairPosition.y -10, 20, 20);
 		}
-
+		GUI.DrawTexture (_crosshairRect,crosshairTexture);
 	}
 
 
