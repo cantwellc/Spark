@@ -99,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010860689028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.5710974, y: 12.475897, z: 0.01982975}
+  m_LocalPosition: {x: 10.91, y: 12.475897, z: -22.54}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 387f649fef0ef467ca6a9e267c523297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuelAmmount: 200
+  fuelAmmount: 250
 --- !u!135 &135000012579874220
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -219,7 +219,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013272131890}
-  serializedVersion: 2
+  serializedVersion: 4
   lengthInSec: 2
   startDelay:
     scalar: 0
@@ -257,12 +257,13 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
-  randomSeed: 0
   looping: 1
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 1
+  autoRandomSeed: 1
   scalingMode: 2
+  randomSeed: 0
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -425,7 +426,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minColor: {r: 0, g: 0.3882353, b: 0.95686275, a: 1}
-      maxColor: {r: 0.09411765, g: 0, b: 0, a: 1}
+      maxColor: {r: 0, g: 0.09411765, b: 0, a: 1}
       minMaxState: 0
     startSize:
       scalar: 1
