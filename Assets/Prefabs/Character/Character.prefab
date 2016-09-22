@@ -345,7 +345,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010904683788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -4.2331114, y: 1, z: -39.98}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -831,8 +831,11 @@ MonoBehaviour:
     type: 2}
   blackHoleExplosionPrefab: {fileID: 1000011441046256, guid: 1223dec6b58c047bab273c95eaecd6e1,
     type: 2}
+  outOfFuelPrefab: {fileID: 1000012278461500, guid: dede5a823be6aa54a8e3f1c4b2453e46,
+    type: 2}
   soundEffects:
   - {fileID: 8300000, guid: 321436401e6a143bba88ab8cb3f67d3f, type: 3}
+  - {fileID: 8300000, guid: b7e3218707bbc944ba016a4b95b07645, type: 3}
   fuelDepletedText: {fileID: 0}
   fuelCountText: {fileID: 0}
 --- !u!114 &114000011152456952
@@ -950,7 +953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxFuelCount: 500
-  fuelCount: 200
+  fuelCount: 250
   fuelUseAmountForType: 010000000a000000
 --- !u!114 &114000013377407256
 MonoBehaviour:

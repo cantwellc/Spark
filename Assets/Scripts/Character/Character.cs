@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Character : MonoBehaviour 
 {
@@ -10,16 +11,18 @@ public class Character : MonoBehaviour
     public GameObject primaryFireProjectilePrefab;
     public GameObject secondaryFireProjectilePrefab;
 	public GameObject blackHoleExplosionPrefab;
+    public GameObject outOfFuelPrefab;
 	public AudioClip [] soundEffects;
 	public Text fuelDepletedText;
 	public Text fuelCountText;
 
-
+    private int _charDeathDelay;
+    private int _fuelChange;
     private int _maxVelocity;
     private Rigidbody _rigidBody;
 	private FuelReservoir _fuelReservoir;
     private bool _cheatMode;
-
+    private bool _alertSound;
 
     public Vector3 Velocity
     {
@@ -43,9 +46,19 @@ public class Character : MonoBehaviour
 
     void Awake()
     {
+        _charDeathDelay = 5;
+        _fuelChange = 0;
         _maxVelocity = 10;
         _rigidBody = GetComponent<Rigidbody>();
         _fuelReservoir = GetComponent<FuelReservoir>();
+        _alertSound = false;
+    }
+
+    IEnumerator charSleep()
+    {
+        yield return new WaitForSeconds(_charDeathDelay);
+        gameObject.SetActive(false);
+        DestroyedByOutOfFuel();
     }
 
 	void Update()
@@ -54,13 +67,31 @@ public class Character : MonoBehaviour
         //{
         //	ToggleCheatCode ();
         //}
+        //Is used to alert player with everyone 10 fuel usage after the fuel count drops under 100
+        if(_fuelChange == 10)
+        {
+            _alertSound = true;
+            _fuelChange = 0;
+        }
         // Constant value is our max velocity magnitude it can be changed from here 
-	    if(_rigidBody.velocity.magnitude > _maxVelocity)
+        if (_rigidBody.velocity.magnitude > _maxVelocity)
         {
             _rigidBody.velocity = _rigidBody.velocity.normalized * _maxVelocity;
         }
+        if (_fuelReservoir.fuelCount <= 100)
+        {
+            if (_alertSound)
+            {
+                AudioSource.PlayClipAtPoint(soundEffects[1], Camera.main.transform.position, 0.4f);
+                _alertSound = false;
+            }
+                
+        }
 		if (_fuelReservoir.fuelCount <= 0)
 		{
+            //Calling destroyed by blackhole for now
+
+            StartCoroutine(charSleep());
 			//fuelDepletedText.text = "You are out of Fuel!";
 			//fuelDepletedText.color = Color.red;
 
@@ -88,7 +119,8 @@ public class Character : MonoBehaviour
         
         var bullet = Instantiate(primaryFireProjectilePrefab);
         Destroy(bullet, 5.0f);
-
+        // Since fuel is used
+        _fuelChange += 1;
         return bullet;
     }
 
@@ -127,6 +159,11 @@ public class Character : MonoBehaviour
         Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
     }
 
+    public void DestroyedByOutOfFuel()
+    {
+        AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
+        Instantiate(outOfFuelPrefab, transform.position, transform.rotation);
+    }
 
     void RemoveFuelText()
 	{

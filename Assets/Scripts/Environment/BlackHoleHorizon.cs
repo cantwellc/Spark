@@ -6,7 +6,7 @@ public class BlackHoleHorizon : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
-		if (other.gameObject.tag != "Blackhole" && other.tag !="Plane")
+		if (other.gameObject.tag != "Blackhole" && other.tag !="Plane" && other.tag != "CharacterBullet" && other.tag != "Obstacle")
         {
             var rb = other.gameObject.GetComponent<Rigidbody>();
             if (rb == null)
