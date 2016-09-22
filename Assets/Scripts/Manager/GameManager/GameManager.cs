@@ -7,7 +7,10 @@ public class GameManager : MonoBehaviour {
 
     public Text notificationText;
     public Text fuelCountText;
-    public Character ship;
+	public Texture2D crosshairTexture;
+	private Rect _crosshairRect;
+	private int _mouseDissapearThreshold = 90;
+    public Character character;
 
     private GameObject _inGameUI;
     private GameObject popupUI;
@@ -22,8 +25,9 @@ public class GameManager : MonoBehaviour {
     void Start ()
     {
         notificationText.enabled = false;
-        _fuelReservoir = ship.GetComponent<FuelReservoir>();
+        _fuelReservoir = character.GetComponent<FuelReservoir>();
         _inGameUI = GameObject.Find("In Game UI");
+		Cursor.SetCursor (crosshairTexture,new Vector2(crosshairTexture.width/2,crosshairTexture.height/2),CursorMode.Auto);
     }
 	
 	// Update is called once per frame
@@ -31,7 +35,7 @@ public class GameManager : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            StartCoroutine(CheatModeMessage(ship.ToggleCheatCode()));
+            StartCoroutine(CheatModeMessage(character.ToggleCheatCode()));
         }
 
         if (Input.GetKeyDown(KeyCode.R))
@@ -39,7 +43,33 @@ public class GameManager : MonoBehaviour {
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 			//EnableRestartPopup();
         }
+		crosshairDrawing ();
     }
+
+
+
+
+	void crosshairDrawing()
+	{
+		Vector3 characterScreenPos = Camera.main.WorldToScreenPoint (character.transform.position);
+		
+		//Check if the cursor is close
+		if (Mathf.Abs(characterScreenPos.x - Input.mousePosition.x) < _mouseDissapearThreshold && Mathf.Abs(characterScreenPos.y - Input.mousePosition.y)<_mouseDissapearThreshold)
+		{
+			
+			Cursor.visible = false;
+		} 
+		else
+		{
+			
+			Cursor.visible = true;
+			Cursor.SetCursor (crosshairTexture,new Vector2(crosshairTexture.width/2,crosshairTexture.height/2),CursorMode.Auto);
+
+		}
+
+	}
+
+
 
     void FixedUpdate()
     {
