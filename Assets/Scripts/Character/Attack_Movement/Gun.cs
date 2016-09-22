@@ -57,7 +57,7 @@ public class Gun : MonoBehaviour
         // conservation of momentum.
         //bullet.GetComponent<Rigidbody>().velocity = Ship.Velocity + transform.TransformDirection(0.0f, 0.0f, -Speed);
 		var bV = character.Velocity + transform.TransformDirection(0.0f, 0.0f, speed);
-        var sV = CalcShipVelocity(bV, bullet.GetComponent<Rigidbody>().mass);
+        CalcShipVelocity(bV, bullet.GetComponent<Rigidbody>().mass);
 		//character.Velocity = sV;
         bV.y = 0;
         bullet.GetComponent<Rigidbody>().velocity = bV;
@@ -95,12 +95,14 @@ public class Gun : MonoBehaviour
 
     public Vector3 CalcShipVelocity(Vector3 bulletVelocity, float bulletMass)
     {
-		var shipV = character.Velocity;
+		//var shipV = character.Velocity;
         Vector3 result = new Vector3();
         result.x = -bulletMass * bulletVelocity.x;//(shipV.x - bulletMass * bulletVelocity.x) / character.Mass;
         result.y = 0;//(shipV.y - bulletMass * bulletVelocity.y) / character.Mass;
         result.z = -bulletMass * bulletVelocity.z;//(shipV.z - bulletMass * bulletVelocity.z) / character.Mass;
+
         character.GetComponent<Rigidbody>().AddForce(result, ForceMode.Impulse);
+
         return result;
     }
 }

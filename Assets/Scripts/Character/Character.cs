@@ -15,6 +15,7 @@ public class Character : MonoBehaviour
 	public Text fuelCountText;
 
 
+    private int _maxVelocity;
     private Rigidbody _rigidBody;
 	private FuelReservoir _fuelReservoir;
     private bool _cheatMode;
@@ -42,17 +43,22 @@ public class Character : MonoBehaviour
 
     void Awake()
     {
+        _maxVelocity = 10;
         _rigidBody = GetComponent<Rigidbody>();
         _fuelReservoir = GetComponent<FuelReservoir>();
     }
 
 	void Update()
 	{
-		//if (Input.GetKeyDown (KeyCode.B))
-		//{
-		//	ToggleCheatCode ();
-		//}
-			
+        //if (Input.GetKeyDown (KeyCode.B))
+        //{
+        //	ToggleCheatCode ();
+        //}
+        // Constant value is our max velocity magnitude it can be changed from here 
+	    if(_rigidBody.velocity.magnitude > _maxVelocity)
+        {
+            _rigidBody.velocity = _rigidBody.velocity.normalized * _maxVelocity;
+        }
 		if (_fuelReservoir.fuelCount <= 0)
 		{
 			//fuelDepletedText.text = "You are out of Fuel!";
@@ -79,7 +85,8 @@ public class Character : MonoBehaviour
                 return null;
             }
         }
-		var bullet = Instantiate(primaryFireProjectilePrefab);
+        
+        var bullet = Instantiate(primaryFireProjectilePrefab);
         Destroy(bullet, 5.0f);
 
         return bullet;

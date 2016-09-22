@@ -875,10 +875,10 @@ MonoBehaviour:
     type: 2}
   character: {fileID: 114000011135439484}
   plasmaSfx: {fileID: 8300000, guid: 21103c5decea54492b7a6b1f4d74767d, type: 3}
-  primaryFireDelay: 0.2
+  primaryFireDelay: 0.1
   secondaryFireDelay: 1
   damage: 10
-  speed: 5
+  speed: 10
 --- !u!114 &114000012197618924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -951,7 +951,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxFuelCount: 500
   fuelCount: 200
-  fuelUseAmountForType: 050000000a000000
+  fuelUseAmountForType: 010000000a000000
 --- !u!114 &114000013377407256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1006,7 +1006,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014047165630}
-  serializedVersion: 2
+  serializedVersion: 4
   lengthInSec: 2
   startDelay:
     scalar: 0
@@ -1044,12 +1044,13 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
-  randomSeed: 0
   looping: 1
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 1
+  autoRandomSeed: 1
   scalingMode: 2
+  randomSeed: 0
   InitialModule:
     serializedVersion: 2
     enabled: 1
