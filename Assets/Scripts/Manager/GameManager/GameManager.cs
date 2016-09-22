@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour {
         _fuelReservoir = character.GetComponent<FuelReservoir>();
         _inGameUI = GameObject.Find("In Game UI");
 		Cursor.visible = false;
-		//Cursor.SetCursor (crosshairTexture,new Vector2(crosshairTexture.width/2,crosshairTexture.height/2),CursorMode.Auto);
     }
 	
 	// Update is called once per frame
