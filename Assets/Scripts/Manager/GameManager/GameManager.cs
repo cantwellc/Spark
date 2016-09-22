@@ -53,8 +53,10 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.R))
         {
             notificationText.enabled = false;
+            
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-			//EnableRestartPopup();
+            //EnableRestartPopup();
+            
         }
 		//crosshairDrawing ();
 
@@ -119,7 +121,7 @@ public class GameManager : MonoBehaviour {
 
     void DeadNotification()
     {
-        Time.timeScale = 0;
+        
         notificationText.text = "You have died! Press R to restart.";
         notificationText.color = Color.red;
         notificationText.enabled = true;
