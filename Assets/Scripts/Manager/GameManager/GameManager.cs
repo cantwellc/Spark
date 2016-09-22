@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
@@ -16,9 +17,15 @@ public class GameManager : MonoBehaviour {
     private GameObject popupUI;
     private FuelReservoir _fuelReservoir;
 
+    // Actions
+    private UnityAction _restartButton;
+    private UnityAction _cancelButton;
+
     void Awake()
     {
         //DontDestroyOnLoad(this);
+        _restartButton = new UnityAction(RestartClick);
+        _cancelButton = new UnityAction(CancelClick);
     }
 
     // Use this for initialization
@@ -27,7 +34,7 @@ public class GameManager : MonoBehaviour {
         notificationText.enabled = false;
         _fuelReservoir = character.GetComponent<FuelReservoir>();
         _inGameUI = GameObject.Find("In Game UI");
-		Cursor.SetCursor (crosshairTexture,new Vector2(crosshairTexture.width/2,crosshairTexture.height/2),CursorMode.Auto);
+		//Cursor.SetCursor (crosshairTexture,new Vector2(crosshairTexture.width/2,crosshairTexture.height/2),CursorMode.Auto);
     }
 	
 	// Update is called once per frame
@@ -40,10 +47,13 @@ public class GameManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-			//EnableRestartPopup();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //EnableRestartPopup();
+            EventManager.StartListening("Restart Button Pressed", _restartButton);
+            EventManager.StartListening("Cancel Button Pressed", _cancelButton);
+            EventManager.TriggerEvent("R Key Pressed");
         }
-		crosshairDrawing ();
+		//crosshairDrawing ();
     }
 
 

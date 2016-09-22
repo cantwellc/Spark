@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public class FuelReservoir : MonoBehaviour {
@@ -15,9 +16,19 @@ public class FuelReservoir : MonoBehaviour {
     //How much fuel to use when doing certain action.
     //0 for plasma bullet, 1 for black hole, like the enum above.
     public int[] fuelUseAmountForType;
-    
-	void Start () {
-	
+
+
+    //private UnityAction FireListener;
+
+
+
+    void Awake()
+    {
+        //FireListener = new UnityAction(WeaponFired);
+    }
+
+    void Start () {
+	    
 	}
 	
     /// <summary>
@@ -76,6 +87,11 @@ public class FuelReservoir : MonoBehaviour {
         }
         
     }
+
+    //private void WeaponFired()
+    //{
+
+    //}
 
 
 }
