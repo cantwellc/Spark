@@ -3,6 +3,14 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+public enum GAME_STATES
+{
+    MAIN_MENU,
+    PLAYING,
+    PLAYER_DEAD,
+
+}
+
 public class GameManager : MonoBehaviour {
 
     public Text notificationText;
@@ -16,7 +24,7 @@ public class GameManager : MonoBehaviour {
 	private GameObject _inGameUI;
     private GameObject popupUI;
     private FuelReservoir _fuelReservoir;
-
+    private GAME_STATES _game_state;
 
 
     void Awake()
@@ -44,10 +52,17 @@ public class GameManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            notificationText.enabled = false;
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 			//EnableRestartPopup();
         }
 		//crosshairDrawing ();
+
+        if(character.gameObject.activeSelf == false)
+        {
+            // Debug.Log("Player has died!");
+            DeadNotification();
+        }
     }
 
 	void OnGUI()
@@ -100,6 +115,14 @@ public class GameManager : MonoBehaviour {
         notificationText.color = Color.red;
         yield return new WaitForSeconds(1.2f);
         notificationText.enabled = false;
+    }
+
+    void DeadNotification()
+    {
+        Time.timeScale = 0;
+        notificationText.text = "You have died! Press R to restart.";
+        notificationText.color = Color.red;
+        notificationText.enabled = true;
     }
 
     void EnableRestartPopup()

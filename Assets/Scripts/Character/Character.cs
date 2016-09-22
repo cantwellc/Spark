@@ -23,6 +23,8 @@ public class Character : MonoBehaviour
 	private FuelReservoir _fuelReservoir;
     private bool _cheatMode;
     private bool _alertSound;
+    private bool _dyingCountdown = false;
+    private Coroutine _runningCoroutine = null;
 
     public Vector3 Velocity
     {
@@ -56,9 +58,11 @@ public class Character : MonoBehaviour
 
     IEnumerator charSleep()
     {
+        _dyingCountdown = true;
         yield return new WaitForSeconds(_charDeathDelay);
         gameObject.SetActive(false);
         DestroyedByOutOfFuel();
+        _dyingCountdown = true;
     }
 
 	void Update()
@@ -90,12 +94,23 @@ public class Character : MonoBehaviour
 		if (_fuelReservoir.fuelCount <= 0)
 		{
             //Calling destroyed by blackhole for now
+            if (!_dyingCountdown)
+            {
+                _runningCoroutine = StartCoroutine(charSleep());
+                Debug.Log("Death countdown started.");
+            }
 
-            StartCoroutine(charSleep());
 			//fuelDepletedText.text = "You are out of Fuel!";
 			//fuelDepletedText.color = Color.red;
-
 		}
+        else
+        {
+            if (_dyingCountdown)
+            {
+                _dyingCountdown = false;
+                StopCoroutine(_runningCoroutine);
+            }
+        }
 	}
 
 	//Cheat code
