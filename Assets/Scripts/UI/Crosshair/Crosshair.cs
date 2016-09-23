@@ -5,7 +5,8 @@ public class Crosshair : MonoBehaviour {
 
 
 	public Transform character;
-	public Texture2D crosshairTexture;
+	public Texture2D idleCrosshairTexture;
+	public Texture2D redCrosshairTexture;
 
 	private Rect _crosshairRect;
 	private float _mouseDissapearThreshold = 4.0f;
@@ -38,7 +39,16 @@ public class Crosshair : MonoBehaviour {
 		Vector2 mouseInXZWorld = new Vector2 (mouseInWorldPosition.x, mouseInWorldPosition.z);
 		Vector2 characterInXZWorld = new Vector2 (character.position.x, character.position.z);
 
-
+		Collider [] objectsCrosshairIsHoveringOn = Physics.OverlapSphere(mouseInWorldPosition, 1);
+		bool crosshairHitsSomethingDestructible = false;
+		foreach (Collider collider in objectsCrosshairIsHoveringOn)
+		{
+			if (collider.tag == "Enemy")
+			{
+				crosshairHitsSomethingDestructible = true;
+				break;
+			}
+		}
 
 
 		if (Vector2.Distance (characterInXZWorld, mouseInXZWorld) > _mouseDissapearThreshold )
@@ -61,7 +71,15 @@ public class Crosshair : MonoBehaviour {
 			Vector2 newCrosshairPosition = Camera.main.WorldToScreenPoint (crossHairWorld);
 			_crosshairRect = new Rect (newCrosshairPosition.x - 10, Screen.height - newCrosshairPosition.y -10, 20, 20);
 		}
-		GUI.DrawTexture (_crosshairRect,crosshairTexture);
+
+		if (!crosshairHitsSomethingDestructible)
+		{
+			GUI.DrawTexture (_crosshairRect, idleCrosshairTexture);
+		} 
+		else
+		{
+			GUI.DrawTexture (_crosshairRect, redCrosshairTexture);
+		}
 
 	}
 
