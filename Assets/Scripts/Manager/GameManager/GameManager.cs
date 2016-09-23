@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
 	private Rect _crosshairRect;
 
     // private
-	private int _mouseDissapearThreshold = 3;
+	private float _mouseDissapearThreshold = 5.0f;
     private GAME_STATES _game_state;
 	private Plane _mouseTargetPlane;
 
@@ -55,7 +55,12 @@ public class GameManager : MonoBehaviour {
             //EnableRestartPopup();
             
         }
-		//crosshairDrawing ();
+		if (Input.GetKeyDown(KeyCode.L))
+		{
+			Cursor.visible = true;
+			SceneManager.LoadScene ("LevelSelectScene");
+
+		}
 
         if(character.gameObject.activeSelf == false)
         {
