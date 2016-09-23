@@ -8,6 +8,15 @@ public class Health : MonoBehaviour
 	public float maxHealth;
 	public bool removeFromSceneWhenDead;
 
+    public float HealthPercent
+    {
+        get
+        {
+            return _currentHealth / maxHealth;
+        }
+    }
+
+    [SerializeField]
 	private float _currentHealth;
 
 	void Start () 
