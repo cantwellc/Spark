@@ -74,7 +74,6 @@ public class Character : MonoBehaviour
         yield return new WaitForSeconds(_charDeathDelay);
         gameObject.SetActive(false);
         DestroyedByOutOfFuel();
-        EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         _dyingCountdown = true;
     }
 
@@ -178,18 +177,21 @@ public class Character : MonoBehaviour
 
     public void DestroyedByBlackHole()
     {
+        EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
         Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
     }
 
     public void DestroyedByBullet()
     {
+        EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
         Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
     }
 
     public void DestroyedByOutOfFuel()
     {
+        EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
         Instantiate(outOfFuelPrefab, transform.position, transform.rotation);
     }
