@@ -56,6 +56,18 @@ public class Character : MonoBehaviour
         _alertSound = false;
     }
 
+    void OnEnable()
+    {
+        EventManager.StartListening(EventManager.Events.GOAL_REACHED, stopMoving);
+        EventManager.StartListening(EventManager.Events.B_KEY, ToggleCheatCode);
+    }
+
+    void OnDisable()
+    {
+        EventManager.StopListening(EventManager.Events.GOAL_REACHED, stopMoving);
+        EventManager.StopListening(EventManager.Events.B_KEY, ToggleCheatCode);
+    }
+
     IEnumerator charSleep()
     {
         _dyingCountdown = true;
@@ -116,10 +128,9 @@ public class Character : MonoBehaviour
 	}
 
 	//Cheat code
-	public bool ToggleCheatCode()
+	public void ToggleCheatCode()
 	{
         _cheatMode = !_cheatMode;
-	    return _cheatMode;
 
 	}
 
@@ -166,18 +177,21 @@ public class Character : MonoBehaviour
 
     public void DestroyedByBlackHole()
     {
+        EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
         Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
     }
 
     public void DestroyedByBullet()
     {
+        EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
         Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
     }
 
     public void DestroyedByOutOfFuel()
     {
+        EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
         Instantiate(outOfFuelPrefab, transform.position, transform.rotation);
     }
@@ -191,7 +205,10 @@ public class Character : MonoBehaviour
 	{
 		//fuelDepletedText.text = "";
 	}
-	void OnDisable()
-	{
-	}
+	
+
+    void stopMoving()
+    {
+        _rigidBody.velocity = new Vector3(0, 0, 0);
+    }
 }

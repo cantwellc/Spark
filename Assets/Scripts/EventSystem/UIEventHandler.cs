@@ -4,12 +4,11 @@ using UnityEngine.Events;
 using System.Collections;
 
 public class UIEventHandler : MonoBehaviour {
-
-    public Character character;
+    
     public Text notificationText;
     public Text countdownText;
 
-
+    private bool _cheatMode = false;
 
 	// Use this for initialization
     
@@ -75,7 +74,8 @@ public class UIEventHandler : MonoBehaviour {
 
     void CheatMode()
     {
-        StartCoroutine(CheatModeMessage(character.ToggleCheatCode()));
+        _cheatMode = !_cheatMode;
+        StartCoroutine(CheatModeMessage(_cheatMode));
     }
 
     void DeadNotification()
@@ -99,18 +99,21 @@ public class UIEventHandler : MonoBehaviour {
     // called in OnEnable()
     void StartListeningEvents()
     {
-        EventManager.StartListening(EventManager.Events.CHEAT_MODE, CheatMode);
+        EventManager.StartListening(EventManager.Events.B_KEY, CheatMode);
         EventManager.StartListening(EventManager.Events.PLAYER_DEAD, DeadNotification);
         EventManager.StartListening(EventManager.Events.DEATH_COUNTDOWN, DeathCountdown);
         EventManager.StartListening(EventManager.Events.STOP_DEATH_COUNTDOWN, StopDeathCountdown);
+        EventManager.StartListening(EventManager.Events.R_KEY, StopDeathCountdown);
     }
 
     // called in OnDisable()
     void StopListeningEvents()
     {
-        EventManager.StopListening(EventManager.Events.CHEAT_MODE, CheatMode);
+        EventManager.StopListening(EventManager.Events.B_KEY, CheatMode);
         EventManager.StopListening(EventManager.Events.PLAYER_DEAD, DeadNotification);
+        EventManager.StopListening(EventManager.Events.DEATH_COUNTDOWN, DeathCountdown);
         EventManager.StopListening(EventManager.Events.STOP_DEATH_COUNTDOWN, StopDeathCountdown);
+        EventManager.StopListening(EventManager.Events.R_KEY, StopDeathCountdown);
     }
 
 }

@@ -10,7 +10,7 @@ public class MoveBox : MonoBehaviour {
 
     void Start()
     {
-        targetPositon = box.transform.position - new Vector3(0.0f, 0.0f, 5.1f);
+        targetPositon = box.transform.position - new Vector3(0.0f, 0.0f, 5.5f);
     }
 
     void OnTriggerEnter(Collider other)
@@ -21,6 +21,6 @@ public class MoveBox : MonoBehaviour {
     void Update()
     {
         if(move)
-        box.transform.position = Vector3.SmoothDamp(box.transform.position, targetPositon, ref velocity, 0.6f);
+        box.transform.position = Vector3.SmoothDamp(box.transform.position, targetPositon, ref velocity, 0.5f);
     }
 }
