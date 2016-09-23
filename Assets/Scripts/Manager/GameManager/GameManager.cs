@@ -14,7 +14,6 @@ public enum GAME_STATES
 public class GameManager : MonoBehaviour {
 
     // public
-    public Character character;
 
 
 
@@ -24,7 +23,12 @@ public class GameManager : MonoBehaviour {
 
     void Awake()
     {
-        //DontDestroyOnLoad(this);
+        DontDestroyOnLoad(this);
+
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Use this for initialization
@@ -40,12 +44,12 @@ public class GameManager : MonoBehaviour {
         {
             //StartCoroutine(CheatModeMessage(character.ToggleCheatCode()));
 
-            EventManager.TriggerEvent(EventManager.Events.CHEAT_MODE);
+            EventManager.TriggerEvent(EventManager.Events.B_KEY);
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            
+            EventManager.TriggerEvent(EventManager.Events.R_KEY);
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             //EnableRestartPopup();
             
@@ -57,12 +61,6 @@ public class GameManager : MonoBehaviour {
 
 		}
 
-        if(character.gameObject.activeSelf == false)
-        {
-            // Debug.Log("Player has died!");
-            //DeadNotification();
-            EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
-        }
     }
 
 
