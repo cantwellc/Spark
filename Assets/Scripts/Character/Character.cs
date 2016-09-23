@@ -97,6 +97,7 @@ public class Character : MonoBehaviour
             if (!_dyingCountdown)
             {
                 _runningCoroutine = StartCoroutine(charSleep());
+                EventManager.TriggerEvent(EventManager.Events.DEATH_COUNTDOWN);
                 Debug.Log("Death countdown started.");
             }
 
@@ -108,6 +109,7 @@ public class Character : MonoBehaviour
             if (_dyingCountdown)
             {
                 _dyingCountdown = false;
+                EventManager.TriggerEvent(EventManager.Events.STOP_DEATH_COUNTDOWN);
                 StopCoroutine(_runningCoroutine);
             }
         }

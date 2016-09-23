@@ -13,17 +13,15 @@ public enum GAME_STATES
 
 public class GameManager : MonoBehaviour {
 
-    public Text notificationText;
-    public Text fuelCountText;
+    // public
+    public Character character;
 
 	public Texture2D crosshairTexture;
-	private Rect _crosshairRect;
-	private int _mouseDissapearThreshold = 90;
 
-	public Character character;
-	private GameObject _inGameUI;
-    private GameObject popupUI;
-    private FuelReservoir _fuelReservoir;
+	private Rect _crosshairRect;
+
+    // private
+	private int _mouseDissapearThreshold = 90;
     private GAME_STATES _game_state;
 
 
@@ -35,9 +33,6 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        notificationText.enabled = false;
-        _fuelReservoir = character.GetComponent<FuelReservoir>();
-        _inGameUI = GameObject.Find("In Game UI");
 		Cursor.visible = false;
     }
 	
@@ -46,12 +41,13 @@ public class GameManager : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            StartCoroutine(CheatModeMessage(character.ToggleCheatCode()));
+            //StartCoroutine(CheatModeMessage(character.ToggleCheatCode()));
+
+            EventManager.TriggerEvent(EventManager.Events.CHEAT_MODE);
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            notificationText.enabled = false;
             
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             //EnableRestartPopup();
@@ -62,7 +58,8 @@ public class GameManager : MonoBehaviour {
         if(character.gameObject.activeSelf == false)
         {
             // Debug.Log("Player has died!");
-            DeadNotification();
+            //DeadNotification();
+            EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         }
     }
 
@@ -95,59 +92,4 @@ public class GameManager : MonoBehaviour {
 		GUI.DrawTexture (_crosshairRect,crosshairTexture);
 	}
 
-
-
-    void FixedUpdate()
-    {
-		fuelCountText.text = "Fuel: " +_fuelReservoir.fuelCount + "/" + _fuelReservoir.maxFuelCount;
-    }
-
-    IEnumerator CheatModeMessage(bool CheatMode)
-    {
-        if (CheatMode)
-        {
-            notificationText.text = "Cheat Mode Enabled!";
-        }
-        else
-        {
-            notificationText.text = "Cheat Mode Disabled!";
-        }
-        notificationText.enabled = true;
-        notificationText.color = Color.red;
-        yield return new WaitForSeconds(1.2f);
-        notificationText.enabled = false;
-    }
-
-    void DeadNotification()
-    {
-        
-        notificationText.text = "You have died! Press R to restart.";
-        notificationText.color = Color.red;
-        notificationText.enabled = true;
-    }
-
-    void EnableRestartPopup()
-    {
-        Time.timeScale = 0;
-        if (popupUI == null)
-        {
-            popupUI = _inGameUI.transform.Find("popup UI").gameObject;
-        }
-        popupUI.SetActive(true);
-    }
-
-    public void RestartClick()
-    {
-        Time.timeScale = 1;
-
-        popupUI.SetActive(false);
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    public void CancelClick()
-    {
-        Time.timeScale = 1;
-        popupUI.SetActive(false);
-    }
 }
