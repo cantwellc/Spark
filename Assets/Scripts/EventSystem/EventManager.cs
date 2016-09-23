@@ -8,10 +8,14 @@ public class EventManager : MonoBehaviour {
     public enum Events
     {
         UPDATE_FUEL,
-        CHEAT_MODE,
         PLAYER_DEAD,
         DEATH_COUNTDOWN,
         STOP_DEATH_COUNTDOWN,
+        GOAL_REACHED,
+
+        // keyboard input events
+        B_KEY,
+        R_KEY
     }
 
     private Dictionary<Events, UnityEvent> _eventDictionary;

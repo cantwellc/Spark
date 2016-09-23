@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class SceneFader : MonoBehaviour {
@@ -9,6 +10,11 @@ public class SceneFader : MonoBehaviour {
     private int _drawDepth = -1000;
     private float _alpha = 1.0f;
     private int _fadeDir = -1;
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += newSceneLoaded;
+    }
 
     void OnGUI()
     {
@@ -23,10 +29,10 @@ public class SceneFader : MonoBehaviour {
     public float BeginFade(int dir)
     {
         _fadeDir = dir;
-        return (fadeSpeed);
+        return fadeSpeed;
     }
 
-    void OnLevelWasLoad()
+    void newSceneLoaded(Scene newScene, LoadSceneMode mode)
     {
         _alpha = 1;
         BeginFade(-1);
