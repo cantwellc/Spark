@@ -56,7 +56,7 @@ public class Gun : MonoBehaviour
         // Shoot backwards with completely elastic colision to let unity physics engine handle
         // conservation of momentum.
         //bullet.GetComponent<Rigidbody>().velocity = Ship.Velocity + transform.TransformDirection(0.0f, 0.0f, -Speed);
-		var bV = character.Velocity + transform.TransformDirection(0.0f, 0.0f, speed);
+		var bV =  transform.TransformDirection(0.0f, 0.0f, speed);
         CalcShipVelocity(bV, bullet.GetComponent<Rigidbody>().mass);
 		//character.Velocity = sV;
         bV.y = 0;
