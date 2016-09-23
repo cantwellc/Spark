@@ -141,6 +141,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000011697212368
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000010734766380}
+  - 114: {fileID: 114000011597411430}
+  m_Layer: 8
+  m_Name: Crosshair
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000011906587410
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +301,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000013245081854}
   m_RootOrder: 0
+--- !u!4 &4000010734766380
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011697212368}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000013725108704}
+  m_RootOrder: 0
 --- !u!4 &4000011198708300
 Transform:
   m_ObjectHideFlags: 1
@@ -345,7 +374,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010904683788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2331114, y: 1, z: -39.98}
+  m_LocalPosition: {x: -4.2331114, y: 1, z: -7.1}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -366,7 +395,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 4000010734766380}
   m_Father: {fileID: 4000013480861054}
   m_RootOrder: 2
 --- !u!4 &4000014119956090
@@ -851,6 +881,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3000
+--- !u!114 &114000011597411430
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011697212368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd17d0ada9630410f8cb4113cb759e9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: {fileID: 4000013480861054}
+  idleCrosshairTexture: {fileID: 2800000, guid: 67a1528a6c99c4f1d967d26da086db28,
+    type: 3}
+  redCrosshairTexture: {fileID: 2800000, guid: 743aa800929d94331b058df849cfed36, type: 3}
 --- !u!114 &114000011648432712
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -954,7 +999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxFuelCount: 500
-  fuelCount: 250
+  fuelCount: 50
   fuelUseAmountForType: 010000000a000000
 --- !u!114 &114000013377407256
 MonoBehaviour:
