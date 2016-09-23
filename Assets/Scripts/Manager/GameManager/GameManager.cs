@@ -21,8 +21,9 @@ public class GameManager : MonoBehaviour {
 	private Rect _crosshairRect;
 
     // private
-	private int _mouseDissapearThreshold = 90;
+	private int _mouseDissapearThreshold = 3;
     private GAME_STATES _game_state;
+	private Plane _mouseTargetPlane;
 
 
     void Awake()
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour {
     void Start ()
     {
 		Cursor.visible = false;
+		_mouseTargetPlane= new Plane(transform.up, character.transform.position);
     }
 	
 	// Update is called once per frame
@@ -63,33 +65,50 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+	/// <summary>
+	/// We find the mouseInWorldPosition where it intersects with the plane the player is on. Then we are only interested in the XZ plane because y is always 1
+	/// Then we get the XZ plane components of character and we find distance between mouseWorldPositionXZ and CharacterPosition XZ in 2D , if this distance is smaller than our treshold
+	/// that means the mouse is too closer to the character so to keep the distance we do the following:
+	/// We use origin as character's xz coordinates and then find a point on them with radius = treshold+0.2 ( so a little bir farther) and thats it we put the crosshair there.
+	/// There is a small gotcha that our character even if he does not have a rotation value, his barrel is rotated at 90 degrees so we are adding that to the character's Euler Angle.
+	/// </summary>
 	void OnGUI()
 	{
-		_crosshairRect =  new Rect (Input.mousePosition.x-10,Screen.height- Input.mousePosition.y -10, 20, 20);
-		Vector3 characterScreenPos = Camera.main.WorldToScreenPoint (character.transform.position);
-		Vector2 characterScreenPos2D = new Vector2 (characterScreenPos.x, characterScreenPos.y);
-		Vector2 mousePosition2D = new Vector2 (Input.mousePosition.x, Input.mousePosition.y);
 
-		if (Vector2.Distance (characterScreenPos2D, mousePosition2D) > _mouseDissapearThreshold)
+		_crosshairRect = new Rect (Input.mousePosition.x - 10, Screen.height - Input.mousePosition.y - 10, 20, 20);
+		Vector3 mouseInWorldPosition = GetTarget ();
+		Vector2 mouseInXZWorld = new Vector2 (mouseInWorldPosition.x, mouseInWorldPosition.z);
+		Vector2 characterInXZWorld = new Vector2 (character.transform.position.x, character.transform.position.z);
+		if (Vector2.Distance (characterInXZWorld, mouseInXZWorld) > _mouseDissapearThreshold)
 		{
-			
+
 			_crosshairRect = new Rect (Input.mousePosition.x - 10, Screen.height - Input.mousePosition.y -10, 20, 20);
 		} 
-		//This means the crosshair is too close to the character
-		//We found a point in the circle with origin cx, An eulerAngleY which is Rotation of the ship+90 , because our model is 90 degrees in the unit circle
+
 		else
 		{
-			float cx = characterScreenPos2D.x;
-			float cy = characterScreenPos2D.y;
-			float r = _mouseDissapearThreshold + 1;
+
+			float cx = character.transform.position.x;
+			float cz = character.transform.position.z;
+			float r = _mouseDissapearThreshold + 0.2f;
 			float eulerAngleY = character.transform.rotation.eulerAngles.y +90;
 			float angleInDegrees =  (eulerAngleY > 180.0f) ? eulerAngleY - 360.0f : eulerAngleY;
-
 			float a = angleInDegrees * Mathf.Deg2Rad;
-			Vector2 newCrosshairPosition = new Vector2 (cx - r * Mathf.Cos (a), cy + r * Mathf.Sin (a));
+
+			Vector3 crossHairWorld = new Vector3(cx - r * Mathf.Cos (a),1.0f, cz + r * Mathf.Sin (a));
+			Vector2 newCrosshairPosition = Camera.main.WorldToScreenPoint (crossHairWorld);
 			_crosshairRect = new Rect (newCrosshairPosition.x - 10, Screen.height - newCrosshairPosition.y -10, 20, 20);
 		}
 		GUI.DrawTexture (_crosshairRect,crosshairTexture);
+	}
+
+	public Vector3 GetTarget() {
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		float rayDistance;
+		var worldPosition = new GameObject ();
+		if (_mouseTargetPlane.Raycast(ray, out rayDistance))
+			worldPosition.transform.position = ray.GetPoint(rayDistance);
+		return worldPosition.transform.position;
 	}
 
 }
