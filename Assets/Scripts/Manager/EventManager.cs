@@ -5,7 +5,13 @@ using System.Collections.Generic;
 
 public class EventManager : MonoBehaviour {
 
-    private Dictionary<string, UnityEvent> _eventDictionary;
+    public enum Events
+    {
+        UPDATE_FUEL,
+        CHEAT_MODE,
+    }
+
+    private Dictionary<Events, UnityEvent> _eventDictionary;
 
     private static EventManager _eventManager;
 
@@ -35,12 +41,12 @@ public class EventManager : MonoBehaviour {
     {
         if (_eventDictionary == null)
         {
-            _eventDictionary = new Dictionary<string, UnityEvent>();
+            _eventDictionary = new Dictionary<Events, UnityEvent>();
         }
     }
 
 
-    public static void StartListening(string eventName, UnityAction listener)
+    public static void StartListening(Events eventName, UnityAction listener)
     {
         UnityEvent thisEvent = null;
         if (instance._eventDictionary.TryGetValue(eventName, out thisEvent))
@@ -55,7 +61,7 @@ public class EventManager : MonoBehaviour {
         }
     }
 
-    public static void StopListening(string eventName, UnityAction listener)
+    public static void StopListening(Events eventName, UnityAction listener)
     {
         if (_eventManager == null) return;
         UnityEvent thisEvent = null;
@@ -65,7 +71,7 @@ public class EventManager : MonoBehaviour {
         }
     }
 
-    public static void TriggerEvent(string eventName)
+    public static void TriggerEvent(Events eventName)
     {
         UnityEvent thisEvent = null;
         if (instance._eventDictionary.TryGetValue(eventName, out thisEvent))
