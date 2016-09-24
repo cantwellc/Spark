@@ -4,8 +4,15 @@ using System.Collections;
 public class outArrows : MonoBehaviour {
 
     public GameObject arrows;
+	private bool _triggered = true;
+   	
 
-    void Flash()
+	void Start()
+	{
+		arrows.SetActive (false);
+	}
+
+	void Flash()
     {
         if (arrows.activeSelf)
             arrows.SetActive(false);
@@ -15,7 +22,13 @@ public class outArrows : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        arrows.SetActive(true);
-        InvokeRepeating("Flash", 1.0f, 1.0f);
+        
+		if (_triggered)
+		{
+			arrows.SetActive (true);
+			InvokeRepeating ("Flash", 1.2f, 0.5f);
+			_triggered = false;
+		}
+
     }
 }
