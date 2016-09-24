@@ -56,6 +56,7 @@ GameObject:
   - 114: {fileID: 114000012300281952}
   - 54: {fileID: 54000011200729754}
   - 135: {fileID: 135000010649121628}
+  - 114: {fileID: 114000013428276750}
   m_Layer: 0
   m_Name: Asteroid_2
   m_TagString: Untagged
@@ -187,9 +188,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!114 &114000012300281952
 MonoBehaviour:
@@ -205,6 +206,19 @@ MonoBehaviour:
   yRotation: 0
   xRotation: 3
   zRotation: 3
+--- !u!114 &114000013428276750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012956876842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c998a06377b3fe348a12357b997c928c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityX: 0
+  velocityZ: 0
 --- !u!135 &135000010649121628
 SphereCollider:
   m_ObjectHideFlags: 1
