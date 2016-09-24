@@ -12,7 +12,7 @@ public class FindEnemyTrigger : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll)
     {
-        SendMessageUpwards("StartShooting");
+		SendMessageUpwards("StartShooting");
     }
 
     void OnTriggerStay(Collider coll)

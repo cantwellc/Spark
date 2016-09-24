@@ -8,7 +8,9 @@ public class Health : MonoBehaviour
 	public float maxHealth;
 	public bool removeFromSceneWhenDead;
 	public GameObject hitParticleEffect;
-	public float destroyEffectInSeconds;
+	public GameObject enemyDeadEffect;
+	public float destroyHitEffectInSeconds;
+	public float destroyDeadEffectInSeconds;
 
 	public Renderer rendererOfObject;
 	private Color _originalColor;
@@ -36,7 +38,7 @@ public class Health : MonoBehaviour
 		
 		rendererOfObject.material.color = Color.red;
 		GameObject enemyHitEffect = Instantiate (hitParticleEffect, transform.position, transform.rotation) as GameObject;
-		Destroy (enemyHitEffect, destroyEffectInSeconds);
+		Destroy (enemyHitEffect, destroyHitEffectInSeconds);
 		Invoke ("returnToOriginalColor", 0.1f);
 		_currentHealth -= amount;
 
@@ -53,7 +55,8 @@ public class Health : MonoBehaviour
 
 	void Dead()
 	{
-		
+		GameObject deadEffect = Instantiate (enemyDeadEffect, transform.position, transform.rotation) as GameObject;
+		Destroy (deadEffect,destroyDeadEffectInSeconds);
 		if (removeFromSceneWhenDead)
 		{
 			Destroy (gameObject);

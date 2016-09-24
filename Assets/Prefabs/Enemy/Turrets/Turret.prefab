@@ -148,7 +148,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012144600810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 51.83, y: -0.14, z: -81.72131}
+  m_LocalPosition: {x: 46.727367, y: 0, z: -81.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -353,13 +353,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2e50eafb0e94d66b4d10cdfe0b7e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 5
   removeFromSceneWhenDead: 1
   hitParticleEffect: {fileID: 1000011142874558, guid: 5c29022e23b7d4089a5fe7a2c08149c6,
     type: 2}
-  destroyEffectInSeconds: 5
+  enemyDeadEffect: {fileID: 1000012536839012, guid: 73dddd0b8e7474cb291b586a4e4e09ce,
+    type: 2}
+  destroyHitEffectInSeconds: 5
+  destroyDeadEffectInSeconds: 2
   rendererOfObject: {fileID: 23000011767407196}
-  _currentHealth: 50
+  _currentHealth: 5
 --- !u!114 &114000013098617738
 MonoBehaviour:
   m_ObjectHideFlags: 1
