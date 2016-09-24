@@ -4,6 +4,9 @@ using System.Collections;
 public class ExplodingDrone : MonoBehaviour {
 
     public float moveForce;
+    public float explosionRadius;
+    public float explosionDamage;
+    public float explosionPower;
 
     Rigidbody _rigidBody;
 	// Use this for initialization
@@ -22,7 +25,27 @@ public class ExplodingDrone : MonoBehaviour {
         transform.rotation = Quaternion.Slerp(transform.rotation, dest, 1);
     }
     
+    void Explode()
+    {
+        Vector3 explosionPos = transform.position;
+        Collider[] colliders = Physics.OverlapSphere(explosionPos, explosionRadius);
+        foreach (Collider hit in colliders)
+        {
+            Rigidbody rb = hit.GetComponent<Rigidbody>();
+            if(rb != null)
+            {
+                rb.AddExplosionForce(explosionPower, explosionPos, explosionRadius, 3f);
+                if(hit.GetComponent<Health>())
+                {
+                    hit.GetComponent<Health>().TakeDamage(explosionDamage);
+                }
+            }
+        }
+    }
+
     void OnCollisionEnter()
     {
+        Explode();
+        GetComponent<Health>().TakeDamage(50f);
     }
 }
