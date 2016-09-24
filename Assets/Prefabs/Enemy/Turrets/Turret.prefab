@@ -38,7 +38,7 @@ GameObject:
   - 114: {fileID: 114000013098617738}
   m_Layer: 0
   m_Name: FindEnemyTrigger
-  m_TagString: Enemy
+  m_TagString: ExtraCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,7 +148,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012144600810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -12.94}
+  m_LocalPosition: {x: 51.83, y: -0.14, z: -81.72131}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 323ffb0c5a20f824d9ffe62ba25e2140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armorType: 0
+  armorType: 3
   damageReduction: 0.2
 --- !u!114 &114000011829593164
 MonoBehaviour:
@@ -355,6 +355,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   removeFromSceneWhenDead: 1
+  hitParticleEffect: {fileID: 1000011142874558, guid: 5c29022e23b7d4089a5fe7a2c08149c6,
+    type: 2}
+  destroyEffectInSeconds: 5
+  rendererOfObject: {fileID: 23000011767407196}
   _currentHealth: 50
 --- !u!114 &114000013098617738
 MonoBehaviour:

@@ -40,7 +40,7 @@ public class CharacterBulletCollision : MonoBehaviour
         if (Armor.ArmorType.ImmuneToPlasma == armorType)
         {
             GameObject explosion = (GameObject)Instantiate(plasmaExplosionPrefab, transform.position, Quaternion.Euler(-90f, 0, 0));
-            Destroy(explosion, 0.5f);
+			Destroy(explosion, 0.5f);
             Destroy(gameObject);
         }
         else if(Armor.ArmorType.DamageReduction == armorType)
