@@ -13,6 +13,7 @@ public class EnemyBulletCollision : MonoBehaviour
 		
 	void OnTriggerEnter(Collider other)
 	{
+        if (!other) return;
 		if (other.gameObject.tag == "Character")
 		{
 			_characterFuelReservoir.UseFuel ((int)_damage);

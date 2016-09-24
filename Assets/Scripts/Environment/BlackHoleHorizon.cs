@@ -16,7 +16,10 @@ public class BlackHoleHorizon : MonoBehaviour {
             blackHoleRigidBody.mass += otherMass;
             if (other.gameObject.tag == "Character") {
                 other.gameObject.SendMessage("DestroyedByBlackHole");
-                Destroy(other.gameObject);
+            }
+            else 
+            { //Maybe adding things later
+                other.gameObject.SendMessage("DestroyedByBlackHole");
             }
 			other.gameObject.SetActive (false);
 		}

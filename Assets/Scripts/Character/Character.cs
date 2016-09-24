@@ -26,6 +26,8 @@ public class Character : MonoBehaviour
     private bool _dyingCountdown = false;
     private Coroutine _runningCoroutine = null;
 
+    public static Character current;
+
     public Vector3 Velocity
     {
         get
@@ -48,6 +50,7 @@ public class Character : MonoBehaviour
 
     void Awake()
     {
+        current = this;
         _charDeathDelay = 5;
         _fuelChange = 0;
         _maxVelocity = 10;
@@ -177,13 +180,16 @@ public class Character : MonoBehaviour
 
     public void DestroyedByBlackHole()
     {
+        Character.current = null;
         EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
         Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
+        Destroy(this.gameObject);
     }
 
     public void DestroyedByBullet()
     {
+        Character.current = null;
         EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
         Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
@@ -191,6 +197,7 @@ public class Character : MonoBehaviour
 
     public void DestroyedByOutOfFuel()
     {
+        Character.current = null;
         EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
         Instantiate(outOfFuelPrefab, transform.position, transform.rotation);
