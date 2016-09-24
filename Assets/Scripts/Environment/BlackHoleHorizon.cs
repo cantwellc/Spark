@@ -21,7 +21,7 @@ public class BlackHoleHorizon : MonoBehaviour {
             { //Maybe adding things later
                 other.gameObject.SendMessage("DestroyedByBlackHole");
             }
-			other.gameObject.SetActive (false);
+			//other.gameObject.SetActive (false);
 		}
     }
 }
