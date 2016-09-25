@@ -12,13 +12,15 @@ public class Character : MonoBehaviour
     public GameObject secondaryFireProjectilePrefab;
 	public GameObject blackHoleExplosionPrefab;
     public GameObject outOfFuelPrefab;
+	public ParticleSystem ramEffect;
 	public AudioClip [] soundEffects;
 	public Text fuelDepletedText;
 	public Text fuelCountText;
 
+
     private int _charDeathDelay;
     private int _fuelChange;
-    private int _maxVelocity;
+	public int maxVelocity;
     private Rigidbody _rigidBody;
 	private FuelReservoir _fuelReservoir;
     private bool _cheatMode;
@@ -53,7 +55,8 @@ public class Character : MonoBehaviour
         current = this;
         _charDeathDelay = 5;
         _fuelChange = 0;
-        _maxVelocity = 10;
+		ramEffect.Stop ();
+		maxVelocity = 10;
         _rigidBody = GetComponent<Rigidbody>();
         _fuelReservoir = GetComponent<FuelReservoir>();
         _alertSound = false;
@@ -93,9 +96,9 @@ public class Character : MonoBehaviour
             _fuelChange = 0;
         }
         // Constant value is our max velocity magnitude it can be changed from here 
-        if (_rigidBody.velocity.magnitude > _maxVelocity)
+        if (_rigidBody.velocity.magnitude > maxVelocity)
         {
-            _rigidBody.velocity = _rigidBody.velocity.normalized * _maxVelocity;
+            _rigidBody.velocity = _rigidBody.velocity.normalized * maxVelocity;
         }
         if (_fuelReservoir.fuelCount <= 100)
         {
