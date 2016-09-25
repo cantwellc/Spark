@@ -20,6 +20,7 @@ public class BlackHoleHorizon : MonoBehaviour {
             else 
             { //Maybe adding things later
                 other.gameObject.SendMessage("DestroyedByBlackHole");
+
             }
 			//other.gameObject.SetActive (false);
 		}

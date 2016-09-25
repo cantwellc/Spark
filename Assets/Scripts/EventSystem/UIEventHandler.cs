@@ -104,6 +104,7 @@ public class UIEventHandler : MonoBehaviour {
         EventManager.StartListening(EventManager.Events.DEATH_COUNTDOWN, DeathCountdown);
         EventManager.StartListening(EventManager.Events.STOP_DEATH_COUNTDOWN, StopDeathCountdown);
         EventManager.StartListening(EventManager.Events.R_KEY, StopDeathCountdown);
+        EventManager.StartListening(EventManager.Events.GOAL_REACHED, StopDeathCountdown);
     }
 
     // called in OnDisable()
@@ -114,6 +115,7 @@ public class UIEventHandler : MonoBehaviour {
         EventManager.StopListening(EventManager.Events.DEATH_COUNTDOWN, DeathCountdown);
         EventManager.StopListening(EventManager.Events.STOP_DEATH_COUNTDOWN, StopDeathCountdown);
         EventManager.StopListening(EventManager.Events.R_KEY, StopDeathCountdown);
+        EventManager.StopListening(EventManager.Events.GOAL_REACHED, StopDeathCountdown);
     }
 
 }

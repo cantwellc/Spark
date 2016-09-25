@@ -35,11 +35,15 @@ public class Health : MonoBehaviour
 	//Reduce the Ammount from health of the gameobject
 	public void TakeDamage(float amount)
 	{
-		
-		rendererOfObject.material.color = Color.red;
+        //Add a sleep to add some satisfaction when hitting
+        System.Threading.Thread.Sleep(20);
+        if(rendererOfObject != null)
+        {
+            rendererOfObject.material.color = Color.red;
+            Invoke("returnToOriginalColor", 0.1f);
+        }
 		GameObject enemyHitEffect = Instantiate (hitParticleEffect, transform.position, transform.rotation) as GameObject;
 		Destroy (enemyHitEffect, destroyHitEffectInSeconds);
-		Invoke ("returnToOriginalColor", 0.1f);
 		_currentHealth -= amount;
 
 		if (_currentHealth <= 0)
