@@ -32,18 +32,22 @@ public class Health : MonoBehaviour
 		_originalColor = rendererOfObject.material.color;
 	}
 
-	//Reduce the Ammount from health of the gameobject
-	public void TakeDamage(float amount)
-	{
+    //Reduce the Ammount from health of the gameobject
+    public void TakeDamage(float amount)
+    {
         //Add a sleep to add some satisfaction when hitting
-        System.Threading.Thread.Sleep(20);
-        if(rendererOfObject != null)
+        System.Threading.Thread.Sleep(10);
+        if (rendererOfObject != null)
         {
             rendererOfObject.material.color = Color.red;
             Invoke("returnToOriginalColor", 0.1f);
         }
-		GameObject enemyHitEffect = Instantiate (hitParticleEffect, transform.position, transform.rotation) as GameObject;
-		Destroy (enemyHitEffect, destroyHitEffectInSeconds);
+        if (hitParticleEffect)
+        {
+            GameObject enemyHitEffect = Instantiate(hitParticleEffect, transform.position, transform.rotation) as GameObject;
+            Destroy(enemyHitEffect, destroyHitEffectInSeconds);
+        }
+    
 		_currentHealth -= amount;
 
 		if (_currentHealth <= 0)
@@ -59,8 +63,11 @@ public class Health : MonoBehaviour
 
 	void Dead()
 	{
-		GameObject deadEffect = Instantiate (enemyDeadEffect, transform.position, transform.rotation) as GameObject;
-		Destroy (deadEffect,destroyDeadEffectInSeconds);
+        if(enemyDeadEffect)
+        {
+            GameObject deadEffect = Instantiate(enemyDeadEffect, transform.position, transform.rotation) as GameObject;
+            Destroy(deadEffect, destroyDeadEffectInSeconds);
+        }
 		if (removeFromSceneWhenDead)
 		{
 			Destroy (gameObject);
