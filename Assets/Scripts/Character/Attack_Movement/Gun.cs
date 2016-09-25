@@ -11,20 +11,28 @@ public class Gun : MonoBehaviour
 	public AudioClip plasmaSfx;
     public float primaryFireDelay;
     public float secondaryFireDelay;
+	public AudioClip chargingSFX;
 	public float damage;
     public float speed;
+
 
     private float _lastPrimaryShotTime;
     private float _lastSecondaryShotTime;
 	private AudioSource _audio;
     private Plane _mouseTargetPlane;
-
+	private Rigidbody _characterRigidBody;
+	private float _chargeScale;
+	private float _maxCharge;
     void Awake()
     {
         _lastPrimaryShotTime = Time.time;
         _lastSecondaryShotTime = Time.time;
 		_audio = GetComponent<AudioSource> ();
         _mouseTargetPlane = new Plane(transform.up, transform.position);
+		_chargeScale = 0.0f;
+		_maxCharge = 150.0f;
+		_characterRigidBody = character.GetComponent<Rigidbody> ();
+
     }
 
     void Update()
@@ -40,6 +48,34 @@ public class Gun : MonoBehaviour
             if ((Time.time - _lastSecondaryShotTime) < secondaryFireDelay) return;
             SecondaryFire();
         }
+
+
+		//middle mouse button is holded
+		if (Input.GetMouseButton (2))
+		{
+
+			if (_chargeScale == 0)
+			{
+				AudioSource.PlayClipAtPoint (chargingSFX, Camera.main.transform.position, 1.0f);
+			}
+
+			if (_chargeScale < _maxCharge)
+			{
+				_chargeScale += Time.deltaTime * 40;
+
+			}
+		} 
+		else
+		{
+			if (_chargeScale > 0)
+			{
+
+				Ramming ();
+
+			}
+			_chargeScale = 0;
+		}
+
     }
 
     public void PrimaryFire()
@@ -105,4 +141,29 @@ public class Gun : MonoBehaviour
 
         return result;
     }
+
+	void Ramming()
+	{
+		character.maxVelocity = 50;
+		character.Velocity *= 2;
+
+		character.ramEffect.Play ();
+		character.Velocity += transform.forward * _chargeScale * -1;
+
+		character.transform.localScale = new Vector3 (0.57f, 0.6f, 0.6f);
+
+		Invoke ("StopRamming", 0.3f);
+		Invoke ("StopParticles", 0.5f);
+	}
+	void StopRamming()
+	{
+		character.maxVelocity = 10;
+		character.transform.localScale = new Vector3 (0.6f, 0.6f, 0.6f);
+
+		character.Velocity = transform.forward * -2;
+	}
+	void StopParticles()
+	{
+		character.ramEffect.Stop ();
+	}
 }
