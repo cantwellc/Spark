@@ -72,6 +72,8 @@ GameObject:
   - 114: {fileID: 114000011829593164}
   - 114: {fileID: 114000011424269912}
   - 54: {fileID: 54000010153234720}
+  - 114: {fileID: 114000010433285540}
+  - 114: {fileID: 114000013522198380}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Enemy
@@ -148,7 +150,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012144600810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 46.727367, y: 0, z: -81.74}
+  m_LocalPosition: {x: 2.7525342, y: 1.24, z: -80.957535}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -329,6 +331,21 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114000010433285540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012144600810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4216e87110f306642be0b5b7a0076548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rendererOfObject: {fileID: 23000011767407196}
+  hitParticleEffect: {fileID: 1000011142874558, guid: 5c29022e23b7d4089a5fe7a2c08149c6,
+    type: 2}
+  destroyHitEffectInSeconds: 3
 --- !u!114 &114000011424269912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,15 +370,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2e50eafb0e94d66b4d10cdfe0b7e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114000010433285540}
+        m_MethodName: TakeDamageEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114000013522198380}
+        m_MethodName: DeadEffects
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   maxHealth: 5
-  removeFromSceneWhenDead: 1
-  hitParticleEffect: {fileID: 1000011142874558, guid: 5c29022e23b7d4089a5fe7a2c08149c6,
-    type: 2}
-  enemyDeadEffect: {fileID: 1000012536839012, guid: 73dddd0b8e7474cb291b586a4e4e09ce,
-    type: 2}
-  destroyHitEffectInSeconds: 5
-  destroyDeadEffectInSeconds: 2
-  rendererOfObject: {fileID: 23000011767407196}
   _currentHealth: 5
 --- !u!114 &114000013098617738
 MonoBehaviour:
@@ -374,6 +415,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338d4b06289d73648b09ee19884b14d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000013522198380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012144600810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 793fee817ec0c44d8867415359bcde0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDeadEffect: {fileID: 1000011033708898, guid: f82d21bbfbeb72c4fbd99f21af5becda,
+    type: 2}
+  destroyDeadEffectInSeconds: 5
 --- !u!114 &114000013714109380
 MonoBehaviour:
   m_ObjectHideFlags: 1

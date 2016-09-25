@@ -4,11 +4,12 @@ using System.Collections;
 
 public class Health : MonoBehaviour 
 {
-    public UnityEvent OnTakeDamage;
+	
+	public UnityEvent OnTakeDamage;
+	public UnityEvent OnDeath;
 
 	public float maxHealth;
-
-    public float HealthPercent
+	public float HealthPercent
     {
         get
         {
@@ -17,17 +18,16 @@ public class Health : MonoBehaviour
     }
 
     [SerializeField]
+
+
+
 	private float _currentHealth;
 
-    void Start()
-    {
-        OnTakeDamage = new UnityEvent();
-    }
+
 
     //Reduce the Ammount from health of the gameobject
     public void TakeDamage(float amount)
     {
-
 		_currentHealth -= amount;
 
         OnTakeDamage.Invoke();
@@ -40,18 +40,9 @@ public class Health : MonoBehaviour
 
 	void Dead()
 	{
-  //      if(enemyDeadEffect)
-  //      {
-  //          GameObject deadEffect = Instantiate(enemyDeadEffect, transform.position, transform.rotation) as GameObject;
-  //          Destroy(deadEffect, destroyDeadEffectInSeconds);
-  //      }
-		//if (removeFromSceneWhenDead)
-		//{
-		//	Destroy (gameObject);
-		//}
+		OnDeath.Invoke ();
+		gameObject.SetActive (false);
+		Destroy (gameObject,2.0f);
 	}
-
-
-
 
 }
