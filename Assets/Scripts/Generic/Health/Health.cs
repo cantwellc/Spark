@@ -1,19 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public class Health : MonoBehaviour 
 {
-
+    public UnityEvent OnTakeDamage;
 
 	public float maxHealth;
-	public bool removeFromSceneWhenDead;
-	public GameObject hitParticleEffect;
-	public GameObject enemyDeadEffect;
-	public float destroyHitEffectInSeconds;
-	public float destroyDeadEffectInSeconds;
-
-	public Renderer rendererOfObject;
-	private Color _originalColor;
 
     public float HealthPercent
     {
@@ -26,52 +19,36 @@ public class Health : MonoBehaviour
     [SerializeField]
 	private float _currentHealth;
 
-	void Start () 
-	{
-		_currentHealth = maxHealth;
-		_originalColor = rendererOfObject.material.color;
-	}
+    void Start()
+    {
+        OnTakeDamage = new UnityEvent();
+    }
 
     //Reduce the Ammount from health of the gameobject
     public void TakeDamage(float amount)
     {
-        //Add a sleep to add some satisfaction when hitting
-        System.Threading.Thread.Sleep(10);
-        if (rendererOfObject != null)
-        {
-            rendererOfObject.material.color = Color.red;
-            Invoke("returnToOriginalColor", 0.1f);
-        }
-        if (hitParticleEffect)
-        {
-            GameObject enemyHitEffect = Instantiate(hitParticleEffect, transform.position, transform.rotation) as GameObject;
-            Destroy(enemyHitEffect, destroyHitEffectInSeconds);
-        }
-    
+
 		_currentHealth -= amount;
 
-		if (_currentHealth <= 0)
-		{
-			Dead ();
-		}
-	}
+        OnTakeDamage.Invoke();
 
-	void returnToOriginalColor()
-	{
-			rendererOfObject.material.color = _originalColor;
+        if (_currentHealth <= 0)
+        {
+            Dead();
+        }
 	}
 
 	void Dead()
 	{
-        if(enemyDeadEffect)
-        {
-            GameObject deadEffect = Instantiate(enemyDeadEffect, transform.position, transform.rotation) as GameObject;
-            Destroy(deadEffect, destroyDeadEffectInSeconds);
-        }
-		if (removeFromSceneWhenDead)
-		{
-			Destroy (gameObject);
-		}
+  //      if(enemyDeadEffect)
+  //      {
+  //          GameObject deadEffect = Instantiate(enemyDeadEffect, transform.position, transform.rotation) as GameObject;
+  //          Destroy(deadEffect, destroyDeadEffectInSeconds);
+  //      }
+		//if (removeFromSceneWhenDead)
+		//{
+		//	Destroy (gameObject);
+		//}
 	}
 
 
