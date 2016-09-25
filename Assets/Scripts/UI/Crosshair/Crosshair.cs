@@ -9,7 +9,7 @@ public class Crosshair : MonoBehaviour {
 	public Texture2D redCrosshairTexture;
 
 	private Rect _crosshairRect;
-	private float _mouseDissapearThreshold = 4.0f;
+	private float _mouseDissapearThreshold = 0.0f;
 	private Plane _mouseTargetPlane;
 	private GameObject _worldPositionGameObject;
 
