@@ -37,7 +37,7 @@ public class ExplodingDrone : MonoBehaviour {
             Rigidbody rb = hit.GetComponent<Rigidbody>();
             if(rb != null)
             {
-                rb.AddExplosionForce(explosionPower, explosionPos, explosionRadius);
+                //rb.AddExplosionForce(explosionPower, explosionPos, explosionRadius, 1f, ForceMode.Impulse);
                 if (hit.GetComponent<Health>())
                 {
                     hit.gameObject.GetComponent<Health>().TakeDamage(explosionDamage);
