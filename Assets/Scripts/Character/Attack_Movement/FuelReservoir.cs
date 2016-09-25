@@ -3,8 +3,8 @@ using System.Collections;
 
 public class FuelReservoir : MonoBehaviour {
 
-    public int maxFuelCount = 5000;
-    public int fuelCount = 5000;
+    public float maxFuelCount = 5000;
+    public float fuelCount = 5000;
     
     public enum FuelUseType
     {
@@ -24,7 +24,7 @@ public class FuelReservoir : MonoBehaviour {
     /// Add fuel by FuelAmount.
     /// </summary>
     /// <param name="fuelAmount"></param>
-	public void AddFuel(int fuelAmount)
+	public void AddFuel(float fuelAmount)
     {
         fuelCount += fuelAmount;
         if (fuelCount > maxFuelCount) fuelCount = maxFuelCount;
@@ -36,7 +36,7 @@ public class FuelReservoir : MonoBehaviour {
     /// </summary>
     /// <param name="fuelAmount"></param>
     /// <returns></returns>
-    public bool UseFuel(int fuelAmount)
+    public bool UseFuel(float fuelAmount)
     {
         if(fuelAmount > 0)
         {
