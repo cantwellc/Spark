@@ -9,6 +9,7 @@ public class ExplodingDrone : MonoBehaviour {
     public float explosionPower;
 
     Rigidbody _rigidBody;
+    bool exploded = false;
 	// Use this for initialization
 	void Start () {
         _rigidBody = GetComponent<Rigidbody>();
@@ -16,6 +17,7 @@ public class ExplodingDrone : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Character.current == null) return;
         Transform targetTransform = Character.current.transform;
 
         Vector3 dir = (targetTransform.position - transform.position).normalized;
@@ -31,13 +33,14 @@ public class ExplodingDrone : MonoBehaviour {
         Collider[] colliders = Physics.OverlapSphere(explosionPos, explosionRadius);
         foreach (Collider hit in colliders)
         {
+            if (hit.gameObject.tag != "Character" && hit.tag != "Enemy") continue;
             Rigidbody rb = hit.GetComponent<Rigidbody>();
             if(rb != null)
             {
-                rb.AddExplosionForce(explosionPower, explosionPos, explosionRadius, 3f);
-                if(hit.GetComponent<Health>())
+                rb.AddExplosionForce(explosionPower, explosionPos, explosionRadius);
+                if (hit.GetComponent<Health>())
                 {
-                    hit.GetComponent<Health>().TakeDamage(explosionDamage);
+                    hit.gameObject.GetComponent<Health>().TakeDamage(explosionDamage);
                 }
             }
         }
@@ -45,6 +48,16 @@ public class ExplodingDrone : MonoBehaviour {
 
     void OnCollisionEnter()
     {
+        if (exploded) return;
+        exploded = true;
+        Explode();
+        GetComponent<Health>().TakeDamage(50f);
+    }
+
+    void OnCollisionStay()
+    {
+        if (exploded) return;
+        exploded = true;
         Explode();
         GetComponent<Health>().TakeDamage(50f);
     }
