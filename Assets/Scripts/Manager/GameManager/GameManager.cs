@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour {
 
     // private
 	private GAME_STATES _game_state;
-
+    private bool _isPaused = false;
 
     void Awake()
     {
@@ -34,35 +34,89 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-		
+        _game_state = GAME_STATES.MAIN_MENU;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            //StartCoroutine(CheatModeMessage(character.ToggleCheatCode()));
-
-            EventManager.TriggerEvent(EventManager.Events.B_KEY);
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            EventManager.TriggerEvent(EventManager.Events.R_KEY);
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            //EnableRestartPopup();
-            
-        }
-		if (Input.GetKeyDown(KeyCode.L))
-		{
-			Cursor.visible = true;
-			SceneManager.LoadScene ("LevelSelectScene");
-
-		}
-
+        EventManager.StartListening(EventManager.Events.MAIN_MENU_START, StartGame);
+        EventManager.StartListening(EventManager.Events.PLAYER_DEAD, PlayerDead);
     }
 
+    void Ondisable()
+    {
+        EventManager.StopListening(EventManager.Events.MAIN_MENU_START, StartGame);
+        EventManager.StopListening(EventManager.Events.PLAYER_DEAD, PlayerDead);
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+        switch (_game_state)
+        {
+
+            case GAME_STATES.PLAYING:
+
+                if (Input.GetKeyDown(KeyCode.B))
+                {
+
+                    EventManager.TriggerEvent(EventManager.Events.B_KEY);
+
+                }
+
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+
+                    EventManager.TriggerEvent(EventManager.Events.R_KEY);
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+                }
+                if (Input.GetKeyDown(KeyCode.L))
+                {
+
+                    Cursor.visible = true;
+                    SceneManager.LoadScene("LevelSelectScene");
+
+                }
+
+                //if (Input.GetKeyDown(KeyCode.Escape))
+                //{
+                //    if (!_isPaused)
+                //    {
+                //        Time.timeScale = 0;
+                //        EventManager.TriggerEvent(EventManager.Events.ESC_KEY);
+                //        EventManager.TriggerEvent(EventManager.Events.PAUSE_GAME);
+                //        _isPaused = !_isPaused;
+                //    }
+                //    else
+                //    {
+                //        Time.timeScale = 1;
+                //        EventManager.TriggerEvent(EventManager.Events.RESUME_GAME);
+                //    }
+                //}
+
+                break;
+
+            case GAME_STATES.PLAYER_DEAD:
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+
+                    EventManager.TriggerEvent(EventManager.Events.R_KEY);
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+                }
+                break;
+        }
+    }
+
+    void StartGame()
+    {
+        _game_state = GAME_STATES.PLAYING;
+    }
+
+    void PlayerDead()
+    {
+        _game_state = GAME_STATES.PLAYER_DEAD;
+    }
 
 }

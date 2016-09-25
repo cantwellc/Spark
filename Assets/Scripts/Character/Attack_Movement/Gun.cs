@@ -23,6 +23,8 @@ public class Gun : MonoBehaviour
 	private Rigidbody _characterRigidBody;
 	private float _chargeScale;
 	private float _maxCharge;
+    private bool _isPause;
+
     void Awake()
     {
         _lastPrimaryShotTime = Time.time;
@@ -35,47 +37,60 @@ public class Gun : MonoBehaviour
 
     }
 
+    void OnEnable()
+    {
+        EventManager.StartListening(EventManager.Events.PAUSE_GAME, OnPause);
+        EventManager.StartListening(EventManager.Events.RESUME_GAME, OnResume);
+    }
+
+    void OnDisable()
+    {
+        EventManager.StopListening(EventManager.Events.PAUSE_GAME, OnPause);
+        EventManager.StopListening(EventManager.Events.RESUME_GAME, OnResume);
+    }
+
     void Update()
     {
-
-        if (Input.GetButton("Fire1"))
+        if (!_isPause)
         {
-            if ((Time.time - _lastPrimaryShotTime) < primaryFireDelay) return;
-            PrimaryFire();
+            if (Input.GetButton("Fire1"))
+            {
+                if ((Time.time - _lastPrimaryShotTime) < primaryFireDelay) return;
+                PrimaryFire();
+            }
+            if (Input.GetButton("Fire2"))
+            {
+                if ((Time.time - _lastSecondaryShotTime) < secondaryFireDelay) return;
+                SecondaryFire();
+            }
+
+
+            //middle mouse button is holded
+            if (Input.GetMouseButton(2))
+            {
+
+                if (_chargeScale == 0)
+                {
+                    AudioSource.PlayClipAtPoint(chargingSFX, Camera.main.transform.position, 1.0f);
+                }
+
+                if (_chargeScale < _maxCharge)
+                {
+                    _chargeScale += Time.deltaTime * 40;
+
+                }
+            }
+            else
+            {
+                if (_chargeScale > 0)
+                {
+
+                    Ramming();
+
+                }
+                _chargeScale = 0;
+            }
         }
-        if (Input.GetButton("Fire2"))
-        {
-            if ((Time.time - _lastSecondaryShotTime) < secondaryFireDelay) return;
-            SecondaryFire();
-        }
-
-
-		//middle mouse button is holded
-		if (Input.GetMouseButton (2))
-		{
-
-			if (_chargeScale == 0)
-			{
-				AudioSource.PlayClipAtPoint (chargingSFX, Camera.main.transform.position, 1.0f);
-			}
-
-			if (_chargeScale < _maxCharge)
-			{
-				_chargeScale += Time.deltaTime * 40;
-
-			}
-		} 
-		else
-		{
-			if (_chargeScale > 0)
-			{
-
-				Ramming ();
-
-			}
-			_chargeScale = 0;
-		}
-
     }
 
     public void PrimaryFire()
@@ -166,4 +181,14 @@ public class Gun : MonoBehaviour
 	{
 		character.ramEffect.Stop ();
 	}
+
+    void OnPause()
+    {
+        _isPause = true;
+    }
+
+    void OnResume()
+    {
+        _isPause = false;
+    }
 }

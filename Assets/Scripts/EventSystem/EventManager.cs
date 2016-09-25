@@ -12,10 +12,16 @@ public class EventManager : MonoBehaviour {
         DEATH_COUNTDOWN,
         STOP_DEATH_COUNTDOWN,
         GOAL_REACHED,
+        PAUSE_GAME,
+        RESUME_GAME,
 
         // keyboard input events
         B_KEY,
-        R_KEY
+        R_KEY,
+        ESC_KEY,
+
+        // UI Button clicks
+        MAIN_MENU_START,
     }
 
     private Dictionary<Events, UnityEvent> _eventDictionary;

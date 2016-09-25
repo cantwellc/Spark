@@ -16,4 +16,9 @@ public class StartButtonScript : MonoBehaviour {
         SceneManager.LoadScene(sceneIndex);
     }
 
+    public void StartPlay()
+    {
+        EventManager.TriggerEvent(EventManager.Events.MAIN_MENU_START);
+    }
+
 }
