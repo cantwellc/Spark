@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public enum GAME_STATES
 {
     MAIN_MENU,
+    IN_GAME_MENU,
     PLAYING,
     PLAYER_DEAD,
 
@@ -41,12 +42,14 @@ public class GameManager : MonoBehaviour {
     {
         EventManager.StartListening(EventManager.Events.MAIN_MENU_START, StartGame);
         EventManager.StartListening(EventManager.Events.PLAYER_DEAD, PlayerDead);
+        EventManager.StartListening(EventManager.Events.RESUME_GAME, OnResume);
     }
 
     void Ondisable()
     {
         EventManager.StopListening(EventManager.Events.MAIN_MENU_START, StartGame);
         EventManager.StopListening(EventManager.Events.PLAYER_DEAD, PlayerDead);
+        EventManager.StopListening(EventManager.Events.RESUME_GAME, OnResume);
     }
 
     // Update is called once per frame
@@ -79,21 +82,17 @@ public class GameManager : MonoBehaviour {
 
                 }
 
-                //if (Input.GetKeyDown(KeyCode.Escape))
-                //{
-                //    if (!_isPaused)
-                //    {
-                //        Time.timeScale = 0;
-                //        EventManager.TriggerEvent(EventManager.Events.ESC_KEY);
-                //        EventManager.TriggerEvent(EventManager.Events.PAUSE_GAME);
-                //        _isPaused = !_isPaused;
-                //    }
-                //    else
-                //    {
-                //        Time.timeScale = 1;
-                //        EventManager.TriggerEvent(EventManager.Events.RESUME_GAME);
-                //    }
-                //}
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    if (!_isPaused)
+                    {
+                        Time.timeScale = 0;
+                        _game_state = GAME_STATES.IN_GAME_MENU;
+                        EventManager.TriggerEvent(EventManager.Events.ESC_KEY);
+                        EventManager.TriggerEvent(EventManager.Events.PAUSE_GAME);
+                        _isPaused = !_isPaused;
+                    }
+                }
 
                 break;
 
@@ -106,6 +105,14 @@ public class GameManager : MonoBehaviour {
 
                 }
                 break;
+
+            case GAME_STATES.IN_GAME_MENU:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    EventManager.TriggerEvent(EventManager.Events.ESC_KEY);
+                }
+
+                break;
         }
     }
 
@@ -117,6 +124,13 @@ public class GameManager : MonoBehaviour {
     void PlayerDead()
     {
         _game_state = GAME_STATES.PLAYER_DEAD;
+    }
+
+    void OnResume()
+    {
+        _game_state = GAME_STATES.PLAYING;
+        Time.timeScale = 1;
+        _isPaused = false;
     }
 
 }

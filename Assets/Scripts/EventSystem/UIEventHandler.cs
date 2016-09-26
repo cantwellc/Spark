@@ -98,20 +98,20 @@ public class UIEventHandler : MonoBehaviour {
         notificationText.enabled = false;
     }
 
-    void OnPause()
-    {
-        inGameText.SetActive(false);
-        ESC_Panel.SetActive(true);
-        Cursor.visible = true;
-    }
+    //void OnPause()
+    //{
+    //    inGameText.SetActive(false);
+    //    ESC_Panel.SetActive(true);
+    //    Cursor.visible = true;
+    //}
 
-    void OnResume()
-    {
-        inGameText.SetActive(true);
-        ESC_Panel.SetActive(false);
-        EventManager.TriggerEvent(EventManager.Events.RESUME_GAME);
-        Cursor.visible = false;
-    }
+    //void OnResume()
+    //{
+    //    inGameText.SetActive(true);
+    //    ESC_Panel.SetActive(false);
+    //    EventManager.TriggerEvent(EventManager.Events.RESUME_GAME);
+    //    Cursor.visible = false;
+    //}
 
     // called in OnEnable()
     void StartListeningEvents()
@@ -122,8 +122,8 @@ public class UIEventHandler : MonoBehaviour {
         EventManager.StartListening(EventManager.Events.STOP_DEATH_COUNTDOWN, StopDeathCountdown);
         EventManager.StartListening(EventManager.Events.R_KEY, StopDeathCountdown);
         EventManager.StartListening(EventManager.Events.GOAL_REACHED, StopDeathCountdown);
-        EventManager.StartListening(EventManager.Events.PAUSE_GAME, OnPause);
-        EventManager.StartListening(EventManager.Events.RESUME_GAME, OnResume);
+        //EventManager.StartListening(EventManager.Events.PAUSE_GAME, OnPause);
+        //EventManager.StartListening(EventManager.Events.RESUME_GAME, OnResume);
     }
 
     // called in OnDisable()
@@ -135,8 +135,8 @@ public class UIEventHandler : MonoBehaviour {
         EventManager.StopListening(EventManager.Events.STOP_DEATH_COUNTDOWN, StopDeathCountdown);
         EventManager.StopListening(EventManager.Events.R_KEY, StopDeathCountdown);
         EventManager.StopListening(EventManager.Events.GOAL_REACHED, StopDeathCountdown);
-        EventManager.StopListening(EventManager.Events.PAUSE_GAME, OnPause);
-        EventManager.StopListening(EventManager.Events.RESUME_GAME, OnResume);
+        //EventManager.StopListening(EventManager.Events.PAUSE_GAME, OnPause);
+        //EventManager.StopListening(EventManager.Events.RESUME_GAME, OnResume);
     }
 
 }
