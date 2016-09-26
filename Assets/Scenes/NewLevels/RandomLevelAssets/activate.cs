@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class activateSprite : MonoBehaviour {
+public class activate : MonoBehaviour {
 
-    public GameObject sprite;
+    public GameObject activateThis;
 
 	void OnTriggerEnter(Collider Other)
     {
         if(Other.tag == "Character")
-            sprite.SetActive(true);
+            activateThis.SetActive(true);
     }
 }
