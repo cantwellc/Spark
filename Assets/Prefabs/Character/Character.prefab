@@ -80,6 +80,8 @@ GameObject:
   - 114: {fileID: 114000013323801728}
   - 114: {fileID: 114000012513490380}
   - 114: {fileID: 114000014160846180}
+  - 114: {fileID: 114000010795794792}
+  - 114: {fileID: 114000013074172656}
   m_Layer: 8
   m_Name: Character
   m_TagString: Character
@@ -353,7 +355,7 @@ Transform:
   m_GameObject: {fileID: 1000012507293520}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.73695743, y: 0.73695743, z: 0.73695743}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 4000013480861054}
@@ -485,7 +487,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010904683788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2331114, y: 1, z: -81.15}
+  m_LocalPosition: {x: -4.2331114, y: 1, z: -39.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -854,7 +856,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 36
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!82 &82000012362325060
 AudioSource:
   m_ObjectHideFlags: 1
@@ -982,6 +984,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 82000012362325060}
   plasmaSfx: {fileID: 8300000, guid: 71387cbeffdbf4d06b4d1c08c86dbe1c, type: 3}
+--- !u!114 &114000010795794792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010904683788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56399a4c89fbfa7498c42d1a94302713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  maxHealth: 0
+  _currentHealth: 0
 --- !u!114 &114000011023470054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1019,7 +1044,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b7e3218707bbc944ba016a4b95b07645, type: 3}
   fuelDepletedText: {fileID: 0}
   fuelCountText: {fileID: 0}
-  maxVelocity: 0
+  maxVelocity: 10
 --- !u!114 &114000011151678032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1075,7 +1100,7 @@ MonoBehaviour:
       PublicKeyToken=null
   projectilePrefab: {fileID: 1000011053225982, guid: 546ae90c487a3f94a8682690d9f3822f,
     type: 2}
-  damage: 0
+  damage: 10
   speed: 10
   canCharge: 0
   maxChargeTime: 0
@@ -1184,7 +1209,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!114 &114000012512349424
@@ -1346,6 +1371,29 @@ MonoBehaviour:
   minChargeFuelCost: 5
   maxChargeFuelCost: 10
   character: {fileID: 114000011135439484}
+--- !u!114 &114000013074172656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010904683788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56399a4c89fbfa7498c42d1a94302713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  maxHealth: 0
+  _currentHealth: 0
 --- !u!114 &114000013323801728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1357,8 +1405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51ae68027293d314db8f41104a14ef52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxFuelCount: 500
-  fuelCount: 50
+  maxFuelCount: 1000
+  fuelCount: 1000
   fuelUseAmountForType: 010000000a000000
 --- !u!114 &114000013704142550
 MonoBehaviour:
@@ -1491,7 +1539,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: 552800728
+  randomSeed: 1989358302
   InitialModule:
     serializedVersion: 2
     enabled: 1
