@@ -957,7 +957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53137ce506bb8c48a207ff19ca8c005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RamEffect: {fileID: 1000010682456944}
+  RamEffect: {fileID: 198000011062063846}
 --- !u!114 &114000010354999158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1089,6 +1089,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  CantFire:
+    m_PersistentCalls:
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   projectilePrefab: {fileID: 1000011053225982, guid: 546ae90c487a3f94a8682690d9f3822f,
@@ -1245,6 +1250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fillImage: {fileID: 114000012404486948}
   fireBehavior: {fileID: 114000013037804798}
+  _charging: 0
 --- !u!114 &114000012896171882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1328,6 +1334,22 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 114000010051219608}
         m_MethodName: PlayVisualEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  CantFire:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114000012528687746}
+        m_MethodName: ChargeDepleted
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

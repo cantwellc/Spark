@@ -12,7 +12,7 @@ public class DamageTakenEffect : MonoBehaviour
 
 	public void TakeDamageEffect()
     {
-		Debug.Log ("Take damage called");
+		
 		//Add a sleep to add some satisfaction when hitting
 		System.Threading.Thread.Sleep(10);
 		if (rendererOfObject != null)
