@@ -57,7 +57,15 @@ public class CharacterBulletCollision : MonoBehaviour
             GameObject explosion = (GameObject)Instantiate(plasmaExplosionPrefab, transform.position, Quaternion.Euler(-90f, 0, 0));
             Destroy(explosion, 0.5f);
             Destroy(gameObject);
-        } 
+        }
+        else
+        {
+            Health enemyHealth = other.gameObject.GetComponent<Health>();
+            enemyHealth.TakeDamage(_damage);
+            GameObject explosion = (GameObject)Instantiate(plasmaExplosionPrefab, transform.position, Quaternion.Euler(-90f, 0, 0));
+            Destroy(explosion, 0.5f);
+            Destroy(gameObject);
+        }
     }
 
 	public void SetDamage(float amount)

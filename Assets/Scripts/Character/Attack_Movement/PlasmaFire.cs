@@ -4,6 +4,11 @@ using System;
 
 public class PlasmaFire : FireBehavior
 {
+    void Start()
+    {
+        damage = 10f;
+    }
+    
     protected override void ExecuteFire()
     {
         var projectile = Instantiate(projectilePrefab);

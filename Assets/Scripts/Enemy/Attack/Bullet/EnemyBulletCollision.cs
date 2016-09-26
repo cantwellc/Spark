@@ -8,12 +8,13 @@ public class EnemyBulletCollision : MonoBehaviour
 
 	void Awake()
 	{
-		_characterFuelReservoir= GameObject.FindGameObjectWithTag ("Character").GetComponent<FuelReservoir> ();
+        if (Character.current == null) return;
+		_characterFuelReservoir= Character.current.GetComponent<FuelReservoir> ();
 	}
 		
 	void OnTriggerEnter(Collider other)
 	{
-        if (!other) return;
+        if (!other || _characterFuelReservoir == null) return;
 		if (other.gameObject.tag == "Character")
 		{
 			_characterFuelReservoir.UseFuel ((int)_damage);

@@ -26,7 +26,7 @@ public class Health : MonoBehaviour
 
 
     //Reduce the Ammount from health of the gameobject
-    public void TakeDamage(float amount)
+    public virtual void TakeDamage(float amount)
     {
 		_currentHealth -= amount;
 
