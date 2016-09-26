@@ -172,8 +172,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000010945638502}
-  - 114: {fileID: 114000011312535142}
   - 114: {fileID: 114000011397262548}
+  - 114: {fileID: 114000010078866980}
   m_Layer: 0
   m_Name: DroneExplosion
   m_TagString: Untagged
@@ -320,7 +320,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000011876358146}
   m_RootOrder: 0
---- !u!114 &114000011312535142
+--- !u!114 &114000010078866980
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -328,10 +328,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000013825800420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ac1691131a8c844dafe8b6ace6a172a, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ee0db7577e66f04185ff5772aea58e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionForce: 5
+  explosionRadius: 5
+  explosionDamage: 10
+  explosionPower: 30
 --- !u!114 &114000011397262548
 MonoBehaviour:
   m_ObjectHideFlags: 1

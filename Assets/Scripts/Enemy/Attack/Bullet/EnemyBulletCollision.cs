@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyBulletCollision : MonoBehaviour 
 {
-	private float _damage;
+	private float _damage = 10;
 	private FuelReservoir _characterFuelReservoir;
 
 	void Awake()
@@ -17,7 +17,7 @@ public class EnemyBulletCollision : MonoBehaviour
         if (!other || _characterFuelReservoir == null) return;
 		if (other.gameObject.tag == "Character")
 		{
-			_characterFuelReservoir.UseFuel ((int)_damage);
+            other.GetComponent<Health>().TakeDamage(_damage);
 
 
 			Destroy (gameObject);
