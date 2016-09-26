@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class Fuel : MonoBehaviour 
 {
-
 	public int fuelAmmount;
+	public UnityEvent onGatherSfx;
 	private float sizeCoefficient=1.2f;
 	private Character _character;
 
@@ -21,6 +22,8 @@ public class Fuel : MonoBehaviour
 	{
 		if (other.tag == "Character")
 		{
+			
+			onGatherSfx.Invoke ();
 			_character.AddFuel (fuelAmmount);
 			Destroy (gameObject);
 		}

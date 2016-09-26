@@ -487,7 +487,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010904683788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2331114, y: 1, z: -39.98}
+  m_LocalPosition: {x: -4.2331114, y: 1, z: -81.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -983,7 +983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 82000012362325060}
-  plasmaSfx: {fileID: 8300000, guid: 71387cbeffdbf4d06b4d1c08c86dbe1c, type: 3}
+  sfx: {fileID: 8300000, guid: 0a5c088325e71456d91122b533dc4440, type: 3}
 --- !u!114 &114000010795794792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1265,7 +1265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 82000012362325060}
-  plasmaSfx: {fileID: 8300000, guid: 21103c5decea54492b7a6b1f4d74767d, type: 3}
+  sfx: {fileID: 8300000, guid: 21103c5decea54492b7a6b1f4d74767d, type: 3}
 --- !u!114 &114000013037804798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1406,7 +1406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxFuelCount: 1000
-  fuelCount: 1000
+  fuelCount: 200
   fuelUseAmountForType: 010000000a000000
 --- !u!114 &114000013704142550
 MonoBehaviour:
@@ -1539,7 +1539,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: 1989358302
+  randomSeed: 434995225
   InitialModule:
     serializedVersion: 2
     enabled: 1

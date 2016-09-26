@@ -3,10 +3,10 @@ using System.Collections;
 
 public class SFX : MonoBehaviour {
     public AudioSource audioSource;
-    public AudioClip plasmaSfx;
+    public AudioClip sfx;
 
     public void PlaySound()
     {
-        audioSource.PlayOneShot(plasmaSfx);
+		audioSource.PlayOneShot(sfx);
     }
 }
