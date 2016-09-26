@@ -9,4 +9,8 @@ public class SFX : MonoBehaviour {
     {
 		audioSource.PlayOneShot(sfx);
     }
+	public void StopSound()
+	{
+		audioSource.Stop ();
+	}
 }

@@ -21,14 +21,14 @@ public class MovingBoxLv2 : MonoBehaviour {
         tmr += Time.deltaTime;
         if (target == 2)
         {
-            Debug.Log("moving to 2");
+            //Debug.Log("moving to 2");
             if (tmr >= 2.0f)
             { target = 1; tmr = 0.0f;  Debug.Log("now target is 1"); }
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition2, ref velocity, 0.5f);
         }
         else if (target == 1)
         {
-            Debug.Log("moving to 1");
+            //Debug.Log("moving to 1");
             if (tmr >= 2.0f)
             { target = 2; tmr = 0.0f; Debug.Log("now target is 2"); }
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition1, ref velocity, 0.5f);
