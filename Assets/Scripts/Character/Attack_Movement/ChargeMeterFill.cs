@@ -7,7 +7,12 @@ public class ChargeMeterFill : MonoBehaviour {
     public Image fillImage;
     public FireBehavior fireBehavior;
 
-    private bool _charging;
+    public bool _charging;
+
+	void Awake()
+	{
+		fillImage.fillAmount = 0.0f;
+	}
 
     public void Charging()
     {

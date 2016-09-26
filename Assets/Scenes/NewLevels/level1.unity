@@ -3447,6 +3447,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c,
     type: 2}
   m_PrefabInternal: {fileID: 1105241104}
+--- !u!114 &1149863217 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000012528687746, guid: 6a180306481a2754dbaa55769a44d30c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1401872515}
+  m_Script: {fileID: 11500000, guid: 7eb54f388c182b54f80c76a18ca0efef, type: 3}
 --- !u!1001 &1256393192
 Prefab:
   m_ObjectHideFlags: 0
@@ -4122,6 +4128,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000013037804798, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: CantFire.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
       propertyPath: m_LocalPosition.x
       value: -4.2331114
@@ -4153,6 +4164,31 @@ Prefab:
     - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013037804798, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: CantFire.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013037804798, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: CantFire.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013037804798, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: CantFire.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1149863217}
+    - target: {fileID: 114000013037804798, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: CantFire.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChargeDepleted
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013037804798, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: CantFire.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}

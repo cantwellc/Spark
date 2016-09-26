@@ -7,6 +7,7 @@ public abstract class FireBehavior : MonoBehaviour {
     public UnityEvent OnStartCharge;
     public UnityEvent OnFinishCharge;
     public UnityEvent OnFire;
+	public UnityEvent CantFire;
 
     public GameObject projectilePrefab;
     public float damage;
@@ -41,6 +42,11 @@ public abstract class FireBehavior : MonoBehaviour {
     public void StartCharge()
     {
         if (!canCharge) return;
+		if (minChargeFuelCost > _fuelReservoir.fuelCount)
+		{
+			return;
+		}
+
         _startChargeTime = Time.time;
         OnStartCharge.Invoke();
     }
@@ -51,13 +57,23 @@ public abstract class FireBehavior : MonoBehaviour {
         _spawnTransform = spawnTransform;
         _fuelReservoir = fuelReservoir;
     }
+	
+	private float GetFuelCost()
+	{
+		_chargeRatio = CalcChargeRatio();
+		return CalcFuelCost(_chargeRatio);			
+	}
 
     public void Fire()
     {
-        _chargeRatio = CalcChargeRatio();
-        float fuelCost = CalcFuelCost(_chargeRatio);
-        if(_fuelReservoir.fuelCount < fuelCost) return;
-        _fuelReservoir.UseFuel(fuelCost);
+		float fuelCost = GetFuelCost ();
+		_fuelReservoir.UseFuel(fuelCost);
+		if (_fuelReservoir.fuelCount <= minChargeFuelCost)
+		{
+			CantFire.Invoke ();
+			return;
+		}
+
         ExecuteFire();
         OnFire.Invoke();
     }

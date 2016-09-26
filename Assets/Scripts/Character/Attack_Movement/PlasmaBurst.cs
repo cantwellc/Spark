@@ -17,7 +17,8 @@ public class PlasmaBurst : FireBehavior
         character.Velocity *= 2;
 
         character.ramEffect.Play();
-        character.Velocity += transform.forward * ChargeRatio * -1;
+        //Has a high value because we dont want to take currentVelocity Account too much
+		character.Velocity += transform.forward * ChargeRatio * -100;
 
         // Make this a percentage based thing so we aren't stuck with scale=0.6
         // Changing models will need different scales.
