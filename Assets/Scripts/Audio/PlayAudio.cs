@@ -14,6 +14,7 @@ public class PlayAudio : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		music.time =Random.Range (20.0f,65.0f);
 		music.Play ();
 		_randomPlayAfter = Random.Range (playMin, playMax);
 		_currentCounter = 0;

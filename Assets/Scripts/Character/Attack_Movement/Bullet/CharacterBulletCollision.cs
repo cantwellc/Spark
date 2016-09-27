@@ -9,12 +9,14 @@ public class CharacterBulletCollision : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-        if (other == null) return;
+        
+		if (other == null) return;
 		if (other.gameObject.tag == "Enemy")
 		{
+			
             if(other.gameObject.GetComponent<Armor>() == null)
             {
-                if(other.gameObject.GetComponent<Health>() != null)
+				if(other.gameObject.GetComponent<Health>() != null)
                 {
                     Health enemyHealth = other.gameObject.GetComponent<Health>();
                     enemyHealth.TakeDamage(_damage);
@@ -28,7 +30,7 @@ public class CharacterBulletCollision : MonoBehaviour
                 handleWithArmor(other.gameObject);
             }
 		}
-		else if (other.gameObject.tag != "Character" && other.gameObject.tag != "Wall") 
+		else if (other.gameObject.tag != "Character" && other.gameObject.tag != "Wall" && other.gameObject.tag!="ExtraCollider") 
 		{
 
             GameObject explosion = (GameObject)Instantiate(plasmaExplosionPrefab, transform.position, Quaternion.Euler(-90f, 0, 0));

@@ -5,8 +5,9 @@ using System.Collections;
 public class Health : MonoBehaviour 
 {
 	
-	public UnityEvent OnTakeDamage;
 	public UnityEvent OnDeath;
+	public UnityEvent onTakeDamage;
+
 
 	public float maxHealth;
 	public float HealthPercent
@@ -30,7 +31,7 @@ public class Health : MonoBehaviour
     {
 		_currentHealth -= amount;
 
-        OnTakeDamage.Invoke();
+		onTakeDamage.Invoke();
 
         if (_currentHealth <= 0)
         {

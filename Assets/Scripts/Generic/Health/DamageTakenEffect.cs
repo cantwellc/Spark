@@ -10,6 +10,12 @@ public class DamageTakenEffect : MonoBehaviour
 
 	private Color _originalColor;
 
+
+	public void Start()
+	{
+		_originalColor = rendererOfObject.material.color;
+	}
+
 	public void TakeDamageEffect()
     {
 		

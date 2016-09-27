@@ -17,6 +17,7 @@ public class GameWon : MonoBehaviour
 		{
 			_finishCheck = true;
             StartCoroutine(loadNextScene());
+
 		}
 
 	}

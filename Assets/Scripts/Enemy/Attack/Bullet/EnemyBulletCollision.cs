@@ -18,8 +18,6 @@ public class EnemyBulletCollision : MonoBehaviour
 		if (other.gameObject.tag == "Character")
 		{
             other.GetComponent<Health>().TakeDamage(_damage);
-
-
 			Destroy (gameObject);
 		}
 		if (other.gameObject.tag != "Enemy" && other.gameObject.tag!="Plane" &&other.gameObject.tag!="Blackhole" && other.gameObject.tag!="ExtraCollider") 
