@@ -19,6 +19,10 @@ public class QuitOnClick : MonoBehaviour {
 
     IEnumerator EditorQuit()
     {
+        if(Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
         float fadeTime = GameObject.Find("GameManager").GetComponent<SceneFader>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
 		#if UNITY_EDITOR
@@ -28,6 +32,10 @@ public class QuitOnClick : MonoBehaviour {
 
     IEnumerator ApplicationQuit()
     {
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
         float fadeTime = GameObject.Find("GameManager").GetComponent<SceneFader>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
         Application.Quit();
