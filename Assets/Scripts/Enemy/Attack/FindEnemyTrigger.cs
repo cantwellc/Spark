@@ -12,17 +12,20 @@ public class FindEnemyTrigger : MonoBehaviour {
 
 	void OnTriggerEnter(Collider coll)
     {
-		SendMessageUpwards("StartShooting");
+        if(coll.tag == "Character")
+		    SendMessageUpwards("StartShooting");
     }
 
     void OnTriggerStay(Collider coll)
     {
-        SendMessageUpwards("StartShooting");
+        if (coll.tag == "Character")
+            SendMessageUpwards("StartShooting");
     }
 
 
     void OnTriggerExit(Collider coll)
     {
-        SendMessageUpwards("StopShooting");
+        if (coll.tag == "Character")
+            SendMessageUpwards("StopShooting");
     }
 }

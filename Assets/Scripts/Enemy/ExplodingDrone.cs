@@ -55,7 +55,7 @@ public class ExplodingDrone : MonoBehaviour {
     {
         if (exploded) return;
         exploded = true;
-       // Explode();
+       // Explode(); 
         GetComponent<Health>().TakeDamage(50f);
     }
 }

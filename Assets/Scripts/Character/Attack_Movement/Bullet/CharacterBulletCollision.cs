@@ -7,15 +7,18 @@ public class CharacterBulletCollision : MonoBehaviour
 
 	private float _damage;
 
-	void OnCollisionEnter(Collision other)
+	void OnTriggerEnter(Collider other)
 	{
         if (other == null) return;
 		if (other.gameObject.tag == "Enemy")
 		{
             if(other.gameObject.GetComponent<Armor>() == null)
             {
-                Health enemyHealth = other.gameObject.GetComponent<Health>();
-                enemyHealth.TakeDamage(_damage);
+                if(other.gameObject.GetComponent<Health>() != null)
+                {
+                    Health enemyHealth = other.gameObject.GetComponent<Health>();
+                    enemyHealth.TakeDamage(_damage);
+                }
                 GameObject explosion = (GameObject)Instantiate(plasmaExplosionPrefab, transform.position, Quaternion.Euler(-90f, 0, 0));
                 Destroy(explosion, 0.5f);
                 Destroy(gameObject);
