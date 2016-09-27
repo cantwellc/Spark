@@ -645,28 +645,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1286874604}
   m_RootOrder: 6
---- !u!1 &398677543 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000010243679626, guid: 6a180306481a2754dbaa55769a44d30c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1922695326}
---- !u!4 &398677544 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000013245081854, guid: 6a180306481a2754dbaa55769a44d30c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1922695326}
---- !u!114 &398677545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 398677543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f09b86b6b7220e34f9d9f2201bc99383, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fuelReservoir: {fileID: 1018701240}
 --- !u!1 &427671847
 GameObject:
   m_ObjectHideFlags: 0
@@ -1490,12 +1468,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1002994555}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1018701240 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000013323801728, guid: 6a180306481a2754dbaa55769a44d30c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1922695326}
-  m_Script: {fileID: 11500000, guid: 51ae68027293d314db8f41104a14ef52, type: 3}
 --- !u!1 &1064458117
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,7 +1994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finishText: {fileID: 1862851498}
-  nextScene: EasyLevel5
+  nextScene: EasyLevel4
 --- !u!1 &1286874603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2665,7 +2637,7 @@ Prefab:
         type: 2}
       propertyPath: fuelTransform
       value: 
-      objectReference: {fileID: 398677544}
+      objectReference: {fileID: 0}
     - target: {fileID: 114000013323801728, guid: 6a180306481a2754dbaa55769a44d30c,
         type: 2}
       propertyPath: maxFuelCount
