@@ -80,8 +80,6 @@ GameObject:
   - 114: {fileID: 114000013323801728}
   - 114: {fileID: 114000012513490380}
   - 114: {fileID: 114000014160846180}
-  - 114: {fileID: 114000010795794792}
-  - 114: {fileID: 114000013074172656}
   m_Layer: 8
   m_Name: Character
   m_TagString: Character
@@ -1060,29 +1058,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 82000012362325060}
   sfx: {fileID: 8300000, guid: 0a5c088325e71456d91122b533dc4440, type: 3}
---- !u!114 &114000010795794792
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010904683788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56399a4c89fbfa7498c42d1a94302713, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  maxHealth: 0
-  _currentHealth: 0
 --- !u!114 &114000011023470054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1482,29 +1457,6 @@ MonoBehaviour:
   minChargeFuelCost: 5
   maxChargeFuelCost: 10
   character: {fileID: 114000011135439484}
---- !u!114 &114000013074172656
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010904683788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56399a4c89fbfa7498c42d1a94302713, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnTakeDamage:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  maxHealth: 0
-  _currentHealth: 0
 --- !u!114 &114000013323801728
 MonoBehaviour:
   m_ObjectHideFlags: 1
