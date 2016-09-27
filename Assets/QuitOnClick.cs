@@ -1,12 +1,17 @@
-﻿using UnityEngine;
+﻿
 using System.Collections;
-
+using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 public class QuitOnClick : MonoBehaviour {
 
     public void Quit()
     {
 #if UNITY_EDITOR
-        StartCoroutine(EditorQuit());
+
+		StartCoroutine(EditorQuit());
+
 #else
         StartCoroutine(ApplicationQuit());
 #endif
@@ -16,7 +21,9 @@ public class QuitOnClick : MonoBehaviour {
     {
         float fadeTime = GameObject.Find("GameManager").GetComponent<SceneFader>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
-        UnityEditor.EditorApplication.isPlaying = false;
+		#if UNITY_EDITOR
+		UnityEditor.EditorApplication.isPlaying = false;
+		#endif
     }
 
     IEnumerator ApplicationQuit()

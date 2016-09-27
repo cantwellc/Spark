@@ -28,6 +28,7 @@ public class Turret : MonoBehaviour {
     public BulletType bulletType;
     public float bulletDamage;
     public float bulletSpeed;
+	public float bulletScale;
     public float bulletExistTime;
     public float fireIntervalInSeconds;
     public float turnSpeed;
@@ -160,6 +161,7 @@ public class Turret : MonoBehaviour {
         bulletInstance.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
         Rigidbody bulletRb = bulletInstance.GetComponent<Rigidbody>();
         bulletRb.velocity = bulletRb.transform.forward * bulletSpeed;
+		bulletInstance.transform.localScale = new Vector3 (bulletScale, bulletScale,bulletScale);
         Destroy(bulletInstance, bulletExistTime);
         _fireCooldown = fireIntervalInSeconds;
     }
