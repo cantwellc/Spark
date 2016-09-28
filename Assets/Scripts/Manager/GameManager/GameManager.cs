@@ -55,7 +55,8 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        switch (_game_state)
+		
+		switch (_game_state)
         {
 
             case GAME_STATES.PLAYING:
@@ -77,10 +78,9 @@ public class GameManager : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.L))
                 {
 
-                    Cursor.visible = true;
+					Cursor.visible = true;
                     SceneManager.LoadScene("LevelSelectScene");
-
-                }
+				}
 
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {

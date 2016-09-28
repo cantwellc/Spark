@@ -507,23 +507,35 @@ MonoBehaviour:
   levelList:
   - levelText: 1
     unlocked: 1
-    sceneFileName: EasyLevel1
+    sceneFileName: level1
     isInteractable: 1
   - levelText: 2
-    unlocked: 0
-    sceneFileName: EasyLevel2
+    unlocked: 1
+    sceneFileName: level2
     isInteractable: 1
   - levelText: 3
-    unlocked: 0
-    sceneFileName: EasyLevel3
+    unlocked: 1
+    sceneFileName: level3
     isInteractable: 1
   - levelText: 4
-    unlocked: 0
-    sceneFileName: EasyLevel4
+    unlocked: 1
+    sceneFileName: level4
     isInteractable: 1
   - levelText: 5
-    unlocked: 0
-    sceneFileName: EasyLevel5
+    unlocked: 1
+    sceneFileName: level5
+    isInteractable: 1
+  - levelText: 6
+    unlocked: 1
+    sceneFileName: level6
+    isInteractable: 1
+  - levelText: 7
+    unlocked: 1
+    sceneFileName: level7
+    isInteractable: 1
+  - levelText: B
+    unlocked: 1
+    sceneFileName: bossLevel
     isInteractable: 1
   spacer: {fileID: 78114748}
   buttonGUI: {fileID: 1000012325618226, guid: 7b373faad50c5459b8b26ade10c5e3b0, type: 2}
@@ -828,3 +840,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9af5062522b64582ac406b04d9ea9c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &2009788144
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000011972788422, guid: 54bc9327163414576930b41c64371622, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.2769985
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011972788422, guid: 54bc9327163414576930b41c64371622, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.2764554
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011972788422, guid: 54bc9327163414576930b41c64371622, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.58146095
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011972788422, guid: 54bc9327163414576930b41c64371622, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011972788422, guid: 54bc9327163414576930b41c64371622, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011972788422, guid: 54bc9327163414576930b41c64371622, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011972788422, guid: 54bc9327163414576930b41c64371622, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011972788422, guid: 54bc9327163414576930b41c64371622, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 82000012700604890, guid: 54bc9327163414576930b41c64371622,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e71cd12bd41e741428d053bcf5e72113, type: 3}
+    - target: {fileID: 82000012700604890, guid: 54bc9327163414576930b41c64371622,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 54bc9327163414576930b41c64371622, type: 2}
+  m_IsPrefabParent: 0
