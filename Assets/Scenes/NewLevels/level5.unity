@@ -926,7 +926,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000013076143304, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 50
+      value: 18.5
       objectReference: {fileID: 0}
     - target: {fileID: 4000013076143304, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -934,7 +934,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013076143304, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -69
+      value: -102.9
       objectReference: {fileID: 0}
     - target: {fileID: 4000013076143304, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3239,6 +3239,7 @@ Transform:
   m_Children:
   - {fileID: 1848794495}
   - {fileID: 1372994690}
+  - {fileID: 1874912843}
   m_Father: {fileID: 0}
   m_RootOrder: 21
 --- !u!1001 &794910037
@@ -3651,6 +3652,52 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 961943089}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &962600506
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 771455505}
+    m_Modifications:
+    - target: {fileID: 4000013076143304, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 53.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013076143304, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 12.475897
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013076143304, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -71
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013076143304, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013076143304, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013076143304, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013076143304, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013076143304, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010860689028, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
+      propertyPath: m_Name
+      value: Fuel (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &982938705
 Prefab:
   m_ObjectHideFlags: 0
@@ -4497,6 +4544,11 @@ Prefab:
     - target: {fileID: 1000010860689028, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
       propertyPath: m_Name
       value: Fuel (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011788407566, guid: d6a86e2bbc40645d987a9905b9d6d80a,
+        type: 2}
+      propertyPath: fuelAmmount
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
@@ -6916,6 +6968,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1871058357}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1874912843 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4000013076143304, guid: d6a86e2bbc40645d987a9905b9d6d80a,
+    type: 2}
+  m_PrefabInternal: {fileID: 962600506}
 --- !u!1 &1896209586
 GameObject:
   m_ObjectHideFlags: 0
