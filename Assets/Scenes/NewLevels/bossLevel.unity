@@ -2523,6 +2523,11 @@ Prefab:
       propertyPath: bulletDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114000012331529484, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: timeBetweenActions
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4024b9be55dd57144aead35f61af7b09, type: 2}
   m_IsPrefabParent: 0
@@ -4579,7 +4584,7 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 1
   m_Limits:
-    min: -45
+    min: -75
     max: 0
     bounciness: 0
     bounceMinVelocity: 0.2
@@ -5686,7 +5691,7 @@ Prefab:
     - target: {fileID: 114000011151678032, guid: 6a180306481a2754dbaa55769a44d30c,
         type: 2}
       propertyPath: damage
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000014160846180, guid: 6a180306481a2754dbaa55769a44d30c,
         type: 2}
