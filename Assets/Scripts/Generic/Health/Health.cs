@@ -1,38 +1,49 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public class Health : MonoBehaviour 
 {
+	
+	public UnityEvent OnDeath;
+	public UnityEvent onTakeDamage;
 
 
 	public float maxHealth;
-	public bool removeFromSceneWhenDead;
+	public float HealthPercent
+    {
+        get
+        {
+            return _currentHealth / maxHealth;
+        }
+    }
+
+    [SerializeField]
+
+
 
 	private float _currentHealth;
 
-	void Start () 
-	{
-		_currentHealth = maxHealth;
-	}
 
-	//Reduce the Ammount from health of the gameobject
-	public void TakeDamage(float amount)
-	{
+
+    //Reduce the Ammount from health of the gameobject
+    public virtual void TakeDamage(float amount)
+    {
 		_currentHealth -= amount;
-		if (_currentHealth <= 0)
-		{
-			Dead ();
-		}
+
+		onTakeDamage.Invoke();
+
+        if (_currentHealth <= 0)
+        {
+            Dead();
+        }
 	}
 
 	void Dead()
 	{
-		if (removeFromSceneWhenDead)
-		{
-			Destroy (gameObject);
-		}
+		OnDeath.Invoke ();
+		gameObject.SetActive (false);
+		Destroy (gameObject,2.0f);
 	}
-
-
 
 }

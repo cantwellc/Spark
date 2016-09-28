@@ -3,23 +3,24 @@ using System.Collections;
 
 public class EnemyBulletCollision : MonoBehaviour 
 {
-	private float _damage;
-	private Health _characterHealth;
+	private float _damage = 10;
+	private FuelReservoir _characterFuelReservoir;
 
 	void Awake()
 	{
-		_characterHealth= GameObject.FindGameObjectWithTag ("Character").GetComponent<Health> ();
+        if (Character.current == null) return;
+		_characterFuelReservoir= Character.current.GetComponent<FuelReservoir> ();
 	}
 		
-	void OnCollisionEnter(Collision other)
+	void OnTriggerEnter(Collider other)
 	{
+        if (!other || _characterFuelReservoir == null) return;
 		if (other.gameObject.tag == "Character")
 		{
-			_characterHealth.TakeDamage (_damage);
-
+            other.GetComponent<Health>().TakeDamage(_damage);
 			Destroy (gameObject);
 		}
-		if (other.gameObject.tag != "Enemy") 
+		if (other.gameObject.tag != "Enemy" && other.gameObject.tag!="Plane" &&other.gameObject.tag!="Blackhole" && other.gameObject.tag!="ExtraCollider") 
 		{
 			
 			Destroy (gameObject);

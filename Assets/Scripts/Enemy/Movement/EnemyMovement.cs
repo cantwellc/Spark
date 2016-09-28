@@ -8,7 +8,8 @@ public class EnemyMovement : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		lookAtTarget ();
+        if(target)
+		    lookAtTarget ();
 	}
 	//This makes the Enemy to turn to target(in our case player),slerp makes it so that the rotation is smooth
 	void lookAtTarget()

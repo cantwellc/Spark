@@ -1,61 +1,129 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
 
 public class Gun : MonoBehaviour 
 {
+    public FireBehavior primaryFireBehavior;
+    public FireBehavior secondaryFireBehavior;
+    public FuelReservoir fuelReservoir;
 
+    public float primaryFireDelay;
+    public float secondaryFireDelay;
+
+    private float _lastPrimaryShotTime;
+    private float _lastSecondaryShotTime;
+
+//    public Transform targetMarker;
     public Transform bulletSpawnTransform;
-	public GameObject plasmaEffect;
-	public Character character;
-	public AudioClip plasmaSfx;
-    public float shotDelay;
-	public float damage;
-    public float speed;
+    public Rigidbody recoilTarget;
+//    public GameObject plasmaEffect;
 
-    private float _lastShotTime;
-	private AudioSource _audio;
+
+
+    //   private Plane _mouseTargetPlane;
+    //private Rigidbody _characterRigidBody;
+    //private float _chargeScale;
+    //private float _maxCharge;
+    private bool _isPause;
 
     void Awake()
     {
-        _lastShotTime = Time.time;
-		_audio = GetComponent<AudioSource> ();
+        _lastPrimaryShotTime = Time.time;
+        _lastSecondaryShotTime = Time.time;
+
+        primaryFireBehavior.InitFireBehavior(recoilTarget, bulletSpawnTransform, fuelReservoir);
+        secondaryFireBehavior.InitFireBehavior(recoilTarget, bulletSpawnTransform, fuelReservoir);
+
+//        _mouseTargetPlane = new Plane(transform.up, transform.position);
+
+    }
+
+    void OnEnable()
+    {
+        EventManager.StartListening(EventManager.Events.PAUSE_GAME, OnPause);
+        EventManager.StartListening(EventManager.Events.RESUME_GAME, OnResume);
+    }
+
+    void OnDisable()
+    {
+        EventManager.StopListening(EventManager.Events.PAUSE_GAME, OnPause);
+        EventManager.StopListening(EventManager.Events.RESUME_GAME, OnResume);
     }
 
     void Update()
     {
-        if (!Input.GetButton("Fire1")) return;
-		if ((Time.time - _lastShotTime) < shotDelay) return;
-        _lastShotTime = Time.time;
-        Shoot();
+        if (_isPause) return;
+        if (Input.GetMouseButton(0))
+        {
+            PrimaryFire();
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            secondaryFireBehavior.StartCharge();
+        }
+        else if (Input.GetMouseButtonUp(1))
+        {
+            SecondaryFire();
+        }
     }
 
-    public void Shoot()
+    public void PrimaryFire()
     {
-		var bullet = character.GetBullet();
-        if (bullet == null) return;
+//        Debug.Log("Primary Fire");
+        if ((Time.time - _lastPrimaryShotTime) < primaryFireDelay) return;
+        primaryFireBehavior.Fire();
 
-		_audio.PlayOneShot (plasmaSfx);
-		GameObject plasmaEffectInstance=Instantiate (plasmaEffect, bulletSpawnTransform.position, bulletSpawnTransform.rotation) as GameObject;
-		Destroy (plasmaEffectInstance, 2.0f);
+//		GameObject plasmaEffectInstance=Instantiate (plasmaEffect, bulletSpawnTransform.position, bulletSpawnTransform.rotation) as GameObject;
+//		Destroy (plasmaEffectInstance, 2.0f);
 
-		bullet.transform.position = bulletSpawnTransform.position;
-		bullet.GetComponent<CharacterBulletCollision> ().SetDamage (damage);
-        // Shoot backwards with completely elastic colision to let unity physics engine handle
-        // conservation of momentum.
-        //bullet.GetComponent<Rigidbody>().velocity = Ship.Velocity + transform.TransformDirection(0.0f, 0.0f, -Speed);
-		var bV = character.Velocity + transform.TransformDirection(0.0f, 0.0f, speed);
-        var sV = CalcShipVelocity(bV, bullet.GetComponent<Rigidbody>().mass);
-		character.Velocity = sV;
-        bV.y = 0;
-        bullet.GetComponent<Rigidbody>().velocity = bV;
+        _lastPrimaryShotTime = Time.time;
     }
 
-    public Vector3 CalcShipVelocity(Vector3 bulletVelocity, float bulletMass)
+    /// <summary>
+    /// Implement Secondary Fire Functionality here
+    /// </summary>
+    private void SecondaryFire()
     {
-		var shipV = character.Velocity;
-        Vector3 result = new Vector3();
-		result.x = (shipV.x - bulletMass * bulletVelocity.x) / character.Mass;
-        result.y = 0;//(shipV.y - bulletMass * bulletVelocity.y) / character.Mass;
-		result.z = (shipV.z - bulletMass * bulletVelocity.z) / character.Mass;
-        return result;
+        //        Debug.Log("Secondary Fire");
+        secondaryFireBehavior.Fire();
+        _lastSecondaryShotTime = Time.time;
+        //if ((Time.time - _lastSecondaryShotTime) < secondaryFireDelay) return;
+        //secondaryFireBehavior.Fire();
+
+        //Vector3 target = GetTarget();
+        //var b = character.GetSecondaryFireProjectile();
+        //b.transform.position = bulletSpawnTransform.position;
+        //var targetVector = target - b.transform.position;
+        //var flightTime = targetVector.magnitude / speed;
+        //var bhb = b.GetComponent<BlackHoleBomb>();
+        //bhb.target = target;
+        //bhb.flightTime = flightTime;
+
+        //b.GetComponent<Rigidbody>().velocity = targetVector.normalized * speed;
+        //_lastSecondaryShotTime = Time.time;
+
+//        b.transform.position = target;
+    }
+
+    //Vector3 GetTarget()
+    //{
+    //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //    float rayDistance;
+    //    if (_mouseTargetPlane.Raycast(ray, out rayDistance))
+    //        targetMarker.position = ray.GetPoint(rayDistance);
+    //    return targetMarker.position;
+    //}
+    
+    
+
+    void OnPause()
+    {
+        _isPause = true;
+    }
+
+    void OnResume()
+    {
+        _isPause = false;
     }
 }

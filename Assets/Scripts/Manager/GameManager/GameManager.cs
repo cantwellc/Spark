@@ -1,49 +1,136 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
+public enum GAME_STATES
+{
+    MAIN_MENU,
+    IN_GAME_MENU,
+    PLAYING,
+    PLAYER_DEAD,
+
+}
 
 public class GameManager : MonoBehaviour {
 
-    public Text notificationText;
-    public Text fuelCountText;
-    public Character ship;
+    // public
 
-    private FuelReservoir _fuelReservoir;
+
+
+    // private
+	private GAME_STATES _game_state;
+    private bool _isPaused = false;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Use this for initialization
     void Start ()
     {
-        notificationText.enabled = false;
-        _fuelReservoir = ship.GetComponent<FuelReservoir>();
+        _game_state = GAME_STATES.MAIN_MENU;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        EventManager.StartListening(EventManager.Events.MAIN_MENU_START, StartGame);
+        EventManager.StartListening(EventManager.Events.PLAYER_DEAD, PlayerDead);
+        EventManager.StartListening(EventManager.Events.RESUME_GAME, OnResume);
+    }
+
+    void Ondisable()
+    {
+        EventManager.StopListening(EventManager.Events.MAIN_MENU_START, StartGame);
+        EventManager.StopListening(EventManager.Events.PLAYER_DEAD, PlayerDead);
+        EventManager.StopListening(EventManager.Events.RESUME_GAME, OnResume);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        switch (_game_state)
         {
-            StartCoroutine(CheatModeMessage(ship.ToggleCheatCode()));
+
+            case GAME_STATES.PLAYING:
+
+                if (Input.GetKeyDown(KeyCode.B))
+                {
+
+                    EventManager.TriggerEvent(EventManager.Events.B_KEY);
+
+                }
+
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+
+                    EventManager.TriggerEvent(EventManager.Events.R_KEY);
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+                }
+                if (Input.GetKeyDown(KeyCode.L))
+                {
+
+                    Cursor.visible = true;
+                    SceneManager.LoadScene("LevelSelectScene");
+
+                }
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    if (!_isPaused)
+                    {
+                        Time.timeScale = 0;
+                        _game_state = GAME_STATES.IN_GAME_MENU;
+                        EventManager.TriggerEvent(EventManager.Events.ESC_KEY);
+                        EventManager.TriggerEvent(EventManager.Events.PAUSE_GAME);
+                        _isPaused = !_isPaused;
+                    }
+                }
+
+                break;
+
+            case GAME_STATES.PLAYER_DEAD:
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+
+                    EventManager.TriggerEvent(EventManager.Events.R_KEY);
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+                }
+                break;
+
+            case GAME_STATES.IN_GAME_MENU:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    EventManager.TriggerEvent(EventManager.Events.ESC_KEY);
+                }
+
+                break;
         }
     }
 
-    void FixedUpdate()
+    void StartGame()
     {
-		fuelCountText.text = "Fuel: " +_fuelReservoir.fuelCount + "/" + _fuelReservoir.maxFuelCount;
+        _game_state = GAME_STATES.PLAYING;
     }
 
-    IEnumerator CheatModeMessage(bool CheatMode)
+    void PlayerDead()
     {
-        if (CheatMode)
-        {
-            notificationText.text = "Cheat Mode Enabled!";
-        }
-        else
-        {
-            notificationText.text = "Cheat Mode Disabled!";
-        }
-        notificationText.enabled = true;
-        notificationText.color = Color.red;
-        yield return new WaitForSeconds(1.2f);
-        notificationText.enabled = false;
+        _game_state = GAME_STATES.PLAYER_DEAD;
     }
+
+    void OnResume()
+    {
+        _game_state = GAME_STATES.PLAYING;
+        Time.timeScale = 1;
+        _isPaused = false;
+    }
+
 }
