@@ -2813,6 +2813,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4000010827514938, guid: 4024b9be55dd57144aead35f61af7b09,
     type: 2}
   m_PrefabInternal: {fileID: 738919122}
+--- !u!114 &778736838 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
+    type: 2}
+  m_PrefabInternal: {fileID: 738919122}
+  m_Script: {fileID: 11500000, guid: 6d2e50eafb0e94d66b4d10cdfe0b7e3f, type: 3}
 --- !u!114 &778736839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2826,6 +2832,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossTransform: {fileID: 778736834}
   fuel: {fileID: 1000010860689028, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
+  bossHealth: {fileID: 778736838}
+  percentageIntervalToDropFuel: 20
 --- !u!1001 &787434764
 Prefab:
   m_ObjectHideFlags: 0
@@ -5696,7 +5704,7 @@ Prefab:
     - target: {fileID: 114000011151678032, guid: 6a180306481a2754dbaa55769a44d30c,
         type: 2}
       propertyPath: damage
-      value: 1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 114000014160846180, guid: 6a180306481a2754dbaa55769a44d30c,
         type: 2}
