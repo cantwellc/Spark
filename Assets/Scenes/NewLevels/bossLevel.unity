@@ -3715,7 +3715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   droneSpawnPoint: {fileID: 1638700234}
   droneSpawnIntervalInSecond: 5
-  droneSpawnCountsPerSpawn: 10
+  droneSpawnCountsPerSpawn: 5
   droneSmallSpawnInterval: 0.5
   pushDroneForce: 20
   dronePrefab: {fileID: 1000012493386868, guid: eb6dae027df6e4096b9e68c174a8beac,
@@ -3784,7 +3784,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1090241373}
   m_LocalRotation: {x: -0, y: 0.9456904, z: -0, w: -0.32506868}
-  m_LocalPosition: {x: 13.13, y: 1, z: -37.99}
+  m_LocalPosition: {x: 12.09, y: 1, z: -38.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 218.207, z: 0}
   m_Children:
@@ -4476,8 +4476,8 @@ GameObject:
   - 59: {fileID: 1413798189}
   - 114: {fileID: 1413798192}
   m_Layer: 0
-  m_Name: Wall (4)
-  m_TagString: Wall
+  m_Name: Door
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5615,6 +5615,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000014160846180, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
       propertyPath: m_LocalPosition.x
       value: -33
@@ -5678,6 +5683,31 @@ Prefab:
       propertyPath: damage
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 114000014160846180, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014160846180, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014160846180, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1841379472}
+    - target: {fileID: 114000014160846180, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlaySoundWithoutSource
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000014160846180, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
   m_IsPrefabParent: 0
@@ -5722,6 +5752,12 @@ Transform:
   - {fileID: 126612412}
   m_Father: {fileID: 0}
   m_RootOrder: 7
+--- !u!114 &1841379472 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000013379384892, guid: 6a180306481a2754dbaa55769a44d30c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1730964895}
+  m_Script: {fileID: 11500000, guid: a0760cc1036514b0ba35be7c546eac6d, type: 3}
 --- !u!1 &1879122892
 GameObject:
   m_ObjectHideFlags: 0
