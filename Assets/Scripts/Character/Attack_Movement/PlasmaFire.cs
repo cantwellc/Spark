@@ -6,7 +6,7 @@ public class PlasmaFire : FireBehavior
 {
     void Start()
     {
-        damage = 10f;
+        //damage = 10f;
     }
     
     protected override void ExecuteFire()

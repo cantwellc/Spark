@@ -12,9 +12,7 @@ public class Fuel : MonoBehaviour
 
 	void Awake()
 	{
-		_character = GameObject.FindGameObjectWithTag ("Character").GetComponent<Character> ();
-		float sizeScale =  sizeCoefficient *(float)fuelAmmount / _character.GetComponent<FuelReservoir> ().maxFuelCount;
-		transform.localScale = new Vector3 (sizeScale, sizeScale, sizeScale);
+		ScaleFuel ();
 
 	}
 		
@@ -27,5 +25,11 @@ public class Fuel : MonoBehaviour
 			_character.AddFuel (fuelAmmount);
 			Destroy (gameObject);
 		}
+	}
+	public void ScaleFuel()
+	{
+		_character = GameObject.FindGameObjectWithTag ("Character").GetComponent<Character> ();
+		float sizeScale =  sizeCoefficient *(float)fuelAmmount / _character.GetComponent<FuelReservoir> ().maxFuelCount;
+		transform.localScale = new Vector3 (sizeScale, sizeScale, sizeScale);
 	}
 }

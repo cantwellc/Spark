@@ -75,6 +75,7 @@ GameObject:
   - 135: {fileID: 135000012341185822}
   - 114: {fileID: 114000010780275700}
   - 114: {fileID: 114000012331529484}
+  - 54: {fileID: 54000013761820048}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -156,7 +157,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013188945574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -5.16}
+  m_LocalPosition: {x: 16.149654, y: 1, z: -64.40186}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -341,6 +342,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000014093612856}
   m_Mesh: {fileID: 4300002, guid: 6338fccb77b4d5f4d814465e22b3840a, type: 3}
+--- !u!54 &54000013761820048
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013188945574}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!95 &95000011519588726
 Animator:
   serializedVersion: 3
@@ -403,7 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4216e87110f306642be0b5b7a0076548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rendererOfObject: {fileID: 23000012705806494}
+  renderersOfObject: []
   hitParticleEffect: {fileID: 0}
   destroyHitEffectInSeconds: 0
 --- !u!114 &114000011946921132
@@ -444,17 +460,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6a16066fd96fb4da0755a57659ed72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenActions: 10
-  bulletFireCoolDown: 0.5
+  timeBetweenActions: 3
+  bulletFireCoolDown: 0.1
   bulletDamage: 10
   bulletSpeed: 10
   bulletExistTime: 3
-  bhbSpeed: 5
+  bhbSpeed: 10
   blackHoleBomePrefab: {fileID: 1000012695088420, guid: 2f13a55a2a77b614db56e4411a1781b1,
     type: 2}
   blackholePos1: {fileID: 0}
   blackholePos2: {fileID: 0}
   bulletSpawnTransform: {fileID: 4000012792278052}
+  droneHatch1: {fileID: 0}
 --- !u!114 &114000012591785962
 MonoBehaviour:
   m_ObjectHideFlags: 1
