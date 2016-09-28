@@ -17,7 +17,7 @@ public class AstronautDying : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		dyingEffect.Play ();
+		dyingEffect.Stop ();
 		audioSource = GetComponent<AudioSource> ();
 		Invoke ("screamSfx", screamSfxStart);
 		Invoke ("explodeSfx", explodeSfxStart);
@@ -31,6 +31,7 @@ public class AstronautDying : MonoBehaviour {
 	}
 	void screamSfx()
 	{
+		dyingEffect.Play ();
 		audioSource.clip = audioClips [0];
 		audioSource.Play ();
 	}
