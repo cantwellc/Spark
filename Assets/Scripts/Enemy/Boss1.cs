@@ -15,6 +15,7 @@ public class Boss1 : MonoBehaviour {
     public Transform blackholePos1;
     public Transform blackholePos2;
     public Transform bulletSpawnTransform;
+    public DroneHatch droneHatch1;
 
     float _timeRemainBetweenActions;
     float _bulletFireCoolDownRemain;
@@ -53,7 +54,7 @@ public class Boss1 : MonoBehaviour {
                     _bulletFireCoolDownRemain = 100f;
                     Vector3 target;
                     float ran = Random.Range(0f, 1f);
-                    if (ran >= 0.5f)
+                    if (ran >= 0.0f)
                         target = blackholePos1.position;
                     else
                         target = blackholePos2.position;
@@ -65,6 +66,8 @@ public class Boss1 : MonoBehaviour {
                     bhb.target = target;
                     bhb.flightTime = flightTime;
                     Destroy(b, timeBetweenActions-1f);
+                    droneHatch1.Invoke("StartShooting", 2f);
+                    droneHatch1.Invoke("StopShooting", 10f);
 
                     b.GetComponent<Rigidbody>().velocity = targetVector.normalized * bhbSpeed;
                 }
@@ -86,7 +89,7 @@ public class Boss1 : MonoBehaviour {
         else
         {
             float ran = Random.Range(0f, 1f);
-            if (ran >= 0.0f)
+            if (ran >= 0.5f)
                 action = Boss1Actions.ShootBlackHole;
             else
                 action = Boss1Actions.ShootTrackingBullet; 

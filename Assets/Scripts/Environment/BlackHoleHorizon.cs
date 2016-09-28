@@ -17,7 +17,7 @@ public class BlackHoleHorizon : MonoBehaviour {
             if (other.gameObject.tag == "Character") {
                 other.gameObject.SendMessage("DestroyedByBlackHole");
             }
-            else 
+            else if (other.gameObject.tag == "Enemy")
             { //Maybe adding things later
                 other.gameObject.SendMessage("DestroyedByBlackHole");
 
