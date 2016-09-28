@@ -17,7 +17,7 @@ public class AsteroidCollision : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col)
     {
-        Debug.Log("Entering here");
+      
         if (col.gameObject.tag == "Character")
         {
             Rigidbody _rbCharacter = col.gameObject.GetComponent<Rigidbody>();
