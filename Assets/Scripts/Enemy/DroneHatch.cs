@@ -4,7 +4,7 @@ using System.Collections;
 public class DroneHatch : MonoBehaviour {
 
     public Transform droneSpawnPoint;
-    public float droneSpawnDirectionInDegree;
+//    public float droneSpawnDirectionInDegree;
     public float droneSpawnIntervalInSecond;
     public int droneSpawnCountsPerSpawn;
     public float droneSmallSpawnInterval;
@@ -36,7 +36,8 @@ public class DroneHatch : MonoBehaviour {
                 {
                     GameObject drone = (GameObject) Instantiate(dronePrefab);
                     drone.transform.position = transform.position;
-                    Vector3 impulse = new Vector3(pushDroneForce * Mathf.Cos(droneSpawnDirectionInDegree * Mathf.Deg2Rad), 0, pushDroneForce * Mathf.Sin(droneSpawnDirectionInDegree * Mathf.Deg2Rad));
+                    //Vector3 impulse = new Vector3(pushDroneForce * Mathf.Cos(droneSpawnDirectionInDegree * Mathf.Deg2Rad), 0, pushDroneForce * Mathf.Sin(droneSpawnDirectionInDegree * Mathf.Deg2Rad));
+                    Vector3 impulse = transform.forward * pushDroneForce;
                     drone.GetComponent<Rigidbody>().AddForce(impulse, ForceMode.Impulse);
                     _remainingDrones--;
                     _smallSpawnIntervalRemain = droneSmallSpawnInterval;
@@ -51,12 +52,12 @@ public class DroneHatch : MonoBehaviour {
         }
 	}
 
-    void StartShooting()
+    public void StartShooting()
     {
         canSpawn = true;
     }
 
-    void StopShooting()
+    public void StopShooting()
     {
         canSpawn = false;
         _spawnIntervalRemain = 0;

@@ -400,9 +400,10 @@ GameObject:
   - 114: {fileID: 114000011464657116}
   - 114: {fileID: 114000010597258880}
   - 114: {fileID: 114000014167814944}
+  - 114: {fileID: 114000010303096942}
   m_Layer: 0
   m_Name: ExplosiveDrone_1
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2897,13 +2898,25 @@ Rigidbody:
   m_GameObject: {fileID: 1000012493386868}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0.5
+  m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &114000010303096942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012493386868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0d0de6c7a75f3448e14e4b26a8a2f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocity: 12
 --- !u!114 &114000010597258880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2926,7 +2939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ab9fe21dbfb5f44b8d287093ce714b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 15
+  moveForce: 30
 --- !u!114 &114000011464657116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2938,7 +2951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2e50eafb0e94d66b4d10cdfe0b7e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnDeath:
+  OnTakeDamage:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114000014167814944}
@@ -2954,7 +2967,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  onTakeDamage:
+  OnDeath:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
@@ -2986,7 +2999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDeadEffect: {fileID: 1000013825800420, guid: 7ddbecfa95486d14386cbae6a5a00842,
     type: 2}
-  destroyDeadEffectInSeconds: 3
+  destroyDeadEffectInSeconds: 1
 --- !u!135 &135000014221744236
 SphereCollider:
   m_ObjectHideFlags: 1

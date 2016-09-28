@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class FindEnemyTrigger : MonoBehaviour {
-    
-    //Can simply change collider shape without changing script
+
 
 	void Start () {
 	
