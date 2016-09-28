@@ -9,7 +9,7 @@ public class DropFuel : MonoBehaviour {
 	public void DropFuelCircular()
 	{
 		
-		if (Random.Range (0.0f, 50.0f) <= 2.0f)
+		if (Random.Range (0.0f, 50.0f) <= 8.0f)
 		{
 			float r = Random.Range (7f, 10.0f);
 			float cx = bossTransform.transform.position.x;
