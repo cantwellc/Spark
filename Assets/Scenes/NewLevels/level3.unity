@@ -4988,6 +4988,25 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: acbfc6911a358e9428061c2b585d4071, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1374560351 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000014067383326, guid: 7ef9de09b7fe844aab9039036e058282,
+    type: 2}
+  m_PrefabInternal: {fileID: 1659845494}
+--- !u!114 &1374560361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1374560351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 793fee817ec0c44d8867415359bcde0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDeadEffect: {fileID: 1000012536839012, guid: 73dddd0b8e7474cb291b586a4e4e09ce,
+    type: 2}
+  destroyDeadEffectInSeconds: 3
 --- !u!1001 &1391594198
 Prefab:
   m_ObjectHideFlags: 0
@@ -5869,6 +5888,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114000011758757062, guid: 7ef9de09b7fe844aab9039036e058282,
+        type: 2}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010014062872, guid: 7ef9de09b7fe844aab9039036e058282, type: 2}
       propertyPath: m_LocalPosition.x
       value: 30.88
@@ -5908,6 +5932,31 @@ Prefab:
     - target: {fileID: 4000010014062872, guid: 7ef9de09b7fe844aab9039036e058282, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011758757062, guid: 7ef9de09b7fe844aab9039036e058282,
+        type: 2}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011758757062, guid: 7ef9de09b7fe844aab9039036e058282,
+        type: 2}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011758757062, guid: 7ef9de09b7fe844aab9039036e058282,
+        type: 2}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1374560361}
+    - target: {fileID: 114000011758757062, guid: 7ef9de09b7fe844aab9039036e058282,
+        type: 2}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeadEffects
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011758757062, guid: 7ef9de09b7fe844aab9039036e058282,
+        type: 2}
+      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ef9de09b7fe844aab9039036e058282, type: 2}
