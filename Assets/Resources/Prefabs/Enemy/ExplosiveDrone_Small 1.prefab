@@ -396,11 +396,11 @@ GameObject:
   - 114: {fileID: 114000012038434720}
   - 54: {fileID: 54000013374073312}
   - 135: {fileID: 135000014221744236}
-  - 114: {fileID: 114000010674205110}
   - 114: {fileID: 114000011464657116}
   - 114: {fileID: 114000010597258880}
   - 114: {fileID: 114000014167814944}
   - 114: {fileID: 114000010303096942}
+  - 114: {fileID: 114000011617807922}
   m_Layer: 0
   m_Name: ExplosiveDrone_Small 1
   m_TagString: Untagged
@@ -2928,18 +2928,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffaf0829401fe144992d6bc5ea123b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114000010674205110
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012493386868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ab9fe21dbfb5f44b8d287093ce714b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveForce: 30
 --- !u!114 &114000011464657116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2951,29 +2939,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2e50eafb0e94d66b4d10cdfe0b7e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnTakeDamage:
+  onDeath:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114000014167814944}
-        m_MethodName: DeadEffects
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  OnDeath:
+  onTakeDamage:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   maxHealth: 5
   _currentHealth: 5
+--- !u!114 &114000011617807922
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012493386868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5332e18e67927ec459cf19e15a6507ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveForce: 20
 --- !u!114 &114000012038434720
 MonoBehaviour:
   m_ObjectHideFlags: 1

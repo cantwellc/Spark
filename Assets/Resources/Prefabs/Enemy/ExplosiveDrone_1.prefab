@@ -2936,10 +2936,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000012493386868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84ab9fe21dbfb5f44b8d287093ce714b, type: 3}
+  m_Script: {fileID: 11500000, guid: 5332e18e67927ec459cf19e15a6507ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 30
+  moveForce: 20
 --- !u!114 &114000011464657116
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2951,23 +2951,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2e50eafb0e94d66b4d10cdfe0b7e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnTakeDamage:
+  onDeath:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114000014167814944}
-        m_MethodName: DeadEffects
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  OnDeath:
+  onTakeDamage:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,

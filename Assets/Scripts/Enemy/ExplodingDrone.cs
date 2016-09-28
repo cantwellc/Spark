@@ -45,7 +45,7 @@ public class ExplodingDrone : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy") return;
+//        if (collision.gameObject.tag == "Enemy") return;
         if (_exploded) return;
         _exploded = true;
         //Explode();
@@ -54,7 +54,7 @@ public class ExplodingDrone : MonoBehaviour {
 
     void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy") return;
+//        if (collision.gameObject.tag == "Enemy") return;
         if (_exploded) return;
         _exploded = true;
        // Explode(); 
