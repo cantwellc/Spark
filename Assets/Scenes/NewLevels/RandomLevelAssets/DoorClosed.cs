@@ -15,6 +15,7 @@ public class DoorClosed : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.tag != "Character") return;
         targetPositon = door.transform.position - new Vector3(0.0f, 0.0f, 14.0f);
         gameObject.transform.position += new Vector3(-30.0f,0.0f,0.0f);
         move = true;
