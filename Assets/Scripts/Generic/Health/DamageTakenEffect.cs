@@ -1,19 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class DamageTakenEffect : MonoBehaviour 
 {
 
-	public Renderer rendererOfObject;
+	public List<Renderer> renderersOfObject;
 	public GameObject hitParticleEffect;
 	public float destroyHitEffectInSeconds;
 
-	private Color _originalColor;
+	private List<Color> _originalColors;
 
 
 	public void Start()
 	{
-		_originalColor = rendererOfObject.material.color;
+        _originalColors = new List<Color>();
+        foreach(Renderer renderer in renderersOfObject)
+        {
+            _originalColors.Add(renderer.material.color);
+        }
+		    
 	}
 
 	public void TakeDamageEffect()
@@ -21,9 +27,12 @@ public class DamageTakenEffect : MonoBehaviour
 		
 		//Add a sleep to add some satisfaction when hitting
 		System.Threading.Thread.Sleep(10);
-		if (rendererOfObject != null)
+		if (renderersOfObject != null)
 		{
-			rendererOfObject.material.color = Color.red;
+            foreach(Renderer renderer in renderersOfObject)
+            {
+                renderer.material.color = Color.red;
+            }
 			Invoke("returnToOriginalColor", 0.1f);
 		}
 		if (hitParticleEffect)
@@ -35,6 +44,10 @@ public class DamageTakenEffect : MonoBehaviour
 
 	private void returnToOriginalColor()
 	{
-		rendererOfObject.material.color = _originalColor;
+        for(int i = 0; i < renderersOfObject.Count; i++)
+        {
+            renderersOfObject[i].material.color = _originalColors[i];
+        }
+		
 	}
 }

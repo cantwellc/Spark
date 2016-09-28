@@ -30,7 +30,7 @@ public class Health : MonoBehaviour
     public virtual void TakeDamage(float amount)
     {
 		_currentHealth -= amount;
-
+        Debug.Log(amount);
 		onTakeDamage.Invoke();
 
         if (_currentHealth <= 0)
