@@ -20,6 +20,7 @@ public class Boss1 : MonoBehaviour {
     float _bulletFireCoolDownRemain;
     Boss1Actions action;
     GameObject _bulletPrefab;
+    bool _isActivated;
 
     enum Boss1Actions
     {
@@ -28,12 +29,19 @@ public class Boss1 : MonoBehaviour {
     }
      
 	void Start () {
+        _isActivated = false;
         _timeRemainBetweenActions = 0;
         _bulletFireCoolDownRemain = 0;
         _bulletPrefab = (GameObject)Resources.Load("Prefabs/Enemy/EnemyBullet");
     }
+
+    public void ActivateBoss()
+    {
+        _isActivated = true;
+    }
 	
 	void Update () {
+        if (!_isActivated) return;
         _timeRemainBetweenActions -= Time.deltaTime;
         if (_bulletFireCoolDownRemain >= 0) _bulletFireCoolDownRemain -= Time.deltaTime;
         if (_timeRemainBetweenActions > 0)
@@ -56,6 +64,7 @@ public class Boss1 : MonoBehaviour {
                     var bhb = b.GetComponent<BlackHoleBomb>();
                     bhb.target = target;
                     bhb.flightTime = flightTime;
+                    Destroy(b, timeBetweenActions-1f);
 
                     b.GetComponent<Rigidbody>().velocity = targetVector.normalized * bhbSpeed;
                 }
@@ -77,7 +86,7 @@ public class Boss1 : MonoBehaviour {
         else
         {
             float ran = Random.Range(0f, 1f);
-            if (ran >= 0.5f)
+            if (ran >= 0.0f)
                 action = Boss1Actions.ShootBlackHole;
             else
                 action = Boss1Actions.ShootTrackingBullet; 
