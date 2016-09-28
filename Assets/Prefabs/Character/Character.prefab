@@ -80,6 +80,8 @@ GameObject:
   - 114: {fileID: 114000013323801728}
   - 114: {fileID: 114000012513490380}
   - 114: {fileID: 114000014160846180}
+  - 114: {fileID: 114000010548940028}
+  - 114: {fileID: 114000012962288778}
   m_Layer: 8
   m_Name: Character
   m_TagString: Character
@@ -486,8 +488,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010904683788}
-  m_LocalRotation: {x: -0, y: 0.69766366, z: -0, w: 0.7164254}
-  m_LocalPosition: {x: -45.89982, y: 1, z: -64.95111}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.2331114, y: 1, z: -81.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 88.524, z: 0}
   m_Children:
@@ -1045,6 +1047,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f41b59b52b4dc640afe3976bae0a529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000010548940028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010904683788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4216e87110f306642be0b5b7a0076548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderersOfObject:
+  - {fileID: 23000010923991948}
+  - {fileID: 23000012031445178}
+  hitParticleEffect: {fileID: 0}
+  destroyHitEffectInSeconds: 3
 --- !u!114 &114000010554467652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1330,6 +1348,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 82000013263794704}
   sfx: {fileID: 8300000, guid: abe4ce0e0ea26472e8f51866e6ba4040, type: 3}
+--- !u!114 &114000012962288778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010904683788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0760cc1036514b0ba35be7c546eac6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: a74e1d5cb2ed84a1c90ba3a6bbea54ed, type: 3}
+  volume: 1
 --- !u!114 &114000013037804798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1469,7 +1500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxFuelCount: 1000
-  fuelCount: 400
+  fuelCount: 300
   fuelUseAmountForType: 010000000a000000
 --- !u!114 &114000013704142550
 MonoBehaviour:
@@ -1503,14 +1534,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56399a4c89fbfa7498c42d1a94302713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnTakeDamage:
+  OnDeath:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  OnDeath:
+  onTakeDamage:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114000010548940028}
+        m_MethodName: TakeDamageEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114000012962288778}
+        m_MethodName: PlaySoundWithoutSource
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   maxHealth: 0
