@@ -26,6 +26,7 @@ GameObject:
   - 114: {fileID: 114000012589304132}
   - 114: {fileID: 114000014221066092}
   - 114: {fileID: 114000010339506272}
+  - 114: {fileID: 114000010288411958}
   m_Layer: 0
   m_Name: ExplosiveDrone
   m_TagString: Enemy
@@ -109,6 +110,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114000010288411958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010399376116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0d0de6c7a75f3448e14e4b26a8a2f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocity: 12
 --- !u!114 &114000010339506272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,10 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84ab9fe21dbfb5f44b8d287093ce714b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveForce: 10
-  explosionRadius: 5
-  explosionDamage: 10
-  explosionPower: 30
+  moveForce: 30
 --- !u!114 &114000014221066092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,13 +156,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2e50eafb0e94d66b4d10cdfe0b7e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   maxHealth: 5
-  removeFromSceneWhenDead: 1
-  hitParticleEffect: {fileID: 1000011142874558, guid: 5c29022e23b7d4089a5fe7a2c08149c6,
-    type: 2}
-  enemyDeadEffect: {fileID: 1000013825800420, guid: 7ddbecfa95486d14386cbae6a5a00842,
-    type: 2}
-  destroyHitEffectInSeconds: 5
-  destroyDeadEffectInSeconds: 2
-  rendererOfObject: {fileID: 23000012519707464}
   _currentHealth: 5

@@ -21,7 +21,6 @@ GameObject:
   - 4: {fileID: 4000013318214196}
   - 198: {fileID: 198000010294541308}
   - 199: {fileID: 199000010199657706}
-  - 114: {fileID: 114000012950926096}
   m_Layer: 0
   m_Name: PlasmaEffect
   m_TagString: Untagged
@@ -42,24 +41,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &114000012950926096
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010353859448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8376a773f7255489896da3fcbef8b7da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &198000010294541308
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010353859448}
-  serializedVersion: 2
+  serializedVersion: 4
   lengthInSec: 0.3
   startDelay:
     scalar: 0
@@ -97,12 +85,13 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
-  randomSeed: 0
   looping: 0
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 1
+  autoRandomSeed: 1
   scalingMode: 2
+  randomSeed: 0
   InitialModule:
     serializedVersion: 2
     enabled: 1

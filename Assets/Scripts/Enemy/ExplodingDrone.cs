@@ -5,8 +5,8 @@ public class ExplodingDrone : MonoBehaviour {
 
     public float moveForce;
 
-    Rigidbody _rigidBody;
-    bool exploded = false;
+    private Rigidbody _rigidBody;
+    private bool _exploded = false;
 	// Use this for initialization
 	void Start () {
         _rigidBody = GetComponent<Rigidbody>();
@@ -43,18 +43,20 @@ public class ExplodingDrone : MonoBehaviour {
         }
     }*/
 
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision collision)
     {
-        if (exploded) return;
-        exploded = true;
+        if (collision.gameObject.tag == "Enemy") return;
+        if (_exploded) return;
+        _exploded = true;
         //Explode();
         GetComponent<Health>().TakeDamage(50f);
     }
 
-    void OnCollisionStay()
+    void OnCollisionStay(Collision collision)
     {
-        if (exploded) return;
-        exploded = true;
+        if (collision.gameObject.tag == "Enemy") return;
+        if (_exploded) return;
+        _exploded = true;
        // Explode(); 
         GetComponent<Health>().TakeDamage(50f);
     }
