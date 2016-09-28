@@ -67,7 +67,7 @@ public class Boss1 : MonoBehaviour {
                     bhb.flightTime = flightTime;
                     Destroy(b, timeBetweenActions-1f);
                     droneHatch1.Invoke("StartShooting", 2f);
-                    droneHatch1.Invoke("StopShooting", 10f);
+                    droneHatch1.Invoke("StopShooting", timeBetweenActions);
 
                     b.GetComponent<Rigidbody>().velocity = targetVector.normalized * bhbSpeed;
                 }
