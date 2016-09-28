@@ -74,9 +74,10 @@ GameObject:
   - 114: {fileID: 114000012939367488}
   - 135: {fileID: 135000012341185822}
   - 114: {fileID: 114000010780275700}
+  - 114: {fileID: 114000012331529484}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,6 +95,21 @@ GameObject:
   - 23: {fileID: 23000012785728228}
   m_Layer: 0
   m_Name: Cylinder
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1000013623647274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000012792278052}
+  m_Layer: 0
+  m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,6 +125,7 @@ GameObject:
   - 4: {fileID: 4000013800366748}
   - 33: {fileID: 33000013661176632}
   - 23: {fileID: 23000012705806494}
+  - 114: {fileID: 114000011635850264}
   m_Layer: 0
   m_Name: TurretBody
   m_TagString: Untagged
@@ -140,12 +157,13 @@ Transform:
   m_GameObject: {fileID: 1000013188945574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -5.16}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000011636642838}
   - {fileID: 224000010204164168}
   - {fileID: 4000012806074044}
+  - {fileID: 4000012792278052}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &4000011636642838
@@ -163,6 +181,19 @@ Transform:
   - {fileID: 4000013097371174}
   m_Father: {fileID: 4000010827514938}
   m_RootOrder: 0
+--- !u!4 &4000012792278052
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013623647274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000010827514938}
+  m_RootOrder: 3
 --- !u!4 &4000012806074044
 Transform:
   m_ObjectHideFlags: 1
@@ -361,6 +392,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 114000012939367488}
   healthImage: {fileID: 114000011946921132}
+--- !u!114 &114000011635850264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014093612856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4216e87110f306642be0b5b7a0076548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rendererOfObject: {fileID: 23000012705806494}
+  hitParticleEffect: {fileID: 0}
+  destroyHitEffectInSeconds: 0
 --- !u!114 &114000011946921132
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -388,6 +433,28 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114000012331529484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013188945574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac6a16066fd96fb4da0755a57659ed72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenActions: 10
+  bulletFireCoolDown: 0.5
+  bulletDamage: 10
+  bulletSpeed: 10
+  bulletExistTime: 3
+  bhbSpeed: 5
+  blackHoleBomePrefab: {fileID: 1000012695088420, guid: 2f13a55a2a77b614db56e4411a1781b1,
+    type: 2}
+  blackholePos1: {fileID: 0}
+  blackholePos2: {fileID: 0}
+  bulletSpawnTransform: {fileID: 4000012792278052}
 --- !u!114 &114000012591785962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -415,14 +482,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2e50eafb0e94d66b4d10cdfe0b7e3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  removeFromSceneWhenDead: 0
-  hitParticleEffect: {fileID: 0}
-  enemyDeadEffect: {fileID: 0}
-  destroyHitEffectInSeconds: 0
-  destroyDeadEffectInSeconds: 0
-  rendererOfObject: {fileID: 23000012705806494}
-  _currentHealth: 0
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  maxHealth: 1000
+  _currentHealth: 1000
 --- !u!135 &135000012341185822
 SphereCollider:
   m_ObjectHideFlags: 1
