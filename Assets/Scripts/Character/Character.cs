@@ -7,12 +7,11 @@ using System.Collections;
 
 public class Character : MonoBehaviour 
 {
-
-    public GameObject primaryFireProjectilePrefab;
-    public GameObject secondaryFireProjectilePrefab;
+//    public GameObject primaryFireProjectilePrefab;
+//    public GameObject secondaryFireProjectilePrefab;
 	public GameObject blackHoleExplosionPrefab;
     public GameObject outOfFuelPrefab;
-	public ParticleSystem ramEffect;
+//	public ParticleSystem ramEffect;
 	public AudioClip [] soundEffects;
 	public Text fuelDepletedText;
 	public Text fuelCountText;
@@ -55,7 +54,7 @@ public class Character : MonoBehaviour
         current = this;
         _charDeathDelay = 5;
         _fuelChange = 0;
-		ramEffect.Stop ();
+//		ramEffect.Stop ();
 		maxVelocity = 10;
         _rigidBody = GetComponent<Rigidbody>();
         _fuelReservoir = GetComponent<FuelReservoir>();
@@ -96,10 +95,10 @@ public class Character : MonoBehaviour
             _fuelChange = 0;
         }
         // Constant value is our max velocity magnitude it can be changed from here 
-        if (_rigidBody.velocity.magnitude > maxVelocity)
-        {
-            _rigidBody.velocity = _rigidBody.velocity.normalized * maxVelocity;
-        }
+        //if (_rigidBody.velocity.magnitude > maxVelocity)
+        //{
+        //    _rigidBody.velocity = _rigidBody.velocity.normalized * maxVelocity;
+        //}
         if (_fuelReservoir.fuelCount <= 100)
         {
             if (_alertSound)
@@ -141,37 +140,37 @@ public class Character : MonoBehaviour
 	}
 
 
-    public GameObject GetPrimaryFireProjectile()
-    {
-        if (!_cheatMode)
-        {
-            if (!_fuelReservoir.UseFuel(FuelReservoir.FuelUseType.PlasmaBullet))
-            {
-                return null;
-            }
-        }
+    //public GameObject GetPrimaryFireProjectile()
+    //{
+    //    if (!_cheatMode)
+    //    {
+    //        if (!_fuelReservoir.UseFuel(FuelReservoir.FuelUseType.PlasmaBullet))
+    //        {
+    //            return null;
+    //        }
+    //    }
         
-        var bullet = Instantiate(primaryFireProjectilePrefab);
-        Destroy(bullet, 5.0f);
-        // Since fuel is used
-        _fuelChange += 1;
-        return bullet;
-    }
+    //    var bullet = Instantiate(primaryFireProjectilePrefab);
+    //    Destroy(bullet, 5.0f);
+    //    // Since fuel is used
+    //    _fuelChange += 1;
+    //    return bullet;
+    //}
 
-    public GameObject GetSecondaryFireProjectile()
-    {
-        if (!_cheatMode)
-        {
-            if (!_fuelReservoir.UseFuel(FuelReservoir.FuelUseType.BlackHole))
-            {
-                return null;
-            }
-        }
-        var bullet = Instantiate(secondaryFireProjectilePrefab);
-        Destroy(bullet, 30.0f);
+    //public GameObject GetSecondaryFireProjectile()
+    //{
+    //    if (!_cheatMode)
+    //    {
+    //        if (!_fuelReservoir.UseFuel(FuelReservoir.FuelUseType.BlackHole))
+    //        {
+    //            return null;
+    //        }
+    //    }
+    //    var bullet = Instantiate(secondaryFireProjectilePrefab);
+    //    Destroy(bullet, 30.0f);
 
-        return bullet;
-    }
+    //    return bullet;
+    //}
 
     public void AddFuel(int amount)
 	{

@@ -8,5 +8,6 @@ public class PlasmaBurstVisualEffect : MonoBehaviour {
     public void PlayVisualEffect()
     {
         RamEffect.Play();
+
     }
 }

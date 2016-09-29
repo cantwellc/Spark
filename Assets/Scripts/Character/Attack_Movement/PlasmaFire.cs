@@ -3,18 +3,13 @@ using System.Collections;
 using System;
 
 public class PlasmaFire : FireBehavior
-{
-    void Start()
-    {
-        //damage = 10f;
-    }
-    
+{    
     protected override void ExecuteFire()
     {
         var projectile = Instantiate(projectilePrefab);
         projectile.transform.position = _spawnTransform.position;
         projectile.GetComponent<CharacterBulletCollision>().SetDamage(damage);
-        var bV = transform.TransformDirection(0.0f, 0.0f, speed);
+        var bV = transform.TransformDirection(0.0f, 0.0f, speed) + _recoilTarget.velocity;
         bV.y = 0;
         projectile.GetComponent<Rigidbody>().velocity = bV;
         ApplyRecoilForce(bV, projectile.GetComponent<Rigidbody>().mass);
