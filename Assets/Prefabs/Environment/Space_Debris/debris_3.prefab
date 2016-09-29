@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000012534170340}
   - 54: {fileID: 54000011474851934}
   - 114: {fileID: 114000011384520924}
+  - 135: {fileID: 135000012982577296}
   m_Layer: 0
   m_Name: debris_3
   m_TagString: Untagged
@@ -52,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012218979352}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.985452, y: 0.31645274, z: -33.034233}
+  m_LocalPosition: {x: -8.561926, y: 8.167442, z: -82.5206}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -136,3 +137,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocityX: 0
   velocityZ: 0
+--- !u!135 &135000012982577296
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012218979352}
+  m_Material: {fileID: 13400000, guid: 7c2d620527eb59647bbd3ca993f6149c, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 12
+  m_Center: {x: 0, y: 0, z: 0}
