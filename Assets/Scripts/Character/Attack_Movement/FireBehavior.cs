@@ -67,13 +67,12 @@ public abstract class FireBehavior : MonoBehaviour {
     public void Fire()
     {
 		float fuelCost = GetFuelCost ();
-		_fuelReservoir.UseFuel(fuelCost);
 		if (_fuelReservoir.fuelCount <= minChargeFuelCost)
 		{
 			CantFire.Invoke ();
 			return;
 		}
-
+		_fuelReservoir.UseFuel(fuelCost);
         ExecuteFire();
         OnFire.Invoke();
     }
