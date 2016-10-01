@@ -22,7 +22,14 @@ public class FuelAttack : MonoBehaviour {
 			_lineRenderer.GetComponent<Renderer> ().enabled = true;
 			_lineRenderer.SetPosition (1, Character.current.transform.position);
 		}
-	} 
+	}
+	void OnTriggerExit(Collider other)
+	{
+		if (other.gameObject.tag == "Character")
+		{
+			_lineRenderer.GetComponent<Renderer> ().enabled = false;
+		}
+	}
 
 
 
@@ -36,10 +43,6 @@ public class FuelAttack : MonoBehaviour {
 		_lineRenderer = GetComponent<LineRenderer> ();
 		//
 		_lineRenderer.SetWidth(0.45f, 0.45f);
-		_lineRenderer.SetColors(Color.white,Color.white);
-		Material whiteDiffuseMat = new Material(Shader.Find("Particles/Additive"));
-		_lineRenderer.material = whiteDiffuseMat;
-
 
 
 	}
