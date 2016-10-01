@@ -6,6 +6,7 @@ public class PlasmaFire : FireBehavior
 {    
     protected override void ExecuteFire()
     {
+        Character.current.fuelChange += 1;
         var projectile = Instantiate(projectilePrefab);
         projectile.transform.position = _spawnTransform.position;
         projectile.GetComponent<CharacterBulletCollision>().SetDamage(damage);
