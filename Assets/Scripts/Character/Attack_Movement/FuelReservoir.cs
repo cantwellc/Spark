@@ -40,8 +40,10 @@ public class FuelReservoir : MonoBehaviour {
     {
         if(fuelAmount > 0)
         {
-            fuelCount -= fuelAmount;
-            if (fuelCount < 0) fuelCount = 0;
+			
+
+			fuelCount -= fuelAmount;
+            if (fuelCount <1) fuelCount = 0;
             return true;
         }
         else
@@ -63,12 +65,12 @@ public class FuelReservoir : MonoBehaviour {
         {
             case FuelUseType.PlasmaBullet:
                 if (fuelCount <= 0) return false;
-                fuelCount -= fuelUseAmountForType[0];
+				UseFuel(fuelUseAmountForType[0]);
                 if (fuelCount < 0) fuelCount = 0;
                 return true;
             case FuelUseType.BlackHole:
                 if (fuelCount <= 0) return false;
-                fuelCount -= fuelUseAmountForType[1];
+				UseFuel (fuelUseAmountForType[1]);
                 if (fuelCount < 0) fuelCount = 0;
                 return true;
             default:

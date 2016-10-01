@@ -15,11 +15,10 @@ public class Character : MonoBehaviour
 	public AudioClip [] soundEffects;
 	public Text fuelDepletedText;
 	public Text fuelCountText;
-
+    public int fuelChange;
+    public int maxVelocity;
 
     private int _charDeathDelay;
-    private int _fuelChange;
-	public int maxVelocity;
     private Rigidbody _rigidBody;
 	private FuelReservoir _fuelReservoir;
     private bool _cheatMode;
@@ -53,7 +52,7 @@ public class Character : MonoBehaviour
     {
         current = this;
         _charDeathDelay = 5;
-        _fuelChange = 0;
+        fuelChange = 0;
 //		ramEffect.Stop ();
 		maxVelocity = 10;
         _rigidBody = GetComponent<Rigidbody>();
@@ -89,10 +88,11 @@ public class Character : MonoBehaviour
         //	ToggleCheatCode ();
         //}
         //Is used to alert player with everyone 10 fuel usage after the fuel count drops under 100
-        if(_fuelChange == 10)
+        if(fuelChange >= 10)
         {
+            Debug.Log("Alert Time");
             _alertSound = true;
-            _fuelChange = 0;
+            fuelChange = 0;
         }
         // Constant value is our max velocity magnitude it can be changed from here 
         //if (_rigidBody.velocity.magnitude > maxVelocity)
@@ -103,6 +103,7 @@ public class Character : MonoBehaviour
         {
             if (_alertSound)
             {
+                Debug.Log("Alert Maybe");
                 AudioSource.PlayClipAtPoint(soundEffects[1], Camera.main.transform.position, 0.4f);
                 _alertSound = false;
             }
