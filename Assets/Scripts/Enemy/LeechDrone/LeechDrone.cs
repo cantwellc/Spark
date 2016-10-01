@@ -69,11 +69,13 @@ public class LeechDrone : MonoBehaviour {
 				{
 					_leeched = true;
 
+					//It attacks you when it is close
 					if (distance <= getDamageWhenCloserThan)
 					{
 						Attack ();
 
-					} 
+					}
+					//Reverts to the original speed
 					else
 					{
 						_characterRigidbody.drag = _originalDrag;
@@ -88,7 +90,7 @@ public class LeechDrone : MonoBehaviour {
 
 	void Attack()
 	{
-		_characterRigidbody.drag = _characterRigidbody.drag + 2.0f * Time.deltaTime;
+		_characterRigidbody.drag = _characterRigidbody.drag + 2f * Time.deltaTime;
 		//Debug.Log ("Attacking");
 	}
 
