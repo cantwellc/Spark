@@ -14,7 +14,7 @@ public class Boss1 : MonoBehaviour {
     public GameObject blackHoleBomePrefab;
     public Transform blackholePos1;
     public Transform blackholePos2;
-    public Transform bulletSpawnTransform, bulletSpawnTransform1, bulletSpawnTransform2, bulletSpawnTransform3;
+    public Transform bulletSpawnTransform, bulletSpawnTransform1, bulletSpawnTransform2, bulletSpawnTransform3;/////////
     public DroneHatch droneHatch1;
 
     float _timeRemainBetweenActions;
@@ -83,6 +83,7 @@ public class Boss1 : MonoBehaviour {
                     Destroy(bulletInstance, bulletExistTime);
                     _bulletFireCoolDownRemain = bulletFireCoolDown;
 
+                    /******************************************************************************************************************************/
                     GameObject bulletInstance1 = Instantiate(_bulletPrefab, bulletSpawnTransform2.position, transform.rotation) as GameObject;
                     bulletInstance1.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
                     Rigidbody bulletRb1 = bulletInstance1.GetComponent<Rigidbody>();
@@ -100,7 +101,7 @@ public class Boss1 : MonoBehaviour {
                     Rigidbody bulletRb3 = bulletInstance3.GetComponent<Rigidbody>();
                     bulletRb3.velocity = (Character.current.transform.position - bulletSpawnTransform3.position).normalized * bulletSpeed;
                     Destroy(bulletInstance3, bulletExistTime);
-
+                    /**********************************************************************************************************************************/
                 }
 
             }
