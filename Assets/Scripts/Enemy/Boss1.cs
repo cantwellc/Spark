@@ -14,7 +14,7 @@ public class Boss1 : MonoBehaviour {
     public GameObject blackHoleBomePrefab;
     public Transform blackholePos1;
     public Transform blackholePos2;
-    public Transform bulletSpawnTransform;
+    public Transform bulletSpawnTransform, bulletSpawnTransform1, bulletSpawnTransform2, bulletSpawnTransform3;
     public DroneHatch droneHatch1;
 
     float _timeRemainBetweenActions;
@@ -82,8 +82,27 @@ public class Boss1 : MonoBehaviour {
                     bulletRb.velocity = (Character.current.transform.position-bulletSpawnTransform.position).normalized * bulletSpeed;
                     Destroy(bulletInstance, bulletExistTime);
                     _bulletFireCoolDownRemain = bulletFireCoolDown;
+
+                    GameObject bulletInstance1 = Instantiate(_bulletPrefab, bulletSpawnTransform2.position, transform.rotation) as GameObject;
+                    bulletInstance1.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+                    Rigidbody bulletRb1 = bulletInstance1.GetComponent<Rigidbody>();
+                    bulletRb1.velocity = (Character.current.transform.position - bulletSpawnTransform2.position).normalized * bulletSpeed;
+                    Destroy(bulletInstance1, bulletExistTime);
+
+                    GameObject bulletInstance2 = Instantiate(_bulletPrefab, bulletSpawnTransform1.position, transform.rotation) as GameObject;
+                    bulletInstance2.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+                    Rigidbody bulletRb2 = bulletInstance2.GetComponent<Rigidbody>();
+                    bulletRb1.velocity = (Character.current.transform.position - bulletSpawnTransform1.position).normalized * bulletSpeed;
+                    Destroy(bulletInstance2, bulletExistTime);
+
+                    GameObject bulletInstance3 = Instantiate(_bulletPrefab, bulletSpawnTransform3.position, transform.rotation) as GameObject;
+                    bulletInstance3.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+                    Rigidbody bulletRb3 = bulletInstance3.GetComponent<Rigidbody>();
+                    bulletRb3.velocity = (Character.current.transform.position - bulletSpawnTransform3.position).normalized * bulletSpeed;
+                    Destroy(bulletInstance3, bulletExistTime);
+
                 }
-                    
+
             }
         }
         else
