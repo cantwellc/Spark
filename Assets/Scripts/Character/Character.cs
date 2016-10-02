@@ -104,8 +104,9 @@ public class Character : MonoBehaviour
             if (_alertSound)
             {
                 Debug.Log("Alert Maybe");
-                AudioSource.PlayClipAtPoint(soundEffects[1], Camera.main.transform.position, 0.4f);
-                _alertSound = false;
+                //AudioSource.PlayClipAtPoint(soundEffects[1], Camera.main.transform.position, 0.4f);
+				AudioManager.instance.Play("lowFuel");
+				_alertSound = false;
             }
                 
         }
@@ -116,7 +117,8 @@ public class Character : MonoBehaviour
             {
                 _runningCoroutine = StartCoroutine(charSleep());
                 EventManager.TriggerEvent(EventManager.Events.DEATH_COUNTDOWN);
-                Debug.Log("Death countdown started.");
+				AudioManager.instance.Play ("deathCountdown");
+				Debug.Log("Death countdown started.");
             }
 
 			//fuelDepletedText.text = "You are out of Fuel!";
@@ -185,7 +187,8 @@ public class Character : MonoBehaviour
     {
         Character.current = null;
         EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
-        AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
+        //AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
+		AudioManager.instance.Play("death");
         Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
@@ -194,16 +197,18 @@ public class Character : MonoBehaviour
     {
         Character.current = null;
         EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
-        AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
-        Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
+        //AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
+		AudioManager.instance.Play("death");
+		Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
     }
 
     public void DestroyedByOutOfFuel()
     {
         Character.current = null;
         EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
-        AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
-        Instantiate(outOfFuelPrefab, transform.position, transform.rotation);
+        //AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
+		AudioManager.instance.Play("death");
+		Instantiate(outOfFuelPrefab, transform.position, transform.rotation);
     }
 
     void RemoveFuelText()

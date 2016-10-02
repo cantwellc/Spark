@@ -114,6 +114,7 @@ GameObject:
   - 114: {fileID: 114000013323801728}
   - 114: {fileID: 114000012513490380}
   - 114: {fileID: 114000014160846180}
+  - 81: {fileID: 81000011772468198}
   m_Layer: 8
   m_Name: Character
   m_TagString: Character
@@ -132,7 +133,6 @@ GameObject:
   - 33: {fileID: 33000011779006432}
   - 23: {fileID: 23000010889797616}
   - 114: {fileID: 114000011806592090}
-  - 82: {fileID: 82000012362325060}
   m_Layer: 8
   m_Name: Gun
   m_TagString: Untagged
@@ -215,7 +215,6 @@ GameObject:
   - 4: {fileID: 4000012208897344}
   - 114: {fileID: 114000011151678032}
   - 114: {fileID: 114000010354999158}
-  - 114: {fileID: 114000012896171882}
   m_Layer: 8
   m_Name: PlasmaFire
   m_TagString: Untagged
@@ -273,7 +272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1000012360594558
 GameObject:
   m_ObjectHideFlags: 1
@@ -691,7 +690,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010904683788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2331114, y: 1, z: -81.15}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1125,80 +1124,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!82 &82000012362325060
-AudioSource:
+--- !u!81 &81000011772468198
+AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010916956082}
+  m_GameObject: {fileID: 1000010904683788}
   m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 0.087
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
 --- !u!82 &82000013263794704
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1324,7 +1256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e06136cc896eb045892363ae9d3ea16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 82000012362325060}
+  audioSource: {fileID: 0}
   sfx: {fileID: 8300000, guid: 0a5c088325e71456d91122b533dc4440, type: 3}
 --- !u!114 &114000011023470054
 MonoBehaviour:
@@ -1358,6 +1290,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b7e3218707bbc944ba016a4b95b07645, type: 3}
   fuelDepletedText: {fileID: 0}
   fuelCountText: {fileID: 0}
+  fuelChange: 0
   maxVelocity: 12
 --- !u!114 &114000011151678032
 MonoBehaviour:
@@ -1383,15 +1316,15 @@ MonoBehaviour:
   OnFire:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114000012896171882}
-        m_MethodName: PlaySound
-        m_Mode: 1
+      - m_Target: {fileID: 0}
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: plasmaFire
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 114000010354999158}
@@ -1420,7 +1353,18 @@ MonoBehaviour:
       PublicKeyToken=null
   CantFire:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: cantFire
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   projectilePrefab: {fileID: 1000011053225982, guid: 546ae90c487a3f94a8682690d9f3822f,
@@ -1589,19 +1533,6 @@ MonoBehaviour:
   fillImage: {fileID: 114000012404486948}
   fireBehavior: {fileID: 114000013037804798}
   _charging: 0
---- !u!114 &114000012896171882
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012083859450}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e06136cc896eb045892363ae9d3ea16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 82000012362325060}
-  sfx: {fileID: 8300000, guid: 21103c5decea54492b7a6b1f4d74767d, type: 3}
 --- !u!114 &114000012948408770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1640,15 +1571,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 114000010554467652}
-        m_MethodName: PlaySound
-        m_Mode: 1
+      - m_Target: {fileID: 0}
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: burstCharge
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
@@ -1694,15 +1625,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 114000012948408770}
-        m_MethodName: PlaySound
-        m_Mode: 1
+      - m_Target: {fileID: 0}
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: burstFire
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 114000010554467652}
@@ -1715,7 +1646,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
       - m_Target: {fileID: 114000014194077996}
         m_MethodName: StartAOE
         m_Mode: 4
@@ -1741,6 +1672,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: cantFire
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
@@ -5386,7 +5328,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 1
-  randomSeed: 1853552384
+  randomSeed: 427105638
   InitialModule:
     serializedVersion: 2
     enabled: 1

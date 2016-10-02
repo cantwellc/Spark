@@ -21,6 +21,8 @@ public class AudioManager : MonoBehaviour
 	public List<AudioMixerSnapshot> snapshotList;
 	private Dictionary<string, AudioMixerSnapshot> snapshots;
 
+	public bool canAlarm = true;
+
 	void Awake ()
 	{
 		if (instance == null)
@@ -30,7 +32,6 @@ public class AudioManager : MonoBehaviour
 		DontDestroyOnLoad (gameObject);
 	}
 
-	// Use this for initialization
 	void Start () 
 	{
 		soundObjectPool = new List<GameObject> ();
@@ -54,7 +55,7 @@ public class AudioManager : MonoBehaviour
 			snapshots.Add (snapshot.name, snapshot);
 	}
 
-	void Play(string audioEvent, GameObject go)
+	public void Play(string audioEvent)
 	{
 		GameObject soundObject = null;
 
@@ -83,13 +84,73 @@ public class AudioManager : MonoBehaviour
 		}
 
 		AudioSource source = soundObject.GetComponent<AudioSource> ();
+		if (source.volume != 1.0f)
+			source.volume = 1.0f;
 
-		/*Sample audioEvent:
-		if (audioEvent == "music") 
+		if (audioEvent == "plasmaFire") 
 		{
-			source.clip = clips ["bg_music"];
-			source.outputAudioMixerGroup = mixerGroups ["MX"];
+			source.clip = clips ["laser_raw3"];
+			source.outputAudioMixerGroup = mixerGroups ["PrimaryFire"];
 			soundObject.SetActive (true);
-		}*/
+		}
+
+		if (audioEvent == "burstCharge") 
+		{
+			snapshots ["SFXDefault"].TransitionTo (0.0f);
+			source.clip = clips ["chargeUp_raw4"];
+			source.outputAudioMixerGroup = mixerGroups ["SecondaryCharge"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "burstFire") 
+		{
+			snapshots ["ChargeOff"].TransitionTo (0.5f);
+			source.clip = clips ["plasmaBurst_raw1"];
+			source.outputAudioMixerGroup = mixerGroups ["SecondaryFire"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "cantFire") 
+		{
+			source.clip = clips ["attackFail_raw1"];
+			source.outputAudioMixerGroup = mixerGroups ["PrimaryFire"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "lowFuel") 
+		{
+			if (canAlarm) 
+			{
+				canAlarm = false;
+				source.clip = clips ["lowFuel_raw1"];
+				source.outputAudioMixerGroup = mixerGroups ["Alarm"];
+				soundObject.SetActive (true);
+				StartCoroutine (Wait (audioEvent, source.clip.length));
+			}
+		}
+
+		if (audioEvent == "deathCountdown") 
+		{
+			source.clip = clips ["Alert_Low_On_Fuel"];
+			source.outputAudioMixerGroup = mixerGroups ["Alarm"];
+			source.loop = true;
+			soundObject.GetComponent<DeactivateObject>().canDeactivate = false;
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "death") 
+		{
+			source.clip = clips ["explosion_raw6"];
+			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
+			soundObject.SetActive (true);
+		}
+	}
+
+	IEnumerator Wait (string audioEvent, float time)
+	{
+		yield return new WaitForSeconds (time);
+
+		if (audioEvent == "lowFuel")
+			canAlarm = true;
 	}
 }
