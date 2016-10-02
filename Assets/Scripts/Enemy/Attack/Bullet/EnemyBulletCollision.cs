@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyBulletCollision : MonoBehaviour 
 {
-	private float _damage = 10;
+	protected float _damage = 10;
 	private FuelReservoir _characterFuelReservoir;
 
 	void Awake()
@@ -26,7 +26,7 @@ public class EnemyBulletCollision : MonoBehaviour
 			Destroy (gameObject);
 		}
 	}
-	public void SetDamage(float amount)
+	virtual public void SetDamage(float amount)
 	{
 		_damage=amount;
 	}
