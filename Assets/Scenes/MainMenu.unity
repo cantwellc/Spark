@@ -806,8 +806,8 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 519, y: -320.0833}
-  m_SizeDelta: {x: 338, y: 5.1666665}
+  m_AnchoredPosition: {x: 513, y: -291.33334}
+  m_SizeDelta: {x: 326, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &458298198
 MonoBehaviour:
@@ -848,9 +848,9 @@ MonoBehaviour:
   m_FillRect: {fileID: 699346476}
   m_HandleRect: {fileID: 1047922606}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.01
   m_MaxValue: 100
-  m_WholeNumbers: 1
+  m_WholeNumbers: 0
   m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1648,8 +1648,8 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 519, y: -350.74997}
-  m_SizeDelta: {x: 338, y: 56.166668}
+  m_AnchoredPosition: {x: 513, y: -314.1667}
+  m_SizeDelta: {x: 326, y: 45.666668}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &745668810
 MonoBehaviour:
@@ -1703,6 +1703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundEffectVolumeSlider: {fileID: 1278960787}
   soundEffectVolumeText: {fileID: 745668810}
+  sfxMixer: {fileID: 24100000, guid: 2ecfdebb4b73648388060cdc1961f1af, type: 2}
 --- !u!1 &934394397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,8 +1737,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 519, y: -228.08333}
-  m_SizeDelta: {x: 338, y: 56.166668}
+  m_AnchoredPosition: {x: 513, y: -222.83333}
+  m_SizeDelta: {x: 326, y: 45.666668}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &934394399
 MonoBehaviour:
@@ -1791,6 +1792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterVolumeSlider: {fileID: 2078999501}
   masterVolumeText: {fileID: 934394399}
+  masterMixer: {fileID: 24100000, guid: 1379748e530594bc3b7dc18a4985f491, type: 2}
 --- !u!1001 &1001933240
 Prefab:
   m_ObjectHideFlags: 0
@@ -2122,8 +2124,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 519, y: -289.41666}
-  m_SizeDelta: {x: 338, y: 56.166668}
+  m_AnchoredPosition: {x: 513, y: -268.5}
+  m_SizeDelta: {x: 326, y: 45.666668}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1272948837
 MonoBehaviour:
@@ -2177,6 +2179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicVolumeSlider: {fileID: 458298198}
   musicVolumeText: {fileID: 1272948837}
+  musicMixer: {fileID: 24100000, guid: 8222f3b9606d14eaa9bb689cbb2773b5, type: 2}
 --- !u!1 &1278960785
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,8 +2214,8 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 519, y: -381.41663}
-  m_SizeDelta: {x: 338, y: 5.1666665}
+  m_AnchoredPosition: {x: 513, y: -337}
+  m_SizeDelta: {x: 326, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1278960787
 MonoBehaviour:
@@ -2253,9 +2256,9 @@ MonoBehaviour:
   m_FillRect: {fileID: 671683611}
   m_HandleRect: {fileID: 1146223664}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.01
   m_MaxValue: 100
-  m_WholeNumbers: 1
+  m_WholeNumbers: 0
   m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3209,8 +3212,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 519, y: -258.75}
-  m_SizeDelta: {x: 338, y: 5.1666665}
+  m_AnchoredPosition: {x: 513, y: -245.66667}
+  m_SizeDelta: {x: 326, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2078999501
 MonoBehaviour:
@@ -3251,9 +3254,9 @@ MonoBehaviour:
   m_FillRect: {fileID: 2136369180}
   m_HandleRect: {fileID: 1726547234}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.01
   m_MaxValue: 100
-  m_WholeNumbers: 1
+  m_WholeNumbers: 0
   m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
