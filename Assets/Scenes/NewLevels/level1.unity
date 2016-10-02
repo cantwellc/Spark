@@ -2724,6 +2724,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15
+--- !u!114 &780372208 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000013323801728, guid: 6a180306481a2754dbaa55769a44d30c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1401872515}
+  m_Script: {fileID: 11500000, guid: 51ae68027293d314db8f41104a14ef52, type: 3}
 --- !u!1 &796010869
 GameObject:
   m_ObjectHideFlags: 0
@@ -3919,6 +3925,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1324103509}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1331143617 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000012611445194, guid: 6a180306481a2754dbaa55769a44d30c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1401872515}
+--- !u!114 &1331143618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1331143617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6b16174d491064c8b94d4f2acf3b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelRes: {fileID: 780372208}
 --- !u!1 &1359101137
 GameObject:
   m_ObjectHideFlags: 0
@@ -4187,7 +4210,38 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114000013323801728, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: fuelCount
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011048519352, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: randomSeed
+      value: 959906118
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011048519352, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011048519352, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011048519352, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.17254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 198000011048519352, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114000013792528088, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &1418037197 stripped

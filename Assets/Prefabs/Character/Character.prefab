@@ -71,6 +71,7 @@ GameObject:
   - 4: {fileID: 4000012551969278}
   - 33: {fileID: 33000013335882590}
   - 23: {fileID: 23000011771285632}
+  - 114: {fileID: 114000013792528088}
   m_Layer: 0
   m_Name: FuelModel
   m_TagString: Untagged
@@ -1358,6 +1359,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b7e3218707bbc944ba016a4b95b07645, type: 3}
   fuelDepletedText: {fileID: 0}
   fuelCountText: {fileID: 0}
+  fuelChange: 0
   maxVelocity: 12
 --- !u!114 &114000011151678032
 MonoBehaviour:
@@ -1790,6 +1792,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114000013792528088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010410977050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6b16174d491064c8b94d4f2acf3b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelRes: {fileID: 114000013323801728}
 --- !u!114 &114000014160846180
 MonoBehaviour:
   m_ObjectHideFlags: 1

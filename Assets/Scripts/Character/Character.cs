@@ -90,7 +90,6 @@ public class Character : MonoBehaviour
         //Is used to alert player with everyone 10 fuel usage after the fuel count drops under 100
         if(fuelChange >= 10)
         {
-            Debug.Log("Alert Time");
             _alertSound = true;
             fuelChange = 0;
         }
@@ -103,7 +102,6 @@ public class Character : MonoBehaviour
         {
             if (_alertSound)
             {
-                Debug.Log("Alert Maybe");
                 AudioSource.PlayClipAtPoint(soundEffects[1], Camera.main.transform.position, 0.4f);
                 _alertSound = false;
             }
