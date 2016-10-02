@@ -25,6 +25,8 @@ public class Turret : MonoBehaviour {
     public float bulletSpeed;
 	public float bulletScale;
     public float bulletExistTime;
+    public float bulletPerMagazine;
+    public float bulletReloadTime;
     public float fireIntervalInSeconds;
     public float turnSpeed;
     public FiringType firingType;
@@ -40,6 +42,8 @@ public class Turret : MonoBehaviour {
     Transform _targetTransform;
     int _alternateShootingDir = 0;
     float _alternateShootingTimeRemain = 0;
+    float _reloadTimeRemain = 0;
+    float _bulletRemain;
 
 	// Use this for initialization
 	void Start () {
@@ -49,9 +53,22 @@ public class Turret : MonoBehaviour {
                 _bulletPrefabName = "Prefabs/Enemy/EnemyBullet";
                 _bulletPrefab = (GameObject)Resources.Load("Prefabs/Enemy/EnemyBullet");
                 break;
+            case BulletType.SprayPlasma:
+                _bulletPrefabName = "Prefabs/Enemy/EnemyBullet";
+                _bulletPrefab = (GameObject)Resources.Load("Prefabs/Enemy/EnemyBullet");
+                break;
+            case BulletType.Flame:
+                _bulletPrefabName = "Prefabs/Enemy/EnemyFlameBullet";
+                _bulletPrefab = (GameObject)Resources.Load("Prefabs/Enemy/EnemyFlameBullet");
+                break;
+            case BulletType.SprayFlame:
+                _bulletPrefabName = "Prefabs/Enemy/EnemyFlameBullet";
+                _bulletPrefab = (GameObject)Resources.Load("Prefabs/Enemy/EnemyFlameBullet");
+                break;
             default:
                 break;
         }
+        _bulletRemain = bulletPerMagazine;
 	}
 	
 	// Update is called once per frame
@@ -64,6 +81,8 @@ public class Turret : MonoBehaviour {
             }
             if(_fireCooldown > 0)
                 _fireCooldown -= Time.deltaTime;
+            if (_reloadTimeRemain > 0)
+                _reloadTimeRemain -= Time.deltaTime;
             _targetTransform = Character.current.transform;
             if (FiringType.Tracking == firingType)
             {
@@ -72,9 +91,10 @@ public class Turret : MonoBehaviour {
                 Quaternion dest = Quaternion.LookRotation(dir.normalized);
                 transform.rotation = Quaternion.Slerp(transform.rotation, dest, Time.deltaTime * turnSpeed / Quaternion.Angle(transform.rotation, dest));
 
+                
                 if (_fireCooldown <= 0)
                 {
-                    if (bulletType == BulletType.SprayPlasma)
+                    if (bulletType == BulletType.SprayPlasma || bulletType == BulletType.SprayFlame)
                         SprayShootForward();
                     else
                         ShootForward();
@@ -151,6 +171,12 @@ public class Turret : MonoBehaviour {
 
     void ShootForward()
     {
+        if(_bulletRemain <= 0)
+        {
+            _bulletRemain = bulletPerMagazine;
+            _reloadTimeRemain = bulletReloadTime;
+        }
+        if (_reloadTimeRemain > 0) return;
         GameObject bulletInstance = Instantiate(_bulletPrefab, bulletSpawnPoint.position, transform.rotation) as GameObject;
         bulletInstance.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
         Rigidbody bulletRb = bulletInstance.GetComponent<Rigidbody>();
@@ -158,11 +184,18 @@ public class Turret : MonoBehaviour {
 		bulletInstance.transform.localScale = new Vector3 (bulletScale, bulletScale,bulletScale);
         Destroy(bulletInstance, bulletExistTime);
         _fireCooldown = fireIntervalInSeconds;
+        _bulletRemain--;
     }
 
     void SprayShootForward()
     {
-        for(int a=0;a!=3;++a)
+        if (_bulletRemain <= 0)
+        {
+            _bulletRemain = bulletPerMagazine;
+            _reloadTimeRemain = bulletReloadTime;
+        }
+        if (_reloadTimeRemain > 0) return;
+        for (int a=0;a!=3;++a)
         {
             
             GameObject bulletInstance = Instantiate(_bulletPrefab, bulletSpawnPoint.position, transform.rotation) as GameObject;
@@ -172,6 +205,7 @@ public class Turret : MonoBehaviour {
             bulletRb.velocity = bulletRb.transform.forward * bulletSpeed;
             Destroy(bulletInstance, bulletExistTime);
         }
+        _bulletRemain -= 3;
         _fireCooldown = fireIntervalInSeconds;
 
     }
