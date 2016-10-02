@@ -90,7 +90,6 @@ public class Character : MonoBehaviour
         //Is used to alert player with everyone 10 fuel usage after the fuel count drops under 100
         if(fuelChange >= 10)
         {
-            Debug.Log("Alert Time");
             _alertSound = true;
             fuelChange = 0;
         }
@@ -103,7 +102,6 @@ public class Character : MonoBehaviour
         {
             if (_alertSound)
             {
-                Debug.Log("Alert Maybe");
                 AudioSource.PlayClipAtPoint(soundEffects[1], Camera.main.transform.position, 0.4f);
                 _alertSound = false;
             }
@@ -116,7 +114,6 @@ public class Character : MonoBehaviour
             {
                 _runningCoroutine = StartCoroutine(charSleep());
                 EventManager.TriggerEvent(EventManager.Events.DEATH_COUNTDOWN);
-                Debug.Log("Death countdown started.");
             }
 
 			//fuelDepletedText.text = "You are out of Fuel!";
@@ -176,9 +173,6 @@ public class Character : MonoBehaviour
     public void AddFuel(int amount)
 	{
         _fuelReservoir.AddFuel(amount);
-		//fuelCountText.text = "Total Fuel : " + _fuelReservoir.fuelCount;
-		Invoke ("RemoveFuelDepletedText", 1.0f);
-		Invoke ("RemoveFuelText", 1.0f);
 	}
 
     public void DestroyedByBlackHole()
@@ -205,17 +199,7 @@ public class Character : MonoBehaviour
         AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
         Instantiate(outOfFuelPrefab, transform.position, transform.rotation);
     }
-
-    void RemoveFuelText()
-	{
-		//fuelCountText.text = "";
-	}
-
-	void RemoveFuelDepletedText()
-	{
-		//fuelDepletedText.text = "";
-	}
-	
+		
 
     void stopMoving()
     {

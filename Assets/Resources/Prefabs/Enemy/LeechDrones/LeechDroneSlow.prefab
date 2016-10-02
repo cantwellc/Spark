@@ -446,7 +446,8 @@ GameObject:
   - 4: {fileID: 4000012874106100}
   - 135: {fileID: 135000010676234836}
   - 120: {fileID: 120000010544226218}
-  - 114: {fileID: 114000012507135904}
+  - 114: {fileID: 114000013997990052}
+  - 114: {fileID: 114000011968087154}
   m_Layer: 0
   m_Name: DragCollider
   m_TagString: ExtraCollider
@@ -910,7 +911,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013030699500}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 41.9, y: -0.19, z: -83.44}
+  m_LocalPosition: {x: 18.66, y: 0.84, z: -77.98604}
   m_LocalScale: {x: 0.004, y: 0.004, z: 0.004}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -3008,6 +3009,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockPosition: 0
+--- !u!114 &114000011968087154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012238953738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf69e5e68bc74893a1193feca915d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: {fileID: 4000010310292458}
 --- !u!114 &114000012435948890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3042,19 +3055,6 @@ MonoBehaviour:
       PublicKeyToken=null
   maxHealth: 5
   _currentHealth: 5
---- !u!114 &114000012507135904
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012238953738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04179d7acb1964ea3b6f868473363b5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  origin: {fileID: 4000010310292458}
-  dragSpeed: 0.5
 --- !u!114 &114000012924427082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3093,6 +3093,22 @@ MonoBehaviour:
   enemyDeadEffect: {fileID: 1000013825800420, guid: 7ddbecfa95486d14386cbae6a5a00842,
     type: 2}
   destroyDeadEffectInSeconds: 1
+--- !u!114 &114000013997990052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012238953738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0184c91ea5ba47448e397b9aed5458c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  auraType: 1
+  dragRate: 1.1
+  maxDragRate: 7
+  damagePerSecond: 0
+  enableIncrementingDrag: 1
 --- !u!120 &120000010544226218
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -3157,7 +3173,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1200
+  m_Radius: 1500
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135000010728150398
 SphereCollider:
