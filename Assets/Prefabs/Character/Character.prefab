@@ -114,7 +114,6 @@ GameObject:
   - 114: {fileID: 114000013323801728}
   - 114: {fileID: 114000012513490380}
   - 114: {fileID: 114000014160846180}
-  - 81: {fileID: 81000011772468198}
   m_Layer: 8
   m_Name: Character
   m_TagString: Character
@@ -1124,13 +1123,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!81 &81000011772468198
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010904683788}
-  m_Enabled: 1
 --- !u!82 &82000013263794704
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1316,8 +1308,8 @@ MonoBehaviour:
   OnFire:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Play
+      - m_Target: {fileID: 114000011135439484}
+        m_MethodName: CharacterSound
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1354,8 +1346,8 @@ MonoBehaviour:
   CantFire:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Play
+      - m_Target: {fileID: 114000011135439484}
+        m_MethodName: CharacterSound
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1571,8 +1563,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: Play
+      - m_Target: {fileID: 114000011135439484}
+        m_MethodName: CharacterSound
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1625,8 +1617,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: Play
+      - m_Target: {fileID: 114000011135439484}
+        m_MethodName: CharacterSound
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1674,8 +1666,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: Play
+      - m_Target: {fileID: 114000011135439484}
+        m_MethodName: CharacterSound
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

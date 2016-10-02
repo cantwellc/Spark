@@ -130,6 +130,7 @@ public class Character : MonoBehaviour
             {
                 _dyingCountdown = false;
                 EventManager.TriggerEvent(EventManager.Events.STOP_DEATH_COUNTDOWN);
+				AudioManager.instance.Play ("stopDeathCountdown");
                 StopCoroutine(_runningCoroutine);
             }
         }
@@ -226,4 +227,9 @@ public class Character : MonoBehaviour
     {
         _rigidBody.velocity = new Vector3(0, 0, 0);
     }
+
+	public void CharacterSound (string audioEvent)
+	{
+		AudioManager.instance.Play (audioEvent);
+	}
 }

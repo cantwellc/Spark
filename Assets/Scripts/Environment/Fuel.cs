@@ -32,4 +32,9 @@ public class Fuel : MonoBehaviour
 		float sizeScale =  sizeCoefficient *(float)fuelAmmount / _character.GetComponent<FuelReservoir> ().maxFuelCount;
 		transform.localScale = new Vector3 (sizeScale, sizeScale, sizeScale);
 	}
+
+	public void FuelSound (string audioEvent)
+	{
+		AudioManager.instance.Play (audioEvent);
+	}
 }

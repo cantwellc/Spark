@@ -21,7 +21,9 @@ public class AudioManager : MonoBehaviour
 	public List<AudioMixerSnapshot> snapshotList;
 	private Dictionary<string, AudioMixerSnapshot> snapshots;
 
-	public bool canAlarm = true;
+	private bool canAlarm = true;
+
+	private GameObject alarm;
 
 	void Awake ()
 	{
@@ -38,6 +40,7 @@ public class AudioManager : MonoBehaviour
 		for (int i = 0; i < poolSize; i++) 
 		{
 			GameObject obj = (GameObject)Instantiate (soundObjectPrefab);
+			obj.transform.parent = gameObject.transform;
 			obj.SetActive (false);
 			soundObjectPool.Add (obj);
 		}
@@ -57,6 +60,13 @@ public class AudioManager : MonoBehaviour
 
 	public void Play(string audioEvent)
 	{
+		if (audioEvent == "stopDeathCountdown") 
+		{
+			alarm.GetComponent<AudioSource> ().loop = false;
+			alarm.SetActive (false);
+			return;
+		}
+
 		GameObject soundObject = null;
 
 		for (int i = 0; i < soundObjectPool.Count; i++) 
@@ -73,6 +83,7 @@ public class AudioManager : MonoBehaviour
 		if (soundObject == null && willGrow) 
 		{
 			GameObject obj = (GameObject)Instantiate (soundObjectPrefab);
+			obj.transform.parent = gameObject.transform;
 			soundObjectPool.Add (obj);
 			obj.SetActive (false);
 			soundObject = obj;
@@ -129,19 +140,28 @@ public class AudioManager : MonoBehaviour
 			}
 		}
 
+		if (audioEvent == "refuel") 
+		{
+			source.clip = clips ["refuel_raw1"];
+			source.outputAudioMixerGroup = mixerGroups ["Refuel"];
+			soundObject.SetActive (true);
+		}
+
 		if (audioEvent == "deathCountdown") 
 		{
 			source.clip = clips ["Alert_Low_On_Fuel"];
 			source.outputAudioMixerGroup = mixerGroups ["Alarm"];
 			source.loop = true;
-			soundObject.GetComponent<DeactivateObject>().canDeactivate = false;
+			soundObject.GetComponent<DeactivateObject> ().canDeactivate = false;
 			soundObject.SetActive (true);
+			alarm = soundObject;
 		}
 
 		if (audioEvent == "death") 
 		{
 			source.clip = clips ["explosion_raw6"];
 			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
+			Play ("stopDeathCountdown");
 			soundObject.SetActive (true);
 		}
 	}

@@ -422,33 +422,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 114000013037804798, guid: 6a180306481a2754dbaa55769a44d30c,
-        type: 2}
-      propertyPath: OnStartCharge.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1293479120}
-    - target: {fileID: 114000013037804798, guid: 6a180306481a2754dbaa55769a44d30c,
-        type: 2}
-      propertyPath: OnFire.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 1293479120}
-    - target: {fileID: 114000013037804798, guid: 6a180306481a2754dbaa55769a44d30c,
-        type: 2}
-      propertyPath: CantFire.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1293479120}
-    - target: {fileID: 114000011151678032, guid: 6a180306481a2754dbaa55769a44d30c,
-        type: 2}
-      propertyPath: OnFire.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1293479120}
-    - target: {fileID: 114000011151678032, guid: 6a180306481a2754dbaa55769a44d30c,
-        type: 2}
-      propertyPath: CantFire.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1293479120}
-    m_RemovedComponents:
-    - {fileID: 81000011772468198, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &310986533
@@ -948,7 +922,18 @@ MonoBehaviour:
   fuelAmmount: 30
   onGatherSfx:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 917521264}
+        m_MethodName: FuelSound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: refuel
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!23 &470836324
@@ -1287,7 +1272,18 @@ MonoBehaviour:
   fuelAmmount: 30
   onGatherSfx:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 917521264}
+        m_MethodName: FuelSound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: refuel
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!23 &592458229
@@ -1903,6 +1899,12 @@ Transform:
   - {fileID: 1424338670}
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!114 &917521264 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000011788407566, guid: d6a86e2bbc40645d987a9905b9d6d80a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1219990721}
+  m_Script: {fileID: 11500000, guid: 387f649fef0ef467ca6a9e267c523297, type: 3}
 --- !u!1001 &918945449
 Prefab:
   m_ObjectHideFlags: 0
@@ -2404,18 +2406,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114000011788407566, guid: d6a86e2bbc40645d987a9905b9d6d80a,
-        type: 2}
-      propertyPath: FuelAmmount
-      value: 42
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011788407566, guid: d6a86e2bbc40645d987a9905b9d6d80a,
-        type: 2}
-      propertyPath: fuelAmmount
-      value: 30
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114000011888798342, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1242250785
@@ -2747,12 +2738,6 @@ Transform:
   - {fileID: 434948371}
   m_Father: {fileID: 674311128}
   m_RootOrder: 1
---- !u!114 &1293479120 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114000012781245206, guid: c3af2542e400349f5a7593477d3fe401,
-    type: 2}
-  m_PrefabInternal: {fileID: 1387748473}
-  m_Script: {fileID: 11500000, guid: f758e69fddbeb45a3b1e80fe908b31cb, type: 3}
 --- !u!1 &1352113706
 GameObject:
   m_ObjectHideFlags: 0
