@@ -19,11 +19,6 @@ public class Turret : MonoBehaviour {
         AlternatingFire
     }
 
-    public enum AuraType
-    {
-        Damage,
-        Slow
-    }
 
     public BulletType bulletType;
     public float bulletDamage;
@@ -33,7 +28,6 @@ public class Turret : MonoBehaviour {
     public float fireIntervalInSeconds;
     public float turnSpeed;
     public FiringType firingType;
-    public AuraType auraType;
     public Transform bulletSpawnPoint;
     public float alternateShootingDirInDegree1;
     public float alternateShootingDirInDegree2;
