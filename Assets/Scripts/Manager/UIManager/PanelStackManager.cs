@@ -66,4 +66,12 @@ public class PanelStackManager : MonoBehaviour {
         ESC_Panel.SetActive(false);
         in_Game_Text.SetActive(true);
     }
+
+    public void ClearStack()
+    {
+        while(_panelStack.Count != 0)
+        {
+            _panelStack.Pop().SetActive(false);
+        }
+    }
 }
