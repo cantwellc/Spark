@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
 	public Text fuelCountText;
     public int fuelChange;
     public int maxVelocity;
+    public int keyChargersPickedUp;
 
     private int _charDeathDelay;
     private Rigidbody _rigidBody;
@@ -52,6 +53,7 @@ public class Character : MonoBehaviour
     {
         current = this;
         _charDeathDelay = 5;
+        keyChargersPickedUp = 0;
         fuelChange = 0;
 //		ramEffect.Stop ();
 		maxVelocity = 10;
