@@ -24,11 +24,11 @@ public class KeyCharge : MonoBehaviour {
 			float diff = _totalCharge - (i * _fullSingleLightCharge);
 			if (diff >= _fullSingleLightCharge)
 			{
-				keyLightRenderers [i].material.color = Color.green;
+				keyLightRenderers [i].material.color = Color.yellow;
 			} 
 			else
 			{
-				keyLightRenderers [i].material.color = Color.red;
+				keyLightRenderers [i].material.color = Color.gray;
 			}
 			/*float ratio = diff / (i * _fullSingleLightCharge);
 			float r = 1.0f * (1 - ratio);
