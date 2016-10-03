@@ -3,33 +3,20 @@ using System.Collections;
 
 public class PedestalAction : MonoBehaviour {
 
-	public GameObject portal;
+	public GameObject _portal;
 	public bool startAction;
 	// Use this for initialization
-	void Start () 
-	{
-		
-	}
 
-	void OnTriggerEnter()
+	public void Run()
 	{
-	
-	}
-
-	void OnTriggerStay(Collider other)
-	{
-		
-		if (startAction)
-		{
-			SpawnPortal ();
-			startAction = false;
-		}
+		startAction = true;
+		GetComponent<Renderer> ().material.color = Color.green;
+		SpawnPortal ();
 
 	}
-
 	void SpawnPortal()
 	{
-		portal.SetActive (true);
+		_portal.SetActive (true);
 	}
 }
 

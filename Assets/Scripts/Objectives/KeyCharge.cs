@@ -42,6 +42,7 @@ public class KeyCharge : MonoBehaviour {
 	{
 		_totalCharge = 0;
 		_fullSingleLightCharge = maxCharge / keyLightRenderers.Count;
+		updateKeyLights ();
 	}
 	
 

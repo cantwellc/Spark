@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
 
-public class Fit : MonoBehaviour {
+public class FitToPedestal : MonoBehaviour {
 
-	public GameObject pedestal;
+	private GameObject _pedestal;
 	public bool active;
 	public float speed;
 
@@ -22,14 +22,15 @@ public class Fit : MonoBehaviour {
 
 	void Start()
 	{
+		_pedestal = GameObject.Find ("Pedestal");
 		_interactWithPedestal = true;
-		if (pedestal == null)
+		if (_pedestal == null)
 		{
 			Debug.LogError ("You have a keyring in the scene but no Pedestal, assign the pedestal to keyring from the inspector");
 		}
 		_rigidBody = GetComponent<Rigidbody> ();
-		_firstTargetPos = new Vector3 (pedestal.transform.position.x, pedestal.transform.position.y + 2.0f, pedestal.transform.position.z);
-		_secondTargetPos = new Vector3(pedestal.transform.position.x, pedestal.transform.position.y + 1.0f, pedestal.transform.position.z);
+		_firstTargetPos = new Vector3 (_pedestal.transform.position.x, _pedestal.transform.position.y + 2.0f, _pedestal.transform.position.z);
+		_secondTargetPos = new Vector3(_pedestal.transform.position.x, _pedestal.transform.position.y + 1.0f, _pedestal.transform.position.z);
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -67,7 +68,7 @@ public class Fit : MonoBehaviour {
 			transform.position = _secondTargetPos;
 			if (_interactWithPedestal)
 			{
-				pedestal.GetComponent<PedestalAction> ().startAction = true;
+				_pedestal.GetComponent<PedestalAction> ().Run();
 				_interactWithPedestal = false;
 			}
 			onFit.Invoke ();
@@ -81,9 +82,9 @@ public class Fit : MonoBehaviour {
 
 	bool CloseEnoughXZ()
 	{
-		Vector2 pedestalXZ = new Vector2 (pedestal.transform.position.x, pedestal.transform.position.z);
+		Vector2 pedestalXZ = new Vector2 (_pedestal.transform.position.x, _pedestal.transform.position.z);
 		Vector2 currentXZ = new Vector2 (transform.position.x, transform.position.z);
-		if (Vector2.Distance(pedestalXZ,currentXZ) < 0.02)
+		if (Vector2.Distance(pedestalXZ,currentXZ) < 0.1)
 		{
 			return true;
 		}
@@ -92,7 +93,7 @@ public class Fit : MonoBehaviour {
 	}
 	bool isFit()
 	{
-		if (Vector3.Distance(_secondTargetPos,transform.position) <0.01)
+		if (Vector3.Distance(_secondTargetPos,transform.position) <0.1)
 		{
 			return true;
 		}
