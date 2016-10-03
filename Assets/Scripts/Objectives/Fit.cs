@@ -20,6 +20,10 @@ public class Fit : MonoBehaviour {
 
 	void Start()
 	{
+		if (pedestal == null)
+		{
+			Debug.LogError ("You have a keyring in the scene but no Pedestal, assign the pedestal to keyring from the inspector");
+		}
 		_rigidBody = GetComponent<Rigidbody> ();
 		_firstTargetPos = new Vector3 (pedestal.position.x, pedestal.position.y + 2.0f, pedestal.position.z);
 		_secondTargetPos = new Vector3(pedestal.position.x, pedestal.position.y + 1.0f, pedestal.position.z);

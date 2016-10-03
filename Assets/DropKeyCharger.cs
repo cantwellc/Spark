@@ -4,6 +4,7 @@ using System.Collections;
 public class DropKeyCharger : MonoBehaviour {
 
     public GameObject keyCharger;
+	public bool dropKey;
 	// Use this for initialization
 	void Start () {
 	
@@ -15,7 +16,9 @@ public class DropKeyCharger : MonoBehaviour {
 	}
     public void DropKeyChargerEvent()
     {
-
-        Instantiate(keyCharger,transform.position,transform.rotation);
+		if (dropKey)
+		{
+			Instantiate (keyCharger, transform.position, transform.rotation);
+		}
     }
 }
