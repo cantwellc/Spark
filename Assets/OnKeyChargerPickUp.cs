@@ -3,7 +3,7 @@ using System.Collections;
 
 public class OnKeyChargerPickUp : MonoBehaviour
 {
-    public Character character; 
+	public float chargeAmount;
     // Use this for initialization
     void Start()
     {
@@ -19,7 +19,8 @@ public class OnKeyChargerPickUp : MonoBehaviour
     {
         if (other.gameObject.tag == "Character")
         {
-            character.keyChargersPickedUp += 1;
+			GameObject keyRing = GameObject.FindWithTag ("Keyring");
+			keyRing.GetComponent<KeyCharge> ().addCharge (chargeAmount);
             DestroyObject(this.gameObject);
         }
     }

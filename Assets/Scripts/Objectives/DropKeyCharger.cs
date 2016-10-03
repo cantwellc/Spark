@@ -6,8 +6,9 @@ public class DropKeyCharger : MonoBehaviour {
     public GameObject keyCharger;
 	public bool dropKey;
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+		
 	}
 	
 	// Update is called once per frame
