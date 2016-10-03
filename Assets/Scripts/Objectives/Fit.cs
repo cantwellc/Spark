@@ -25,7 +25,14 @@ public class Fit : MonoBehaviour {
 		_secondTargetPos = new Vector3(pedestal.position.x, pedestal.position.y + 1.0f, pedestal.position.z);
 	}
 
-
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.tag == "Pedestal")
+		{
+			_rigidBody.constraints = RigidbodyConstraints.None;
+			transform.parent = null;
+		}
+	}
 
 
 	void OnTriggerStay(Collider other)
@@ -51,13 +58,7 @@ public class Fit : MonoBehaviour {
 		{
 			transform.position = _secondTargetPos;
 			onFit.Invoke ();
-			foreach (Renderer light in lights)
-			{
-				if (light.material.color != Color.green)
-				{
-					light.material.color = Color.green;
-				}
-			}
+
 		}
 
 
