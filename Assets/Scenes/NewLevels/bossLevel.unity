@@ -457,7 +457,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -15.4
+      value: -15.86
       objectReference: {fileID: 0}
     - target: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c, type: 2}
       propertyPath: m_LocalRotation.x
@@ -477,7 +477,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c, type: 2}
       propertyPath: m_RootOrder
-      value: 32
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -2036,6 +2036,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLocation: {fileID: 1730964896}
+  targetLocation2: {fileID: 0}
+  speed: 40
 --- !u!81 &531343842
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2189,7 +2191,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -15.22
+      value: -15.97
       objectReference: {fileID: 0}
     - target: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2693,7 +2695,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 693747527}
   - 33: {fileID: 693747530}
-  - 64: {fileID: 693747529}
   - 23: {fileID: 693747528}
   m_Layer: 0
   m_Name: FloorTile_General (3)
@@ -2744,18 +2745,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!64 &693747529
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 693747526}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &693747530
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2914,6 +2903,11 @@ Prefab:
       propertyPath: bulletSpawnTransform3
       value: 
       objectReference: {fileID: 118593668}
+    - target: {fileID: 114000012331529484, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: droneHatch2
+      value: 
+      objectReference: {fileID: 1400380326}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4024b9be55dd57144aead35f61af7b09, type: 2}
   m_IsPrefabParent: 0
@@ -3182,6 +3176,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1652513294}
+        m_MethodName: addSelfToCameraTargetLocation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!1 &778736833 stripped
@@ -3200,7 +3205,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 778736833}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3f0ff72689bd4fd2af08de0b28a765d, type: 3}
   m_Name: 
@@ -3415,7 +3420,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 808996453}
   - 33: {fileID: 808996456}
-  - 64: {fileID: 808996455}
   - 23: {fileID: 808996454}
   m_Layer: 0
   m_Name: FloorTile_General (2)
@@ -3466,18 +3470,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!64 &808996455
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 808996452}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &808996456
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3545,6 +3537,25 @@ Transform:
   m_PrefabParentObject: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c,
     type: 2}
   m_PrefabInternal: {fileID: 268149935}
+--- !u!1 &917134290 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000014093612856, guid: 4024b9be55dd57144aead35f61af7b09,
+    type: 2}
+  m_PrefabInternal: {fileID: 738919122}
+--- !u!114 &917134295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 917134290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f0ff72689bd4fd2af08de0b28a765d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yRotation: 0
+  xRotation: 0
+  zRotation: 5
 --- !u!4 &934358685 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c,
@@ -3559,7 +3570,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 33.74
+      value: 34.33
       objectReference: {fileID: 0}
     - target: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3587,7 +3598,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c, type: 2}
       propertyPath: m_RootOrder
-      value: 34
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -4444,7 +4455,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1120066235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.5, y: 1, z: -87.2}
+  m_LocalPosition: {x: 16.88, y: 1, z: -87.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -4727,7 +4738,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1239292881}
   - 33: {fileID: 1239292884}
-  - 64: {fileID: 1239292883}
   - 23: {fileID: 1239292882}
   m_Layer: 0
   m_Name: FloorTile_General (5)
@@ -4778,18 +4788,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!64 &1239292883
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1239292880}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1239292884
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5171,11 +5169,11 @@ HingeJoint:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1370408148}
-  m_ConnectedBody: {fileID: 406310519}
+  m_ConnectedBody: {fileID: 949762779}
   m_Anchor: {x: 0.5, y: 0.5, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.5153089, y: 0.49999994, z: -175.39276}
+  m_ConnectedAnchor: {x: -0.57358056, y: 0.49999994, z: 0.000010217935}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -5183,13 +5181,13 @@ HingeJoint:
     targetPosition: 0
   m_UseMotor: 1
   m_Motor:
-    targetVelocity: 5
+    targetVelocity: -5
     force: 5
     freeSpin: 0
   m_UseLimits: 1
   m_Limits:
-    min: -75
-    max: 0
+    min: 0
+    max: 135
     bounciness: 0
     bounceMinVelocity: 0.2
     contactDistance: 0
@@ -5371,10 +5369,10 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1400380325}
-  m_LocalRotation: {x: -0, y: 0.9456904, z: -0, w: -0.32506868}
-  m_LocalPosition: {x: 12.09, y: 1, z: -94.84}
+  m_LocalRotation: {x: -0, y: -0.3191963, z: -0, w: 0.9476887}
+  m_LocalPosition: {x: 12.67, y: 1, z: -92.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 218.207, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -37.49, z: 0}
   m_Children:
   - {fileID: 238051196}
   m_Father: {fileID: 0}
@@ -5494,7 +5492,7 @@ HingeJoint:
     freeSpin: 0
   m_UseLimits: 1
   m_Limits:
-    min: -75
+    min: -135
     max: 0
     bounciness: 0
     bounceMinVelocity: 0.2
@@ -6086,7 +6084,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1533054824}
   - 33: {fileID: 1533054827}
-  - 64: {fileID: 1533054826}
   - 23: {fileID: 1533054825}
   m_Layer: 0
   m_Name: FloorTile_General (1)
@@ -6137,18 +6134,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!64 &1533054826
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1533054823}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1533054827
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6515,7 +6500,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -33
+      value: -31.3
       objectReference: {fileID: 0}
     - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
       propertyPath: m_LocalPosition.y
@@ -6523,7 +6508,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -66
+      value: -64.9
       objectReference: {fileID: 0}
     - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
       propertyPath: m_LocalRotation.x
@@ -6991,7 +6976,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1988445913}
   - 33: {fileID: 1988445916}
-  - 64: {fileID: 1988445915}
   - 23: {fileID: 1988445914}
   m_Layer: 0
   m_Name: FloorTile_General (2)
@@ -7042,18 +7026,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!64 &1988445915
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1988445912}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &1988445916
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -7238,7 +7210,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 13.63
+      value: 13.08
       objectReference: {fileID: 0}
     - target: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c, type: 2}
       propertyPath: m_LocalPosition.y

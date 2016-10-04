@@ -4,13 +4,20 @@ using System.Collections;
 public class CameraFollow : MonoBehaviour 
 {
 
+    public static CameraFollow mainCamera;
+
 	public Transform targetLocation;
+    public Transform targetLocation2;
+
+    public float speed; 
 
 	private Vector3 _offset;
+
 
 	// Use this for initialization
 	void Start () 
 	{	//Offset between the players position and the cameras position
+        mainCamera = this;
         if (targetLocation == null) return;
 		transform.position = new Vector3(targetLocation.position.x,transform.position.y,targetLocation.position.z);
 		_offset = transform.position - targetLocation.position;
@@ -19,9 +26,21 @@ public class CameraFollow : MonoBehaviour
 	void LateUpdate()
 	{
         if (targetLocation == null) return;
+        Vector3 newPosition;
         /*We are gonna move to a new location now because player might have moved
 		 * Offset ensures that we keep our distance from the player*/
-        Vector3 newPosition = targetLocation.position + _offset;
+        if (targetLocation2 == null)
+        {
+            newPosition = targetLocation.position + _offset;
+        }
+        else
+        {
+            newPosition = (targetLocation.position + targetLocation2.position) / 2.0f + _offset;
+            if((newPosition-transform.position).magnitude > 2.0f)
+            {
+                newPosition = Vector3.MoveTowards(transform.position, newPosition, speed * Time.deltaTime);
+            }
+        }
 		//TODO:Make the camera movement smoother
 		transform.position = newPosition;
 	}

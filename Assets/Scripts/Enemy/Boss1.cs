@@ -16,6 +16,7 @@ public class Boss1 : MonoBehaviour {
     public Transform blackholePos2;
     public Transform bulletSpawnTransform, bulletSpawnTransform1, bulletSpawnTransform2, bulletSpawnTransform3;/////////
     public DroneHatch droneHatch1;
+    public DroneHatch droneHatch2;
 
     float _timeRemainBetweenActions;
     float _bulletFireCoolDownRemain;
@@ -44,8 +45,14 @@ public class Boss1 : MonoBehaviour {
     {
         _isActivated = true;
     }
-	
-	void Update () {
+
+
+    public void addSelfToCameraTargetLocation()
+    {
+        CameraFollow.mainCamera.targetLocation2 = transform;
+    }
+
+    void Update () {
         if (!_isActivated) return;
         _timeRemainBetweenActions -= Time.deltaTime;
         if (_bulletFireCoolDownRemain >= 0) _bulletFireCoolDownRemain -= Time.deltaTime;
@@ -80,8 +87,16 @@ public class Boss1 : MonoBehaviour {
                     bhb.target = target;
                     bhb.flightTime = flightTime;
                     Destroy(b, timeBetweenActions-1f);
-                    droneHatch1.Invoke("StartShooting", 2f);
-                    droneHatch1.Invoke("StopShooting", timeBetweenActions);
+                    if(_bhbPos1)
+                    {
+                        droneHatch2.Invoke("StartShooting", 2f);
+                        droneHatch2.Invoke("StopShooting", timeBetweenActions);
+                    }
+                    else
+                    {
+                        droneHatch1.Invoke("StartShooting", 2f);
+                        droneHatch1.Invoke("StopShooting", timeBetweenActions);
+                    }
 
                     b.GetComponent<Rigidbody>().velocity = targetVector.normalized * bhbSpeed;
                 }
