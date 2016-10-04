@@ -62,9 +62,12 @@ public class AudioManager : MonoBehaviour
 	{
 		if (audioEvent == "stopDeathCountdown") 
 		{
-			alarm.GetComponent<AudioSource> ().loop = false;
-			alarm.SetActive (false);
-			return;
+			if (alarm != null) 
+			{
+				alarm.GetComponent<AudioSource> ().loop = false;
+				alarm.SetActive (false);
+				return;
+			}
 		}
 
 		GameObject soundObject = null;

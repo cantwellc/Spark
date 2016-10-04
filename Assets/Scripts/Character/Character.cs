@@ -20,6 +20,7 @@ public class Character : MonoBehaviour
 
     private int _charDeathDelay;
     private Rigidbody _rigidBody;
+    private Vector3 _velocity;
 	private FuelReservoir _fuelReservoir;
     private bool _cheatMode;
     private bool _alertSound;
@@ -102,10 +103,9 @@ public class Character : MonoBehaviour
         {
             if (_alertSound)
             {
-                Debug.Log("Alert Maybe");
-                //AudioSource.PlayClipAtPoint(soundEffects[1], Camera.main.transform.position, 0.4f);
-				AudioManager.instance.Play("lowFuel");
-				_alertSound = false;
+				//AudioSource.PlayClipAtPoint(soundEffects[1], Camera.main.transform.position, 0.4f);
+                _alertSound = false;
+				AudioManager.instance.Play ("lowFuel");
             }
                 
         }
@@ -115,9 +115,8 @@ public class Character : MonoBehaviour
             if (!_dyingCountdown)
             {
                 _runningCoroutine = StartCoroutine(charSleep());
-                EventManager.TriggerEvent(EventManager.Events.DEATH_COUNTDOWN);
 				AudioManager.instance.Play ("deathCountdown");
-				Debug.Log("Death countdown started.");
+				EventManager.TriggerEvent(EventManager.Events.DEATH_COUNTDOWN);
             }
 
 			//fuelDepletedText.text = "You are out of Fuel!";
@@ -128,8 +127,8 @@ public class Character : MonoBehaviour
             if (_dyingCountdown)
             {
                 _dyingCountdown = false;
-                EventManager.TriggerEvent(EventManager.Events.STOP_DEATH_COUNTDOWN);
 				AudioManager.instance.Play ("stopDeathCountdown");
+				EventManager.TriggerEvent(EventManager.Events.STOP_DEATH_COUNTDOWN);
                 StopCoroutine(_runningCoroutine);
             }
         }
@@ -186,7 +185,7 @@ public class Character : MonoBehaviour
         EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         //AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
 		AudioManager.instance.Play("death");
-        Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
+		Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
 
@@ -211,11 +210,12 @@ public class Character : MonoBehaviour
 
     void stopMoving()
     {
-        _rigidBody.velocity = new Vector3(0, 0, 0);
+        Velocity = new Vector3(0, 0, 0);
     }
 
-	public void CharacterSound (string audioEvent)
+	public void CharacterSound(string audioEvent)
 	{
 		AudioManager.instance.Play (audioEvent);
 	}
+    
 }

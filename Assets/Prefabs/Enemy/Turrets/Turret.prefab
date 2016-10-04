@@ -77,6 +77,7 @@ GameObject:
   - 82: {fileID: 82000011689237742}
   - 114: {fileID: 114000011359226952}
   - 114: {fileID: 114000013034284456}
+  - 114: {fileID: 114000011031646846}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Enemy
@@ -425,6 +426,19 @@ MonoBehaviour:
   hitParticleEffect: {fileID: 1000011142874558, guid: 5c29022e23b7d4089a5fe7a2c08149c6,
     type: 2}
   destroyHitEffectInSeconds: 3
+--- !u!114 &114000011031646846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012144600810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4601823b64f7d504d98cb9224ced61d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyCharger: {fileID: 1000014107221370, guid: e363952e1ed1285469d12b11d3e9ead8, type: 2}
+  dropKey: 0
 --- !u!114 &114000011359226952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -467,6 +481,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 114000013522198380}
         m_MethodName: DeadEffects
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114000011031646846}
+        m_MethodName: DropKeyChargerEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

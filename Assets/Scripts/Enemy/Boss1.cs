@@ -14,7 +14,7 @@ public class Boss1 : MonoBehaviour {
     public GameObject blackHoleBomePrefab;
     public Transform blackholePos1;
     public Transform blackholePos2;
-    public Transform bulletSpawnTransform, bulletSpawnTransform1, bulletSpawnTransform2, bulletSpawnTransform3;
+    public Transform bulletSpawnTransform, bulletSpawnTransform1, bulletSpawnTransform2, bulletSpawnTransform3;/////////
     public DroneHatch droneHatch1;
 
     float _timeRemainBetweenActions;
@@ -22,6 +22,8 @@ public class Boss1 : MonoBehaviour {
     Boss1Actions action;
     GameObject _bulletPrefab;
     bool _isActivated;
+    bool _bhbPos1;
+    bool _bhbPos2;
 
     enum Boss1Actions
     {
@@ -31,6 +33,8 @@ public class Boss1 : MonoBehaviour {
      
 	void Start () {
         _isActivated = false;
+        _bhbPos1 = true;
+        _bhbPos2 = false;
         _timeRemainBetweenActions = 0;
         _bulletFireCoolDownRemain = 0;
         _bulletPrefab = (GameObject)Resources.Load("Prefabs/Enemy/EnemyBullet");
@@ -54,10 +58,20 @@ public class Boss1 : MonoBehaviour {
                     _bulletFireCoolDownRemain = 100f;
                     Vector3 target;
                     float ran = Random.Range(0f, 1f);
-                    if (ran >= 0.0f)
+                    //assigned a value to avoid error !
+                    target = blackholePos1.position;
+                    if (_bhbPos1)
+                    {
                         target = blackholePos1.position;
-                    else
+                        _bhbPos1 = false;
+                        _bhbPos2 = true;
+                    }
+                    else if(_bhbPos2)
+                    {
                         target = blackholePos2.position;
+                        _bhbPos1 = true;
+                        _bhbPos2 = false;
+                    }
                     GameObject b = (GameObject) Instantiate(blackHoleBomePrefab);
                     b.transform.position = bulletSpawnTransform.position;
                     var targetVector = target - b.transform.position;
@@ -83,6 +97,7 @@ public class Boss1 : MonoBehaviour {
                     Destroy(bulletInstance, bulletExistTime);
                     _bulletFireCoolDownRemain = bulletFireCoolDown;
 
+                    /******************************************************************************************************************************/
                     GameObject bulletInstance1 = Instantiate(_bulletPrefab, bulletSpawnTransform2.position, transform.rotation) as GameObject;
                     bulletInstance1.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
                     Rigidbody bulletRb1 = bulletInstance1.GetComponent<Rigidbody>();
@@ -100,7 +115,7 @@ public class Boss1 : MonoBehaviour {
                     Rigidbody bulletRb3 = bulletInstance3.GetComponent<Rigidbody>();
                     bulletRb3.velocity = (Character.current.transform.position - bulletSpawnTransform3.position).normalized * bulletSpeed;
                     Destroy(bulletInstance3, bulletExistTime);
-
+                    /**********************************************************************************************************************************/
                 }
 
             }
