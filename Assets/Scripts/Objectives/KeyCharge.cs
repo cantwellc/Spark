@@ -13,10 +13,10 @@ public class KeyCharge : MonoBehaviour {
 	public void addCharge(float charge)
 	{
 		_totalCharge +=charge;
-		updateKeyLights ();
+		UpdateKeyLights ();
 	}
 
-	void updateKeyLights()
+	void UpdateKeyLights()
 	{
 		for (int i = 0; i < keyLightRenderers.Count; i++)
 		{
@@ -42,7 +42,7 @@ public class KeyCharge : MonoBehaviour {
 	{
 		_totalCharge = 0;
 		_fullSingleLightCharge = maxCharge / keyLightRenderers.Count;
-		updateKeyLights ();
+		UpdateKeyLights ();
 	}
 
 	public bool ChargedEnoughForPedestal()

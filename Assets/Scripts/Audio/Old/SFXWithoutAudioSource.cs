@@ -3,11 +3,18 @@ using System.Collections;
 
 public class SFXWithoutAudioSource : MonoBehaviour 
 {
-	public AudioClip sfx;
-	public float volume;
-	public void PlaySoundWithoutSource()
+	public enum SFXEvent
 	{
-		
-		AudioSource.PlayClipAtPoint(sfx,Camera.main.transform.position,volume);
+		CharacterTakeDamage
+	}
+	public SFXEvent sfxEvent;
+
+	public void Play()
+	{
+		Debug.Log ("Playing Sound");
+		if (sfxEvent == SFXEvent.CharacterTakeDamage)
+		{
+			AudioManager.instance.Play ("takeDamage");
+		}
 	}
 }

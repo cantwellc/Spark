@@ -168,6 +168,14 @@ public class AudioManager : MonoBehaviour
 			Play ("stopDeathCountdown");
 			soundObject.SetActive (true);
 		}
+		//Added
+		if (audioEvent == "takeDamage")
+		{
+			source.volume = 0.2f;
+			source.clip = clips ["takeDamage_raw1"];
+			source.outputAudioMixerGroup = mixerGroups ["SFX"];
+			soundObject.SetActive (true);
+		}
 	}
 
 	IEnumerator Wait (string audioEvent, float time)
