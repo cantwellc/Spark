@@ -722,6 +722,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLocation: {fileID: 1013039107}
+  targetLocation2: {fileID: 0}
+  speed: 0
 --- !u!1 &129852077
 GameObject:
   m_ObjectHideFlags: 0
@@ -6082,6 +6084,11 @@ Prefab:
     - target: {fileID: 4000013897513070, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011135439484, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: maxVelocity
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}

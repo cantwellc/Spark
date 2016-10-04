@@ -12,7 +12,7 @@ public class SFXWithoutAudioSource : MonoBehaviour
 
 	public void Play()
 	{
-		Debug.Log ("Playing Sound");
+		
 		if (sfxEvent == SFXEvent.CharacterTakeDamage)
 		{
 			AudioManager.instance.Play ("takeDamage");

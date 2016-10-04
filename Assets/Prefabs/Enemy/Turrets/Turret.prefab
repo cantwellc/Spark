@@ -78,6 +78,7 @@ GameObject:
   - 114: {fileID: 114000011359226952}
   - 114: {fileID: 114000013034284456}
   - 114: {fileID: 114000011031646846}
+  - 114: {fileID: 114000012283797238}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Enemy
@@ -153,10 +154,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012144600810}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 65.8, y: 0, z: -89.08}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 43.6, y: 1.59, z: -56.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
   - {fileID: 4000012994211500}
   - {fileID: 4000012487035934}
@@ -438,7 +439,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyCharger: {fileID: 1000014107221370, guid: e363952e1ed1285469d12b11d3e9ead8, type: 2}
-  dropKey: 0
+  chargeAmount: 50
+  dropKey: 1
 --- !u!114 &114000011359226952
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -532,6 +534,33 @@ MonoBehaviour:
       PublicKeyToken=null
   maxHealth: 5
   _currentHealth: 5
+--- !u!114 &114000012283797238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012144600810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9228b3bf1932f44299b09ca1188d14a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114000011829593164}
+        m_MethodName: TakeDamage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: TurretCollision+onTrigger, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114000013034284456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -543,8 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0760cc1036514b0ba35be7c546eac6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfx: {fileID: 8300000, guid: 6632ae83bb1ed48d38c4caf29b245f87, type: 3}
-  volume: 1
+  sfxEvent: 0
 --- !u!114 &114000013098617738
 MonoBehaviour:
   m_ObjectHideFlags: 1

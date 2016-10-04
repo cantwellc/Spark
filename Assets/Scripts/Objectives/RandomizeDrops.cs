@@ -18,7 +18,7 @@ public class RandomizeDrops : MonoBehaviour {
 		}
 		if (dropAmount > toRandomize.Count)
 		{
-			Debug.LogError("You want level to have "+ dropAmount+ " of keys " +" but the level only has" + toRandomize.Count);
+			Debug.LogError("You want level to have "+ dropAmount+ " of keys " +" but the level only has " + toRandomize.Count + "Enemies ");
 		}
 		ShuffleGameObjects(ref toRandomize);
 		int currentDropAmount = toRandomize.Count;

@@ -22,7 +22,7 @@ public class Explosion : MonoBehaviour
         {
             if (col.attachedRigidbody != null && !rigidbodies.Contains(col.attachedRigidbody))
             {
-                rigidbodies.Add(col.attachedRigidbody);
+				rigidbodies.Add(col.attachedRigidbody);
             }
         }
         foreach (Rigidbody rb in rigidbodies)

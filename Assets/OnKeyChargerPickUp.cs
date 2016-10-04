@@ -10,14 +10,16 @@ public class OnKeyChargerPickUp : MonoBehaviour
     {
         if (other.gameObject.tag == "Character")
         {
-			GameObject keyRing = GameObject.FindWithTag ("Keyring");
-			keyRing.GetComponent<KeyCharge> ().addCharge (chargeAmount);
-			keyRing.GetComponent<EnableVisualEffect> ().Play ();
-            DestroyObject(this.gameObject);
+			
+				GameObject keyRing = GameObject.FindWithTag ("Keyring");
+				keyRing.GetComponent<KeyCharge> ().addCharge (chargeAmount);
+				keyRing.GetComponent<EnableVisualEffect> ().Play ();
+				DestroyObject (this.gameObject);
         }
     }
 	public void SetChargeAmount(float amount)
 	{
 		chargeAmount = amount;
 	}
+
 }
