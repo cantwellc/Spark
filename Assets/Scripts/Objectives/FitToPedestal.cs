@@ -11,6 +11,7 @@ public class FitToPedestal : MonoBehaviour {
 
 	public UnityEvent onFit;
 	public  List<Renderer>lights;
+	private KeyCharge _keyCharge;
 	private bool _interactWithPedestal;
 	private bool _fit = false;
 	private Rigidbody _rigidBody;
@@ -28,6 +29,7 @@ public class FitToPedestal : MonoBehaviour {
 		{
 			Debug.LogError ("You have a keyring in the scene but no Pedestal, assign the pedestal to keyring from the inspector");
 		}
+		_keyCharge = GetComponent<KeyCharge> ();
 		_rigidBody = GetComponent<Rigidbody> ();
 		_firstTargetPos = new Vector3 (_pedestal.transform.position.x, _pedestal.transform.position.y + 2.0f, _pedestal.transform.position.z);
 		_secondTargetPos = new Vector3(_pedestal.transform.position.x, _pedestal.transform.position.y + 1.0f, _pedestal.transform.position.z);
@@ -35,44 +37,56 @@ public class FitToPedestal : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
+		
 		if (other.gameObject.tag == "Pedestal")
 		{
-			_rigidBody.constraints = RigidbodyConstraints.None;
-			transform.rotation = Quaternion.Euler (new Vector3 (-90, 0, 0));
-			transform.parent = null;
+			if (_keyCharge.ChargedEnoughForPedestal ())
+			{
+				_rigidBody.constraints = RigidbodyConstraints.None;
+				transform.rotation = Quaternion.Euler (new Vector3 (-90, 0, 0));
+				transform.parent = null;
+			} 
+			else
+			{
+				_pedestal.GetComponent<Renderer> ().material.color = Color.red;
+			}
 		}
+		 
 	}
 
 
 	void OnTriggerStay(Collider other)
 	{
 		
-		if (!_fit)
+		if (_keyCharge.ChargedEnoughForPedestal ())
 		{
-			if (other.gameObject.tag == "Pedestal" && !CloseEnoughXZ ())
+			if (!_fit)
 			{
-				Vector3 direction = _firstTargetPos - transform.position;
-				_rigidBody.velocity = direction.normalized * speed * Time.deltaTime;
-			} else if (other.gameObject.tag == "Pedestal")
-			{
-				Vector3 direction = _secondTargetPos - transform.position;
-				_rigidBody.velocity = direction.normalized * speed * Time.deltaTime;
-				if (isFit ())
+				if (other.gameObject.tag == "Pedestal" && !CloseEnoughXZ ())
 				{
-					_fit = true;
+					Vector3 direction = _firstTargetPos - transform.position;
+					_rigidBody.velocity = direction.normalized * speed * Time.deltaTime;
+				} else if (other.gameObject.tag == "Pedestal")
+				{
+					Vector3 direction = _secondTargetPos - transform.position;
+					_rigidBody.velocity = direction.normalized * speed * Time.deltaTime;
+					if (isFit ())
+					{
+						_fit = true;
+					}
 				}
-			}
-		} 
-		else
-		{
-			transform.position = _secondTargetPos;
-			if (_interactWithPedestal)
+			} 
+			else
 			{
-				_pedestal.GetComponent<PedestalAction> ().Run();
-				_interactWithPedestal = false;
-			}
-			onFit.Invoke ();
+				transform.position = _secondTargetPos;
+				if (_interactWithPedestal)
+				{
+					_pedestal.GetComponent<PedestalAction> ().Run ();
+					_interactWithPedestal = false;
+				}
+				onFit.Invoke ();
 
+			}
 		}
 
 
@@ -99,6 +113,7 @@ public class FitToPedestal : MonoBehaviour {
 		}
 		return false;
 	}
+
 
 
 

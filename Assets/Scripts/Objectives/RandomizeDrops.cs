@@ -24,12 +24,13 @@ public class RandomizeDrops : MonoBehaviour {
 		int currentDropAmount = toRandomize.Count;
 		for (int i = 0; i < toRandomize.Count; i++)
 		{
-			toRandomize [i].GetComponent<DropKeyCharger> ().dropKey = false;
-			currentDropAmount--;
 			if (currentDropAmount == dropAmount)
 			{
 				break;
 			}
+			toRandomize [i].GetComponent<DropKeyCharger> ().dropKey = false;
+			currentDropAmount--;
+
 
 		}
 

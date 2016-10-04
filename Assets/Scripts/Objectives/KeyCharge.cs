@@ -44,6 +44,15 @@ public class KeyCharge : MonoBehaviour {
 		_fullSingleLightCharge = maxCharge / keyLightRenderers.Count;
 		updateKeyLights ();
 	}
+
+	public bool ChargedEnoughForPedestal()
+	{
+		if (_totalCharge >= minChargeNeededToOpenPortal)
+		{
+			return true;
+		}
+		return false;
+	}
 	
 
 }

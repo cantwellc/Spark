@@ -4,6 +4,7 @@ using System.Collections;
 public class DropKeyCharger : MonoBehaviour {
 
     public GameObject keyCharger;
+	public float chargeAmount;
 	public bool dropKey;
 	// Use this for initialization
 	void Start () 
@@ -19,7 +20,8 @@ public class DropKeyCharger : MonoBehaviour {
     {
 		if (dropKey)
 		{
-			Instantiate (keyCharger, transform.position, transform.rotation);
+			GameObject k = Instantiate (keyCharger, transform.position, transform.rotation) as GameObject;
+			k.GetComponent<OnKeyChargerPickUp> ().SetChargeAmount (chargeAmount);
 		}
     }
 }

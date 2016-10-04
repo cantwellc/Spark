@@ -5,16 +5,7 @@ public class OnKeyChargerPickUp : MonoBehaviour
 {
 	public float chargeAmount;
     // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Character")
@@ -24,4 +15,8 @@ public class OnKeyChargerPickUp : MonoBehaviour
             DestroyObject(this.gameObject);
         }
     }
+	public void SetChargeAmount(float amount)
+	{
+		chargeAmount = amount;
+	}
 }

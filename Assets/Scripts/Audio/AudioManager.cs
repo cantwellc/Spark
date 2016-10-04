@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
 	public GameObject soundObjectPrefab = null;
 	public int poolSize = 10;
 	public bool willGrow = true;
+
 	List<GameObject> soundObjectPool;
 
 	public List<AudioClip> clipList;
@@ -175,5 +176,11 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "lowFuel")
 			canAlarm = true;
+	}
+	public void overrideBGMusic(string musicName)
+	{
+		AudioSource audioSource = GetComponent<AudioSource> ();
+		audioSource.clip = clips [musicName];
+		audioSource.Play ();
 	}
 }
