@@ -20,6 +20,7 @@ public class Character : MonoBehaviour
 
     private int _charDeathDelay;
     private Rigidbody _rigidBody;
+    private Vector3 _velocity;
 	private FuelReservoir _fuelReservoir;
     private bool _cheatMode;
     private bool _alertSound;
@@ -203,6 +204,8 @@ public class Character : MonoBehaviour
 
     void stopMoving()
     {
-        _rigidBody.velocity = new Vector3(0, 0, 0);
+        Velocity = new Vector3(0, 0, 0);
     }
+
+    
 }

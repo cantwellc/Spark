@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour {
                 {
                     if (!_isPaused)
                     {
-                        Time.timeScale = 0;
+                        //Time.timeScale = 0;
                         _game_state = GAME_STATES.IN_GAME_MENU;
                         EventManager.TriggerEvent(EventManager.Events.ESC_KEY);
                         EventManager.TriggerEvent(EventManager.Events.PAUSE_GAME);
