@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Rigidbody))]
 public class SlowDownPhysics : MonoBehaviour {
+
+    public float slowSpeedThreshold;
 
     float _originalDrag;
     Rigidbody _rigidBody;
@@ -13,9 +16,15 @@ public class SlowDownPhysics : MonoBehaviour {
         _originalDrag = _rigidBody.drag;
 	}
 	
-    public void SlowDown(float slowRate)
+    public void SlowDown(float force)
     {
-        _rigidBody.drag = _rigidBody.drag * slowRate;
+        Vector3 velocity = _rigidBody.velocity;
+        if(velocity.magnitude > slowSpeedThreshold)
+        {
+            Vector3 forceToApply = -(velocity.normalized) * force;
+            _rigidBody.AddForce(forceToApply, ForceMode.Force);
+        }
+        //_rigidBody.drag = _rigidBody.drag * slowRate;
     }
 
     void FixedUpdate()
@@ -24,7 +33,7 @@ public class SlowDownPhysics : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if(_secondFrame)
+        /*if(_secondFrame)
         {
             _rigidBody.drag = _originalDrag;
             _secondFrame = false;
@@ -32,6 +41,6 @@ public class SlowDownPhysics : MonoBehaviour {
         else
         {
             _secondFrame = true;
-        }
+        }*/
     }
 }

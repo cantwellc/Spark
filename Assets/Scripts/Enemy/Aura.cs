@@ -17,6 +17,7 @@ public class Aura : MonoBehaviour {
     public AuraType auraType;
     public float dragRate;
 	public float maxDragRate;
+    public float dragForce;
 
     public float damagePerSecond;
 	public bool enableIncrementingDrag;
@@ -47,7 +48,8 @@ public class Aura : MonoBehaviour {
         {
             if (other.gameObject.GetComponent<SlowDownPhysics>() != null)
             {
-                StartCoroutine("SlowDownObject", other.gameObject);
+                //StartCoroutine("SlowDownObject", other.gameObject);
+                other.gameObject.GetComponent<SlowDownPhysics>().SlowDown(dragForce);
             }
         }
         else
@@ -69,7 +71,8 @@ public class Aura : MonoBehaviour {
 
 			if (other.gameObject.GetComponent<SlowDownPhysics>() != null)
             {
-                StartCoroutine("SlowDownObject", other.gameObject);
+                other.gameObject.GetComponent<SlowDownPhysics>().SlowDown(dragForce);
+                //StartCoroutine("SlowDownObject", other.gameObject);
             }
         }
         else
