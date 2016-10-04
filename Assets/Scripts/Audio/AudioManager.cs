@@ -176,6 +176,13 @@ public class AudioManager : MonoBehaviour
 			source.outputAudioMixerGroup = mixerGroups ["SFX"];
 			soundObject.SetActive (true);
 		}
+		if (audioEvent == "openPortal")
+		{
+			
+			source.clip = clips ["portal_sound"];
+			source.outputAudioMixerGroup = mixerGroups ["SFX"];
+			soundObject.SetActive (true);
+		}
 	}
 
 	IEnumerator Wait (string audioEvent, float time)

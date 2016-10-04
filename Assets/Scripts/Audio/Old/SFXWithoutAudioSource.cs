@@ -5,7 +5,8 @@ public class SFXWithoutAudioSource : MonoBehaviour
 {
 	public enum SFXEvent
 	{
-		CharacterTakeDamage
+		CharacterTakeDamage,
+		OpenPortal
 	}
 	public SFXEvent sfxEvent;
 
@@ -15,6 +16,10 @@ public class SFXWithoutAudioSource : MonoBehaviour
 		if (sfxEvent == SFXEvent.CharacterTakeDamage)
 		{
 			AudioManager.instance.Play ("takeDamage");
+		}
+		if (sfxEvent == SFXEvent.OpenPortal)
+		{
+			AudioManager.instance.Play ("openPortal");
 		}
 	}
 }
