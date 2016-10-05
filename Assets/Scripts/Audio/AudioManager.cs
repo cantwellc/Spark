@@ -191,6 +191,14 @@ public class AudioManager : MonoBehaviour
 			source.outputAudioMixerGroup = mixerGroups ["SFX"];
 			soundObject.SetActive (true);
 		}
+
+		if (audioEvent == "keycharge")
+		{
+			
+			source.clip = clips ["key_charge_effect"];
+			source.outputAudioMixerGroup = mixerGroups ["SFX"];
+			soundObject.SetActive (true);
+		}
 	}
 
 	IEnumerator Wait (string audioEvent, float time)
