@@ -54,7 +54,7 @@ public class Aura : MonoBehaviour {
         }
         else
         {
-            if (other.gameObject.GetComponent<Health>() != null)
+			if (other.gameObject.GetComponent<Health>() != null && other.gameObject.tag =="Character")
             {
                 other.gameObject.GetComponent<Health>().TakeDamage(damagePerSecond * Time.deltaTime);
             }
@@ -77,7 +77,7 @@ public class Aura : MonoBehaviour {
         }
         else
         {
-            if (other.gameObject.GetComponent<Health>() != null)
+			if (other.gameObject.GetComponent<Health>() != null && other.gameObject.tag =="Character")
             {
                 other.gameObject.GetComponent<Health>().TakeDamage(damagePerSecond * Time.deltaTime);
             }

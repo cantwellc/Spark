@@ -23,7 +23,6 @@ public class AsteroidCollision : MonoBehaviour {
             Rigidbody _rbCharacter = col.gameObject.GetComponent<Rigidbody>();
 
 			float damageTaken = (2*_rbCharacter.mass * _rbCharacter.velocity.magnitude * _rbCharacter.velocity.magnitude / _rbAsteroid.mass);
-			Debug.Log ("Asteroid Damage " + damageTaken);
 			collisionTrigger.Invoke(damageTaken);
         }
 
