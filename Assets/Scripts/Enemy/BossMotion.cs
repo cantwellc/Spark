@@ -8,6 +8,7 @@ public class BossMotion : MonoBehaviour {
     public GameObject target1, target2, target3, target4;
     public float timeToReachNextTarget;
     public float timeToStayAtOneTarget;
+    public float staartMovingAtHealth;
 
     private Vector3 velocity = Vector3.zero;
     private int target;
@@ -24,7 +25,7 @@ public class BossMotion : MonoBehaviour {
 	void Update () {
         tmr += Time.deltaTime;
         Health h = gameObject.GetComponent<Health>();
-        if (h.HealthPercent < 0.5f)
+        if (h.HealthPercent < staartMovingAtHealth)
         {
             if (target == 1)
             {

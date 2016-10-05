@@ -14,7 +14,7 @@ public class Boss1 : MonoBehaviour {
     public GameObject blackHoleBomePrefab;
     public Transform blackholePos1;
     public Transform blackholePos2;
-    public Transform bulletSpawnTransform, bulletSpawnTransform1, bulletSpawnTransform2, bulletSpawnTransform3;/////////
+    public Transform bulletSpawnTransform, bulletSpawnTransform1, bulletSpawnTransform2, bulletSpawnTransform3, bulletSpawnTransform4, bulletSpawnTransform5;/////////
     public DroneHatch droneHatch1;
     public DroneHatch droneHatch2;
 
@@ -130,6 +130,21 @@ public class Boss1 : MonoBehaviour {
                     Rigidbody bulletRb3 = bulletInstance3.GetComponent<Rigidbody>();
                     bulletRb3.velocity = (Character.current.transform.position - bulletSpawnTransform3.position).normalized * bulletSpeed;
                     Destroy(bulletInstance3, bulletExistTime);
+
+
+                    GameObject bulletInstance4 = Instantiate(_bulletPrefab, bulletSpawnTransform4.position, transform.rotation) as GameObject;
+                    bulletInstance4.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+                    Rigidbody bulletRb4 = bulletInstance4.GetComponent<Rigidbody>();
+                    bulletRb4.velocity = (Character.current.transform.position - bulletSpawnTransform4.position).normalized * bulletSpeed;
+                    Destroy(bulletInstance4, bulletExistTime);
+
+
+                    GameObject bulletInstance5 = Instantiate(_bulletPrefab, bulletSpawnTransform5.position, transform.rotation) as GameObject;
+                    bulletInstance5.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+                    Rigidbody bulletRb5 = bulletInstance5.GetComponent<Rigidbody>();
+                    bulletRb5.velocity = (Character.current.transform.position - bulletSpawnTransform5.position).normalized * bulletSpeed;
+                    Destroy(bulletInstance5, bulletExistTime);
+
                     /**********************************************************************************************************************************/
                 }
 
