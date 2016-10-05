@@ -2602,6 +2602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f05200f62a646046b860e4c1ede3e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slowSpeedThreshold: 0
 --- !u!4 &769073029 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c,
@@ -3141,6 +3142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLocation: {fileID: 471743476}
+  targetLocation2: {fileID: 0}
+  speed: 0
 --- !u!81 &887113896
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3489,7 +3492,7 @@ Prefab:
     - target: {fileID: 114000013691081154, guid: 6a180306481a2754dbaa55769a44d30c,
         type: 2}
       propertyPath: minChargeNeededToOpenPortal
-      value: 150
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}

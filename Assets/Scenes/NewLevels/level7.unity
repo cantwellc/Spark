@@ -1583,6 +1583,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLocation: {fileID: 1730964896}
+  targetLocation2: {fileID: 0}
+  speed: 0
 --- !u!81 &531343842
 AudioListener:
   m_ObjectHideFlags: 0
@@ -4730,6 +4732,11 @@ Prefab:
     - target: {fileID: 114000013691081154, guid: 6a180306481a2754dbaa55769a44d30c,
         type: 2}
       propertyPath: maxCharge
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013691081154, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: minChargeNeededToOpenPortal
       value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -3029,6 +3029,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetLocation: {fileID: 471743476}
+  targetLocation2: {fileID: 0}
+  speed: 0
 --- !u!81 &887113896
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3410,6 +3412,11 @@ Prefab:
     - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013691081154, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: minChargeNeededToOpenPortal
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
