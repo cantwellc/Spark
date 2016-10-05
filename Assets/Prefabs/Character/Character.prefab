@@ -169,6 +169,7 @@ GameObject:
   - 114: {fileID: 114000010922287748}
   - 114: {fileID: 114000012435905306}
   - 114: {fileID: 114000013466356506}
+  - 114: {fileID: 114000010997286956}
   m_Layer: 8
   m_Name: Character
   m_TagString: Character
@@ -866,8 +867,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010904683788}
-  m_LocalRotation: {x: -0, y: 0.69766366, z: -0, w: 0.7164254}
-  m_LocalPosition: {x: -37.8, y: 1, z: -57.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.31, y: 1, z: -57.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1642,6 +1643,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4f311392a3555c499af645564b6341e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000010997286956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010904683788}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d183259a50a2f43b1c85fda9e2c4b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minVelocityThreshold: 9
+  minDrag: 0
+  maxVelocityThreshold: 10
+  maxDrag: 4
+  dragScalingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: -0.016666668
+      value: -0.068749905
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.9704919
+      value: -0.047727346
+      inSlope: 0.051483512
+      outSlope: 0.051483512
+      tangentMode: 0
+    - time: 0.98333335
+      value: 1.4871485
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114000011023470054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2130,7 +2167,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   projectilePrefab: {fileID: 0}
-  damage: 0
+  damage: 4
   speed: 0
   canCharge: 1
   maxChargeTime: 2
@@ -2138,7 +2175,7 @@ MonoBehaviour:
   maxChargeFuelCost: 250
   character: {fileID: 114000011135439484}
   minChargeForce: 5
-  maxChargeForce: 40
+  maxChargeForce: 50
 --- !u!114 &114000013323801728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2180,8 +2217,8 @@ MonoBehaviour:
   - {fileID: 23000012902307412}
   - {fileID: 23000012999225450}
   - {fileID: 23000010411330674}
-  maxCharge: 0
-  minChargeNeededToOpenPortal: 0
+  maxCharge: 100
+  minChargeNeededToOpenPortal: 100
   _totalCharge: 0
 --- !u!114 &114000013704142550
 MonoBehaviour:

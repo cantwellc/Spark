@@ -665,6 +665,47 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &266952478 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000010904683788, guid: 6a180306481a2754dbaa55769a44d30c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1730964895}
+--- !u!114 &266952493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 266952478}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d183259a50a2f43b1c85fda9e2c4b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minVelocityThreshold: 9
+  minDrag: 0
+  maxVelocityThreshold: 10
+  maxDrag: 4
+  dragScalingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: -0.016666668
+      value: -0.068749905
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 0.9704919
+      value: -0.047727346
+      inSlope: 0.051483512
+      outSlope: 0.051483512
+      tangentMode: 0
+    - time: 0.98333335
+      value: 1.4871485
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &294962329
 GameObject:
   m_ObjectHideFlags: 0
@@ -5324,6 +5365,16 @@ Prefab:
       propertyPath: damage
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114000013037804798, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: maxChargeForce
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 54000011662991634, guid: 6a180306481a2754dbaa55769a44d30c,
+        type: 2}
+      propertyPath: m_Drag
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
   m_IsPrefabParent: 0
@@ -6942,7 +6993,7 @@ Prefab:
     - target: {fileID: 114000013997990052, guid: 7aa6aba6410d147718219262a231b268,
         type: 2}
       propertyPath: maxDragRate
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 114000013609992600, guid: 7aa6aba6410d147718219262a231b268,
         type: 2}
@@ -6952,7 +7003,7 @@ Prefab:
         type: 2}
     - target: {fileID: 1000013030699500, guid: 7aa6aba6410d147718219262a231b268, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7aa6aba6410d147718219262a231b268, type: 2}
