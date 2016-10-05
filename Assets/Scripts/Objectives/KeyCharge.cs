@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class KeyCharge : MonoBehaviour {
 
 	public List<Renderer> keyLightRenderers;
-	public float maxCharge;
-	public float minChargeNeededToOpenPortal;
+	private float maxKeyChargeForLevel;
+	private float neededKeyChargeForLevel;
 	private float _lightCount;
 	public float _totalCharge;
 	private float _fullSingleLightCharge;
@@ -40,14 +40,18 @@ public class KeyCharge : MonoBehaviour {
 		
 	void Start () 
 	{
+
+		GameObject levelSpecificValues = GameObject.Find ("LevelSpecificValues");
+		neededKeyChargeForLevel = levelSpecificValues.GetComponent<LevelSpecificValues> ().neededKeyChargeForLevel;
+		maxKeyChargeForLevel = levelSpecificValues.GetComponent<LevelSpecificValues> ().maxKeyChargeForLevel;
 		_totalCharge = 0;
-		_fullSingleLightCharge = maxCharge / keyLightRenderers.Count;
+		_fullSingleLightCharge = maxKeyChargeForLevel / keyLightRenderers.Count;
 		UpdateKeyLights ();
 	}
 
 	public bool ChargedEnoughForPedestal()
 	{
-		if (_totalCharge >= minChargeNeededToOpenPortal)
+		if (_totalCharge >= neededKeyChargeForLevel)
 		{
 			return true;
 		}

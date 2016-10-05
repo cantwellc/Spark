@@ -104,6 +104,7 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "plasmaFire") 
 		{
+			source.volume = 0.3f;
 			source.clip = clips ["laser_raw3"];
 			source.outputAudioMixerGroup = mixerGroups ["PrimaryFire"];
 			soundObject.SetActive (true);
@@ -172,7 +173,7 @@ public class AudioManager : MonoBehaviour
 		if (audioEvent == "takeDamage")
 		{
 			source.volume = 0.2f;
-			source.clip = clips ["takeDamage_raw1"];
+			source.clip = clips ["take_damage_4"];
 			source.outputAudioMixerGroup = mixerGroups ["SFX"];
 			soundObject.SetActive (true);
 		}
@@ -180,6 +181,13 @@ public class AudioManager : MonoBehaviour
 		{
 			
 			source.clip = clips ["portal_sound"];
+			source.outputAudioMixerGroup = mixerGroups ["SFX"];
+			soundObject.SetActive (true);
+		}
+		if (audioEvent == "laser")
+		{
+			source.volume = 0.1f;
+			source.clip = clips ["laser_raw1"];
 			source.outputAudioMixerGroup = mixerGroups ["SFX"];
 			soundObject.SetActive (true);
 		}

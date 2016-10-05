@@ -3,6 +3,7 @@ using System.Collections;
 
 public class IncreaseDragOnCollision : MonoBehaviour {
 
+	public float dragAmount;
 	// Use this for initialization
 	void Start () {
 	
@@ -16,7 +17,7 @@ public class IncreaseDragOnCollision : MonoBehaviour {
     {
         if (other.gameObject.tag == "Character")
         {
-            other.GetComponent<Rigidbody>().drag += 0.01f;
+			other.GetComponent<Rigidbody>().drag += dragAmount;
         }
     }
 }

@@ -12,6 +12,7 @@ public class DrawLaser : MonoBehaviour {
 
 		if (other.gameObject.tag == "Character")
 		{	
+			AudioManager.instance.Play ("laser");
 			_lineRenderer.SetPosition (0, origin.position);
 			_lineRendererRendererComponent.enabled = true;
 			_lineRenderer.SetPosition (1, Character.current.transform.position);
