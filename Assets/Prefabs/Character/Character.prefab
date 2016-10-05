@@ -431,6 +431,7 @@ GameObject:
   - 198: {fileID: 198000011048519352}
   - 199: {fileID: 199000011237988244}
   - 114: {fileID: 114000012463103526}
+  - 114: {fileID: 114000014221583370}
   m_Layer: 0
   m_Name: DarkMatterEffect
   m_TagString: Untagged
@@ -865,8 +866,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010904683788}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.26, y: 1, z: -81.15}
+  m_LocalRotation: {x: -0, y: 0.69766366, z: -0, w: 0.7164254}
+  m_LocalPosition: {x: -37.8, y: 1, z: -57.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -927,10 +928,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011698539404}
-  m_LocalRotation: {x: 0, y: 0, z: 0.86609524, w: 0.49987912}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.809}
   m_LocalScale: {x: 100.00017, y: 100.00012, z: 100.00014}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 120.01601}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000012963867468}
   - {fileID: 4000011816668080}
@@ -1441,7 +1442,7 @@ Rigidbody:
   m_GameObject: {fileID: 1000010904683788}
   serializedVersion: 2
   m_Mass: 0.95
-  m_Drag: 0.03
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
@@ -2308,6 +2309,18 @@ MonoBehaviour:
   validTargetTags:
   - Enemy
   damagePerSecond: 10
+--- !u!114 &114000014221583370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012611445194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6b16174d491064c8b94d4f2acf3b7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelRes: {fileID: 114000013323801728}
 --- !u!135 &135000010145339952
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -4145,7 +4158,7 @@ ParticleSystem:
   moveWithTransform: 1
   autoRandomSeed: 1
   scalingMode: 2
-  randomSeed: -1225612226
+  randomSeed: 558331847
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -4308,7 +4321,7 @@ ParticleSystem:
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
       minColor: {r: 0, g: 0.3882353, b: 0.95686275, a: 1}
-      maxColor: {r: 0, g: 0.09411765, b: 0, a: 1}
+      maxColor: {r: 0, g: 1, b: 0, a: 1}
       minMaxState: 0
     startSize:
       scalar: 0.5
