@@ -1996,11 +1996,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 82000013763789262, guid: c3af2542e400349f5a7593477d3fe401,
-        type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: e71cd12bd41e741428d053bcf5e72113, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3af2542e400349f5a7593477d3fe401, type: 2}
   m_IsPrefabParent: 0
@@ -2841,12 +2836,12 @@ Prefab:
     - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
         type: 2}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
         type: 2}
       propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000010827514938, guid: 4024b9be55dd57144aead35f61af7b09, type: 2}
       propertyPath: m_LocalPosition.x
@@ -3023,6 +3018,36 @@ Prefab:
         type: 2}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
       value: bossDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 778736842}
+    - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: DropKeyChargerEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4024b9be55dd57144aead35f61af7b09, type: 2}
@@ -3349,7 +3374,7 @@ MonoBehaviour:
   bossTransform: {fileID: 778736834}
   fuel: {fileID: 1000010860689028, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
   bossHealth: {fileID: 778736838}
-  percentageIntervalToDropFuel: 15
+  percentageIntervalToDropFuel: 5
 --- !u!114 &778736841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3367,6 +3392,20 @@ MonoBehaviour:
   target4: {fileID: 585366862}
   timeToReachNextTarget: 1
   timeToStayAtOneTarget: 1
+--- !u!114 &778736842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 778736833}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4601823b64f7d504d98cb9224ced61d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyCharger: {fileID: 1000014107221370, guid: e363952e1ed1285469d12b11d3e9ead8, type: 2}
+  chargeAmount: 50
+  dropKey: 1
 --- !u!1001 &787434764
 Prefab:
   m_ObjectHideFlags: 0
