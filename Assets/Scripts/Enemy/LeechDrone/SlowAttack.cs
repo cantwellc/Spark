@@ -5,7 +5,7 @@ public class SlowAttack : MonoBehaviour {
 	private LineRenderer _lineRenderer;
 	private Renderer _lineRendererRendererComponent;
 	public Transform origin;
-	public float dragSpeed;
+	public float dragForce;
 	private Rigidbody _characterRigidbody;
 	private float _originalDrag;
 
@@ -15,9 +15,10 @@ public class SlowAttack : MonoBehaviour {
 	{
 		
 		if (other.gameObject.tag == "Character")
-		{	
-			_characterRigidbody.drag = _characterRigidbody.drag + dragSpeed * Time.deltaTime;
-			_lineRenderer.SetPosition (0, origin.position);
+        {
+            //_characterRigidbody.drag = _characterRigidbody.drag + dragSpeed * Time.deltaTime;
+            Character.current.GetComponent<SlowDownPhysics>().SlowDown(dragForce);
+            _lineRenderer.SetPosition (0, origin.position);
 			_lineRendererRendererComponent.enabled = true;
 			_lineRenderer.SetPosition (1, Character.current.transform.position);
 		}
