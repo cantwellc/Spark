@@ -9,36 +9,14 @@ public class BossDeathBallEffect : MonoBehaviour {
     public void StartDeathEffect()
     {
         transform.parent = null;
-        StartCoroutine(bloomEffect());
+        GetComponent<MeshRenderer>().enabled = true;
+        GetComponent<Animator>().SetTrigger("Dead");
+        Destroy(this.gameObject, expandTime);
     }
 
     IEnumerator bloomEffect()
     {
         GetComponent<MeshRenderer>().enabled = true;
-        float time = 0f;
-        while (time <= expandTime)
-        {
-            Vector3 scale = transform.localScale;
-            scale.x += expandSpeed;
-            scale.y += expandSpeed;
-            scale.z += expandSpeed;
-            transform.localScale = scale;
-
-            time += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-        time = 0;
-        while (time <= expandTime / 2f)
-        {
-            Vector3 scale = transform.localScale;
-            scale.x -= expandSpeed;
-            scale.y -= expandSpeed;
-            scale.z -= expandSpeed;
-            transform.localScale = scale;
-            time += Time.deltaTime;
-            yield return new WaitForEndOfFrame();
-        }
-        GetComponent<MeshRenderer>().enabled = false;
         yield break;
     }
 }

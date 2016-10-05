@@ -13,6 +13,7 @@ public class CameraStartBloom : MonoBehaviour {
         Bloom bloom = this.GetComponent<Bloom>();
         bloom.enabled = true;
         float time = 0f, bloomTime = 2f;
+        bloom.bloomIntensity = 5.0f;
         while (time <= bloomTime)
         {
             bloom.bloomIntensity += 0.4f;
