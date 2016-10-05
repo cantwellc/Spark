@@ -15,7 +15,7 @@ public class Explosion : MonoBehaviour
         // be pushed by physics force
         yield return null;
         
-        float r = 10 * explosionRadius;
+        float r = explosionRadius;
         var cols = Physics.OverlapSphere(transform.position, r);
         var rigidbodies = new List<Rigidbody>();
         foreach (var col in cols)
