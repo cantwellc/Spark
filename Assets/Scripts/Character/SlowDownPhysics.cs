@@ -21,7 +21,7 @@ public class SlowDownPhysics : MonoBehaviour {
         Vector3 velocity = _rigidBody.velocity;
         if(velocity.magnitude > slowSpeedThreshold)
         {
-            Vector3 forceToApply = -(velocity.normalized) * force *2;
+            Vector3 forceToApply = -(velocity.normalized) * force *3;
             _rigidBody.AddForce(forceToApply, ForceMode.Force);
         }
         //_rigidBody.drag = _rigidBody.drag * slowRate;
