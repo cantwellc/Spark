@@ -157,7 +157,7 @@ public class AudioManager : MonoBehaviour
 			source.clip = clips ["Alert_Low_On_Fuel"];
 			source.outputAudioMixerGroup = mixerGroups ["Alarm"];
 			source.loop = true;
-			soundObject.GetComponent<DeactivateObject> ().canDeactivate = false;
+			//soundObject.GetComponent<DeactivateObject> ().canDeactivate = false;
 			soundObject.SetActive (true);
 			alarm = soundObject;
 		}
@@ -214,4 +214,9 @@ public class AudioManager : MonoBehaviour
 		audioSource.clip = clips [musicName];
 		audioSource.Play ();
 	}
+	public void DisableDeadCountDownSound()
+	{
+		GetComponent<AudioSource> ().loop = false;
+	}
+
 }

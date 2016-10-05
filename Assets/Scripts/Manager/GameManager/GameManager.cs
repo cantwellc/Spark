@@ -99,8 +99,9 @@ public class GameManager : MonoBehaviour {
             case GAME_STATES.PLAYER_DEAD:
                 if (Input.GetKeyDown(KeyCode.R))
                 {
-
+					
                     EventManager.TriggerEvent(EventManager.Events.R_KEY);
+					AudioManager.instance.DisableDeadCountDownSound ();
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
                 }
