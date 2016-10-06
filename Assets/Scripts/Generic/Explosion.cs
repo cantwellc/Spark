@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class Explosion : MonoBehaviour
 {
     public float explosionRadius = 5;
-    public float explosionDamage = 5 ;
+    public float explosionDamage = 5;
     public float explosionPower = 5;
 
     private IEnumerator Start()
