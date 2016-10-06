@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
 
 public class EnemyBulletCollision : MonoBehaviour 
 {
 	protected float _damage = 10;
 	private FuelReservoir _characterFuelReservoir;
+	public UnityEvent onCharacterCollision;
+
 
 	void Awake()
 	{
@@ -18,6 +21,7 @@ public class EnemyBulletCollision : MonoBehaviour
 		if (other.gameObject.tag == "Character")
 		{
             other.GetComponent<Health>().TakeDamage(_damage);
+			onCharacterCollision.Invoke ();
 			Destroy (gameObject);
 		}
 		if (other.gameObject.tag != "Enemy" && other.gameObject.tag!="Plane" &&other.gameObject.tag!="Blackhole" && other.gameObject.tag!="ExtraCollider") 
