@@ -12,17 +12,19 @@ public class Fuel : MonoBehaviour
 
 	void Awake()
 	{
-		ScaleFuel ();
+        //Container scaling is a problem at the moment original scale is too high when scaling fuel it brokes the size of container ! 
+		//ScaleFuel ();
 
 	}
 		
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Character")
-		{
-			
+		{		
 			onGatherSfx.Invoke ();
-			_character.AddFuel (fuelAmmount);
+            //Scale Fuel scales the container itself until the problem is solved this is the solution I have 
+            _character = GameObject.FindGameObjectWithTag("Character").GetComponent<Character>();
+            _character.AddFuel (fuelAmmount);
 			Destroy (gameObject);
 		}
 	}

@@ -4,6 +4,7 @@ using System.Collections;
 public class DropKeyCharger : MonoBehaviour {
 
     public GameObject keyCharger;
+    public GameObject fuelContainer;
 	public float chargeAmount;
 	public bool dropKey;
 	// Use this for initialization
@@ -24,5 +25,11 @@ public class DropKeyCharger : MonoBehaviour {
 			k.GetComponent<OnKeyChargerPickUp> ().SetChargeAmount (chargeAmount);
 			dropKey = false;
 		}
+        else
+        {
+            GameObject k = Instantiate(fuelContainer, transform.position, transform.rotation) as GameObject;
+            k.GetComponent<OnKeyChargerPickUp>().SetChargeAmount(chargeAmount);
+            dropKey = false;
+        }
     }
 }

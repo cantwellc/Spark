@@ -9,6 +9,7 @@ public class Turret : MonoBehaviour {
         Flame,
         SprayFlame,
         Bolt,
+		Stun,
         Laser
     }
 
@@ -65,6 +66,11 @@ public class Turret : MonoBehaviour {
                 _bulletPrefabName = "Prefabs/Enemy/EnemyFlameBullet";
                 _bulletPrefab = (GameObject)Resources.Load("Prefabs/Enemy/EnemyFlameBullet");
                 break;
+			case BulletType.Stun:
+				_bulletPrefabName = "Prefabs/Enemy/StunBolt";
+				_bulletPrefab = (GameObject)Resources.Load ("Prefabs/Enemy/StunBolt");
+				int x = 9;
+				break;
             default:
                 break;
         }

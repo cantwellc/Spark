@@ -56,11 +56,11 @@ GameObject:
   - 114: {fileID: 114000012300281952}
   - 54: {fileID: 54000011200729754}
   - 135: {fileID: 135000010649121628}
-  - 114: {fileID: 114000013428276750}
   - 114: {fileID: 114000011755497570}
-  - 114: {fileID: 114000011085974782}
   - 114: {fileID: 114000012954842216}
   - 114: {fileID: 114000011939274904}
+  - 114: {fileID: 114000011707351998}
+  - 114: {fileID: 114000011368522004}
   m_Layer: 0
   m_Name: Asteroid_2
   m_TagString: Untagged
@@ -88,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012956876842}
   m_LocalRotation: {x: -0.6765192, y: 0.06285415, z: 0.06787797, w: 0.7305914}
-  m_LocalPosition: {x: 17.684292, y: -0.3, z: -68.12}
+  m_LocalPosition: {x: 56.08956, y: -1.1875, z: -75.86519}
   m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_LocalEulerAnglesHint: {x: -85.577, y: 0, z: 10.352}
   m_Children:
@@ -196,7 +196,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &114000011085974782
+--- !u!114 &114000011368522004
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -204,12 +204,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000012956876842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 793fee817ec0c44d8867415359bcde0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f074c3b6afb20b4d9ba404d99d81c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDeadEffect: {fileID: 1000012536839012, guid: 73dddd0b8e7474cb291b586a4e4e09ce,
-    type: 2}
-  destroyDeadEffectInSeconds: 3
+  lockPosition: 1
+--- !u!114 &114000011707351998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012956876842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37667a594d5bf6547910895cd2e52c93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000011755497570
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,7 +232,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114000011707351998}
+        m_MethodName: Destruction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onTakeDamage:
@@ -302,19 +322,6 @@ MonoBehaviour:
   hitParticleEffect: {fileID: 1000011142874558, guid: 5c29022e23b7d4089a5fe7a2c08149c6,
     type: 2}
   destroyHitEffectInSeconds: 0.05
---- !u!114 &114000013428276750
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012956876842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c998a06377b3fe348a12357b997c928c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityX: 0
-  velocityZ: 0
 --- !u!135 &135000010649121628
 SphereCollider:
   m_ObjectHideFlags: 1
