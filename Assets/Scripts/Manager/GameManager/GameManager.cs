@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour {
 
     // public
 
+    public static GameManager current;
+    public Transform characterBirthPoint;
 
 
     // private
@@ -25,10 +27,23 @@ public class GameManager : MonoBehaviour {
     void Awake()
     {
         DontDestroyOnLoad(this);
+        current = this;
 
         if (FindObjectsOfType(GetType()).Length > 1)
         {
             Destroy(gameObject);
+        }
+
+        print("loaded");
+        if (Character.current == null)
+        {
+            if (Checkpoint.currentData != null)
+            {
+                GameObject charPrefab = (GameObject)Resources.Load("Prefabs/Character/Character");
+                GameObject character = Instantiate(charPrefab);
+                character.transform.position = Checkpoint.currentData.currentPos;
+                character.GetComponent<FuelReservoir>().fuelCount = Checkpoint.currentData.currentStartFuel;
+            }
         }
     }
 
@@ -36,6 +51,7 @@ public class GameManager : MonoBehaviour {
     void Start ()
     {
         _game_state = GAME_STATES.MAIN_MENU;
+        current = this;
     }
 
     void OnEnable()
@@ -54,7 +70,7 @@ public class GameManager : MonoBehaviour {
 
     void OnLevelWasLoaded()
     {
-        print("loaded");
+        
     }
 
     // Update is called once per frame
@@ -104,7 +120,6 @@ public class GameManager : MonoBehaviour {
             case GAME_STATES.PLAYER_DEAD:
                 if (Input.GetKeyDown(KeyCode.R))
                 {
-					
                     EventManager.TriggerEvent(EventManager.Events.R_KEY);
 					AudioManager.instance.DisableDeadCountDownSound ();
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
