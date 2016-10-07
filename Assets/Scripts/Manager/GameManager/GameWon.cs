@@ -34,6 +34,7 @@ public class GameWon : MonoBehaviour
     IEnumerator  loadNextScene()
     {
         EventManager.TriggerEvent(EventManager.Events.GOAL_REACHED);
+        //GameManager.current.checkpoint = null;
         float fadeTime = GameObject.Find("GameManager").GetComponent<SceneFader>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
         SceneManager.LoadScene(nextScene);
