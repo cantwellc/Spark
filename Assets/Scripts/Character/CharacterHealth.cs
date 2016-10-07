@@ -3,7 +3,15 @@ using System.Collections;
 
 public class CharacterHealth : Health {
 
-	public override void TakeDamage(float amount)
+    public new float MaxHealth
+    {
+        get
+        {
+            return GetComponent<FuelReservoir>().maxFuelCount;
+        }
+    }
+
+    public override void TakeDamage(float amount)
 	{
 		GetComponent<FuelReservoir>().UseFuel(amount);
 		if (amount > 1)
