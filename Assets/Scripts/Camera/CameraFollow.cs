@@ -12,6 +12,7 @@ public class CameraFollow : MonoBehaviour
     public float speed; 
 
 	private Vector3 _offset;
+	private bool _shaking = false;
 
 
 	// Use this for initialization
@@ -30,28 +31,39 @@ public class CameraFollow : MonoBehaviour
 
 	void LateUpdate()
 	{
-        if (targetLocation == null)
-        {
-            if (Character.current == null)
-                return;
-            targetLocation = Character.current.transform;
-        }
-        Vector3 newPosition;
-        /*We are gonna move to a new location now because player might have moved
+		if (!_shaking)
+		{
+			if (targetLocation == null)
+			{
+				if (Character.current == null)
+					return;
+				targetLocation = Character.current.transform;
+			}
+			Vector3 newPosition;
+			/*We are gonna move to a new location now because player might have moved
 		 * Offset ensures that we keep our distance from the player*/
-        if (targetLocation2 == null)
-        {
-            newPosition = targetLocation.position + _offset;
-        }
-        else
-        {
-            newPosition = (targetLocation.position + targetLocation2.position) / 2.0f + _offset;
-            if((newPosition-transform.position).magnitude > 2.0f)
-            {
-                newPosition = Vector3.MoveTowards(transform.position, newPosition, speed * Time.deltaTime);
-            }
-        }
-		//TODO:Make the camera movement smoother
-		transform.position = newPosition;
+			if (targetLocation2 == null)
+			{
+				newPosition = targetLocation.position + _offset;
+			} else
+			{
+				newPosition = (targetLocation.position + targetLocation2.position) / 2.0f + _offset;
+				if ((newPosition - transform.position).magnitude > 2.0f)
+				{
+					newPosition = Vector3.MoveTowards (transform.position, newPosition, speed * Time.deltaTime);
+				}
+			}
+			//TODO:Make the camera movement smoother
+			transform.position = newPosition;
+		}
+	}
+
+	public void EnableShaking()
+	{
+		_shaking = true;
+	}
+	public void DisableShaking()
+	{
+		_shaking = false;
 	}
 }

@@ -3,14 +3,12 @@ using System.Collections;
 
 public class StunningParticles : MonoBehaviour {
 
-	private Vector3 _speedOfCharacterBefore;
-	private bool _stunCharacter = false;
+	private Gun _gun;
 	public float stunForSeconds ;
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.tag == "Character")
 		{
-			_speedOfCharacterBefore = other.gameObject.GetComponent<Rigidbody> ().velocity;
 			other.gameObject.GetComponent<Rigidbody> ().velocity = new Vector3 (0, 0, 0);
 		}
 	}
@@ -18,10 +16,19 @@ public class StunningParticles : MonoBehaviour {
 	void Start()
 	{
 		Destroy (gameObject, stunForSeconds);
+		_gun = Character.current.GetComponentInChildren<Gun> ();
+
 	}
 
 	void Update()
 	{
 		Character.current.GetComponent<Rigidbody> ().velocity = new Vector3 (0, 0, 0);
+		Camera.main.GetComponent<CameraShake> ().Shake ();
+		_gun.DisableInput ();
+	}
+
+	void OnDestroy()
+	{
+		_gun.EnableInput ();
 	}
 }
