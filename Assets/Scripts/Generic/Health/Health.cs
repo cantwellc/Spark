@@ -8,12 +8,20 @@ public class Health : MonoBehaviour
 	public UnityEvent onDeath;
 	public UnityEvent onTakeDamage;
 
-	public float maxHealth;
+    [SerializeField]
+    private float _maxHealth;
+	public float MaxHealth
+    {
+        get
+        {
+            return _maxHealth;
+        }
+    }
 	public float HealthPercent
     {
         get
         {
-            return _currentHealth / maxHealth;
+            return _currentHealth / MaxHealth;
         }
     }
 
