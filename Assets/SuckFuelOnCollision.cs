@@ -4,7 +4,8 @@ using System.Collections;
 public class SuckFuelOnCollision : MonoBehaviour
 {
 
-    // Use this for initialization
+	public float suckAmount;
+	// Use this for initialization
     void Start()
     {
 
@@ -20,7 +21,7 @@ public class SuckFuelOnCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Character")
         {
-            other.GetComponent<Health>().TakeDamage(20);
+			other.GetComponent<Health>().TakeDamage(suckAmount);
         }
     }
 }
