@@ -52,6 +52,11 @@ public class GameManager : MonoBehaviour {
         EventManager.StopListening(EventManager.Events.RESUME_GAME, OnResume);
     }
 
+    void OnLevelWasLoaded()
+    {
+        print("loaded");
+    }
+
     // Update is called once per frame
     void Update()
     {
