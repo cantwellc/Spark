@@ -17,7 +17,8 @@ public class Turret : MonoBehaviour {
     {
         Tracking,
         Spiral,
-        AlternatingFire
+        AlternatingFire,
+		Straight
     }
 
 
@@ -69,7 +70,7 @@ public class Turret : MonoBehaviour {
 			case BulletType.Stun:
 				_bulletPrefabName = "Prefabs/Enemy/StunBolt";
 				_bulletPrefab = (GameObject)Resources.Load ("Prefabs/Enemy/StunBolt");
-				int x = 9;
+				
 				break;
             default:
                 break;
@@ -136,6 +137,17 @@ public class Turret : MonoBehaviour {
                     alternateTurn();
                 }
             }
+
+			else if (FiringType.Straight == firingType)
+			{
+				if (_fireCooldown <= 0)
+				{
+					if (bulletType == BulletType.SprayPlasma || bulletType == BulletType.SprayFlame)
+						SprayShootForward();
+					else
+						ShootForward();
+				}
+			}
         }
 	}
 

@@ -199,6 +199,14 @@ public class AudioManager : MonoBehaviour
 			source.outputAudioMixerGroup = mixerGroups ["SFX"];
 			soundObject.SetActive (true);
 		}
+
+		if (audioEvent == "evilLaugh")
+		{
+
+			source.clip = clips ["Evil_laugh"];
+			source.outputAudioMixerGroup = mixerGroups ["SFX"];
+			soundObject.SetActive (true);
+		}
 	}
 
 	IEnumerator Wait (string audioEvent, float time)
