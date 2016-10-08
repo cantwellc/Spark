@@ -7,7 +7,7 @@ public class MonsterBullet : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Character")
 		{
-			Character.current.GetComponent<CharacterHealth> ().TakeDamage (350);
+			Character.current.GetComponent<CharacterHealth> ().TakeDamage (950);
 
 		}
 	}

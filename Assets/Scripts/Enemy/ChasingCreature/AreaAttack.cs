@@ -10,8 +10,18 @@ public class AreaAttack : MonoBehaviour {
 	public void Attack()
 	{
 		Instantiate (monsterBullet, transform.position, transform.rotation);
+		Character.current.GetComponent<Rigidbody> ().velocity = new Vector3 (0, 0, 0);
+		_gun.DisableInput ();
 
+		Invoke ("EnableInput", 1.0f);
 	}
+
+	void EnableInput()
+	{
+		_gun.EnableInput ();
+	}
+
+
 	void Start()
 	{
 		_gun = Character.current.GetComponentInChildren<Gun> ();
