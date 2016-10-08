@@ -26,6 +26,7 @@ public class Gun : MonoBehaviour
     //private float _chargeScale;
     //private float _maxCharge;
     private bool _isPause;
+	private bool _inputEnabled = true;
 
     void Awake()
     {
@@ -54,28 +55,29 @@ public class Gun : MonoBehaviour
     void Update()
     {
         if (_isPause) return;
-        if (Input.GetMouseButton(0))
-        {
-            PrimaryFire();
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            secondaryFireBehavior.StartCharge();
-        }
-        else if (Input.GetMouseButtonUp(1))
-        {
-            SecondaryFire();
-        }
+		if (_inputEnabled)
+		{
+			if (Input.GetMouseButton (0))
+			{
+				PrimaryFire ();
+			}
+			if (Input.GetMouseButtonDown (1))
+			{
+				secondaryFireBehavior.StartCharge ();
+			} else if (Input.GetMouseButtonUp (1))
+			{
+				SecondaryFire ();
+			}
+		}
     }
 
     public void PrimaryFire()
     {
-//        Debug.Log("Primary Fire");
+
         if ((Time.time - _lastPrimaryShotTime) < primaryFireDelay) return;
         primaryFireBehavior.Fire();
 
-//		GameObject plasmaEffectInstance=Instantiate (plasmaEffect, bulletSpawnTransform.position, bulletSpawnTransform.rotation) as GameObject;
-//		Destroy (plasmaEffectInstance, 2.0f);
+
 
         _lastPrimaryShotTime = Time.time;
     }
@@ -88,33 +90,18 @@ public class Gun : MonoBehaviour
         //        Debug.Log("Secondary Fire");
         secondaryFireBehavior.Fire();
         _lastSecondaryShotTime = Time.time;
-        //if ((Time.time - _lastSecondaryShotTime) < secondaryFireDelay) return;
-        //secondaryFireBehavior.Fire();
-
-        //Vector3 target = GetTarget();
-        //var b = character.GetSecondaryFireProjectile();
-        //b.transform.position = bulletSpawnTransform.position;
-        //var targetVector = target - b.transform.position;
-        //var flightTime = targetVector.magnitude / speed;
-        //var bhb = b.GetComponent<BlackHoleBomb>();
-        //bhb.target = target;
-        //bhb.flightTime = flightTime;
-
-        //b.GetComponent<Rigidbody>().velocity = targetVector.normalized * speed;
-        //_lastSecondaryShotTime = Time.time;
-
-//        b.transform.position = target;
+      
     }
 
-    //Vector3 GetTarget()
-    //{
-    //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-    //    float rayDistance;
-    //    if (_mouseTargetPlane.Raycast(ray, out rayDistance))
-    //        targetMarker.position = ray.GetPoint(rayDistance);
-    //    return targetMarker.position;
-    //}
-    
+
+	public void DisableInput()
+	{
+		_inputEnabled = false;
+	}
+	public void EnableInput()
+	{
+		_inputEnabled = true;
+	}
     
 
     void OnPause()
