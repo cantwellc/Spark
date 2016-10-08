@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
 
 
 	// Use this for initialization
-	void Start () 
+	protected virtual void Start () 
 	{	//Offset between the players position and the cameras position
         mainCamera = this;
         if (targetLocation == null)
@@ -26,8 +26,13 @@ public class CameraFollow : MonoBehaviour
             targetLocation = Character.current.transform;
         }
 		transform.position = new Vector3(targetLocation.position.x,transform.position.y,targetLocation.position.z);
-		_offset = transform.position - targetLocation.position;
+        _offset = transform.position - targetLocation.position;
 	}
+
+    void Awake()
+    {
+
+    }
 
 	void LateUpdate()
 	{
@@ -38,7 +43,9 @@ public class CameraFollow : MonoBehaviour
 				if (Character.current == null)
 					return;
 				targetLocation = Character.current.transform;
-			}
+                transform.position = new Vector3(targetLocation.position.x, transform.position.y, targetLocation.position.z);
+                _offset = transform.position - targetLocation.position;
+            }
 			Vector3 newPosition;
 			/*We are gonna move to a new location now because player might have moved
 		 * Offset ensures that we keep our distance from the player*/

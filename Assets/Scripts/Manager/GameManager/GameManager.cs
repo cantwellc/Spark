@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour {
             {
                 GameObject charPrefab = (GameObject)Resources.Load("Prefabs/Character/Character");
                 GameObject character = Instantiate(charPrefab);
+                Character.current = character.GetComponent<Character>();
                 character.transform.position = Checkpoint.currentData.currentPos;
                 character.GetComponent<FuelReservoir>().fuelCount = Checkpoint.currentData.currentStartFuel;
             }
@@ -76,8 +77,18 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-		
-		switch (_game_state)
+        if (Character.current == null)
+        {
+            if (Checkpoint.currentData != null)
+            {
+                GameObject charPrefab = (GameObject)Resources.Load("Prefabs/Character/Character");
+                GameObject character = Instantiate(charPrefab);
+                Character.current = character.GetComponent<Character>();
+                character.transform.position = Checkpoint.currentData.currentPos;
+                character.GetComponent<FuelReservoir>().fuelCount = Checkpoint.currentData.currentStartFuel;
+            }
+        }
+        switch (_game_state)
         {
 
             case GAME_STATES.PLAYING:
@@ -98,8 +109,8 @@ public class GameManager : MonoBehaviour {
                 }
                 if (Input.GetKeyDown(KeyCode.L))
                 {
-
-					Cursor.visible = true;
+                    Checkpoint.currentData = null;
+                    Cursor.visible = true;
                     SceneManager.LoadScene("LevelSelectScene");
 				}
 
