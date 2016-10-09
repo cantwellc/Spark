@@ -22,6 +22,7 @@ public class ChasePlayer : MonoBehaviour {
 		{
 			float step = initialSpeed * Time.deltaTime;
 			_targetPosition = new Vector3 (Character.current.transform.position.x - 1.0f, transform.position.y, Character.current.transform.position.z);
+			transform.LookAt (Character.current.transform.position);
 			transform.position = Vector3.MoveTowards (transform.position, _targetPosition, step);
 			if (VeryCloseOnXZ())
 			{
