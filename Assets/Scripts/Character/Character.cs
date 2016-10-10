@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
 	public Text fuelCountText;
     public int fuelChange;
     public int maxVelocity;
+    public bool tutorial;
 
     private int _charDeathDelay;
     private Rigidbody _rigidBody;
@@ -52,6 +53,7 @@ public class Character : MonoBehaviour
     void Awake()
     {
         current = this;
+        tutorial = false;
         _charDeathDelay = 5;
         fuelChange = 0;
 //		ramEffect.Stop ();
@@ -82,54 +84,56 @@ public class Character : MonoBehaviour
         _dyingCountdown = true;
     }
 
-	void Update()
-	{
+    void Update()
+    {
         //if (Input.GetKeyDown (KeyCode.B))
         //{
         //	ToggleCheatCode ();
         //}
         //Is used to alert player with everyone 10 fuel usage after the fuel count drops under 100
-        if(fuelChange >= 10)
-        {
-            _alertSound = true;
-            fuelChange = 0;
-        }
-        // Constant value is our max velocity magnitude it can be changed from here 
-        //if (_rigidBody.velocity.magnitude > maxVelocity)
-        //{
-        //    _rigidBody.velocity = _rigidBody.velocity.normalized * maxVelocity;
-        //}
-        if (_fuelReservoir.fuelCount <= 100)
-        {
-            if (_alertSound)
+        if (!tutorial) { 
+            if (fuelChange >= 10)
             {
-				//AudioSource.PlayClipAtPoint(soundEffects[1], Camera.main.transform.position, 0.4f);
-                _alertSound = false;
-				AudioManager.instance.Play ("lowFuel");
+                _alertSound = true;
+                fuelChange = 0;
             }
-                
-        }
-		if (_fuelReservoir.fuelCount <= 0)
-		{
-            //Calling destroyed by blackhole for now
-            if (!_dyingCountdown)
+            // Constant value is our max velocity magnitude it can be changed from here 
+            //if (_rigidBody.velocity.magnitude > maxVelocity)
+            //{
+            //    _rigidBody.velocity = _rigidBody.velocity.normalized * maxVelocity;
+            //}
+            if (_fuelReservoir.fuelCount <= 100)
             {
-                _runningCoroutine = StartCoroutine(charSleep());
-				AudioManager.instance.Play ("deathCountdown");
-				EventManager.TriggerEvent(EventManager.Events.DEATH_COUNTDOWN);
-            }
+                if (_alertSound)
+                {
+                    //AudioSource.PlayClipAtPoint(soundEffects[1], Camera.main.transform.position, 0.4f);
+                    _alertSound = false;
+                    AudioManager.instance.Play("lowFuel");
+                }
 
-			//fuelDepletedText.text = "You are out of Fuel!";
-			//fuelDepletedText.color = Color.red;
-		}
-        else
-        {
-            if (_dyingCountdown)
+            }
+            if (_fuelReservoir.fuelCount <= 0)
             {
-                _dyingCountdown = false;
-				AudioManager.instance.Play ("stopDeathCountdown");
-				EventManager.TriggerEvent(EventManager.Events.STOP_DEATH_COUNTDOWN);
-                StopCoroutine(_runningCoroutine);
+                //Calling destroyed by blackhole for now
+                if (!_dyingCountdown)
+                {
+                    _runningCoroutine = StartCoroutine(charSleep());
+                    AudioManager.instance.Play("deathCountdown");
+                    EventManager.TriggerEvent(EventManager.Events.DEATH_COUNTDOWN);
+                }
+
+                //fuelDepletedText.text = "You are out of Fuel!";
+                //fuelDepletedText.color = Color.red;
+            }
+            else
+            {
+                if (_dyingCountdown)
+                {
+                    _dyingCountdown = false;
+                    AudioManager.instance.Play("stopDeathCountdown");
+                    EventManager.TriggerEvent(EventManager.Events.STOP_DEATH_COUNTDOWN);
+                    StopCoroutine(_runningCoroutine);
+                }
             }
         }
 	}
