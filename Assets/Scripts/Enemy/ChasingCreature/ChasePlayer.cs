@@ -5,9 +5,13 @@ public class ChasePlayer : MonoBehaviour {
 
 	public float initialSpeed;
 	public float afterFirstChaseSpeed;
+	public Transform pedestalLocation;
+
+
+
 	private float _speed;
 	private Vector3 _targetPosition;
-	private bool follow = true;
+	private bool _follow = true;
 	private bool _prepare_to_follow = true;
 	void Start () 
 	{
@@ -18,7 +22,14 @@ public class ChasePlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (follow)
+
+		if (CharacterCloseToPedestal ())
+		{
+			Destroy (gameObject);
+		}
+
+
+		if (_follow)
 		{
 			float step = initialSpeed * Time.deltaTime;
 			_targetPosition = new Vector3 (Character.current.transform.position.x - 1.0f, transform.position.y, Character.current.transform.position.z);
@@ -27,7 +38,7 @@ public class ChasePlayer : MonoBehaviour {
 			if (VeryCloseOnXZ())
 			{
 				GetComponent<AreaAttack> ().Attack ();
-				follow = false;
+				_follow = false;
 				_prepare_to_follow = true;
 			}
 		}
@@ -63,6 +74,18 @@ public class ChasePlayer : MonoBehaviour {
 		transform.position = new Vector3 (transform.position.x - Random.Range (120, 150), transform.position.y, transform.position.z - Random.Range (120, 150));
 		AudioManager.instance.Play ("evilLaugh");
 		_speed = afterFirstChaseSpeed;
-		follow = true;
+		_follow = true;
+	}
+
+	bool CharacterCloseToPedestal()
+	{
+		Vector2 characterXZ = new Vector2 (Character.current.transform.position.x, Character.current.transform.position.z);
+		Vector2 pedestalXZ = new Vector2 (pedestalLocation.position.x, pedestalLocation.position.z);
+		if (Vector2.Distance (characterXZ, pedestalXZ) <= 1.5f)
+		{
+			return true;
+		}
+		return false;
+
 	}
 }
