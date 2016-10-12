@@ -49,7 +49,7 @@ public class LevelManager : MonoBehaviour {
 			Button btnComponent = btn.GetComponent<Button> ();
 			btnComponent.interactable = levelList [i].isInteractable;
 			string sceneFileName = levelList [i].sceneFileName;
-			btnComponent.onClick.AddListener(delegate{loadLevel(sceneFileName);});
+			btnComponent.onClick.AddListener(()=>loadLevel(sceneFileName));
 		}
 
 		SaveAll ();
