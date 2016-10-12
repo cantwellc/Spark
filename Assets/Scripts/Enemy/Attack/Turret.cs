@@ -148,6 +148,10 @@ public class Turret : MonoBehaviour {
 						ShootForward();
 				}
 			}
+        } 
+        else
+        {
+            GetComponent<Laser>().stopLaser();
         }
 	}
 
@@ -195,13 +199,20 @@ public class Turret : MonoBehaviour {
             _reloadTimeRemain = bulletReloadTime;
         }
         if (_reloadTimeRemain > 0) return;
-        GameObject bulletInstance = Instantiate(_bulletPrefab, bulletSpawnPoint.position, transform.rotation) as GameObject;
-        bulletInstance.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
-        Rigidbody bulletRb = bulletInstance.GetComponent<Rigidbody>();
-        bulletRb.velocity = bulletRb.transform.forward * bulletSpeed;
-		bulletInstance.transform.localScale = new Vector3 (bulletScale, bulletScale,bulletScale);
-        Destroy(bulletInstance, bulletExistTime);
-        _fireCooldown = fireIntervalInSeconds;
+        if(BulletType.Laser == bulletType)
+        {
+            GetComponent<Laser>().activateLaser();
+        }
+        else
+        {
+            GameObject bulletInstance = Instantiate(_bulletPrefab, bulletSpawnPoint.position, transform.rotation) as GameObject;
+            bulletInstance.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+            Rigidbody bulletRb = bulletInstance.GetComponent<Rigidbody>();
+            bulletRb.velocity = bulletRb.transform.forward * bulletSpeed;
+            bulletInstance.transform.localScale = new Vector3(bulletScale, bulletScale, bulletScale);
+            Destroy(bulletInstance, bulletExistTime);
+            _fireCooldown = fireIntervalInSeconds;
+        }
         _bulletRemain--;
     }
 
