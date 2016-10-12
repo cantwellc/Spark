@@ -45,16 +45,24 @@ public class PlayerDataPanelControl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	    if(_fuelReservior != null)
-        {
-            _maxFuelAmt = (int)_fuelReservior.maxFuelCount;
-            _currentFuelAmt = (int)_fuelReservior.fuelCount;
-        }
+		if (_fuelReservior != null)
+		{
+			_maxFuelAmt = (int)_fuelReservior.maxFuelCount;
+			_currentFuelAmt = (int)_fuelReservior.fuelCount;
+		} 
+		else
+		{
+			TryGetFuelReservior ();
+		}
 
         fuelIndicator.text = "Fuel: " + _currentFuelAmt + "/" + _maxFuelAmt;
 		if (_keyCharge != null)
 		{
 			keyChargeIndicator.text = "Key Found : " + _keyCharge.GetChargeStatus ();
+		} 
+		else
+		{
+			TryGetFuelReservior ();
 		}
     }
 
@@ -64,6 +72,7 @@ public class PlayerDataPanelControl : MonoBehaviour {
         {
             TryGetFuelReservior();
         }
+		TryGetFuelReservior();
     }
 
     void TryGetFuelReservior()

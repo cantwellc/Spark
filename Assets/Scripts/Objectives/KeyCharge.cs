@@ -65,6 +65,10 @@ public class KeyCharge : MonoBehaviour {
 		{
 			return foundKeyCount.ToString () + " / " + (_maxKeyChargeForLevel / 50).ToString ();
 		}
+		if (_totalCharge == 0 && _maxKeyChargeForLevel == 0)
+		{
+			return "1/1";
+		}
 		return "0" + " / " + (_maxKeyChargeForLevel / 50).ToString ();
 	}
 	
