@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class KeyCharge : MonoBehaviour {
 
 	public List<Renderer> keyLightRenderers;
-	private float maxKeyChargeForLevel;
-	private float neededKeyChargeForLevel;
+	private float _maxKeyChargeForLevel;
+	private float _neededKeyChargeForLevel;
 	private float _lightCount;
 	public float _totalCharge;
 	private float _fullSingleLightCharge;
@@ -42,20 +42,30 @@ public class KeyCharge : MonoBehaviour {
 	{
 
 		GameObject levelSpecificValues = GameObject.Find ("LevelSpecificValues");
-		neededKeyChargeForLevel = levelSpecificValues.GetComponent<LevelSpecificValues> ().neededKeyChargeForLevel;
-		maxKeyChargeForLevel = levelSpecificValues.GetComponent<LevelSpecificValues> ().maxKeyChargeForLevel;
+		_neededKeyChargeForLevel = levelSpecificValues.GetComponent<LevelSpecificValues> ().neededKeyChargeForLevel;
+		_maxKeyChargeForLevel = levelSpecificValues.GetComponent<LevelSpecificValues> ().maxKeyChargeForLevel;
 		_totalCharge = 0;
-		_fullSingleLightCharge = maxKeyChargeForLevel / keyLightRenderers.Count;
+		_fullSingleLightCharge = _maxKeyChargeForLevel / keyLightRenderers.Count;
 		UpdateKeyLights ();
 	}
 
 	public bool ChargedEnoughForPedestal()
 	{
-		if (_totalCharge >= neededKeyChargeForLevel)
+		if (_totalCharge >= _neededKeyChargeForLevel)
 		{
 			return true;
 		}
 		return false;
+	}
+	public string GetChargeStatus()
+	{
+		
+		int foundKeyCount = Mathf.CeilToInt (_totalCharge/50);
+		if (_totalCharge != 0)
+		{
+			return foundKeyCount.ToString () + " / " + (_maxKeyChargeForLevel / 50).ToString ();
+		}
+		return "0" + " / " + (_maxKeyChargeForLevel / 50).ToString ();
 	}
 	
 

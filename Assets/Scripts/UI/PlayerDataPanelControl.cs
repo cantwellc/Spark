@@ -6,9 +6,10 @@ using System.Collections;
 public class PlayerDataPanelControl : MonoBehaviour {
 
     public Text fuelIndicator;
+	public Text keyChargeIndicator;
     public GameObject playerDataPanel;
-
     private FuelReservoir _fuelReservior;
+	private KeyCharge _keyCharge;
     private int _maxFuelAmt;
     private int _currentFuelAmt;
 
@@ -27,6 +28,7 @@ public class PlayerDataPanelControl : MonoBehaviour {
         }
 
         fuelIndicator.text = "Fuel: " + _currentFuelAmt + "/" + _maxFuelAmt;
+
     }
 
     void OnEnable()
@@ -50,6 +52,10 @@ public class PlayerDataPanelControl : MonoBehaviour {
         }
 
         fuelIndicator.text = "Fuel: " + _currentFuelAmt + "/" + _maxFuelAmt;
+		if (_keyCharge != null)
+		{
+			keyChargeIndicator.text = "Key Found : " + _keyCharge.GetChargeStatus ();
+		}
     }
 
     void newSceneLoaded(Scene newScene, LoadSceneMode mode)
@@ -70,6 +76,7 @@ public class PlayerDataPanelControl : MonoBehaviour {
         if (Character != null)
         {
             _fuelReservior = Character.GetComponent<FuelReservoir>();
+			_keyCharge = GameObject.FindGameObjectWithTag ("Keyring").GetComponent<KeyCharge> ();
         }
     }
 
