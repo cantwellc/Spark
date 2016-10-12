@@ -63,6 +63,10 @@ public class PlayerDataPanelControl : MonoBehaviour {
     void TryGetFuelReservior()
     {
         GameObject Character = GameObject.Find("Character");
+        if(Character == null)
+        {
+            Character = GameObject.Find("Character(Clone)");
+        }
         if (Character != null)
         {
             _fuelReservior = Character.GetComponent<FuelReservoir>();
