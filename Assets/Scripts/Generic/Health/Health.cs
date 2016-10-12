@@ -8,8 +8,10 @@ public class Health : MonoBehaviour
 	public UnityEvent onDeath;
 	public UnityEvent onTakeDamage;
 
+
     [SerializeField]
     private float _maxHealth;
+	private bool _alive = true;
 	public float MaxHealth
     {
         get
@@ -39,7 +41,7 @@ public class Health : MonoBehaviour
 		_currentHealth -= amount;
 		onTakeDamage.Invoke();
 
-        if (_currentHealth <= 0)
+		if (_currentHealth <= 0 && _alive)
         {
             Dead();
         }
@@ -49,6 +51,7 @@ public class Health : MonoBehaviour
 	{
 		onDeath.Invoke ();
 		gameObject.SetActive (false);
+		_alive = false;
 		Destroy (gameObject,2.0f);
 	}
 

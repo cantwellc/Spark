@@ -28,7 +28,6 @@ public class DropKeyCharger : MonoBehaviour {
         else
         {
             GameObject k = Instantiate(fuelContainer, transform.position, transform.rotation) as GameObject;
-            k.GetComponent<OnKeyChargerPickUp>().SetChargeAmount(chargeAmount);
             dropKey = false;
         }
     }

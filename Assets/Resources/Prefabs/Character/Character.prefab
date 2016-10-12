@@ -170,6 +170,7 @@ GameObject:
   - 114: {fileID: 114000012435905306}
   - 114: {fileID: 114000013466356506}
   - 114: {fileID: 114000010997286956}
+  - 114: {fileID: 114000012818261270}
   m_Layer: 8
   m_Name: Character
   m_TagString: Character
@@ -868,7 +869,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010904683788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.2331114, y: 1, z: -81.15}
+  m_LocalPosition: {x: -5.84, y: 1, z: -85.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1649,7 +1650,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010904683788}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68d183259a50a2f43b1c85fda9e2c4b5, type: 3}
   m_Name: 
@@ -1670,6 +1671,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+  constantDrag: 0
 --- !u!114 &114000011023470054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1734,6 +1736,7 @@ MonoBehaviour:
   fuelCountText: {fileID: 0}
   fuelChange: 0
   maxVelocity: 12
+  tutorial: 0
 --- !u!114 &114000011151678032
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2003,6 +2006,17 @@ MonoBehaviour:
   fillImage: {fileID: 114000012404486948}
   fireBehavior: {fileID: 114000013037804798}
   _charging: 0
+--- !u!114 &114000012818261270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010904683788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbac86da854c78f49a3d64f9027093d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012948408770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2179,7 +2193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxFuelCount: 1000
-  fuelCount: 500
+  fuelCount: 800
   fuelUseAmountForType: 0100000001000000
 --- !u!114 &114000013466356506
 MonoBehaviour:
@@ -2287,7 +2301,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  maxHealth: 0
+  _maxHealth: 0
   _currentHealth: 0
 --- !u!114 &114000014194077996
 MonoBehaviour:
@@ -2416,10 +2430,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1.24
-  m_Height: 4
+  m_Radius: 0.96
+  m_Height: 2.46
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.7}
+  m_Center: {x: 0, y: 0, z: 0.29}
 --- !u!198 &198000010265133268
 ParticleSystem:
   m_ObjectHideFlags: 1

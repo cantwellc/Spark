@@ -24,7 +24,8 @@ GameObject:
   - 23: {fileID: 23000012570388078}
   - 114: {fileID: 114000012813592416}
   - 114: {fileID: 114000010738961784}
-  - 114: {fileID: 114000010762650228}
+  - 114: {fileID: 114000012686096266}
+  - 114: {fileID: 114000012205852262}
   m_Layer: 0
   m_Name: IncreaseDragWall
   m_TagString: Untagged
@@ -38,10 +39,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011659688284}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.94, y: 35.061604, z: 0.41}
-  m_LocalScale: {x: 10.124999, y: 4.3554997, z: 0.28000012}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: -138.8, y: 1.5, z: -1.48}
+  m_LocalScale: {x: 3.59, y: 6.32, z: 0.28000012}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -105,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockPosition: 1
---- !u!114 &114000010762650228
+--- !u!114 &114000012205852262
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -113,9 +114,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000011659688284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ef352d2c8e6c634aa71214046a60fa6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fdbf4a7a7182426f9da1b499d8a50a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 3
+  direction: 0
+--- !u!114 &114000012686096266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011659688284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6dbffe59da7041b587eeb7f21a6a41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dragAmount: 0.1
 --- !u!114 &114000012813592416
 MonoBehaviour:
   m_ObjectHideFlags: 1

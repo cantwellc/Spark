@@ -3531,7 +3531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossTransform: {fileID: 778736834}
-  fuel: {fileID: 1000010860689028, guid: d6a86e2bbc40645d987a9905b9d6d80a, type: 2}
+  fuel: {fileID: 1000010594983242, guid: b80015062eb32fb498214f402147ac43, type: 2}
   bossHealth: {fileID: 778736838}
   percentageIntervalToDropFuel: 10
 --- !u!114 &778736841
@@ -3567,6 +3567,19 @@ MonoBehaviour:
   fuelContainer: {fileID: 0}
   chargeAmount: 50
   dropKey: 1
+--- !u!114 &778736844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 778736833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 323ffb0c5a20f824d9ffe62ba25e2140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armorType: 3
+  damageReduction: 0.1
 --- !u!1001 &787434764
 Prefab:
   m_ObjectHideFlags: 0
