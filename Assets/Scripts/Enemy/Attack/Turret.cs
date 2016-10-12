@@ -16,6 +16,7 @@ public class Turret : MonoBehaviour {
     public enum FiringType
     {
         Tracking,
+        FindEnemyTracking,
         Spiral,
         AlternatingFire,
 		Straight
@@ -91,7 +92,7 @@ public class Turret : MonoBehaviour {
             if (_reloadTimeRemain > 0)
                 _reloadTimeRemain -= Time.deltaTime;
             _targetTransform = Character.current.transform;
-            if (FiringType.Tracking == firingType)
+            if (FiringType.Tracking == firingType || FiringType.FindEnemyTracking == firingType)
             {
                 //Recommended turn speed: 60
                 Vector3 dir = _targetTransform.position - transform.position;
@@ -151,7 +152,12 @@ public class Turret : MonoBehaviour {
         } 
         else
         {
-            GetComponent<Laser>().stopLaser();
+            if (BulletType.Laser == bulletType)
+                GetComponent<Laser>().stopLaser();
+            if (FiringType.FindEnemyTracking == firingType)
+            {
+
+            }
         }
 	}
 
