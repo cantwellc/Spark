@@ -9,7 +9,10 @@ public class outArrows : MonoBehaviour {
 
 	void Start()
 	{
-		arrows.SetActive (false);
+        if (arrows != null)
+        {
+            arrows.SetActive(false);
+        }
 	}
 
 	void Flash()

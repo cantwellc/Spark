@@ -19,6 +19,8 @@ public class EventManager : MonoBehaviour {
         B_KEY,
         R_KEY,
         ESC_KEY,
+        TAB_KEY_DOWN,
+        TAB_KEY_UP,
 
         // UI Button clicks
         MAIN_MENU_START,
