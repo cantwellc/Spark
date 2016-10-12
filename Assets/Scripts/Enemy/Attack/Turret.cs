@@ -16,6 +16,7 @@ public class Turret : MonoBehaviour {
     public enum FiringType
     {
         Tracking,
+        FindEnemyTracking,
         Spiral,
         AlternatingFire,
 		Straight
@@ -91,7 +92,7 @@ public class Turret : MonoBehaviour {
             if (_reloadTimeRemain > 0)
                 _reloadTimeRemain -= Time.deltaTime;
             _targetTransform = Character.current.transform;
-            if (FiringType.Tracking == firingType)
+            if (FiringType.Tracking == firingType || FiringType.FindEnemyTracking == firingType)
             {
                 //Recommended turn speed: 60
                 Vector3 dir = _targetTransform.position - transform.position;
@@ -148,6 +149,15 @@ public class Turret : MonoBehaviour {
 						ShootForward();
 				}
 			}
+        } 
+        else
+        {
+            if (BulletType.Laser == bulletType)
+                GetComponent<Laser>().stopLaser();
+            if (FiringType.FindEnemyTracking == firingType)
+            {
+
+            }
         }
 	}
 
@@ -195,13 +205,20 @@ public class Turret : MonoBehaviour {
             _reloadTimeRemain = bulletReloadTime;
         }
         if (_reloadTimeRemain > 0) return;
-        GameObject bulletInstance = Instantiate(_bulletPrefab, bulletSpawnPoint.position, transform.rotation) as GameObject;
-        bulletInstance.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
-        Rigidbody bulletRb = bulletInstance.GetComponent<Rigidbody>();
-        bulletRb.velocity = bulletRb.transform.forward * bulletSpeed;
-		bulletInstance.transform.localScale = new Vector3 (bulletScale, bulletScale,bulletScale);
-        Destroy(bulletInstance, bulletExistTime);
-        _fireCooldown = fireIntervalInSeconds;
+        if(BulletType.Laser == bulletType)
+        {
+            GetComponent<Laser>().activateLaser();
+        }
+        else
+        {
+            GameObject bulletInstance = Instantiate(_bulletPrefab, bulletSpawnPoint.position, transform.rotation) as GameObject;
+            bulletInstance.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+            Rigidbody bulletRb = bulletInstance.GetComponent<Rigidbody>();
+            bulletRb.velocity = bulletRb.transform.forward * bulletSpeed;
+            bulletInstance.transform.localScale = new Vector3(bulletScale, bulletScale, bulletScale);
+            Destroy(bulletInstance, bulletExistTime);
+            _fireCooldown = fireIntervalInSeconds;
+        }
         _bulletRemain--;
     }
 

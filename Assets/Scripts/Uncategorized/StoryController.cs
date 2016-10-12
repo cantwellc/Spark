@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 
 public class StoryController : MonoBehaviour {
-    public List<StoryFrame> frames;
+    public StoryFrame firstFrame;
 
 	// Use this for initialization
 	void Start () {
-        frames[0].StartFrame();
+        firstFrame.StartFrame();
 	}
 
 }

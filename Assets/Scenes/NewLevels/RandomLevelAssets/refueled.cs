@@ -12,7 +12,10 @@ public class refueled : MonoBehaviour {
 
 	void OnTriggerEnter()
     {
-        refSprite.SetActive(true);
-        Invoke("SetInactive",2.0f);
+        if (refSprite != null)
+        {
+            refSprite.SetActive(true);
+            Invoke("SetInactive", 2.0f);
+        }
     }
 }

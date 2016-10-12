@@ -19,7 +19,6 @@ public class GameManager : MonoBehaviour {
     public static GameManager current;
     public Transform characterBirthPoint;
 
-
     // private
 	private GAME_STATES _game_state;
     private bool _isPaused = false;
@@ -62,7 +61,7 @@ public class GameManager : MonoBehaviour {
         EventManager.StartListening(EventManager.Events.RESUME_GAME, OnResume);
     }
 
-    void Ondisable()
+    void OnDisable()
     {
         EventManager.StopListening(EventManager.Events.MAIN_MENU_START, StartGame);
         EventManager.StopListening(EventManager.Events.PLAYER_DEAD, PlayerDead);
@@ -126,6 +125,16 @@ public class GameManager : MonoBehaviour {
                     }
                 }
 
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
+                    EventManager.TriggerEvent(EventManager.Events.TAB_KEY_DOWN);
+                }
+
+                if (Input.GetKeyUp(KeyCode.Tab))
+                {
+                    EventManager.TriggerEvent(EventManager.Events.TAB_KEY_UP);
+                }
+
                 break;
 
             case GAME_STATES.PLAYER_DEAD:
@@ -161,7 +170,6 @@ public class GameManager : MonoBehaviour {
     void OnResume()
     {
         _game_state = GAME_STATES.PLAYING;
-        Time.timeScale = 1;
         _isPaused = false;
     }
 
