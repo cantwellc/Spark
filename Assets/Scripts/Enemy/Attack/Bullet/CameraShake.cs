@@ -42,12 +42,14 @@ public class CameraShake : MonoBehaviour
 			if (_shakeDuration > 0)
 			{
 				camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
-				GetComponent<CameraFollow> ().EnableShaking ();
+                var follow = GetComponent<CameraFollow>();
+                if(follow != null) follow.EnableShaking ();
 				_shakeDuration -= Time.deltaTime * decreaseFactor;
 			} 
 			else
 			{
-				GetComponent<CameraFollow> ().DisableShaking ();
+                var follow = GetComponent<CameraFollow>();
+                if (follow != null) follow.DisableShaking ();
 				_shaking = false;
 				_shakeDuration = shakeDuration;
 				camTransform.localPosition = originalPos;
