@@ -7,7 +7,10 @@ public class PlayerDataPanelControl : MonoBehaviour {
 
     public Text fuelIndicator;
 	public Text keyChargeIndicator;
+    public Text levelIndicator;
     public GameObject playerDataPanel;
+
+
     private FuelReservoir _fuelReservior;
 	private KeyCharge _keyCharge;
     private int _maxFuelAmt;
@@ -63,6 +66,10 @@ public class PlayerDataPanelControl : MonoBehaviour {
         if (_fuelReservior == null)
         {
             TryGetFuelReservior();
+        }
+        if (levelIndicator != null)
+        {
+            levelIndicator.text = "Level: " + newScene.buildIndex;
         }
     }
 
