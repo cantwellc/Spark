@@ -19,14 +19,14 @@ public class MovingBoxLv2 : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         tmr += Time.deltaTime;
-        if (target == 2)
+        if (target == 2 && target2 != null)
         {
             //Debug.Log("moving to 2");
             if (tmr >= 2.0f)
             { target = 1; tmr = 0.0f;  Debug.Log("now target is 1"); }
             transform.position = Vector3.SmoothDamp(transform.position, target2.transform.position, ref velocity, inTime);
         }
-        else if (target == 1)
+        else if (target == 1 && target1 != null)
         {
             //Debug.Log("moving to 1");
             if (tmr >= 2.0f)

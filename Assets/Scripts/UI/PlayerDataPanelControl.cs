@@ -15,6 +15,8 @@ public class PlayerDataPanelControl : MonoBehaviour {
 	private KeyCharge _keyCharge;
     private int _maxFuelAmt;
     private int _currentFuelAmt;
+    private int _levelNumber;
+    private int _previousSceneIndex;
 
     void Awake()
     {
@@ -30,6 +32,8 @@ public class PlayerDataPanelControl : MonoBehaviour {
             _currentFuelAmt = (int)_fuelReservior.fuelCount;
         }
 
+        _levelNumber = 0;
+        _previousSceneIndex = 0;
         fuelIndicator.text = "Fuel: " + _currentFuelAmt + "/" + _maxFuelAmt;
 
     }
@@ -75,10 +79,18 @@ public class PlayerDataPanelControl : MonoBehaviour {
         {
             TryGetFuelReservior();
         }
+
+        if(_previousSceneIndex != newScene.buildIndex)
+        {
+            _levelNumber++;
+            _previousSceneIndex++;
+        }
+
         if (levelIndicator != null)
         {
-            levelIndicator.text = "Level: " + newScene.buildIndex;
+            levelIndicator.text = "Level: " + _levelNumber;
         }
+
     }
 
     void TryGetFuelReservior()

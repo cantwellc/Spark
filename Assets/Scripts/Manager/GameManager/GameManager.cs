@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour {
     {
         _game_state = GAME_STATES.MAIN_MENU;
         current = this;
+        SceneManager.sceneLoaded += newSceneLoaded;
     }
 
     void OnEnable()
@@ -66,11 +67,6 @@ public class GameManager : MonoBehaviour {
         EventManager.StopListening(EventManager.Events.MAIN_MENU_START, StartGame);
         EventManager.StopListening(EventManager.Events.PLAYER_DEAD, PlayerDead);
         EventManager.StopListening(EventManager.Events.RESUME_GAME, OnResume);
-    }
-
-    void OnLevelWasLoaded()
-    {
-        
     }
 
     // Update is called once per frame
@@ -171,6 +167,18 @@ public class GameManager : MonoBehaviour {
     {
         _game_state = GAME_STATES.PLAYING;
         _isPaused = false;
+    }
+
+    void newSceneLoaded(Scene newScene, LoadSceneMode mode)
+    {
+        if(newScene.buildIndex == 0)
+        {
+            _game_state = GAME_STATES.MAIN_MENU;
+        }
+        else
+        {
+            _game_state = GAME_STATES.PLAYING;
+        }
     }
 
 }
