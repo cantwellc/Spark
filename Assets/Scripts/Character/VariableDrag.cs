@@ -12,6 +12,7 @@ public class VariableDrag : MonoBehaviour {
     //public float maxVelocityThreshold;
     //public float maxDrag; // Anything above the maxVelocityThreshold will have maxDrag
     public AnimationCurve dragByVelocityCurve;
+	public float constantDrag = 0.0f;
 
     private Rigidbody _rigidBody;
 
@@ -33,6 +34,6 @@ public class VariableDrag : MonoBehaviour {
         //    drag = dragScalingCurve.Evaluate(ratio) * (maxDrag - minDrag) + minDrag;
         //}
 
-        _rigidBody.drag = drag;
+		_rigidBody.drag = drag+ constantDrag;
     }
 }

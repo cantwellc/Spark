@@ -25,6 +25,7 @@ GameObject:
   - 114: {fileID: 114000011656980416}
   - 114: {fileID: 114000012210994828}
   - 114: {fileID: 114000011838138972}
+  - 114: {fileID: 114000012657149318}
   m_Layer: 0
   m_Name: FuelSuckingWall
   m_TagString: FuelSuckingWall
@@ -38,10 +39,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010077995186}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5938883, y: 0.9902499, z: -81.465744}
-  m_LocalScale: {x: 10.124999, y: 4.3554997, z: 0.28000012}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -47.3, y: 1.24, z: -6.1}
+  m_LocalScale: {x: 5.21, y: 4.3554997, z: 0.28000012}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -58,7 +59,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7c9e0466672f89d44b5444895e3614cd, type: 2}
+  - {fileID: 2100000, guid: 08c6000a8d898471c9a011d5b6006a0c, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -104,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc963ab503842446b1c1b10c5b5fd84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  suckAmount: 250
 --- !u!114 &114000011838138972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,3 +129,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d54e808428300245a2c23c354395f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114000012657149318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010077995186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fdbf4a7a7182426f9da1b499d8a50a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  direction: 1

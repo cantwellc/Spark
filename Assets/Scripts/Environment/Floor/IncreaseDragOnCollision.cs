@@ -4,8 +4,12 @@ using System.Collections;
 public class IncreaseDragOnCollision : MonoBehaviour {
 
 	public float dragAmount;
+	private VariableDrag _variableDrag;
+
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
+		_variableDrag = Character.current.GetComponent<VariableDrag> ();	
 	
 	}
 	

@@ -6,11 +6,16 @@ using System.Collections;
 public class PlayerDataPanelControl : MonoBehaviour {
 
     public Text fuelIndicator;
+	public Text keyChargeIndicator;
+    public Text levelIndicator;
     public GameObject playerDataPanel;
 
+
     private FuelReservoir _fuelReservior;
+	private KeyCharge _keyCharge;
     private int _maxFuelAmt;
     private int _currentFuelAmt;
+    private int _levelNumber;
 
     void Awake()
     {
@@ -19,14 +24,16 @@ public class PlayerDataPanelControl : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        TryGetFuelReservior();
+        TryGetOtherGameObject();
         if (_fuelReservior != null)
         {
             _maxFuelAmt = (int)_fuelReservior.maxFuelCount;
             _currentFuelAmt = (int)_fuelReservior.fuelCount;
         }
 
+        _levelNumber = 0;
         fuelIndicator.text = "Fuel: " + _currentFuelAmt + "/" + _maxFuelAmt;
+
     }
 
     void OnEnable()
@@ -43,29 +50,54 @@ public class PlayerDataPanelControl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-	    if(_fuelReservior != null)
-        {
-            _maxFuelAmt = (int)_fuelReservior.maxFuelCount;
-            _currentFuelAmt = (int)_fuelReservior.fuelCount;
-        }
+		if (_fuelReservior != null)
+		{
+			_maxFuelAmt = (int)_fuelReservior.maxFuelCount;
+			_currentFuelAmt = (int)_fuelReservior.fuelCount;
+		} 
+		else
+		{
+            TryGetOtherGameObject();
+		}
 
         fuelIndicator.text = "Fuel: " + _currentFuelAmt + "/" + _maxFuelAmt;
+		if (_keyCharge != null)
+		{
+			keyChargeIndicator.text = "Key Found : " + _keyCharge.GetChargeStatus ();
+		} 
+		else
+		{
+            TryGetOtherGameObject();
+		}
     }
 
     void newSceneLoaded(Scene newScene, LoadSceneMode mode)
     {
         if (_fuelReservior == null)
         {
-            TryGetFuelReservior();
+            TryGetOtherGameObject();
         }
+
+        if(_levelNumber != newScene.buildIndex)
+        {
+            _levelNumber++;
+        }
+
+        if (levelIndicator != null)
+        {
+            levelIndicator.text = "Level: " + _levelNumber;
+        }
+
     }
 
-    void TryGetFuelReservior()
+    void TryGetOtherGameObject()
     {
-        GameObject Character = GameObject.Find("Character");
+		GameObject Character = GameObject.FindGameObjectWithTag("Character");
+      
         if (Character != null)
         {
             _fuelReservior = Character.GetComponent<FuelReservoir>();
+			_keyCharge = GameObject.FindGameObjectWithTag ("Keyring").GetComponent<KeyCharge> ();
         }
     }
 

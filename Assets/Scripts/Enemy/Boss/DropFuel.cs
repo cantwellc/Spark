@@ -34,7 +34,6 @@ public class DropFuel : MonoBehaviour {
 			Vector3 fuelPosition = new Vector3 (x, 1.0f, z);
 			_fuelInstance = Instantiate (fuel, fuelPosition, transform.rotation) as GameObject;
 			_fuelInstance.GetComponent<Fuel> ().fuelAmmount = Random.Range (250, 350);
-			_fuelInstance.GetComponent<Fuel> ().ScaleFuel ();
 			_percentageToDropHealth -= percentageIntervalToDropFuel;
 		}
 	}
