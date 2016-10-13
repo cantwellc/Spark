@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Character.current == null)
+        /*if (Character.current == null)
         {
             if (Checkpoint.currentData != null)
             {
@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour {
                 character.transform.position = Checkpoint.currentData.currentPos;
                 character.GetComponent<FuelReservoir>().fuelCount = Checkpoint.currentData.currentStartFuel;
             }
-        }
+        }*/
         switch (_game_state)
         {
 
