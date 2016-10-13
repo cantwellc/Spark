@@ -16,7 +16,6 @@ public class PlayerDataPanelControl : MonoBehaviour {
     private int _maxFuelAmt;
     private int _currentFuelAmt;
     private int _levelNumber;
-    private int _previousSceneIndex;
 
     void Awake()
     {
@@ -25,7 +24,7 @@ public class PlayerDataPanelControl : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        TryGetFuelReservior();
+        TryGetOtherGameObject();
         if (_fuelReservior != null)
         {
             _maxFuelAmt = (int)_fuelReservior.maxFuelCount;
@@ -33,7 +32,6 @@ public class PlayerDataPanelControl : MonoBehaviour {
         }
 
         _levelNumber = 0;
-        _previousSceneIndex = 0;
         fuelIndicator.text = "Fuel: " + _currentFuelAmt + "/" + _maxFuelAmt;
 
     }
@@ -59,7 +57,7 @@ public class PlayerDataPanelControl : MonoBehaviour {
 		} 
 		else
 		{
-			TryGetFuelReservior ();
+            TryGetOtherGameObject();
 		}
 
         fuelIndicator.text = "Fuel: " + _currentFuelAmt + "/" + _maxFuelAmt;
@@ -69,7 +67,7 @@ public class PlayerDataPanelControl : MonoBehaviour {
 		} 
 		else
 		{
-			TryGetFuelReservior ();
+            TryGetOtherGameObject();
 		}
     }
 
@@ -77,13 +75,12 @@ public class PlayerDataPanelControl : MonoBehaviour {
     {
         if (_fuelReservior == null)
         {
-            TryGetFuelReservior();
+            TryGetOtherGameObject();
         }
 
-        if(_previousSceneIndex != newScene.buildIndex)
+        if(_levelNumber != newScene.buildIndex)
         {
             _levelNumber++;
-            _previousSceneIndex++;
         }
 
         if (levelIndicator != null)
@@ -93,7 +90,7 @@ public class PlayerDataPanelControl : MonoBehaviour {
 
     }
 
-    void TryGetFuelReservior()
+    void TryGetOtherGameObject()
     {
 		GameObject Character = GameObject.FindGameObjectWithTag("Character");
       
