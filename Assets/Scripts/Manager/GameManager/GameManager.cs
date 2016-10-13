@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour {
                 {
                     EventManager.TriggerEvent(EventManager.Events.R_KEY);
 					AudioManager.instance.DisableDeadCountDownSound ();
+                    StartGame();
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
                 }
