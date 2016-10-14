@@ -15,6 +15,7 @@ public class Crush : MonoBehaviour {
 	public bool startCrushing = false;
 	private Transform _topWall;
 	private Transform _bottomWall;
+    private float factor;
 
 
 
@@ -32,7 +33,8 @@ public class Crush : MonoBehaviour {
 				_bottomWall = t;
 			}
 		}
-	}
+        factor = _topWall.localPosition.z - _bottomWall.localPosition.z / 4;
+    }
 	
 	// Update is called once per frame
 	void Update () 
@@ -40,20 +42,20 @@ public class Crush : MonoBehaviour {
 		if (startCrushing)
 		{
 
-			if (crushingOptions == CrushingOptions.Both)
+			if (crushingOptions == CrushingOptions.Both && !TheWallsTouch())
 			{
-				_topWall.transform.localScale = new Vector3 (_topWall.localScale.x, _topWall.localScale.y, _topWall.localScale.z  + (-1 * Time.deltaTime * speed));
-				_bottomWall.transform.localScale = new Vector3 (_bottomWall.localScale.x, _bottomWall.localScale.y, _bottomWall.localScale.z  + (-1 * Time.deltaTime * speed)); 
+				_topWall.transform.localPosition = new Vector3 (_topWall.localPosition.x, _topWall.localPosition.y, _topWall.localPosition.z  + (-1 * Time.deltaTime * speed));
+				_bottomWall.transform.localPosition= new Vector3 (_bottomWall.localPosition.x, _bottomWall.localPosition.y, _bottomWall.localPosition.z  + (Time.deltaTime * speed)); 
 
 			} 
-			else if (crushingOptions == CrushingOptions.OnlyBottom)
+			else if (crushingOptions == CrushingOptions.OnlyBottom && !TheWallsTouch())
 			{
-				_bottomWall.transform.localScale = new Vector3 (_bottomWall.localScale.x, _bottomWall.localScale.y, _bottomWall.localScale.z  + (-1 * Time.deltaTime * speed)); 
+				_bottomWall.transform.localPosition = new Vector3 (_bottomWall.localPosition.x, _bottomWall.localPosition.y, _bottomWall.localPosition.z  + (Time.deltaTime * speed)); 
 
 			} 
-			else if (crushingOptions == CrushingOptions.OnlyTop)
+			else if (crushingOptions == CrushingOptions.OnlyTop && !TheWallsTouch())
 			{
-				_topWall.transform.localScale = new Vector3 (_topWall.localScale.x, _topWall.localScale.y, _topWall.localScale.z + (-1 * Time.deltaTime * speed));
+				_topWall.transform.localPosition = new Vector3 (_topWall.localPosition.x, _topWall.localPosition.y, _topWall.localPosition.z + (-1 * Time.deltaTime * speed));
 
 			}
 		}
@@ -66,4 +68,12 @@ public class Crush : MonoBehaviour {
 	{
 		startCrushing = false;
 	}
+
+    bool TheWallsTouch()
+    {
+        if (_topWall.localPosition.z <= _bottomWall.localPosition.z + factor)
+        { return true; Debug.Log("the walls touch !!"); }
+        else
+            return false;
+    }
 }
