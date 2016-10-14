@@ -19,6 +19,11 @@ public class DoorOpen : MonoBehaviour {
         move = true;
     }
 
+    public void OpenDoor()
+    {
+        move = true;
+    }
+
     void Update()
     {
         if (move)

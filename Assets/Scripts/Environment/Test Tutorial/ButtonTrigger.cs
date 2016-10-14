@@ -39,6 +39,7 @@ public class ButtonTrigger : MonoBehaviour {
     void AllButtonsPressed()
     {
         Debug.Log("all buttons are pressed!");
-        activate.SetActive(false);
+        //activate.SetActive(false);
+        GetComponent<DoorOpen>().OpenDoor();
     }
 }
