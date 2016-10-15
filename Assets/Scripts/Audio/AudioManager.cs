@@ -105,7 +105,7 @@ public class AudioManager : MonoBehaviour
 		if (audioEvent == "plasmaFire") 
 		{
 			source.volume = 0.3f;
-			source.clip = clips ["laser_raw3"];
+			source.clip = clips ["plasmaFire"];
 			source.outputAudioMixerGroup = mixerGroups ["PrimaryFire"];
 			soundObject.SetActive (true);
 		}
@@ -113,7 +113,7 @@ public class AudioManager : MonoBehaviour
 		if (audioEvent == "burstCharge") 
 		{
 			snapshots ["SFXDefault"].TransitionTo (0.0f);
-			source.clip = clips ["chargeUp_raw4"];
+			source.clip = clips ["burstCharge"];
 			source.outputAudioMixerGroup = mixerGroups ["SecondaryCharge"];
 			soundObject.SetActive (true);
 		}
@@ -121,14 +121,14 @@ public class AudioManager : MonoBehaviour
 		if (audioEvent == "burstFire") 
 		{
 			snapshots ["ChargeOff"].TransitionTo (0.5f);
-			source.clip = clips ["plasmaBurst_raw1"];
+			source.clip = clips ["plasmaBurst"];
 			source.outputAudioMixerGroup = mixerGroups ["SecondaryFire"];
 			soundObject.SetActive (true);
 		}
 
 		if (audioEvent == "cantFire") 
 		{
-			source.clip = clips ["attackFail_raw1"];
+			source.clip = clips ["attackFail"];
 			source.outputAudioMixerGroup = mixerGroups ["PrimaryFire"];
 			soundObject.SetActive (true);
 		}
@@ -138,7 +138,7 @@ public class AudioManager : MonoBehaviour
 			if (canAlarm) 
 			{
 				canAlarm = false;
-				source.clip = clips ["lowFuel_raw1"];
+				source.clip = clips ["lowFuel"];
 				source.outputAudioMixerGroup = mixerGroups ["Alarm"];
 				soundObject.SetActive (true);
 				StartCoroutine (Wait (audioEvent, source.clip.length));
@@ -147,64 +147,67 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "refuel") 
 		{
-			source.clip = clips ["refuel_raw1"];
+			source.clip = clips ["refuel"];
 			source.outputAudioMixerGroup = mixerGroups ["Refuel"];
 			soundObject.SetActive (true);
 		}
 
 		if (audioEvent == "deathCountdown") 
 		{
-			source.clip = clips ["Alert_Low_On_Fuel"];
+			source.clip = clips ["destructCountdown1"];
 			source.outputAudioMixerGroup = mixerGroups ["Alarm"];
-			source.loop = true;
-			//soundObject.GetComponent<DeactivateObject> ().canDeactivate = false;
 			soundObject.SetActive (true);
-			alarm = soundObject;
+			//alarm = soundObject;
 		}
 
 		if (audioEvent == "death") 
 		{
-			source.clip = clips ["explosion_raw6"];
+			source.clip = clips ["explosionPlayer" + (int)Random.Range(1,3)];
 			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
-			Play ("stopDeathCountdown");
+			//Play ("stopDeathCountdown");
 			soundObject.SetActive (true);
 		}
+
+		if (audioEvent == "enemyDeath") 
+		{
+			source.clip = clips ["explosionLg" + (int)Random.Range(1,3)];
+			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
+			soundObject.SetActive (true);
+		}
+
 		//Added
 		if (audioEvent == "takeDamage")
 		{
-			source.volume = 0.2f;
-			source.clip = clips ["take_damage_4"];
-			source.outputAudioMixerGroup = mixerGroups ["SFX"];
+			source.clip = clips ["takeDamage" + (int)Random.Range(1,3)];
+			source.outputAudioMixerGroup = mixerGroups ["TakeDamage"];
 			soundObject.SetActive (true);
 		}
+
 		if (audioEvent == "openPortal")
 		{
-			
-			source.clip = clips ["portal_sound"];
-			source.outputAudioMixerGroup = mixerGroups ["SFX"];
+			source.clip = clips ["openPortal"];
+			source.outputAudioMixerGroup = mixerGroups ["Portal"];
 			soundObject.SetActive (true);
 		}
+
 		if (audioEvent == "laser")
 		{
-			source.volume = 0.1f;
-			source.clip = clips ["laser_raw1"];
-			source.outputAudioMixerGroup = mixerGroups ["SFX"];
+			source.clip = clips ["leechDroneShot"];
+			source.outputAudioMixerGroup = mixerGroups ["EnemyFire"];
 			soundObject.SetActive (true);
 		}
 
 		if (audioEvent == "keycharge")
 		{
-			
-			source.clip = clips ["key_charge_effect"];
-			source.outputAudioMixerGroup = mixerGroups ["SFX"];
+			source.clip = clips ["keyCharge"];
+			source.outputAudioMixerGroup = mixerGroups ["KeyCharge"];
 			soundObject.SetActive (true);
 		}
 
 		if (audioEvent == "evilLaugh")
 		{
-
-			source.clip = clips ["Evil_laugh"];
-			source.outputAudioMixerGroup = mixerGroups ["SFX"];
+			source.clip = clips ["evilLaugh" + (int)Random.Range(1,5)];
+			source.outputAudioMixerGroup = mixerGroups ["Laugh"];
 			soundObject.SetActive (true);
 		}
 	}
@@ -216,15 +219,17 @@ public class AudioManager : MonoBehaviour
 		if (audioEvent == "lowFuel")
 			canAlarm = true;
 	}
+
 	public void overrideBGMusic(string musicName)
 	{
 		AudioSource audioSource = GetComponent<AudioSource> ();
 		audioSource.clip = clips [musicName];
 		audioSource.Play ();
 	}
+
 	public void DisableDeadCountDownSound()
 	{
-		GetComponent<AudioSource> ().loop = false;
+		//GetComponent<AudioSource> ().loop = false;
 	}
 
 }

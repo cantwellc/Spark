@@ -254,4 +254,9 @@ public class Turret : MonoBehaviour {
     {
         _startShooting = false;
     }
+
+	public void TurretSound (string audioEvent)
+	{
+		AudioManager.instance.Play (audioEvent);
+	}
 }
