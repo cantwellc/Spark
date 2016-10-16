@@ -22,6 +22,7 @@ GameObject:
   - 33: {fileID: 33000010003043396}
   - 64: {fileID: 64000012673805722}
   - 23: {fileID: 23000012614315812}
+  - 114: {fileID: 114000010249459420}
   m_Layer: 0
   m_Name: RedLight
   m_TagString: Untagged
@@ -38,6 +39,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000014198497448}
   - 108: {fileID: 108000011210973114}
+  - 114: {fileID: 114000012997921948}
   m_Layer: 0
   m_Name: Point light
   m_TagString: Untagged
@@ -51,10 +53,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012155749598}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.82, y: 2.29, z: -50.61}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -10.09, y: 1.5, z: -0}
   m_LocalScale: {x: 2.049572, y: 0.7336455, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
   m_Children:
   - {fileID: 4000014198497448}
   m_Father: {fileID: 0}
@@ -65,10 +67,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012200401884}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.0030579786, y: 0.9827503, z: -0.16421337, w: -0.085009664}
+  m_LocalPosition: {x: 0.01, y: 0.71, z: 0.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 18.817001, y: 189.85199, z: 1.2880001}
   m_Children: []
   m_Father: {fileID: 4000012750791454}
   m_RootOrder: 0
@@ -130,9 +132,9 @@ Light:
   serializedVersion: 7
   m_Type: 2
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 0.6
-  m_Range: 20
-  m_SpotAngle: 30
+  m_Intensity: 0
+  m_Range: 7.3058286
+  m_SpotAngle: 107.45647
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -154,3 +156,34 @@ Light:
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114000010249459420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012155749598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be8ba2b35d21bb4fac1479d14e92eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pulseDuration: 2
+  emitFloor: 1
+  emitCeiling: 5
+  emitColor: {r: 1, g: 0, b: 0, a: 1}
+  _pulse: 0
+--- !u!114 &114000012997921948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012200401884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695fd304d338de8449a05c99af0dcfb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pulseDuration: 2
+  intensityFloor: 0.5
+  intensityCeiling: 6
+  _pulse: 0
