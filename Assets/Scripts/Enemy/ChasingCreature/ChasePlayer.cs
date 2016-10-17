@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class ChasePlayer : MonoBehaviour {
 
 	public float initialSpeed;
@@ -9,14 +9,19 @@ public class ChasePlayer : MonoBehaviour {
 
 
 
+
+
 	private float _speed;
 	private Vector3 _targetPosition;
 	private bool _follow = true;
 	private bool _prepare_to_follow = true;
+	private NavMeshAgent _navMeshAgent;
 	void Start () 
 	{
 
 		_speed = initialSpeed;
+		_navMeshAgent = GetComponent<NavMeshAgent> ();
+
 	}
 	
 	// Update is called once per frame
@@ -31,10 +36,12 @@ public class ChasePlayer : MonoBehaviour {
 
 		if (_follow)
 		{
+			
 			float step = initialSpeed * Time.deltaTime;
 			_targetPosition = new Vector3 (Character.current.transform.position.x - 1.0f, transform.position.y, Character.current.transform.position.z);
+			_navMeshAgent.SetDestination (_targetPosition);
 			transform.LookAt (Character.current.transform.position);
-			transform.position = Vector3.MoveTowards (transform.position, _targetPosition, step);
+			//transform.position = Vector3.MoveTowards (transform.position, _targetPosition, step);
 			if (VeryCloseOnXZ())
 			{
 				GetComponent<AreaAttack> ().Attack ();
@@ -61,7 +68,7 @@ public class ChasePlayer : MonoBehaviour {
 		Vector2 characterXZ = new Vector2 (Character.current.transform.position.x, Character.current.transform.position.z);
 		Vector2 currentXZ = new Vector2 (transform.position.x, transform.position.z);
 
-		if (Vector2.Distance (characterXZ, currentXZ) <=1.2)
+		if (Vector2.Distance (characterXZ, currentXZ) <=1.9)
 		{
 			return true;
 		}
