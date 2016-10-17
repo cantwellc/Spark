@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour {
 
                 Cursor.visible = true;
 
-                if(GameObject.Find("Character") != null)
+                /*if(GameObject.Find("Character") != null)
                 {
                     Destroy(GameObject.Find("Character"));
                 }
@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour {
                 if(GameObject.Find("Character(Clone)") != null)
                 {
                     Destroy(GameObject.Find("Character(Clone)"));
-                }
+                }*/
 
                 break;
         }
