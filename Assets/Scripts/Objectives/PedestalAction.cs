@@ -13,7 +13,7 @@ public class PedestalAction : MonoBehaviour {
 	{
 		onOpeningPortal.Invoke ();
 		startAction = true;
-		GetComponent<Renderer> ().material.color = Color.green;
+		GetComponentInChildren<Renderer> ().material.color = Color.green;
 		SpawnPortal ();
 
 	}
