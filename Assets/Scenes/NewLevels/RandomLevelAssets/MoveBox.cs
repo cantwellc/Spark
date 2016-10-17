@@ -12,7 +12,7 @@ public class MoveBox : MonoBehaviour {
     {
         if (box != null)
         {
-            targetPositon = box.transform.position - new Vector3(0.0f, 0.0f, 5.5f);
+            targetPositon = box.transform.position - new Vector3(0.0f, 0.0f, 5.9f);
         }
     }
 
