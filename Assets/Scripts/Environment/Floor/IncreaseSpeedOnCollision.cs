@@ -17,6 +17,7 @@ public class IncreaseSpeedOnCollision : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Character")
 		{
+            AudioManager.instance.Play("speedUpAura");
 			Vector3 speedForce = (_rigidBody.velocity.normalized * force) ;
 			_rigidBody.AddForce (speedForce, ForceMode.Force);
 		}

@@ -208,7 +208,14 @@ public class AudioManager : MonoBehaviour
             source.outputAudioMixerGroup = mixerGroups["SFX"];
             soundObject.SetActive(true);
         }
-
+        //For green floors speed up effect SFX
+        if (audioEvent == "speedUpAura")
+        {
+            source.volume = 0.5f;
+            source.clip = clips["chargeUp_raw2"];
+            source.outputAudioMixerGroup = mixerGroups["SFX"];
+            soundObject.SetActive(true);
+        }
 
         if (audioEvent == "evilLaugh")
 		{
