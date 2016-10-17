@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour {
         EventManager.StartListening(EventManager.Events.MAIN_MENU_START, StartGame);
         EventManager.StartListening(EventManager.Events.PLAYER_DEAD, PlayerDead);
         EventManager.StartListening(EventManager.Events.RESUME_GAME, OnResume);
+        EventManager.StartListening(EventManager.Events.R_KEY, OnResume);
     }
 
     void OnDisable()
@@ -67,6 +68,7 @@ public class GameManager : MonoBehaviour {
         EventManager.StopListening(EventManager.Events.MAIN_MENU_START, StartGame);
         EventManager.StopListening(EventManager.Events.PLAYER_DEAD, PlayerDead);
         EventManager.StopListening(EventManager.Events.RESUME_GAME, OnResume);
+        EventManager.StopListening(EventManager.Events.R_KEY, OnResume);
     }
 
     // Update is called once per frame
