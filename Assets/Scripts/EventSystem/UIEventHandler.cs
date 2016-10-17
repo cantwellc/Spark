@@ -59,14 +59,14 @@ public class UIEventHandler : MonoBehaviour {
 
     IEnumerator Countdown(int seconds)
     {
-        notificationText.text = "You ran out fuel, ship explodes in:";
+        notificationText.text = "You ran out fuel!";
         notificationText.color = Color.red;
         notificationText.enabled = true;
         countdownText.enabled = true;
         countdownText.color = Color.red;
         while (seconds > 0)
         {
-            countdownText.text = seconds.ToString();
+            //countdownText.text = seconds.ToString();
             yield return new WaitForSeconds(1f);
             seconds -= 1;
         }

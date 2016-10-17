@@ -200,7 +200,17 @@ public class AudioManager : MonoBehaviour
 			soundObject.SetActive (true);
 		}
 
-		if (audioEvent == "evilLaugh")
+        if (audioEvent == "slowAura")
+        {
+
+            source.volume = 0.1f;
+            source.clip = clips["refuel_raw3"];
+            source.outputAudioMixerGroup = mixerGroups["SFX"];
+            soundObject.SetActive(true);
+        }
+
+
+        if (audioEvent == "evilLaugh")
 		{
 
 			source.clip = clips ["Evil_laugh"];

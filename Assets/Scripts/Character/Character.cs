@@ -54,7 +54,7 @@ public class Character : MonoBehaviour
     {
         current = this;
         tutorial = false;
-        _charDeathDelay = 5;
+        _charDeathDelay = 0;
         fuelChange = 0;
 //		ramEffect.Stop ();
 		maxVelocity = 10;
