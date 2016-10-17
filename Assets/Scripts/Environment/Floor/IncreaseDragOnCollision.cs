@@ -9,7 +9,7 @@ public class IncreaseDragOnCollision : MonoBehaviour {
 
     IEnumerator IncreasedDragWaitLoop(Collider other)
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(dragDuration);
         other.GetComponent<Rigidbody>().drag -= dragAmount;
     }
     // Use this for initialization
