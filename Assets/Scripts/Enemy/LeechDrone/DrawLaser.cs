@@ -6,13 +6,19 @@ public class DrawLaser : MonoBehaviour {
 	private LineRenderer _lineRenderer;
 	private Renderer _lineRendererRendererComponent;
 	public Transform origin;
+	public bool isAttatched = false;
 
 	void OnTriggerStay(Collider other)
 	{
 
 		if (other.gameObject.tag == "Character")
 		{	
-			AudioManager.instance.Play ("laser");
+			if (isAttatched == false) 
+			{
+				AudioManager.instance.Play ("laser");
+				isAttatched = true;
+			}
+
 			_lineRenderer.SetPosition (0, origin.position);
 			_lineRendererRendererComponent.enabled = true;
 			_lineRenderer.SetPosition (1, Character.current.transform.position);
@@ -23,6 +29,8 @@ public class DrawLaser : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Character")
 		{
+			AudioManager.instance.Play ("leechRelease");
+			isAttatched = false;
 			_lineRendererRendererComponent.enabled = false;
 
 		}

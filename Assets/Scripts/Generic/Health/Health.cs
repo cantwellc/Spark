@@ -55,4 +55,9 @@ public class Health : MonoBehaviour
 		Destroy (gameObject,2.0f);
 	}
 
+	public void PlaySound (string audioEvent)
+	{
+		AudioManager.instance.Play (audioEvent, gameObject);
+	}
+
 }

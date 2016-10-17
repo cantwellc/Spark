@@ -2230,6 +2230,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4787608bcc7cda34585e948f080bb835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &533020559
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -5.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -85.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013480861054, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
+      propertyPath: m_RootOrder
+      value: 20
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 6a180306481a2754dbaa55769a44d30c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &558977425
 Prefab:
   m_ObjectHideFlags: 0
@@ -2944,12 +2986,12 @@ Prefab:
     - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
         type: 2}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
         type: 2}
       propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000010827514938, guid: 4024b9be55dd57144aead35f61af7b09, type: 2}
       propertyPath: m_LocalPosition.x
@@ -3001,7 +3043,7 @@ Prefab:
     - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
         type: 2}
       propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
         type: 2}
@@ -3012,11 +3054,11 @@ Prefab:
         type: 2}
       propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 778736839}
+      objectReference: {fileID: 778736838}
     - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
         type: 2}
       propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DropFuelCircular
+      value: PlaySound
       objectReference: {fileID: 0}
     - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
         type: 2}
@@ -3195,6 +3237,46 @@ Prefab:
         type: 2}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 778736838}
+    - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: PlaySound
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_StringArgument
+      value: bossDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012939367488, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: onTakeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: bossTakeDamage
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4024b9be55dd57144aead35f61af7b09, type: 2}
@@ -6065,7 +6147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca021f3f5a94441496c2aae3cc757e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newMusicName: boss_music2
 --- !u!4 &1421582223
 Transform:
   m_ObjectHideFlags: 0

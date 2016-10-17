@@ -1729,9 +1729,6 @@ MonoBehaviour:
     type: 2}
   outOfFuelPrefab: {fileID: 1000012278461500, guid: dede5a823be6aa54a8e3f1c4b2453e46,
     type: 2}
-  soundEffects:
-  - {fileID: 8300000, guid: 321436401e6a143bba88ab8cb3f67d3f, type: 3}
-  - {fileID: 8300000, guid: b7e3218707bbc944ba016a4b95b07645, type: 3}
   fuelDepletedText: {fileID: 0}
   fuelCountText: {fileID: 0}
   fuelChange: 0
@@ -2271,7 +2268,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114000011135439484}
+        m_MethodName: CharacterSound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: death
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onTakeDamage:
@@ -2288,15 +2296,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 114000013466356506}
-        m_MethodName: Play
-        m_Mode: 1
+      - m_Target: {fileID: 114000011135439484}
+        m_MethodName: CharacterSound
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: characterDamage
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,

@@ -2,6 +2,7 @@
 using UnityEngine.Audio;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour 
 {
@@ -25,6 +26,9 @@ public class AudioManager : MonoBehaviour
 	private bool canAlarm = true;
 
 	private GameObject alarm;
+	private GameObject leechBeam;
+
+	private string previousScene;
 
 	void Awake ()
 	{
@@ -61,6 +65,15 @@ public class AudioManager : MonoBehaviour
 
 	public void Play(string audioEvent)
 	{
+		//Changes BGM depending on scene
+		if (audioEvent == "standardLevel") 
+		{
+			AudioSource musicSource = gameObject.GetComponent<AudioSource> ();
+			musicSource.clip = clips ["Menu_Music_2"];
+			musicSource.Play ();
+		}
+			
+		//Stops death countdown SFX
 		if (audioEvent == "stopDeathCountdown") 
 		{
 			if (alarm != null) 
@@ -70,7 +83,19 @@ public class AudioManager : MonoBehaviour
 				return;
 			}
 		}
+	
+		//Stops ambient leech beam sound
+		if (audioEvent == "leechRelease") 
+		{
+			if (leechBeam != null) 
+			{
+				leechBeam.GetComponent<AudioSource> ().loop = false;
+				leechBeam.SetActive (false);
+				return;
+			}
+		}
 
+		//Assigns SFX to object in pool
 		GameObject soundObject = null;
 
 		for (int i = 0; i < soundObjectPool.Count; i++) 
@@ -84,6 +109,7 @@ public class AudioManager : MonoBehaviour
 				continue;
 		}
 
+		//Grows object ppol
 		if (soundObject == null && willGrow) 
 		{
 			GameObject obj = (GameObject)Instantiate (soundObjectPrefab);
@@ -98,13 +124,33 @@ public class AudioManager : MonoBehaviour
 			return;
 		}
 
+		//Assigns audio source component of sound object to "source" variable
 		AudioSource source = soundObject.GetComponent<AudioSource> ();
-		if (source.volume != 1.0f)
-			source.volume = 1.0f;
+
+		//Initalizes source
+		source.spatialBlend = 0.0f;
+		source.volume = 1.0f;
+		source.loop = false;
+
+		//Plays the various SFX
+		if (audioEvent == "standardLevel")
+		{
+			snapshots ["DefaultMX"].TransitionTo (0.0f);
+			GetComponent<AudioSource> ().Play ();
+		}
+
+		if (audioEvent == "bossLevel") 
+		{
+			snapshots ["BossLevel"].TransitionTo (0.0f);
+			GetComponent<AudioSource> ().Stop ();
+			source.clip = clips ["boss_music2"];
+			source.outputAudioMixerGroup = mixerGroups ["BossBGM"];
+			source.loop = true;
+			soundObject.SetActive (true);
+		}
 
 		if (audioEvent == "plasmaFire") 
 		{
-			source.volume = 0.3f;
 			source.clip = clips ["plasmaFire"];
 			source.outputAudioMixerGroup = mixerGroups ["PrimaryFire"];
 			soundObject.SetActive (true);
@@ -139,10 +185,17 @@ public class AudioManager : MonoBehaviour
 			{
 				canAlarm = false;
 				source.clip = clips ["lowFuel"];
+				source.loop = true;
+				alarm = soundObject;
 				source.outputAudioMixerGroup = mixerGroups ["Alarm"];
 				soundObject.SetActive (true);
 				StartCoroutine (Wait (audioEvent, source.clip.length));
 			}
+		}
+
+		if (audioEvent == "stopLowFuelAlarm") 
+		{
+			StartCoroutine (Wait (audioEvent, 1.2f));
 		}
 
 		if (audioEvent == "refuel") 
@@ -154,32 +207,18 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "deathCountdown") 
 		{
-			source.clip = clips ["destructCountdown1"];
+			source.clip = clips ["destructCountdown2"];
 			source.outputAudioMixerGroup = mixerGroups ["Alarm"];
 			soundObject.SetActive (true);
-			//alarm = soundObject;
+			alarm.SetActive (false);
+			alarm = soundObject;
 		}
 
 		if (audioEvent == "death") 
 		{
 			source.clip = clips ["explosionPlayer" + (int)Random.Range(1,3)];
 			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
-			//Play ("stopDeathCountdown");
-			soundObject.SetActive (true);
-		}
-
-		if (audioEvent == "enemyDeath") 
-		{
-			source.clip = clips ["explosionLg" + (int)Random.Range(1,3)];
-			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
-			soundObject.SetActive (true);
-		}
-
-		//Added
-		if (audioEvent == "takeDamage")
-		{
-			source.clip = clips ["takeDamage" + (int)Random.Range(1,3)];
-			source.outputAudioMixerGroup = mixerGroups ["TakeDamage"];
+			Play ("stopDeathCountdown");
 			soundObject.SetActive (true);
 		}
 
@@ -190,11 +229,13 @@ public class AudioManager : MonoBehaviour
 			soundObject.SetActive (true);
 		}
 
-		if (audioEvent == "laser")
+		if (audioEvent == "leechHold") 
 		{
-			source.clip = clips ["leechDroneShot"];
-			source.outputAudioMixerGroup = mixerGroups ["EnemyFire"];
+			source.clip = clips ["leechDroneBeam"];
+			source.loop = true;
+			source.outputAudioMixerGroup = mixerGroups ["LeechBeam"];
 			soundObject.SetActive (true);
+			leechBeam = soundObject;
 		}
 
 		if (audioEvent == "keycharge")
@@ -204,17 +245,132 @@ public class AudioManager : MonoBehaviour
 			soundObject.SetActive (true);
 		}
 
+		if (audioEvent == "keyRelease") 
+		{
+			source.clip = clips ["keyDetatch"];
+			source.outputAudioMixerGroup = mixerGroups ["KeyRelease"];
+			soundObject.SetActive (true);
+		}
+
 		if (audioEvent == "evilLaugh")
 		{
 			source.clip = clips ["evilLaugh" + (int)Random.Range(1,5)];
 			source.outputAudioMixerGroup = mixerGroups ["Laugh"];
 			soundObject.SetActive (true);
 		}
+
+		if (audioEvent == "characterDamage") 
+		{
+			source.clip = clips ["explosionSm" + (int)Random.Range (1, 3)];
+			source.outputAudioMixerGroup = mixerGroups ["TakeDamage"];
+			soundObject.SetActive (true);
+		}
 	}
 
+	//Overload function for 3D sounds
+	public void Play(string audioEvent, GameObject pos)
+	{
+		//Assigns SFX to object in pool
+		GameObject soundObject = null;
+
+		for (int i = 0; i < soundObjectPool.Count; i++) 
+		{
+			if (!soundObjectPool [i].activeInHierarchy) 
+			{
+				soundObject = soundObjectPool [i];
+				break;
+			} 
+			else
+				continue;
+		}
+
+		//Grows object ppol
+		if (soundObject == null && willGrow) 
+		{
+			GameObject obj = (GameObject)Instantiate (soundObjectPrefab);
+			obj.transform.parent = gameObject.transform;
+			soundObjectPool.Add (obj);
+			obj.SetActive (false);
+			soundObject = obj;
+		}
+		else if (soundObject == null && !willGrow) 
+		{
+			print ("Unable to grow object pool!!!");
+			return;
+		}
+
+		//Places the sound object at the position of the object making the sound
+		soundObject.transform.position = pos.transform.position;
+
+		//Assigns audio source component of sound object to "source" variable
+		AudioSource source = soundObject.GetComponent<AudioSource> ();
+
+		//Initalizes source (3D)
+		source.spatialBlend = 1.0f;
+		source.volume = 1.0f;
+		source.loop = false;
+
+		if (source.volume != 1.0f)
+			source.volume = 1.0f;
+
+		if (audioEvent == "droneExplode") 
+		{
+			source.clip = clips ["explosionSm" + (int)Random.Range (1,3)];
+			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "enemyDeath") 
+		{
+			source.clip = clips ["explosionLg" + (int)Random.Range(1,3)];
+			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "bossDeath") 
+		{
+			source.clip = clips ["bossDeath"];
+			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "takeDamage")
+		{
+			source.clip = clips ["explosionSm" + (int)Random.Range(1,3)];
+			source.outputAudioMixerGroup = mixerGroups ["TakeDamage"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "bossTakeDamage")
+		{
+			source.clip = clips ["explosionSm" + (int)Random.Range(1,3)];
+			source.outputAudioMixerGroup = mixerGroups ["TakeDamage"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "laser")
+		{
+			source.clip = clips ["leechDroneShot"];
+			source.outputAudioMixerGroup = mixerGroups ["EnemyFire"];
+			soundObject.SetActive (true);
+			Play ("leechHold");
+		}
+	}
+
+	//Use to set a delay between audio events, etc.
 	IEnumerator Wait (string audioEvent, float time)
 	{
-		yield return new WaitForSeconds (time);
+
+		if (audioEvent == "stopLowFuelAlarm") 
+		{
+			snapshots ["AlarmOff"].TransitionTo (1.0f);
+			yield return new WaitForSeconds (time);
+			alarm.SetActive (false);
+			canAlarm = true;
+			snapshots ["SFXDefault"].TransitionTo (0.0f);
+		}
+		else
+			yield return new WaitForSeconds (time);
 
 		if (audioEvent == "lowFuel")
 			canAlarm = true;
@@ -222,9 +378,9 @@ public class AudioManager : MonoBehaviour
 
 	public void overrideBGMusic(string musicName)
 	{
-		AudioSource audioSource = GetComponent<AudioSource> ();
+		/*AudioSource audioSource = GetComponent<AudioSource> ();
 		audioSource.clip = clips [musicName];
-		audioSource.Play ();
+		audioSource.Play ();*/
 	}
 
 	public void DisableDeadCountDownSound()

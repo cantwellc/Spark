@@ -12,7 +12,7 @@ public class Character : MonoBehaviour
 	public GameObject blackHoleExplosionPrefab;
     public GameObject outOfFuelPrefab;
 //	public ParticleSystem ramEffect;
-	public AudioClip [] soundEffects;
+	//public AudioClip [] soundEffects;
 	public Text fuelDepletedText;
 	public Text fuelCountText;
     public int fuelChange;
@@ -27,6 +27,8 @@ public class Character : MonoBehaviour
     private bool _alertSound;
     private bool _dyingCountdown = false;
     private Coroutine _runningCoroutine = null;
+
+	private bool lowFuel = false;
 
     public static Character current;
 
@@ -102,12 +104,20 @@ public class Character : MonoBehaviour
             //{
             //    _rigidBody.velocity = _rigidBody.velocity.normalized * maxVelocity;
             //}
-            if (_fuelReservoir.fuelCount <= 100)
+            
+			if (_fuelReservoir.fuelCount > 100 && lowFuel == true) 
+			{
+				AudioManager.instance.Play ("stopLowFuelAlarm");
+				lowFuel = false;
+			}
+
+			if (_fuelReservoir.fuelCount <= 100)
             {
                 if (_alertSound)
                 {
                     //AudioSource.PlayClipAtPoint(soundEffects[1], Camera.main.transform.position, 0.4f);
                     _alertSound = false;
+					lowFuel = true;
                     AudioManager.instance.Play("lowFuel");
                 }
 
@@ -127,7 +137,7 @@ public class Character : MonoBehaviour
             }
             else
             {
-                if (_dyingCountdown)
+				if (_dyingCountdown)
                 {
                     _dyingCountdown = false;
                     AudioManager.instance.Play("stopDeathCountdown");
@@ -188,7 +198,7 @@ public class Character : MonoBehaviour
         Character.current = null;
         EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         //AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
-		AudioManager.instance.Play("death");
+		//AudioManager.instance.Play("death");
 		Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
@@ -198,7 +208,7 @@ public class Character : MonoBehaviour
         Character.current = null;
         EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         //AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
-		AudioManager.instance.Play("death");
+		//AudioManager.instance.Play("death");
 		Instantiate(blackHoleExplosionPrefab, transform.position, transform.rotation);
     }
 
@@ -207,7 +217,7 @@ public class Character : MonoBehaviour
         Character.current = null;
         EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         //AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
-		AudioManager.instance.Play("death");
+		//AudioManager.instance.Play("death");
 		Instantiate(outOfFuelPrefab, transform.position, transform.rotation);
     }
 		
