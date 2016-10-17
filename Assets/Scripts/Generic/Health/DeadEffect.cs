@@ -9,6 +9,7 @@ public class DeadEffect : MonoBehaviour
 	{
 		if(enemyDeadEffect)
 		{
+			//AudioManager.instance.Play ("droneExplode", gameObject);
 			GameObject deadEffect = Instantiate(enemyDeadEffect, transform.position, transform.rotation) as GameObject;
 			Destroy(deadEffect, destroyDeadEffectInSeconds);
 		}

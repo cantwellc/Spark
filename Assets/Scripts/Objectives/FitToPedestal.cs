@@ -42,6 +42,7 @@ public class FitToPedestal : MonoBehaviour {
 		{
 			if (_keyCharge.ChargedEnoughForPedestal ())
 			{
+				AudioManager.instance.Play ("keyRelease");
 				_rigidBody.isKinematic = false;
 				_rigidBody.constraints = RigidbodyConstraints.None;
 				transform.rotation = Quaternion.Euler (new Vector3 (-90, 0, 0));

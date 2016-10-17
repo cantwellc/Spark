@@ -21,6 +21,7 @@ AudioMixerController:
   m_AudioMixerGroupViews:
   - guids:
     - f9bb7517b9312408dacfda15ae29a662
+    - 032a72daddf9c4e1eb81bafc781c4d74
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500003}
@@ -32,7 +33,8 @@ AudioMixerGroupController:
   m_Name: Master
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: f9bb7517b9312408dacfda15ae29a662
-  m_Children: []
+  m_Children:
+  - {fileID: 243000012286324252}
   m_Volume: 439dbcf17ef3042cebc0b8249137b26e
   m_Pitch: 5584a1c7fc3124fc89781dbc82f8a70e
   m_Effects:
@@ -64,3 +66,33 @@ AudioMixerSnapshotController:
   m_SnapshotID: 867986de3471d45009291d5ce8d5bab5
   m_FloatValues: {}
   m_TransitionOverrides: {}
+--- !u!243 &243000012286324252
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Laugh
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 032a72daddf9c4e1eb81bafc781c4d74
+  m_Children: []
+  m_Volume: 95a77abfafb6b48bdb10e0b6565b1cda
+  m_Pitch: 21b498c6474ca4890b1b9119d9a7a58a
+  m_Effects:
+  - {fileID: 244000014146079032}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &244000014146079032
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 0689f5f9a43c640ea862696fb0b733b6
+  m_EffectName: Attenuation
+  m_MixLevel: e92b8a6adbab44a019a76e9d87c9a1a4
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
