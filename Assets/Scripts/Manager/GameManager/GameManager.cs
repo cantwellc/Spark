@@ -151,6 +151,22 @@ public class GameManager : MonoBehaviour {
                 }
 
                 break;
+
+            case GAME_STATES.MAIN_MENU:
+
+                Cursor.visible = true;
+
+                if(GameObject.Find("Character") != null)
+                {
+                    Destroy(GameObject.Find("Character"));
+                }
+
+                if(GameObject.Find("Character(Clone)") != null)
+                {
+                    Destroy(GameObject.Find("Character(Clone)"));
+                }
+
+                break;
         }
     }
 
