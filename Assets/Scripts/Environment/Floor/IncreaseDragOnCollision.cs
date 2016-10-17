@@ -4,10 +4,16 @@ using System.Collections;
 public class IncreaseDragOnCollision : MonoBehaviour {
 
 	public float dragAmount;
+    public float dragDuration;
 	private VariableDrag _variableDrag;
 
-	// Use this for initialization
-	void Start () 
+    IEnumerator IncreasedDragWaitLoop(Collider other)
+    {
+        yield return new WaitForSeconds(5);
+        other.GetComponent<Rigidbody>().drag -= dragAmount;
+    }
+    // Use this for initialization
+    void Start () 
 	{
 		_variableDrag = Character.current.GetComponent<VariableDrag> ();	
 	
@@ -22,6 +28,8 @@ public class IncreaseDragOnCollision : MonoBehaviour {
         if (other.gameObject.tag == "Character")
         {
 			other.GetComponent<Rigidbody>().drag += dragAmount;
+            StartCoroutine(IncreasedDragWaitLoop(other));
+            
         }
     }
 }
