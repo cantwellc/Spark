@@ -271,7 +271,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243000013398061902, guid: 2ecfdebb4b73648388060cdc1961f1af,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 2bd003df3786c40479d10d6266cfb9c2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fda44f5cd9bb74a5394e4c54a266fd91, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -324,7 +324,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -464,7 +464,18 @@ MonoBehaviour:
       PublicKeyToken=null
   triggerExit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1000012410816728}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   validTargetTags:
