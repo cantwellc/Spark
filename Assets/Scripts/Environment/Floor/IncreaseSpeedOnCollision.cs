@@ -4,12 +4,15 @@ using System.Collections;
 public class IncreaseSpeedOnCollision : MonoBehaviour {
 
 	private Rigidbody _rigidBody;
+	private bool _init = false;
 	public float force;
 
 	void Start()
 	{
-		_rigidBody = Character.current.GetComponent<Rigidbody> ();
+		
 	}
+
+
 
 
 	// Use this for initialization
@@ -17,7 +20,8 @@ public class IncreaseSpeedOnCollision : MonoBehaviour {
 	{
 		if (other.gameObject.tag == "Character")
 		{
-            AudioManager.instance.Play("speedUpAura");
+			_rigidBody = Character.current.GetComponent<Rigidbody> ();
+			AudioManager.instance.Play("speedUpAura");
 			Vector3 speedForce = (_rigidBody.velocity.normalized * force) ;
 			_rigidBody.AddForce (speedForce, ForceMode.Force);
 		}

@@ -28,6 +28,7 @@ public class ChasePlayer : MonoBehaviour {
 	void Update () 
 	{
 
+
 		if (CharacterCloseToPedestal ())
 		{
 			Destroy (gameObject);
@@ -37,27 +38,26 @@ public class ChasePlayer : MonoBehaviour {
 		if (_follow)
 		{
 			
-			float step = initialSpeed * Time.deltaTime;
-			_targetPosition = new Vector3 (Character.current.transform.position.x - 1.0f, transform.position.y, Character.current.transform.position.z);
-			_navMeshAgent.SetDestination (_targetPosition);
-			transform.LookAt (Character.current.transform.position);
-			//transform.position = Vector3.MoveTowards (transform.position, _targetPosition, step);
-			if (VeryCloseOnXZ())
+			if (Character.current != null)
 			{
-				GetComponent<AreaAttack> ().Attack ();
-				_follow = false;
-				_prepare_to_follow = true;
+				float step = initialSpeed * Time.deltaTime;
+				_targetPosition = new Vector3 (Character.current.transform.position.x - 1.0f, transform.position.y, Character.current.transform.position.z);
+				_navMeshAgent.SetDestination (_targetPosition);
+				transform.LookAt (Character.current.transform.position);
+				//Quaternion rotationAngle = Quaternion.LookRotation (_targetPosition - transform.position);
+				//transform.rotation = Quaternion.Slerp (transform.rotation, rotationAngle, Time.deltaTime * 1);
+				//transform.position = Vector3.MoveTowards (transform.position, _targetPosition, step);
+				if (VeryCloseOnXZ ())
+				{
+					GetComponent<AreaAttack> ().Attack ();
+					_follow = false;
+					_prepare_to_follow = true;
+				}
 			}
 		}
 		else
 		{
-			if (_prepare_to_follow)
-			{
-				
-				GetComponent<Renderer> ().enabled = false;
-				Invoke ("Follow", 10.0f);
-				_prepare_to_follow = false;
-			}
+			//This was aimed for the case for chaser to follow you second time
 		}
 
 
@@ -65,12 +65,16 @@ public class ChasePlayer : MonoBehaviour {
 
 	public bool VeryCloseOnXZ()
 	{
-		Vector2 characterXZ = new Vector2 (Character.current.transform.position.x, Character.current.transform.position.z);
-		Vector2 currentXZ = new Vector2 (transform.position.x, transform.position.z);
-
-		if (Vector2.Distance (characterXZ, currentXZ) <=1.9)
+		if (Character.current != null)
 		{
-			return true;
+			Vector2 characterXZ = new Vector2 (Character.current.transform.position.x, Character.current.transform.position.z);
+			Vector2 currentXZ = new Vector2 (transform.position.x, transform.position.z);
+
+			if (Vector2.Distance (characterXZ, currentXZ) <= 1.9)
+			{
+				return true;
+			}
+			return false;
 		}
 		return false;
 	}
@@ -86,11 +90,15 @@ public class ChasePlayer : MonoBehaviour {
 
 	bool CharacterCloseToPedestal()
 	{
-		Vector2 characterXZ = new Vector2 (Character.current.transform.position.x, Character.current.transform.position.z);
-		Vector2 pedestalXZ = new Vector2 (pedestalLocation.position.x, pedestalLocation.position.z);
-		if (Vector2.Distance (characterXZ, pedestalXZ) <= 1.5f)
+		if (Character.current != null)
 		{
-			return true;
+			Vector2 characterXZ = new Vector2 (Character.current.transform.position.x, Character.current.transform.position.z);
+			Vector2 pedestalXZ = new Vector2 (pedestalLocation.position.x, pedestalLocation.position.z);
+			if (Vector2.Distance (characterXZ, pedestalXZ) <= 1.5f)
+			{
+				return true;
+			}
+			return false;
 		}
 		return false;
 
