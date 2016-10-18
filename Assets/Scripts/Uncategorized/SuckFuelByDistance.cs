@@ -14,7 +14,7 @@ public class SuckFuelByDistance : MonoBehaviour {
 	{
 		if (Character.current != null)
 		{
-			if (Vector3.Distance (Character.current.transform.position, transform.position) <3.0f)
+			if (Vector3.Distance (Character.current.transform.position, transform.position) <5.0f)
 			{
 				Character.current.GetComponent<CharacterHealth> ().TakeDamage (250.0f);
 			}

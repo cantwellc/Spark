@@ -16865,6 +16865,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1281520858}
   - 136: {fileID: 1281520859}
+  - 114: {fileID: 1281520860}
   m_Layer: 0
   m_Name: FloorColoring
   m_TagString: Untagged
@@ -16892,12 +16893,23 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1281520857}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 2.51
   m_Height: 17.37
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1281520860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1281520857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33cf1856b31bf4c649332af6c3be09c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1287927086 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c,
