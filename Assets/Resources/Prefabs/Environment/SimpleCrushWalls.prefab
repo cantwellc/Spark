@@ -165,7 +165,7 @@ GameObject:
   - 54: {fileID: 54000013254701462}
   m_Layer: 0
   m_Name: Wall (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,7 +234,7 @@ GameObject:
   - 54: {fileID: 54000012626731338}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -904,6 +904,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29c03b595bac0a46b1dc4ad436c958c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStartMoving:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1000013819469302}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnStopMoving:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1000013819469302}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   speed: 1
   doMove: 0
 --- !u!114 &114000012304509200
@@ -931,7 +963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8112447252463f49820bdeea38b0613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.8
+  speed: 0.83
   movingObjects:
   - {fileID: 114000012172776000}
   - {fileID: 114000013446204908}
@@ -946,6 +978,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c29c03b595bac0a46b1dc4ad436c958c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnStartMoving:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1000011852222286}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnStopMoving:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1000011852222286}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   speed: 1
   doMove: 0
 --- !u!136 &136000010449091324

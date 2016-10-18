@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public class MoveForward : MonoBehaviour {
+    public UnityEvent OnStartMoving;
+    public UnityEvent OnStopMoving;
 
     public float speed;
 
@@ -27,9 +30,11 @@ public class MoveForward : MonoBehaviour {
 	public void StartMoving()
 	{
 		doMove = true;
+        OnStartMoving.Invoke();
 	}
 	public void StopMoving()
 	{
 		doMove = false;
+        OnStopMoving.Invoke();
 	}
 }
