@@ -97,7 +97,8 @@ public class PlayerDataPanelControl : MonoBehaviour {
         if (Character != null)
         {
             _fuelReservior = Character.GetComponent<FuelReservoir>();
-			_keyCharge = GameObject.FindGameObjectWithTag ("Keyring").GetComponent<KeyCharge> ();
+            if(GameObject.FindGameObjectWithTag("Keyring") != null)
+			    _keyCharge = GameObject.FindGameObjectWithTag ("Keyring").GetComponent<KeyCharge> ();
         }
     }
 

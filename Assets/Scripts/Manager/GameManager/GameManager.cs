@@ -34,6 +34,16 @@ public class GameManager : MonoBehaviour {
         }
 
         print("loaded");
+        
+    }
+
+    // Use this for initialization
+    void Start ()
+    {
+        _game_state = GAME_STATES.MAIN_MENU;
+        current = this;
+        SceneManager.sceneLoaded += newSceneLoaded;
+
         if (Character.current == null)
         {
             if (Checkpoint.currentData != null)
@@ -45,14 +55,6 @@ public class GameManager : MonoBehaviour {
                 character.GetComponent<FuelReservoir>().fuelCount = Checkpoint.currentData.currentStartFuel;
             }
         }
-    }
-
-    // Use this for initialization
-    void Start ()
-    {
-        _game_state = GAME_STATES.MAIN_MENU;
-        current = this;
-        SceneManager.sceneLoaded += newSceneLoaded;
     }
 
     void OnEnable()
