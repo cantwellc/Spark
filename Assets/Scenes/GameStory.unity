@@ -573,8 +573,8 @@ MonoBehaviour:
       PublicKeyToken=null
   cameraTargetTransform: {fileID: 1898721285}
   nextFrame: {fileID: 1971741734}
-  timeToNextFrame: 0
-  cameraSpeed: 0
+  timeToNextFrame: 5
+  cameraSpeed: 30
 --- !u!4 &592253663
 Transform:
   m_ObjectHideFlags: 0
@@ -627,8 +627,8 @@ MonoBehaviour:
       PublicKeyToken=null
   cameraTargetTransform: {fileID: 1644116865}
   nextFrame: {fileID: 0}
-  timeToNextFrame: 0
-  cameraSpeed: 0
+  timeToNextFrame: 5
+  cameraSpeed: 50
 --- !u!4 &631528278
 Transform:
   m_ObjectHideFlags: 0
@@ -826,8 +826,8 @@ MonoBehaviour:
       PublicKeyToken=null
   cameraTargetTransform: {fileID: 934551193}
   nextFrame: {fileID: 592253662}
-  timeToNextFrame: 0
-  cameraSpeed: 0
+  timeToNextFrame: 5
+  cameraSpeed: 30
 --- !u!4 &736726925
 Transform:
   m_ObjectHideFlags: 0
@@ -880,8 +880,8 @@ MonoBehaviour:
       PublicKeyToken=null
   cameraTargetTransform: {fileID: 797905110}
   nextFrame: {fileID: 736726924}
-  timeToNextFrame: 0
-  cameraSpeed: 0
+  timeToNextFrame: 5
+  cameraSpeed: 30
 --- !u!4 &747642715
 Transform:
   m_ObjectHideFlags: 0
@@ -975,7 +975,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 797905109}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 293.2, y: 173.7, z: -50.8}
+  m_LocalPosition: {x: 293.2, y: 173.7, z: -80.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1055,7 +1055,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 934551192}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 293.2, y: 123.3, z: -49.1}
+  m_LocalPosition: {x: 293.2, y: 123.3, z: -83.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1119,8 +1119,7 @@ Transform:
   m_LocalPosition: {x: 164.6, y: 77.7, z: -83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 1660808243}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
 --- !u!1 &1184078779
@@ -1377,7 +1376,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1434543386}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 215.8, y: 173.7, z: -44.1}
+  m_LocalPosition: {x: 228.32, y: 173.7, z: -44.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1491,7 +1490,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1644116864}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 421, y: 88.6, z: -67}
+  m_LocalPosition: {x: 421, y: 88.6, z: -87.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1522,12 +1521,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1660808242}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 1170068415}
+  m_Father: {fileID: 1898721285}
   m_RootOrder: 0
 --- !u!81 &1660808244
 AudioListener:
@@ -1909,8 +1908,8 @@ MonoBehaviour:
       PublicKeyToken=null
   cameraTargetTransform: {fileID: 1434543387}
   nextFrame: {fileID: 747642714}
-  timeToNextFrame: 0
-  cameraSpeed: 0
+  timeToNextFrame: 3
+  cameraSpeed: 50
 --- !u!4 &1794236836
 Transform:
   m_ObjectHideFlags: 0
@@ -1946,10 +1945,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1898721284}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 293.2, y: 76.2, z: -39.3}
+  m_LocalPosition: {x: 293.2, y: 76.2, z: -82.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 1660808243}
   m_Father: {fileID: 0}
   m_RootOrder: 11
 --- !u!1 &1959904426
@@ -1974,7 +1974,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1959904426}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 421, y: 162, z: -67}
+  m_LocalPosition: {x: 421, y: 162, z: -83.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -2019,8 +2019,8 @@ MonoBehaviour:
       PublicKeyToken=null
   cameraTargetTransform: {fileID: 1959904427}
   nextFrame: {fileID: 631528277}
-  timeToNextFrame: 0
-  cameraSpeed: 0
+  timeToNextFrame: 6
+  cameraSpeed: 80
 --- !u!4 &1971741735
 Transform:
   m_ObjectHideFlags: 0
