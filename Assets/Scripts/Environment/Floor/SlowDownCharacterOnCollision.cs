@@ -10,7 +10,7 @@ public class SlowDownCharacterOnCollision : MonoBehaviour
 
     void Start()
     {
-        _rigidBody = Character.current.GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
@@ -27,7 +27,8 @@ public class SlowDownCharacterOnCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Character")
         {
-            AudioManager.instance.Play("slowAura");
+			_rigidBody = Character.current.GetComponent<Rigidbody>();
+			AudioManager.instance.Play("slowAura");
             if (_rigidBody.velocity.magnitude > slowDownThreshold)
             {
                 Vector3 reverseForce = (_rigidBody.velocity.normalized * force) * -3;
@@ -38,9 +39,6 @@ public class SlowDownCharacterOnCollision : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Character")
-        {
-
-        }
+        
     }
 }

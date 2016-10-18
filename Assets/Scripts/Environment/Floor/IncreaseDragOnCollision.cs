@@ -10,24 +10,23 @@ public class IncreaseDragOnCollision : MonoBehaviour {
     IEnumerator IncreasedDragWaitLoop(Collider other)
     {
         yield return new WaitForSeconds(dragDuration);
-        other.GetComponent<Rigidbody>().drag -= dragAmount;
+        other.GetComponent<VariableDrag>().constantDrag -= dragAmount;
     }
     // Use this for initialization
     void Start () 
 	{
-		_variableDrag = Character.current.GetComponent<VariableDrag> ();	
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Character")
         {
-			other.GetComponent<Rigidbody>().drag += dragAmount;
+			other.GetComponent<VariableDrag>().constantDrag += dragAmount;
             StartCoroutine(IncreasedDragWaitLoop(other));
             
         }
