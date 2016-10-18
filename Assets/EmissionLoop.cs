@@ -33,7 +33,7 @@ public class EmissionLoop : MonoBehaviour {
         }
         else
         {
-            brightness += 0.01f;
+            brightness += 0.05f;
             Math.Round(brightness, 2);
             changingColor = color * brightness;
             material.SetColor("_EmissionColor", changingColor);
