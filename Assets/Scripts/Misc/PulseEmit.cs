@@ -6,15 +6,16 @@ public class PulseEmit : MonoBehaviour {
     public float pulseDuration;
     public float emitFloor;
     public float emitCeiling;
-    public Color emitColor;
 
     private Material _material;
     [SerializeField]
     private bool _pulse;
+    private Color _emitColor;
 
-	void Awake()
+    void Awake()
     {
         _material = GetComponent<Renderer>().material;
+        _emitColor = _material.GetColor("_EmissionColor");
     }
 
     void Start()
@@ -26,7 +27,7 @@ public class PulseEmit : MonoBehaviour {
 	void Update () {
         if (!_pulse) return;
         float emission = emitFloor + (Mathf.PingPong(Time.time, pulseDuration) / pulseDuration)*(emitCeiling - emitFloor);
-        Color color = emitColor * Mathf.LinearToGammaSpace(emission);
+        Color color = _emitColor * Mathf.LinearToGammaSpace(emission);
         _material.SetColor("_EmissionColor", color);
     }
 }

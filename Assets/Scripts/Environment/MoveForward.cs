@@ -20,7 +20,8 @@ public class MoveForward : MonoBehaviour {
 	{
         if (!doMove) return;
         var step = speed * Time.deltaTime;
-        _transform.Translate(_transform.forward * step);
+        var forward = transform.worldToLocalMatrix.MultiplyVector(transform.forward);
+        _transform.Translate(forward * step);
 	}
 
 	public void StartMoving()
