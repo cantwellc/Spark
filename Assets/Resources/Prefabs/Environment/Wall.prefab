@@ -22,12 +22,13 @@ GameObject:
   - 33: {fileID: 33000012561909482}
   - 65: {fileID: 65000014231865278}
   - 23: {fileID: 23000013788402670}
+  - 208: {fileID: 208000010799998426}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4000011919075050
 Transform:
@@ -35,10 +36,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013528887204}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -21.730183, y: 13.325897, z: 6.477453}
-  m_LocalScale: {x: 10, y: 2, z: 0.28000012}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 25.2, y: 35.061604, z: 0.19999695}
+  m_LocalScale: {x: 10.124999, y: 4.3554997, z: 0.28000012}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -49,13 +50,13 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013528887204}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7c9e0466672f89d44b5444895e3614cd, type: 2}
+  - {fileID: 2100000, guid: 3cf0d366a27f36241819d21611014832, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -84,9 +85,24 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013528887204}
-  m_Material: {fileID: 13400000, guid: a89b62c19d1629f49892170763c92015, type: 2}
+  m_Material: {fileID: 13400000, guid: 7c2d620527eb59647bbd3ca993f6149c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &208000010799998426
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013528887204}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
