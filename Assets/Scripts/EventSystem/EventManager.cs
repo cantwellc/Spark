@@ -14,6 +14,8 @@ public class EventManager : MonoBehaviour {
         GOAL_REACHED,
         PAUSE_GAME,
         RESUME_GAME,
+        CHARACTER_ENTERED_KEY_PEDESTAL_TRIGGER,
+        KEY_COLLECTED,
 
         // keyboard input events
         B_KEY,
@@ -25,7 +27,7 @@ public class EventManager : MonoBehaviour {
         // UI Button clicks
         MAIN_MENU_START,
         SHOW_RIGHT_CLICK_POPUP,
-        HIDE_RIGHT_CLICK_POPUP
+        HIDE_RIGHT_CLICK_POPUP,
     }
 
     private Dictionary<Events, UnityEvent> _eventDictionary;
