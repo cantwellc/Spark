@@ -268,7 +268,13 @@ public class AudioManager : MonoBehaviour
             source.outputAudioMixerGroup = mixerGroups["SFX"];
             soundObject.SetActive(true);
         }
-
+        if(audioEvent == "temporaryDrag")
+        {
+            source.volume = 0.5f;
+            source.clip = clips["wormholeOpen_raw1"];
+            source.outputAudioMixerGroup = mixerGroups["SFX"];
+            soundObject.SetActive(true);
+        }
         if (audioEvent == "evilLaugh")
 		{
 			source.clip = clips ["evilLaugh" + (int)Random.Range(1,5)];

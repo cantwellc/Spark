@@ -26,7 +26,8 @@ public class IncreaseDragOnCollision : MonoBehaviour {
     {
         if (other.gameObject.tag == "Character")
         {
-			other.GetComponent<VariableDrag>().constantDrag += dragAmount;
+            AudioManager.instance.Play("temporaryDrag");
+            other.GetComponent<VariableDrag>().constantDrag += dragAmount;
             StartCoroutine(IncreasedDragWaitLoop(other));
             
         }

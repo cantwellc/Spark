@@ -12,7 +12,7 @@ public class EmissionLoop : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         material = GetComponent<Renderer>().material;
-        color = Color.red;
+        //color = Color.red;
         brightness = 1.0f;
         flag = true;
     }
