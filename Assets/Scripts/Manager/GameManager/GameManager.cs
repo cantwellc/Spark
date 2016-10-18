@@ -33,6 +33,17 @@ public class GameManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
+        if (Character.current == null)
+        {
+            if (Checkpoint.currentData != null)
+            {
+                GameObject charPrefab = (GameObject)Resources.Load("Prefabs/Character/Character");
+                GameObject character = Instantiate(charPrefab);
+                Character.current = character.GetComponent<Character>();
+                character.transform.position = Checkpoint.currentData.currentPos;
+                character.GetComponent<FuelReservoir>().fuelCount = Checkpoint.currentData.currentStartFuel;
+            }
+        }
         print("loaded");
         
     }
@@ -40,9 +51,20 @@ public class GameManager : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        _game_state = GAME_STATES.MAIN_MENU;
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+            _game_state = GAME_STATES.MAIN_MENU;
+        else
+            _game_state = GAME_STATES.PLAYING;
         current = this;
         SceneManager.sceneLoaded += newSceneLoaded;
+    }
+
+    void OnEnable()
+    {
+        EventManager.StartListening(EventManager.Events.MAIN_MENU_START, StartGame);
+        EventManager.StartListening(EventManager.Events.PLAYER_DEAD, PlayerDead);
+        EventManager.StartListening(EventManager.Events.RESUME_GAME, OnResume);
+        EventManager.StartListening(EventManager.Events.R_KEY, OnResume);
 
         if (Character.current == null)
         {
@@ -57,14 +79,6 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    void OnEnable()
-    {
-        EventManager.StartListening(EventManager.Events.MAIN_MENU_START, StartGame);
-        EventManager.StartListening(EventManager.Events.PLAYER_DEAD, PlayerDead);
-        EventManager.StartListening(EventManager.Events.RESUME_GAME, OnResume);
-        EventManager.StartListening(EventManager.Events.R_KEY, OnResume);
-    }
-
     void OnDisable()
     {
         EventManager.StopListening(EventManager.Events.MAIN_MENU_START, StartGame);
@@ -76,7 +90,7 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        /*if (Character.current == null)
+        if (GAME_STATES.PLAYING == _game_state && Character.current == null)
         {
             if (Checkpoint.currentData != null)
             {
@@ -86,7 +100,7 @@ public class GameManager : MonoBehaviour {
                 character.transform.position = Checkpoint.currentData.currentPos;
                 character.GetComponent<FuelReservoir>().fuelCount = Checkpoint.currentData.currentStartFuel;
             }
-        }*/
+        }
         switch (_game_state)
         {
 

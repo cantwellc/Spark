@@ -214,7 +214,9 @@ public class Character : MonoBehaviour
 
     public void DestroyedByOutOfFuel()
     {
-        Character.current = null;
+        //Character.current = null;
+        GetComponent<CharacterHealth>().onDeath.Invoke();
+        Destroy(gameObject, 2.0f);
         EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
         //AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
 		//AudioManager.instance.Play("death");

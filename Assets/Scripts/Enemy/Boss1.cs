@@ -53,7 +53,7 @@ public class Boss1 : MonoBehaviour {
     }
 
     void Update () {
-        if (!_isActivated) return;
+        if (!_isActivated || Character.current == null) return;
         _timeRemainBetweenActions -= Time.deltaTime;
         if (_bulletFireCoolDownRemain >= 0) _bulletFireCoolDownRemain -= Time.deltaTime;
         if (_timeRemainBetweenActions > 0)
