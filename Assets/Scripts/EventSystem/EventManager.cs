@@ -24,6 +24,8 @@ public class EventManager : MonoBehaviour {
 
         // UI Button clicks
         MAIN_MENU_START,
+        SHOW_RIGHT_CLICK_POPUP,
+        HIDE_RIGHT_CLICK_POPUP
     }
 
     private Dictionary<Events, UnityEvent> _eventDictionary;
