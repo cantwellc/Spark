@@ -8,6 +8,7 @@ public class Explosion : MonoBehaviour
     public float explosionRadius = 5;
     public float explosionDamage = 5;
     public float explosionPower = 5;
+	public float explosionDamageToCharacter = 5;
 
     private IEnumerator Start()
     {
@@ -17,20 +18,35 @@ public class Explosion : MonoBehaviour
         
         float r = explosionRadius;
         var cols = Physics.OverlapSphere(transform.position, r);
+		var tags = new List<String> ();
         var rigidbodies = new List<Rigidbody>();
         foreach (var col in cols)
         {
             if (col.attachedRigidbody != null && !rigidbodies.Contains(col.attachedRigidbody))
             {
-				rigidbodies.Add(col.attachedRigidbody);
+				if (col.tag != "ExtraCollider")
+				{
+					tags.Add (col.gameObject.tag);
+					rigidbodies.Add (col.attachedRigidbody);
+				}
             }
         }
-        foreach (Rigidbody rb in rigidbodies)
+		for(int i = 0 ; i < rigidbodies.Count;i++)
         {
-            rb.AddExplosionForce(explosionPower, transform.position, r, 1, ForceMode.Impulse);
+			Rigidbody rb = rigidbodies [i];
+			rb.AddExplosionForce(explosionPower, transform.position, r, 1, ForceMode.Impulse);
             if(rb.GetComponent<Health>() != null)
             {
-                rb.GetComponent<Health>().TakeDamage(explosionDamage);
+				
+				if (tags [i] == "Character")
+				{
+					rb.GetComponent<Health> ().TakeDamage (explosionDamageToCharacter);
+				} 
+				else
+				{
+					rb.GetComponent<Health> ().TakeDamage (explosionDamage);
+				}
+
             }
         }
     }
