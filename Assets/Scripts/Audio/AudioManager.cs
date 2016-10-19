@@ -37,7 +37,8 @@ public class AudioManager : MonoBehaviour
 		else
 			Destroy (gameObject);
 		DontDestroyOnLoad (gameObject);
-	}
+        
+    }
 
 	void Start () 
 	{
@@ -61,7 +62,9 @@ public class AudioManager : MonoBehaviour
 		snapshots = new Dictionary<string, AudioMixerSnapshot> ();
 		foreach (AudioMixerSnapshot snapshot in snapshotList)
 			snapshots.Add (snapshot.name, snapshot);
-	}
+
+
+    }
 
 	public void Play(string audioEvent)
 	{
@@ -384,7 +387,7 @@ public class AudioManager : MonoBehaviour
 	IEnumerator Wait (string audioEvent, float time)
 	{
 
-		if (audioEvent == "stopLowFuelAlarm") 
+		if (audioEvent == "stopLowFuelAlarm" && alarm != null) 
 		{
 			snapshots ["AlarmOff"].TransitionTo (1.0f);
 			yield return new WaitForSeconds (time);

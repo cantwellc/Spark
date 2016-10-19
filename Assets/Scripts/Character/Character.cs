@@ -28,7 +28,7 @@ public class Character : MonoBehaviour
     private bool _dyingCountdown = false;
     private Coroutine _runningCoroutine = null;
 
-	private bool lowFuel = false;
+	private bool lowFuel = true;
 
     public static Character current;
 
