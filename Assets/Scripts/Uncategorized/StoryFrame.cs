@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using UnityEngine.SceneManagement;
 using System;
 
 public class StoryFrame : MonoBehaviour {
@@ -52,7 +53,11 @@ public class StoryFrame : MonoBehaviour {
 
     public void NextFrame()
     {
-        if (nextFrame == null) return;
+		if (nextFrame == null)
+		{
+			SceneManager.LoadScene ("TutorialLevel");
+			return;
+		}
         nextFrame.StartFrame();
     }
 }

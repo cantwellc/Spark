@@ -4,16 +4,16 @@ using System.Collections;
 
 public class StartButtonScript : MonoBehaviour {
 
-    public void LoadByIndex(int sceneIndex)
+    public void LoadByIndex(string sceneName)
     {
-        StartCoroutine(LoadScene(sceneIndex));
+		StartCoroutine(LoadScene(sceneName));
     }
 
-    IEnumerator LoadScene(int sceneIndex)
+	IEnumerator LoadScene(string sceneName)
     {
         float fadeTime = GameObject.Find("GameManager").GetComponent<SceneFader>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
-        SceneManager.LoadScene(sceneIndex);
+		SceneManager.LoadScene(sceneName);
     }
 
     public void StartPlay()
