@@ -128,7 +128,7 @@ public class Character : MonoBehaviour
                 if (!_dyingCountdown)
                 {
                     _runningCoroutine = StartCoroutine(charSleep());
-                    AudioManager.instance.Play("deathCountdown");
+                    //AudioManager.instance.Play("deathCountdown");
                     EventManager.TriggerEvent(EventManager.Events.DEATH_COUNTDOWN);
                 }
 
