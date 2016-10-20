@@ -10,10 +10,13 @@ public class PlayerDeadAnalytics : MonoBehaviour {
     {
         GameObject obj = this.gameObject;
         
-        AnalyticsResult res = Analytics.CustomEvent("PlayerDead1", new Dictionary<string, object>
+        AnalyticsResult res = Analytics.CustomEvent("PlayerDead"+ SceneManager.GetActiveScene().name, new Dictionary<string, object>
         {
             { "position", obj.transform.position },
-            { "level", SceneManager.GetActiveScene().name }
           });
+        print(res.ToString());
+        //string pos = obj.transform.position.ToString().Trim('(',')', ' ');
+        //pos = pos.Replace(",", string.Empty);
+        //GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, SceneManager.GetActiveScene().name, pos);
     }
 }
