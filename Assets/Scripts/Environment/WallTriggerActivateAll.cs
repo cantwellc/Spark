@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class WallTriggerOn : MonoBehaviour {
+public class WallTriggerActivateAll : MonoBehaviour {
 
 	public List <GameObject> crushingWalls;
 	// Use this for initialization
@@ -13,8 +13,11 @@ public class WallTriggerOn : MonoBehaviour {
 		{
 			foreach (GameObject crusingWall in crushingWalls)
 			{
-				Crush crush = crusingWall.GetComponent<Crush> ();
-				crush.StartCrushing ();
+				MoveForward [] crushWallsComponents = crusingWall.GetComponentsInChildren<MoveForward> ();
+				foreach (MoveForward crushWallComponent in crushWallsComponents)
+				{
+					crushWallComponent.StartMoving ();
+				}
 			}
 		}
 	}
