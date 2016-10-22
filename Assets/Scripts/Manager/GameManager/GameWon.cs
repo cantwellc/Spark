@@ -37,6 +37,7 @@ public class GameWon : MonoBehaviour
         //GameManager.current.checkpoint = null;
         float fadeTime = GameObject.Find("GameManager").GetComponent<SceneFader>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
+        MetricsManager.Reset();
         SceneManager.LoadScene(nextScene);
     }
 

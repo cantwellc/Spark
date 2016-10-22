@@ -46,6 +46,10 @@ public class GameManager : MonoBehaviour {
         }
         print("loaded");
         
+        if(MetricsManager.ShouldReset())
+        {
+            MetricsManager.Reset();
+        }
     }
 
     // Use this for initialization

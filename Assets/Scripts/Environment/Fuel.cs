@@ -25,6 +25,7 @@ public class Fuel : MonoBehaviour
             //Scale Fuel scales the container itself until the problem is solved this is the solution I have 
             _character = GameObject.FindGameObjectWithTag("Character").GetComponent<Character>();
             _character.AddFuel (fuelAmmount);
+            MetricsManager.PickedUpFuel(fuelAmmount);
 			Destroy (gameObject);
 		}
 	}
