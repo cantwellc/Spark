@@ -3,8 +3,9 @@ using System.Collections;
 
 public class TriggerRightClickPopup : MonoBehaviour {
 
-	public void TriggerEvent()
+	public void TriggerPopupEvent(bool on)
     {
-        EventManager.TriggerEvent(EventManager.Events.SHOW_RIGHT_CLICK_POPUP);
+        if (on) EventManager.TriggerEvent(EventManager.Events.SHOW_RIGHT_CLICK_POPUP);
+        else EventManager.TriggerEvent(EventManager.Events.HIDE_RIGHT_CLICK_POPUP);
     }
 }
