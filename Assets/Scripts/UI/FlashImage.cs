@@ -37,17 +37,33 @@ public class FlashImage : MonoBehaviour {
         while (flashing)
         {
             if (!image.gameObject.activeInHierarchy)
-            {
-                imageFlashOn.Invoke();
-                image.gameObject.SetActive(true);
-                yield return new WaitForSeconds(onTime);
+            {                
+                yield return StartCoroutine(ActivateImageAfterWait());
             }
             else
-            {
-                imageFlashOff.Invoke();
-                image.gameObject.SetActive(false);
-                yield return new WaitForSeconds(offTime);
+            {                
+                yield return StartCoroutine(DeactivateImageAfterWait());
             }
         }
+    }
+
+    private IEnumerator ActivateImageAfterWait()
+    {
+        yield return new WaitForSeconds(offTime);
+        imageFlashOn.Invoke();
+        image.gameObject.SetActive(true);
+    }
+
+    private IEnumerator DeactivateImageAfterWait()
+    {
+        yield return new WaitForSeconds(onTime);
+        imageFlashOff.Invoke();
+        image.gameObject.SetActive(false);
+    }
+
+    private IEnumerator NotifyOff()
+    {
+        imageFlashOff.Invoke();
+        yield break;
     }
 }
