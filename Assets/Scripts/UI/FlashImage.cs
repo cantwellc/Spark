@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using System.Collections;
 using System;
 
 public class FlashImage : MonoBehaviour {
+    public UnityEvent imageFlashOn;
+    public UnityEvent imageFlashOff;
 
     public Image image;
     public float onTime;
@@ -35,11 +38,13 @@ public class FlashImage : MonoBehaviour {
         {
             if (!image.gameObject.activeInHierarchy)
             {
+                imageFlashOn.Invoke();
                 image.gameObject.SetActive(true);
-                yield return new WaitForSeconds(offTime);
+                yield return new WaitForSeconds(onTime);
             }
             else
             {
+                imageFlashOff.Invoke();
                 image.gameObject.SetActive(false);
                 yield return new WaitForSeconds(offTime);
             }
