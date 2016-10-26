@@ -30,7 +30,7 @@ public class CharacterBulletCollision : MonoBehaviour
                 handleWithArmor(other.gameObject);
             }
 		}
-		else if (other.gameObject.tag != "Character" &&  other.gameObject.tag!="ExtraCollider") 
+		else if (other.gameObject.tag != "Character" &&  other.gameObject.tag!="ExtraCollider" && !(other.isTrigger && other.tag == "Untagged")) 
 		{
 
             GameObject explosion = (GameObject)Instantiate(plasmaExplosionPrefab, transform.position, Quaternion.Euler(-90f, 0, 0));

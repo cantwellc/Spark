@@ -31,11 +31,12 @@ public class DrawDeathPosition : MonoBehaviour {
                 do
                 {
                     pos = reader.ReadLine();
-                    level = reader.ReadLine();
-                    if (SceneManager.GetActiveScene().name != level) continue;
-                    if (pos != null && level != null)
+                    //level = reader.ReadLine();
+                    //if (SceneManager.GetActiveScene().name != level) continue;
+                    if (pos != null)
                     {
                         pos = pos.Trim('(', ')');
+                        pos = pos.Replace(" ", string.Empty);
                         string[] posArray = pos.Split(',');
                         Vector3 position = new Vector3(float.Parse(posArray[0]), float.Parse(posArray[1]), float.Parse(posArray[2]));
                         GameObject obj = (GameObject)Instantiate(posPrefab, transform);
@@ -43,7 +44,7 @@ public class DrawDeathPosition : MonoBehaviour {
                         obj.transform.parent = this.transform;
                     }
                 }
-                while (pos != null && level != null);
+                while (pos != null);
 
                 reader.Close();
             }
