@@ -31,6 +31,7 @@ public class ChasePlayer : MonoBehaviour {
 
 		if (CharacterCloseToPedestal ())
 		{
+			_follow = false;
 			Destroy (gameObject);
 		}
 
@@ -94,7 +95,7 @@ public class ChasePlayer : MonoBehaviour {
 		{
 			Vector2 characterXZ = new Vector2 (Character.current.transform.position.x, Character.current.transform.position.z);
 			Vector2 pedestalXZ = new Vector2 (pedestalLocation.position.x, pedestalLocation.position.z);
-			if (Vector2.Distance (characterXZ, pedestalXZ) <= 1.5f)
+			if (Vector2.Distance (characterXZ, pedestalXZ) <= 5.5f)
 			{
 				return true;
 			}

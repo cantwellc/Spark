@@ -8,8 +8,11 @@ public class OverrideSceneMusic : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		if (SceneManager.GetActiveScene ().name == "bossLevel")
+		string sceneName = SceneManager.GetActiveScene ().name;
+		if (sceneName== "bossLevel")
 			AudioManager.instance.Play ("bossLevel");
+		else if (sceneName == "ChaseLevel")
+			AudioManager.instance.Play ("chaseLevel");
 		else
 			AudioManager.instance.Play ("standardLevel");
 	}

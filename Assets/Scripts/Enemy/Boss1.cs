@@ -17,6 +17,8 @@ public class Boss1 : MonoBehaviour {
     public Transform bulletSpawnTransform, bulletSpawnTransform1, bulletSpawnTransform2, bulletSpawnTransform3, bulletSpawnTransform4, bulletSpawnTransform5;/////////
     public DroneHatch droneHatch1;
     public DroneHatch droneHatch2;
+    public GameObject droneZone1;
+    public GameObject droneZone2;
 
     float _timeRemainBetweenActions;
     float _bulletFireCoolDownRemain;
@@ -63,6 +65,18 @@ public class Boss1 : MonoBehaviour {
                 if(_bulletFireCoolDownRemain <= 0)
                 {
                     _bulletFireCoolDownRemain = 100f;
+                    if(_bhbPos1)
+                    {
+                        droneZone1.transform.position = this.transform.position;
+                        droneZone1.SetActive(true);
+                        _bhbPos1 = false;
+                    } else
+                    {
+                        droneZone2.transform.position = this.transform.position;
+                        droneZone2.SetActive(true);
+                        _bhbPos1 = true;
+                    }
+                    /*_bulletFireCoolDownRemain = 100f;
                     Vector3 target;
                     float ran = Random.Range(0f, 1f);
                     //assigned a value to avoid error !
@@ -98,11 +112,13 @@ public class Boss1 : MonoBehaviour {
                         droneHatch1.Invoke("StopShooting", timeBetweenActions);
                     }
 
-                    b.GetComponent<Rigidbody>().velocity = targetVector.normalized * bhbSpeed;
+                    b.GetComponent<Rigidbody>().velocity = targetVector.normalized * bhbSpeed;*/
                 }
             }
             else if(Boss1Actions.ShootTrackingBullet == action)
             {
+                droneZone1.SetActive(false);
+                droneZone2.SetActive(false);
                 if (_bulletFireCoolDownRemain <= 0)
                 {
                     GameObject bulletInstance = Instantiate(_bulletPrefab, bulletSpawnTransform.position, transform.rotation) as GameObject;
@@ -153,7 +169,7 @@ public class Boss1 : MonoBehaviour {
         else
         {
             float ran = Random.Range(0f, 1f);
-            if (ran >= 0.5f)
+            if (ran >= 0.6f)
                 action = Boss1Actions.ShootBlackHole;
             else
                 action = Boss1Actions.ShootTrackingBullet; 
