@@ -9,13 +9,16 @@ public class AreaAttack : MonoBehaviour {
 	private bool _enableAttacking;
 	public void Attack()
 	{
-		AudioManager.instance.Play ("evilLaugh");
-		Instantiate (monsterBullet, transform.position, transform.rotation);
-		Character.current.GetComponent<Rigidbody> ().velocity = new Vector3 (0, 0, 0);
-		_gun.DisableInput ();
-		Camera.main.GetComponent<CameraStartBloom> ().StartBloomEffect ();
+		if (Character.current != null)
+		{
+			AudioManager.instance.Play ("evilLaugh");
+			Instantiate (monsterBullet, transform.position, transform.rotation);
+			Character.current.GetComponent<Rigidbody> ().velocity = new Vector3 (0, 0, 0);
+			_gun.DisableInput ();
+			Camera.main.GetComponent<CameraStartBloom> ().StartBloomEffect ();
 
-		Invoke ("EnableInput", 1.0f);
+			Invoke ("EnableInput", 1.0f);
+		}
 	}
 
 	void EnableInput()

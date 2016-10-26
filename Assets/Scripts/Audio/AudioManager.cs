@@ -142,6 +142,16 @@ public class AudioManager : MonoBehaviour
 			GetComponent<AudioSource> ().Play ();
 		}
 
+		if (audioEvent == "chaseLevel")
+		{
+			snapshots ["BossLevel"].TransitionTo (0.0f);
+			GetComponent<AudioSource> ().Stop ();
+			source.clip = clips ["ChaseLevelMusic"];
+			source.outputAudioMixerGroup = mixerGroups ["BossBGM"];
+			source.loop = true;
+			soundObject.SetActive (true);
+		}
+
 		if (audioEvent == "bossLevel") 
 		{
 			snapshots ["BossLevel"].TransitionTo (0.0f);
