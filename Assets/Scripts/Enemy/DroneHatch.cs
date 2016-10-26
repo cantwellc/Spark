@@ -43,7 +43,7 @@ public class DroneHatch : MonoBehaviour {
                     _smallSpawnIntervalRemain = droneSmallSpawnInterval;
                     if (_remainingDrones == 0)
                     {
-                        _spawnIntervalRemain = droneSpawnCountsPerSpawn;
+                        _spawnIntervalRemain = droneSpawnIntervalInSecond;
                         _remainingDrones = droneSpawnCountsPerSpawn;
                         _smallSpawnIntervalRemain = droneSmallSpawnInterval;
                     }
@@ -60,5 +60,12 @@ public class DroneHatch : MonoBehaviour {
     public void StopShooting()
     {
         canSpawn = false;
+    }
+
+    public void Reload()
+    {
+        _spawnIntervalRemain = 0;
+        _remainingDrones = droneSpawnCountsPerSpawn;
+        _smallSpawnIntervalRemain = droneSmallSpawnInterval;
     }
 }
