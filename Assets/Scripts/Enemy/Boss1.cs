@@ -169,7 +169,7 @@ public class Boss1 : MonoBehaviour {
         else
         {
             float ran = Random.Range(0f, 1f);
-            if (ran >= 0.5f)
+            if (ran >= 0.6f)
                 action = Boss1Actions.ShootBlackHole;
             else
                 action = Boss1Actions.ShootTrackingBullet; 
