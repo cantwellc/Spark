@@ -63,13 +63,10 @@ public class CharacterBulletCollision : MonoBehaviour
             Destroy(explosion, 0.5f);
             Destroy(gameObject);
         }
-        else
+        else if(Armor.ArmorType.Reflective == armorType)
         {
-            Health enemyHealth = other.gameObject.GetComponent<Health>();
-            enemyHealth.TakeDamage(_damage);
-            GameObject explosion = (GameObject)Instantiate(plasmaExplosionPrefab, transform.position, Quaternion.Euler(-90f, 0, 0));
-            Destroy(explosion, 0.5f);
-            Destroy(gameObject);
+            Rigidbody rigidbody = GetComponent<Rigidbody>();
+            rigidbody.velocity = -0.3f *rigidbody.velocity;
         }
     }
 
