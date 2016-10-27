@@ -3675,7 +3675,18 @@ Prefab:
       propertyPath: _startShooting
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114000011201040252, guid: 99c36e862cff24681bab296580942f29,
+        type: 2}
+      propertyPath: damageReduction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011201040252, guid: 99c36e862cff24681bab296580942f29,
+        type: 2}
+      propertyPath: armorType
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114000010462520982, guid: 99c36e862cff24681bab296580942f29, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 99c36e862cff24681bab296580942f29, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &463242081
@@ -5927,7 +5938,18 @@ Prefab:
       propertyPath: fireIntervalInSeconds
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114000011201040252, guid: 99c36e862cff24681bab296580942f29,
+        type: 2}
+      propertyPath: damageReduction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011201040252, guid: 99c36e862cff24681bab296580942f29,
+        type: 2}
+      propertyPath: armorType
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114000010462520982, guid: 99c36e862cff24681bab296580942f29, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 99c36e862cff24681bab296580942f29, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &695944203
@@ -9234,7 +9256,33 @@ Prefab:
       propertyPath: _startShooting
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114000011138687778, guid: 99c36e862cff24681bab296580942f29,
+        type: 2}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011138687778, guid: 99c36e862cff24681bab296580942f29,
+        type: 2}
+      propertyPath: _maxHealth
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011138687778, guid: 99c36e862cff24681bab296580942f29,
+        type: 2}
+      propertyPath: _currentHealth
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011201040252, guid: 99c36e862cff24681bab296580942f29,
+        type: 2}
+      propertyPath: damageReduction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011201040252, guid: 99c36e862cff24681bab296580942f29,
+        type: 2}
+      propertyPath: armorType
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114000010462520982, guid: 99c36e862cff24681bab296580942f29, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 99c36e862cff24681bab296580942f29, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1052721199
