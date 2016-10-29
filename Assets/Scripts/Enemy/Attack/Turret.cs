@@ -54,11 +54,11 @@ public class Turret : MonoBehaviour {
         {
             case BulletType.Plasma:
                 _bulletPrefabName = "Prefabs/Enemy/EnemyBullet";
-                _bulletPrefab = (GameObject)Resources.Load("Prefabs/Enemy/EnemyBullet");
+                _bulletPrefab = (GameObject)Resources.Load("Prefabs/Enemy/EnemyBulletPlasma");
                 break;
             case BulletType.SprayPlasma:
                 _bulletPrefabName = "Prefabs/Enemy/EnemyBullet";
-                _bulletPrefab = (GameObject)Resources.Load("Prefabs/Enemy/EnemyBullet");
+                _bulletPrefab = (GameObject)Resources.Load("Prefabs/Enemy/EnemyBulletPlasma");
                 break;
             case BulletType.Flame:
                 _bulletPrefabName = "Prefabs/Enemy/EnemyFlameBullet";
