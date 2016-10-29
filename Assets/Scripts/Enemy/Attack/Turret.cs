@@ -70,7 +70,7 @@ public class Turret : MonoBehaviour {
                 break;
 			case BulletType.Stun:
 				_bulletPrefabName = "Prefabs/Enemy/StunBolt";
-				_bulletPrefab = (GameObject)Resources.Load ("Prefabs/Enemy/StunBolt");
+				_bulletPrefab = (GameObject)Resources.Load ("Prefabs/Enemy/StunBoltPlasma");
 				
 				break;
             default:
