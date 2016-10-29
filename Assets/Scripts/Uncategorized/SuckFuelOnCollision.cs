@@ -21,7 +21,15 @@ public class SuckFuelOnCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "Character")
         {
-			other.GetComponent<Health>().TakeDamage(suckAmount);
+			other.GetComponent<Health>().TakeDamage(suckAmount*Time.deltaTime);
+        }
+    }
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Character")
+        {
+            other.GetComponent<Health>().TakeDamage(suckAmount * Time.deltaTime);
         }
     }
 }

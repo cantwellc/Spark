@@ -6,11 +6,13 @@ public class CheckpointData
 {
     public Vector3 currentPos;
     public float currentStartFuel;
+    public bool hasKey;
 
     public void setData(Vector3 pos, float fuel)
     {
         currentPos = pos;
         currentStartFuel = fuel;
+        hasKey = false;
     }
 }
 
@@ -23,7 +25,7 @@ public class Checkpoint : MonoBehaviour {
     public static CheckpointData currentData;
 
     bool _isActivated = false;
-    
+    bool hasKey = false;
 
 	// Use this for initialization
 	void Start () {
@@ -36,10 +38,12 @@ public class Checkpoint : MonoBehaviour {
         {
             _isActivated = true;
             currentData = new CheckpointData();
-            currentData.currentPos = this.transform.position;
-            currentData.currentStartFuel = initialFuel;
+            currentData.setData(transform.position, initialFuel);
         }
         EventManager.StartListening(EventManager.Events.GOAL_REACHED, OnReloadScene);
+        EventManager.StartListening(EventManager.Events.KEY_COLLECTED, OnKeyCollected);
+        hasKey = false;
+        if (currentData != null && currentData.hasKey) hasKey = true;
         this.GetComponent<MeshRenderer>().material.color = Color.red;
         //EventManager.StartListening(EventManager.Events., OnReloadScene);
     }
@@ -54,10 +58,20 @@ public class Checkpoint : MonoBehaviour {
         {
             _isActivated = true;
             currentData.setData(transform.position, initialFuel);
+            if (hasKey) currentData.hasKey = true;
             
             this.GetComponent<MeshRenderer>().material.color = Color.green;
             onCheckpointEnter.Invoke();
+            if(currentData.hasKey)
+            {
+                GetComponent<TriggerEvent>().Trigger();
+            }
         }
+    }
+
+    void OnKeyCollected()
+    {
+        hasKey = true;
     }
 
     void OnReloadScene()

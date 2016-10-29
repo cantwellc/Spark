@@ -37,4 +37,9 @@ public class MoveForward : MonoBehaviour {
 		doMove = false;
         OnStopMoving.Invoke();
 	}
+
+    public void SlamShut()
+    {
+        speed = 20.0f;
+    }
 }
