@@ -75,6 +75,12 @@ public class AudioManager : MonoBehaviour
 			musicSource.clip = clips ["Menu_Music_2"];
 			musicSource.Play ();
 		}
+
+		if (audioEvent == "opening") 
+		{
+			AudioSource musicSource = gameObject.GetComponent<AudioSource> ();
+			musicSource.Stop ();
+		}
 			
 		//Stops death countdown SFX
 		if (audioEvent == "stopDeathCountdown") 
@@ -277,14 +283,14 @@ public class AudioManager : MonoBehaviour
         //For green floors speed up effect SFX
         if (audioEvent == "speedUpAura")
         {
-            //source.volume = 0.5f;
+            source.volume = 0.5f;
             source.clip = clips["chargeUp_raw2"];
             source.outputAudioMixerGroup = mixerGroups["Auras"];
             soundObject.SetActive(true);
         }
         if(audioEvent == "temporaryDrag")
         {
-            //source.volume = 0.5f;
+            source.volume = 0.5f;
             source.clip = clips["wormholeOpen_raw1"];
             source.outputAudioMixerGroup = mixerGroups["Auras"];
             soundObject.SetActive(true);
@@ -310,6 +316,19 @@ public class AudioManager : MonoBehaviour
 			soundObject.SetActive (true);
 		}
 
+		if (audioEvent == "glassExplode")
+		{
+			source.clip = clips ["glassExplosion"];
+			source.outputAudioMixerGroup = mixerGroups ["Glass"];
+			soundObject.SetActive (true);
+		}
+			
+		if (audioEvent == "storyStart")
+		{
+			Play ("opening");
+			Play ("labAmbiance");
+		}
+
 		if (audioEvent == "storyA") 
 		{
 			source.clip = clips ["disasterAmbiance"];
@@ -322,7 +341,8 @@ public class AudioManager : MonoBehaviour
 		if (audioEvent == "storyB") 
 		{
 			Play ("explosionB");
-			StartCoroutine (Delay (audioEvent, 0.5f));
+			Play ("glassExplode");
+			StartCoroutine (Delay (audioEvent, 0.25f));
 		}
 
 		if (audioEvent == "storyC")
@@ -332,9 +352,7 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "storyD")
 		{
-			source.clip = clips ["nanoTest"];
-			source.outputAudioMixerGroup = mixerGroups ["NanoAmbiance"];
-			soundObject.SetActive (true);
+			Play ("nanoAmbiance");
 		}
 
 		if (audioEvent == "storyE") 
@@ -344,7 +362,8 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "storyF")
 		{
-			Play ("voWhatsHappening");
+			Play ("bgExp");
+			StartCoroutine (Delay (audioEvent, 1.0f));
 		}
 
 		if (audioEvent == "storyG")
@@ -360,7 +379,7 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "storyZ")
 		{
-			source.clip = clips ["hitTest"];
+			source.clip = clips ["storyEndHit"];
 			source.outputAudioMixerGroup = mixerGroups ["Stabs"];
 			soundObject.SetActive (true);
 			StartCoroutine(Delay(audioEvent, 1.0f));
@@ -382,9 +401,23 @@ public class AudioManager : MonoBehaviour
 			soundObject.SetActive (true);
 		}
 
+		if (audioEvent == "bgExp")
+		{
+			source.clip = clips ["bgExplosions"];
+			source.outputAudioMixerGroup = mixerGroups ["BgExp"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "nanoAmbiance")
+		{
+			source.clip = clips ["nanoAmbiance"];
+			source.outputAudioMixerGroup = mixerGroups ["NanoAmbiance"];
+			soundObject.SetActive (true);
+		}
+
 		if (audioEvent == "storyAlarm")
 		{
-			source.clip = clips ["lowFuel_raw1"];
+			source.clip = clips ["storyAlarm"];
 			source.loop = true;
 			source.outputAudioMixerGroup = mixerGroups ["Alarm"];
 			soundObject.SetActive (true);
@@ -394,28 +427,36 @@ public class AudioManager : MonoBehaviour
 		//Voice Over
 		if (audioEvent == "voLookOut") 
 		{
-			source.clip = clips ["voMain_watchOutDry"];
+			source.clip = clips ["voMain_newWatchOut"];
 			source.outputAudioMixerGroup = mixerGroups ["PlayerVO"];
 			soundObject.SetActive (true);
 		}
 
 		if (audioEvent == "voScream") 
 		{
-			source.clip = clips ["voMain_screamDry"];
+			source.clip = clips ["voMain_newScream"];
 			source.outputAudioMixerGroup = mixerGroups ["PlayerVO"];
 			soundObject.SetActive (true);
 		}
 			
 		if (audioEvent == "voAlive")
 		{
-			source.clip = clips ["voMain_aliveVerb"];
+			source.clip = clips ["voMain_newAlive"];
 			source.outputAudioMixerGroup = mixerGroups ["PlayerVerbVO"];
 			soundObject.SetActive (true);
 		}
 
 		if (audioEvent == "voComputer")
 		{
-			source.clip = clips ["voComputer_Warning"];
+			source.clip = clips ["voComputer_newWarning"];
+			source.outputAudioMixerGroup = mixerGroups ["ComputerVO"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "voComputerSoft")
+		{
+			source.clip = clips ["voComputer_newWarning"];
+			source.volume = 0.5f;
 			source.outputAudioMixerGroup = mixerGroups ["ComputerVO"];
 			soundObject.SetActive (true);
 		}
@@ -429,7 +470,7 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "voEscape")
 		{
-			source.clip = clips ["escapeTest"];
+			source.clip = clips ["voMain_newEscape"];
 			source.outputAudioMixerGroup = mixerGroups ["PlayerVerbVO"];
 			soundObject.SetActive (true);
 		}
@@ -443,7 +484,7 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "voChanging")
 		{
-			source.clip = clips ["changeTest"];
+			source.clip = clips ["voMain_newChange"];
 			source.outputAudioMixerGroup = mixerGroups ["PlayerVerbVO"];
 			soundObject.SetActive (true);
 		}
@@ -575,6 +616,15 @@ public class AudioManager : MonoBehaviour
 			yield return new WaitForSeconds (time);
 			Play ("voComputer");
 			Play ("storyAlarm");
+		}
+		else if (audioEvent == "storyF")
+		{
+			yield return new WaitForSeconds (time);
+			Play ("voWhatsHappening");
+			yield return new WaitForSeconds (3.0f);
+			Play ("voComputerSoft");
+			yield return new WaitForSeconds (6.0f);
+			Play ("voComputerSoft");
 		}
 		else if (audioEvent == "storyZ")
 		{
