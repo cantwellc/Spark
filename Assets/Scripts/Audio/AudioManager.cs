@@ -66,7 +66,8 @@ public class AudioManager : MonoBehaviour
 
 	public void Play(string audioEvent)
 	{
-		print (audioEvent);
+		//DEBUG
+		//print (audioEvent);
 
 		//Changes BGM depending on scene
 		if (audioEvent == "standardLevel") 
