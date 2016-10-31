@@ -8,4 +8,9 @@ public class TriggerEvent : MonoBehaviour {
     {
         EventManager.TriggerEvent(triggerEvent);
     }
+
+	public void PlaySound (string audioEvent)
+	{
+		AudioManager.instance.Play (audioEvent);
+	}
 }

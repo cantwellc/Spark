@@ -62,12 +62,12 @@ public class AudioManager : MonoBehaviour
 		snapshots = new Dictionary<string, AudioMixerSnapshot> ();
 		foreach (AudioMixerSnapshot snapshot in snapshotList)
 			snapshots.Add (snapshot.name, snapshot);
-
-
     }
 
 	public void Play(string audioEvent)
 	{
+		print (audioEvent);
+
 		//Changes BGM depending on scene
 		if (audioEvent == "standardLevel") 
 		{
@@ -275,7 +275,7 @@ public class AudioManager : MonoBehaviour
         if (audioEvent == "slowAura")
         {
 
-            //source.volume = 0.1f;
+            source.volume = 0.1f;
             source.clip = clips["refuel_raw3"];
             source.outputAudioMixerGroup = mixerGroups["Auras"];
             soundObject.SetActive(true);
@@ -346,19 +346,13 @@ public class AudioManager : MonoBehaviour
 		}
 
 		if (audioEvent == "storyC")
-		{
 			Play ("voAlive");
-		}
 
 		if (audioEvent == "storyD")
-		{
 			Play ("nanoAmbiance");
-		}
 
 		if (audioEvent == "storyE") 
-		{
 			StartCoroutine (Delay (audioEvent, 0.5f));
-		}
 
 		if (audioEvent == "storyF")
 		{
@@ -367,9 +361,7 @@ public class AudioManager : MonoBehaviour
 		}
 
 		if (audioEvent == "storyG")
-		{
 			Play ("voEscape");
-		}
 
 		if (audioEvent == "storyH")
 		{
@@ -384,7 +376,6 @@ public class AudioManager : MonoBehaviour
 			soundObject.SetActive (true);
 			StartCoroutine(Delay(audioEvent, 1.0f));
 			Play ("voChange");
-			//alarm.SetActive (false);
 		}
 
 		if (audioEvent == "explosionA") 
