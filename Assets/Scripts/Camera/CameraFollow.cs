@@ -9,7 +9,8 @@ public class CameraFollow : MonoBehaviour
 	public Transform targetLocation;
     public Transform targetLocation2;
 
-    public float speed; 
+    public float speed;
+	public float cameraPlayerFollowCoefficient = 1.0f;
 
 	private Vector3 _offset;
 	private bool _shaking = false;
@@ -54,7 +55,7 @@ public class CameraFollow : MonoBehaviour
 				newPosition = targetLocation.position + _offset;
 			} else
 			{
-				newPosition = (targetLocation.position + targetLocation2.position) / 2.0f + _offset;
+				newPosition = (targetLocation.position  + targetLocation2.position * cameraPlayerFollowCoefficient) / 2.0f + _offset;
 				if ((newPosition - transform.position).magnitude > 2.0f)
 				{
 					newPosition = Vector3.MoveTowards (transform.position, newPosition, speed * Time.deltaTime);
