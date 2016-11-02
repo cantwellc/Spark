@@ -7482,7 +7482,8 @@ Prefab:
       propertyPath: m_Name
       value: SprayFlameTurret (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114000013324562512, guid: d7472cba6d068473aa652126e17e1211, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d7472cba6d068473aa652126e17e1211, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &638830983
@@ -7864,6 +7865,11 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011138687778, guid: 99c36e862cff24681bab296580942f29,
+        type: 2}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000010462520982, guid: 99c36e862cff24681bab296580942f29, type: 2}
@@ -13920,6 +13926,27 @@ Transform:
   m_PrefabParentObject: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c,
     type: 2}
   m_PrefabInternal: {fileID: 1489022406}
+--- !u!1 &1019854232 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000010875116876, guid: d7472cba6d068473aa652126e17e1211,
+    type: 2}
+  m_PrefabInternal: {fileID: 1893000030}
+--- !u!114 &1019854233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1019854232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4601823b64f7d504d98cb9224ced61d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyCharger: {fileID: 0}
+  fuelContainer: {fileID: 1000010594983242, guid: b80015062eb32fb498214f402147ac43,
+    type: 2}
+  chargeAmount: 0
+  dropKey: 0
 --- !u!1 &1065515880
 GameObject:
   m_ObjectHideFlags: 0
@@ -14490,6 +14517,27 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fba825b119c9043c9801f7dd58f3e86c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1143340568 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000010875116876, guid: d7472cba6d068473aa652126e17e1211,
+    type: 2}
+  m_PrefabInternal: {fileID: 628053335}
+--- !u!114 &1143340569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1143340568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4601823b64f7d504d98cb9224ced61d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyCharger: {fileID: 0}
+  fuelContainer: {fileID: 1000010594983242, guid: b80015062eb32fb498214f402147ac43,
+    type: 2}
+  chargeAmount: 0
+  dropKey: 0
 --- !u!4 &1146770231 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c,
@@ -14575,6 +14623,11 @@ Prefab:
         type: 2}
       propertyPath: bulletType
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011138687778, guid: 99c36e862cff24681bab296580942f29,
+        type: 2}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000010462520982, guid: 99c36e862cff24681bab296580942f29, type: 2}
@@ -21260,6 +21313,27 @@ Transform:
   m_PrefabParentObject: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c,
     type: 2}
   m_PrefabInternal: {fileID: 1672249686}
+--- !u!1 &1680020545 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000010875116876, guid: d7472cba6d068473aa652126e17e1211,
+    type: 2}
+  m_PrefabInternal: {fileID: 1742891180}
+--- !u!114 &1680020546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1680020545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4601823b64f7d504d98cb9224ced61d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyCharger: {fileID: 0}
+  fuelContainer: {fileID: 1000010594983242, guid: b80015062eb32fb498214f402147ac43,
+    type: 2}
+  chargeAmount: 0
+  dropKey: 0
 --- !u!1 &1688924204
 GameObject:
   m_ObjectHideFlags: 0
@@ -21812,7 +21886,8 @@ Prefab:
       propertyPath: fireIntervalInSeconds
       value: 0.2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114000013324562512, guid: d7472cba6d068473aa652126e17e1211, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d7472cba6d068473aa652126e17e1211, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1753382859
@@ -24505,7 +24580,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 52
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114000013324562512, guid: d7472cba6d068473aa652126e17e1211, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d7472cba6d068473aa652126e17e1211, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1915766338
