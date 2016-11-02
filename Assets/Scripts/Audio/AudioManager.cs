@@ -73,6 +73,7 @@ public class AudioManager : MonoBehaviour
 		if (audioEvent == "standardLevel") 
 		{
 			AudioSource musicSource = gameObject.GetComponent<AudioSource> ();
+            musicSource.Stop ();
 			musicSource.clip = clips ["Menu_Music_2"];
 			musicSource.Play ();
 		}
