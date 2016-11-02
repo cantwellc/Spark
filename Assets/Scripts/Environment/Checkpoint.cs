@@ -5,6 +5,7 @@ using System.Collections;
 public class CheckpointData
 {
     public Vector3 currentPos;
+	public Vector3 chaserPos;
     public float currentStartFuel;
     public bool hasKey;
 
@@ -34,12 +35,14 @@ public class Checkpoint : MonoBehaviour {
 
     void Awake()
     {
-        if(isInitialCheckpoint && currentData == null)
-        {
-            _isActivated = true;
-            currentData = new CheckpointData();
-            currentData.setData(transform.position, initialFuel);
-        }
+		
+		if (isInitialCheckpoint && currentData == null)
+		{
+			_isActivated = true;
+			currentData = new CheckpointData ();
+			currentData.setData (transform.position, initialFuel);
+		} 
+
         EventManager.StartListening(EventManager.Events.GOAL_REACHED, OnReloadScene);
         EventManager.StartListening(EventManager.Events.KEY_COLLECTED, OnKeyCollected);
         hasKey = false;
@@ -66,6 +69,16 @@ public class Checkpoint : MonoBehaviour {
             {
                 GetComponent<TriggerEvent>().Trigger();
             }
+
+			foreach (Transform child in transform)
+			{
+				if (child.name == "ChaseSpawn")
+				{
+					currentData.chaserPos = child.position;
+					Debug.Log ("Set chaserpos to " + currentData.chaserPos);
+				}
+			}
+	
         }
     }
 

@@ -41,7 +41,19 @@ public class GameManager : MonoBehaviour {
                 GameObject character = Instantiate(charPrefab);
                 Character.current = character.GetComponent<Character>();
                 character.transform.position = Checkpoint.currentData.currentPos;
-                character.GetComponent<FuelReservoir>().fuelCount = Checkpoint.currentData.currentStartFuel;
+				string sceneName = SceneManager.GetActiveScene ().name;
+				if (sceneName == "ChaseLevel")
+				{
+					
+						
+					GameObject chasingBoss = GameObject.Find ("ChasingBoss"); 
+					chasingBoss.transform.position = Checkpoint.currentData.chaserPos;
+					Debug.Log ("Chasing boss location is : " + chasingBoss.transform.position);
+
+				}
+				character.GetComponent<FuelReservoir>().fuelCount = Checkpoint.currentData.currentStartFuel;
+
+
             }
         }
         print("loaded");

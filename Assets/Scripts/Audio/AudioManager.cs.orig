@@ -74,7 +74,11 @@ public class AudioManager : MonoBehaviour
 		{
 			
 			AudioSource musicSource = gameObject.GetComponent<AudioSource> ();
+<<<<<<< Updated upstream
+            musicSource.Stop ();
+=======
 			musicSource.Stop ();
+>>>>>>> Stashed changes
 			musicSource.clip = clips ["Menu_Music_2"];
 			musicSource.Play ();
 		}
@@ -203,7 +207,6 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "lowFuel") 
 		{
-			canAlarm = false;
 			if (canAlarm) 
 			{
 				canAlarm = false;
