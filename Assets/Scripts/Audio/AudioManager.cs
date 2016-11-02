@@ -84,7 +84,8 @@ public class AudioManager : MonoBehaviour
 		if (audioEvent == "chaseLevel")
 		{
 			AudioSource musicSource = gameObject.GetComponent<AudioSource> ();
-			musicSource.Stop();
+			snapshots ["BossLevel"].TransitionTo (0.0f);
+
 			musicSource.clip = clips ["ChaseLevelMusic"];
 			musicSource.outputAudioMixerGroup = mixerGroups ["BossBGM"];
 			musicSource.loop = true;

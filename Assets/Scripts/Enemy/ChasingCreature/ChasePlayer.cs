@@ -29,7 +29,7 @@ public class ChasePlayer : MonoBehaviour {
 	{
 
 
-		Debug.Log (transform.position);
+		//Debug.Log (transform.position);
 		if (CharacterCloseToPedestal ())
 		{
 			_follow = false;
