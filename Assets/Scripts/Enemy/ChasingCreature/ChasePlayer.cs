@@ -21,6 +21,13 @@ public class ChasePlayer : MonoBehaviour {
 
 		_speed = initialSpeed;
 		_navMeshAgent = GetComponent<NavMeshAgent> ();
+		if (pedestalLocation == null)
+		{
+			GameObject pedestal = GameObject.FindGameObjectWithTag ("Portal");
+			pedestalLocation = pedestal.transform;
+
+
+		}
 
 	}
 	

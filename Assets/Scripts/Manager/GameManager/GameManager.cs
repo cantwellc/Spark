@@ -46,9 +46,15 @@ public class GameManager : MonoBehaviour {
 				{
 					
 						
-					GameObject chasingBoss = GameObject.Find ("ChasingBoss"); 
-					chasingBoss.transform.position = Checkpoint.currentData.chaserPos;
-					Debug.Log ("Chasing boss location is : " + chasingBoss.transform.position);
+					GameObject chasingBoss = (GameObject)Resources.Load ("Prefabs/Enemy/ChaseBoss/ChasingBoss");
+					if (Checkpoint.currentData.chaserPos.x == 0 && Checkpoint.currentData.chaserPos.y == 0 && Checkpoint.currentData.chaserPos.z == 0)
+					{
+						Instantiate (chasingBoss, new Vector3 (-6.5500f, -0.04999924f, -85.0f), Quaternion.identity);
+					} else
+					{
+						Instantiate (chasingBoss, Checkpoint.currentData.chaserPos, Quaternion.identity);
+					}
+
 
 				}
 				character.GetComponent<FuelReservoir>().fuelCount = Checkpoint.currentData.currentStartFuel;
