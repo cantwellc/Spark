@@ -22,4 +22,9 @@ public class Wait : MonoBehaviour {
 	{
 		GetComponent<ChasePlayer> ().enabled = true;
 	}
+
+    public void ChangePosition(Transform pos)
+    {
+        transform.position = pos.position;
+    }
 }

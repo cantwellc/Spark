@@ -15,6 +15,8 @@ public class CheckpointData
         currentStartFuel = fuel;
         hasKey = false;
     }
+
+    
 }
 
 public class Checkpoint : MonoBehaviour {
@@ -62,6 +64,8 @@ public class Checkpoint : MonoBehaviour {
         {
             if(currentData != null && currentData.currentPos == transform.position)
             {
+                print("spawn");
+                //StartCoroutine(ExecuteAfterTime(0.05f));
                 onCheckpointEnterOnSpawn.Invoke();
             }
             _isActivated = true;
@@ -75,16 +79,30 @@ public class Checkpoint : MonoBehaviour {
                 GetComponent<TriggerEvent>().Trigger();
             }
 
-			foreach (Transform child in transform)
+			/*foreach (Transform child in transform)
 			{
 				if (child.name == "ChaseSpawn")
 				{
 					currentData.chaserPos = child.position;
 					Debug.Log ("Set chaserpos to " + currentData.chaserPos);
 				}
-			}
+			}*/
 	
         }
+    }
+
+    public void setChaserPos(Transform pos)
+    {
+        currentData.chaserPos = pos.position;
+        Debug.Log("Set chaserpos to " + currentData.chaserPos);
+    }
+
+    IEnumerator ExecuteAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        onCheckpointEnterOnSpawn.Invoke();
+        // Code to execute after the delay
     }
 
     void OnKeyCollected()
