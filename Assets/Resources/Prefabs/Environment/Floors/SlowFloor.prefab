@@ -38,6 +38,7 @@ GameObject:
   - 4: {fileID: 4000011551083790}
   - 33: {fileID: 33000010974377308}
   - 23: {fileID: 23000010744614206}
+  - 114: {fileID: 114000012965716202}
   m_Layer: 0
   m_Name: SlowFloorModel
   m_TagString: ExtraCollider
@@ -65,8 +66,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013483099842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 149.57779, y: -40.084694, z: -228.55762}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 75.47, y: -0.74, z: -75.15}
+  m_LocalScale: {x: 0.5118597, y: 1, z: 0.28792086}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000011551083790}
@@ -120,6 +121,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9.999999, y: 1.1082387, z: 10}
   m_Center: {x: 0, y: 0.65, z: 0}
+--- !u!114 &114000012965716202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013599802670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3bd19cb6d0c1a4d9dd1581653746db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0.014597764, g: 0.3451111, b: 0.99264705, a: 0}
 --- !u!114 &114000013509768782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,5 +144,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ef352d2c8e6c634aa71214046a60fa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 2
-  slowDownThreshold: 0.2
+  force: 6
+  slowDownThreshold: 0.1
