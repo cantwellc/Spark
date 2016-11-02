@@ -54,6 +54,7 @@ public class Checkpoint : MonoBehaviour {
         {
             _isActivated = true;
             currentData.setData(transform.position, initialFuel);
+
             
             this.GetComponent<MeshRenderer>().material.color = Color.green;
             onCheckpointEnter.Invoke();
