@@ -47,6 +47,11 @@ public class ExplodingDrone : MonoBehaviour {
     {
 		
 		if (collision.gameObject.name.Contains("Door")|| collision.gameObject.name.Contains("Drone")) return;
+		if (collision.gameObject.tag == "SpecialDroneKillerWall")
+		{
+			Destroy (gameObject);
+			return;
+		}
 		if (_exploded) return;
         _exploded = true;
         //Explode();
@@ -56,7 +61,12 @@ public class ExplodingDrone : MonoBehaviour {
     void OnCollisionStay(Collision collision)
     {
 		if (collision.gameObject.name.Contains("Door")|| collision.gameObject.name.Contains("Drone")) return;
-        if (_exploded) return;
+		if (collision.gameObject.tag == "SpecialDroneKillerWall")
+		{
+			Destroy (gameObject);
+			return;
+		}
+		if (_exploded) return;
         _exploded = true;
        // Explode(); 
         GetComponent<Health>().TakeDamage(50f);
