@@ -22,6 +22,7 @@ public class Checkpoint : MonoBehaviour {
     public float initialFuel;
     public bool isInitialCheckpoint;
     public UnityEvent onCheckpointEnter;
+    public UnityEvent onCheckpointEnterOnSpawn;
 
     public static CheckpointData currentData;
 
@@ -59,6 +60,10 @@ public class Checkpoint : MonoBehaviour {
     {
         if(_isActivated == false && other.tag == "Character")
         {
+            if(currentData != null && currentData.currentPos == transform.position)
+            {
+                onCheckpointEnterOnSpawn.Invoke();
+            }
             _isActivated = true;
             currentData.setData(transform.position, initialFuel);
             if (hasKey) currentData.hasKey = true;
