@@ -181,6 +181,10 @@ public class GameManager : MonoBehaviour {
             case GAME_STATES.MAIN_MENU:
 
                 Cursor.visible = true;
+                if(Checkpoint.currentData != null)
+                {
+                    Checkpoint.currentData = null;
+                }
 
                 /*if(GameObject.Find("Character") != null)
                 {
