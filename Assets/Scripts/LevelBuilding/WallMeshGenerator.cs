@@ -117,13 +117,15 @@ public class WallMeshGenerator : MonoBehaviour {
 
                 mesh.name = "Generated mesh";
                 GetComponent<MeshFilter>().mesh = mesh;
+                gameObject.AddComponent<MeshCollider>();
             }
             
         }
         if(clearMesh)
         {
             clearMesh = false;
-            GetComponent<MeshFilter>().mesh.Clear();
+            GetComponent<MeshFilter>().mesh = null;
+            DestroyImmediate(GetComponent<MeshCollider>());
         }
 	}
 }
