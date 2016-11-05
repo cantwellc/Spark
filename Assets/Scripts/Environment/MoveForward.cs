@@ -47,4 +47,9 @@ public class MoveForward : MonoBehaviour {
 	
 	}
 
+	public void PlaySound(string audioEvent)
+	{
+		AudioManager.instance.Play (audioEvent);
+	}
+
 }

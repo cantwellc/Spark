@@ -26,7 +26,7 @@ public class DeactivateObject : MonoBehaviour
 
 	void Deactivate ()
 	{
-		if (canDeactivate == true)
-			gameObject.SetActive (false);
+		/*if (canDeactivate == true)
+			gameObject.SetActive (false);*/
 	}
 }

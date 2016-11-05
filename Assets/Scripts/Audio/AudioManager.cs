@@ -25,6 +25,7 @@ public class AudioManager : MonoBehaviour
 	private Dictionary<string, AudioMixerSnapshot> snapshots;
 
 	private bool canAlarm = true;
+	private bool canSlam = true;
 
 	private GameObject alarm;
 	private GameObject leechBeam;
@@ -232,6 +233,7 @@ public class AudioManager : MonoBehaviour
 		//Initalizes source
 		source.spatialBlend = 0.0f;
 		source.volume = 1.0f;
+		source.pitch = 1.0f;
 		source.loop = false;
 
 		//Plays the various SFX
@@ -246,6 +248,7 @@ public class AudioManager : MonoBehaviour
 		{
 			source.clip = clips ["plasmaFire"];
 			source.outputAudioMixerGroup = mixerGroups ["PrimaryFire"];
+			source.pitch = Random.Range (0.95f, 1.05f);
 			soundObject.SetActive (true);
 		}
 
@@ -311,6 +314,7 @@ public class AudioManager : MonoBehaviour
 		{
 			source.clip = clips ["explosionPlayer" + (int)Random.Range(1,3)];
 			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
+			source.pitch = Random.Range (0.95f, 1.05f);
 			Play ("stopDeathCountdown");
 			soundObject.SetActive (true);
 		}
@@ -650,6 +654,21 @@ public class AudioManager : MonoBehaviour
 			soundObject.SetActive (true);
 			Play ("leechHold");
 		}
+
+		if (audioEvent == "wallSlam")
+		{
+			if (canSlam == true)
+			{
+				source.clip = clips ["wallTest"];
+				source.outputAudioMixerGroup = mixerGroups ["Slam"];
+				source.pitch = Random.Range (0.95f, 1.05f);
+				soundObject.SetActive (true);
+				canSlam = false;
+				StartCoroutine (Delay (audioEvent, 0.2f));
+			}
+			else
+				return;
+		}
 	}
 
 	//Use to set a delay between audio events, etc.
@@ -695,6 +714,11 @@ public class AudioManager : MonoBehaviour
 		{
 			yield return new WaitForSeconds (time);
 			snapshots ["NanoOff"].TransitionTo (2.0f);
+		}
+		else if (audioEvent == "wallSlam")
+		{
+			yield return new WaitForSeconds (time);
+			canSlam = true;
 		}
 		else
 			yield return new WaitForSeconds (time);

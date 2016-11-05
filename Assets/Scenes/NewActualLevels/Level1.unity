@@ -2277,6 +2277,12 @@ MonoBehaviour:
   clearMesh: 0
   wallHeight: 5
   wallWidth: 1
+--- !u!114 &585635956 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000012172776000, guid: 5eedd8382144980488879c5a984fc354,
+    type: 2}
+  m_PrefabInternal: {fileID: 1558385355}
+  m_Script: {fileID: 11500000, guid: c29c03b595bac0a46b1dc4ad436c958c, type: 3}
 --- !u!4 &588349847 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011743775772, guid: 5eedd8382144980488879c5a984fc354,
@@ -5529,6 +5535,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 136049534}
     m_Modifications:
+    - target: {fileID: 114000012206707256, guid: 5eedd8382144980488879c5a984fc354,
+        type: 2}
+      propertyPath: triggerEnter.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011743775772, guid: 5eedd8382144980488879c5a984fc354, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5569,6 +5580,36 @@ Prefab:
     - target: {fileID: 4000011735900096, guid: 5eedd8382144980488879c5a984fc354, type: 2}
       propertyPath: m_LocalPosition.x
       value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012206707256, guid: 5eedd8382144980488879c5a984fc354,
+        type: 2}
+      propertyPath: triggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012206707256, guid: 5eedd8382144980488879c5a984fc354,
+        type: 2}
+      propertyPath: triggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012206707256, guid: 5eedd8382144980488879c5a984fc354,
+        type: 2}
+      propertyPath: triggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 585635956}
+    - target: {fileID: 114000012206707256, guid: 5eedd8382144980488879c5a984fc354,
+        type: 2}
+      propertyPath: triggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012206707256, guid: 5eedd8382144980488879c5a984fc354,
+        type: 2}
+      propertyPath: triggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012206707256, guid: 5eedd8382144980488879c5a984fc354,
+        type: 2}
+      propertyPath: triggerEnter.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
+      value: startSlam
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5eedd8382144980488879c5a984fc354, type: 2}
