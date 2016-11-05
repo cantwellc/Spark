@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Boss1 : MonoBehaviour {
 
@@ -12,11 +12,14 @@ public class Boss1 : MonoBehaviour {
     public float bulletSpeed;
     public float bulletExistTime;
 
-    public float bhbSpeed;
-    public GameObject blackHoleBomePrefab;
-    public Transform blackholePos1;
-    public Transform blackholePos2;
-    public Transform bulletSpawnTransform, bulletSpawnTransform1, bulletSpawnTransform2, bulletSpawnTransform3, bulletSpawnTransform4, bulletSpawnTransform5;/////////
+    //public float bhbSpeed;
+    //public GameObject blackHoleBomePrefab;
+    //public Transform blackholePos1;
+    //public Transform blackholePos2;
+    //public Transform bulletSpawnTransform, bulletSpawnTransform1, bulletSpawnTransform2, 
+    //    bulletSpawnTransform3, bulletSpawnTransform4, 
+    //    bulletSpawnTransform5;/////////
+    public List<Transform> bulletSpawnTransforms;
     public DroneHatch droneHatch1;
     public DroneHatch droneHatch2;
     public GameObject droneZone1;
@@ -31,6 +34,7 @@ public class Boss1 : MonoBehaviour {
     bool _bhbPos2;
     float _changeActionProbability = 0.5f;
     bool _shootPhase;
+
 
     enum Boss1Actions
     {
@@ -128,45 +132,55 @@ public class Boss1 : MonoBehaviour {
                 droneZone2.SetActive(false);
                 if (_bulletFireCoolDownRemain <= 0)
                 {
-                    GameObject bulletInstance = Instantiate(_bulletPrefab, bulletSpawnTransform.position, transform.rotation) as GameObject;
-                    bulletInstance.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
-                    Rigidbody bulletRb = bulletInstance.GetComponent<Rigidbody>();
-                    bulletRb.velocity = (Character.current.transform.position-bulletSpawnTransform.position).normalized * bulletSpeed;
-                    Destroy(bulletInstance, bulletExistTime);
+                    foreach(var trans in bulletSpawnTransforms)
+                    {
+                        GameObject bulletInstance = Instantiate(_bulletPrefab, trans.position, transform.rotation) as GameObject;
+                        bulletInstance.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+                        Rigidbody bulletRb = bulletInstance.GetComponent<Rigidbody>();
+                        bulletRb.velocity = trans.forward.normalized * bulletSpeed;
+                        Destroy(bulletInstance, bulletExistTime);
+                        Physics.IgnoreCollision(bulletInstance.GetComponent<Collider>(), GetComponent<Collider>());
+                    }
                     _bulletFireCoolDownRemain = bulletFireCoolDown;
+                    //GameObject bulletInstance = Instantiate(_bulletPrefab, bulletSpawnTransform.position, transform.rotation) as GameObject;
+                    //bulletInstance.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+                    //Rigidbody bulletRb = bulletInstance.GetComponent<Rigidbody>();
+                    //bulletRb.velocity = (Character.current.transform.position-bulletSpawnTransform.position).normalized * bulletSpeed;
+                    //Destroy(bulletInstance, bulletExistTime);
+                    //_bulletFireCoolDownRemain = bulletFireCoolDown;
 
-                    /******************************************************************************************************************************/
-                    GameObject bulletInstance1 = Instantiate(_bulletPrefab, bulletSpawnTransform2.position, transform.rotation) as GameObject;
-                    bulletInstance1.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
-                    Rigidbody bulletRb1 = bulletInstance1.GetComponent<Rigidbody>();
-                    bulletRb1.velocity = (Character.current.transform.position - bulletSpawnTransform2.position).normalized * bulletSpeed;
-                    Destroy(bulletInstance1, bulletExistTime);
+                    ///******************************************************************************************************************************/
+                    //GameObject bulletInstance1 = Instantiate(_bulletPrefab, bulletSpawnTransform2.position, transform.rotation) as GameObject;
+                    //bulletInstance1.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+                    //Rigidbody bulletRb1 = bulletInstance1.GetComponent<Rigidbody>();
+                    //bulletRb1.velocity = (Character.current.transform.position - bulletSpawnTransform2.position).normalized * bulletSpeed;
+                    //Destroy(bulletInstance1, bulletExistTime);
 
-                    GameObject bulletInstance2 = Instantiate(_bulletPrefab, bulletSpawnTransform1.position, transform.rotation) as GameObject;
-                    bulletInstance2.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
-                    Rigidbody bulletRb2 = bulletInstance2.GetComponent<Rigidbody>();
-                    bulletRb1.velocity = (Character.current.transform.position - bulletSpawnTransform1.position).normalized * bulletSpeed;
-                    Destroy(bulletInstance2, bulletExistTime);
+                    //GameObject bulletInstance2 = Instantiate(_bulletPrefab, bulletSpawnTransform1.position, transform.rotation) as GameObject;
+                    //bulletInstance2.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+                    //Rigidbody bulletRb2 = bulletInstance2.GetComponent<Rigidbody>();
+                    //bulletRb1.velocity = (Character.current.transform.position - bulletSpawnTransform1.position).normalized * bulletSpeed;
+                    //Destroy(bulletInstance2, bulletExistTime);
 
-                    GameObject bulletInstance3 = Instantiate(_bulletPrefab, bulletSpawnTransform3.position, transform.rotation) as GameObject;
-                    bulletInstance3.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
-                    Rigidbody bulletRb3 = bulletInstance3.GetComponent<Rigidbody>();
-                    bulletRb3.velocity = (Character.current.transform.position - bulletSpawnTransform3.position).normalized * bulletSpeed;
-                    Destroy(bulletInstance3, bulletExistTime);
-
-
-                    GameObject bulletInstance4 = Instantiate(_bulletPrefab, bulletSpawnTransform4.position, transform.rotation) as GameObject;
-                    bulletInstance4.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
-                    Rigidbody bulletRb4 = bulletInstance4.GetComponent<Rigidbody>();
-                    bulletRb4.velocity = (Character.current.transform.position - bulletSpawnTransform4.position).normalized * bulletSpeed;
-                    Destroy(bulletInstance4, bulletExistTime);
+                    //GameObject bulletInstance3 = Instantiate(_bulletPrefab, bulletSpawnTransform3.position, transform.rotation) as GameObject;
+                    //bulletInstance3.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+                    //Rigidbody bulletRb3 = bulletInstance3.GetComponent<Rigidbody>();
+                    //bulletRb3.velocity = (Character.current.transform.position - bulletSpawnTransform3.position).normalized * bulletSpeed;
+                    //Destroy(bulletInstance3, bulletExistTime);
 
 
-                    GameObject bulletInstance5 = Instantiate(_bulletPrefab, bulletSpawnTransform5.position, transform.rotation) as GameObject;
-                    bulletInstance5.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
-                    Rigidbody bulletRb5 = bulletInstance5.GetComponent<Rigidbody>();
-                    bulletRb5.velocity = (Character.current.transform.position - bulletSpawnTransform5.position).normalized * bulletSpeed;
-                    Destroy(bulletInstance5, bulletExistTime);
+                    //GameObject bulletInstance4 = Instantiate(_bulletPrefab, bulletSpawnTransform4.position, transform.rotation) as GameObject;
+                    //bulletInstance4.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+                    //Rigidbody bulletRb4 = bulletInstance4.GetComponent<Rigidbody>();
+                    //bulletRb4.velocity = (Character.current.transform.position - bulletSpawnTransform4.position).normalized * bulletSpeed;
+                    //Destroy(bulletInstance4, bulletExistTime);
+
+
+                    //GameObject bulletInstance5 = Instantiate(_bulletPrefab, bulletSpawnTransform5.position, transform.rotation) as GameObject;
+                    //bulletInstance5.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+                    //Rigidbody bulletRb5 = bulletInstance5.GetComponent<Rigidbody>();
+                    //bulletRb5.velocity = (Character.current.transform.position - bulletSpawnTransform5.position).normalized * bulletSpeed;
+                    //Destroy(bulletInstance5, bulletExistTime);
 
                     /**********************************************************************************************************************************/
                 }
