@@ -72,7 +72,15 @@ public class WallMeshGenerator : MonoBehaviour {
                     Vector3 wallDir = child[1].position - child[0].position;
                     if (a == WallPoints.transform.childCount - 1)
                         wallDir = -wallDir;
+
                     Vector3 wallWidthDir = Vector3.Cross(wallDir.normalized, Vector3.up);
+                    if(a>0)
+                    {
+                        Vector3 lastPos = WallPoints.transform.GetChild(a - 1).position;
+                        Vector3 lastDir = (child[0].position - lastPos).normalized;
+                        lastDir = Vector3.Cross(lastDir.normalized, Vector3.up);
+                        wallWidthDir = (wallWidthDir + lastDir).normalized;
+                    }
                     pos1 = child[0].position;
                     pos2 = child[1].position;
                     vertices[4*a] = pos1;
