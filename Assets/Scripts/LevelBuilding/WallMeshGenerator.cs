@@ -117,7 +117,8 @@ public class WallMeshGenerator : MonoBehaviour {
 
                 mesh.name = "Generated mesh";
                 GetComponent<MeshFilter>().mesh = mesh;
-                gameObject.AddComponent<MeshCollider>();
+                if(gameObject.GetComponent<MeshCollider>() == null)
+                    gameObject.AddComponent<MeshCollider>();
             }
             
         }
