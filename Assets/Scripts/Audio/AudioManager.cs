@@ -67,10 +67,10 @@ public class AudioManager : MonoBehaviour
 
 		if (sceneName == "bossLevel")
 			PlayMusic ("bossLevel");
-
 		else if (sceneName == "ChaseLevel")
 			PlayMusic ("chaseLevel");
-
+		else if (sceneName == "GameStory")
+			return;
 		else
 			PlayMusic ("standardLevel");
 
