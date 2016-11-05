@@ -11,6 +11,6 @@ public class HexagonRotation : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.RotateAround(new Vector3(x,0, z),new Vector3(0,1,0), 5 * Time.deltaTime);
+        transform.RotateAround(new Vector3(x,0, z),new Vector3(0,1,0), 40 * Time.deltaTime);
     }
 }

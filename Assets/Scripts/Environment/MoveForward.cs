@@ -42,4 +42,9 @@ public class MoveForward : MonoBehaviour {
     {
         speed = 20.0f;
     }
+	public void openSlowly()
+	{
+	
+	}
+
 }
