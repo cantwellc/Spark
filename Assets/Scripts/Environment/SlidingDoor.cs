@@ -3,6 +3,10 @@ using System.Collections;
 
 public class SlidingDoor : MonoBehaviour {
     public bool opened;
+
+    public float openSpeed;
+    public float closeSpeed;
+
     public GameObject door;
     // Use this for initialization
     bool moving;
@@ -27,7 +31,8 @@ public class SlidingDoor : MonoBehaviour {
             {
                 target = Vector3.zero;
             }
-            door.transform.localPosition = Vector3.MoveTowards(door.transform.localPosition, target, 0.5f);
+            float speed = opened ? openSpeed : closeSpeed;
+            door.transform.localPosition = Vector3.MoveTowards(door.transform.localPosition, target, speed);
             if (door.transform.localPosition == target)
             {
                 moving = false;
