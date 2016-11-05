@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
 {
 	public static AudioManager instance = null;
 
+	public GameObject musicObject;
 	public GameObject soundObjectPrefab = null;
 	public int poolSize = 10;
 	public bool willGrow = true;
@@ -37,11 +38,7 @@ public class AudioManager : MonoBehaviour
 		else
 			Destroy (gameObject);
 		DontDestroyOnLoad (gameObject);
-        
-    }
 
-	void Start () 
-	{
 		soundObjectPool = new List<GameObject> ();
 		for (int i = 0; i < poolSize; i++) 
 		{
@@ -64,21 +61,90 @@ public class AudioManager : MonoBehaviour
 			snapshots.Add (snapshot.name, snapshot);
     }
 
+	void Start () 
+	{
+		string sceneName = SceneManager.GetActiveScene ().name;
+
+		if (sceneName == "bossLevel")
+			PlayMusic ("bossLevel");
+
+		else if (sceneName == "ChaseLevel")
+			PlayMusic ("chaseLevel");
+
+		else
+			PlayMusic ("standardLevel");
+
+		/*soundObjectPool = new List<GameObject> ();
+		for (int i = 0; i < poolSize; i++) 
+		{
+			GameObject obj = (GameObject)Instantiate (soundObjectPrefab);
+			obj.transform.parent = gameObject.transform;
+			obj.SetActive (false);
+			soundObjectPool.Add (obj);
+		}
+
+		clips = new Dictionary<string, AudioClip> ();
+		foreach (AudioClip clip in clipList)
+			clips.Add (clip.name, clip);
+
+		mixerGroups = new Dictionary<string, AudioMixerGroup> ();
+		foreach (AudioMixerGroup mixerGroup in mixerGroupList)
+			mixerGroups.Add (mixerGroup.name, mixerGroup);
+
+		snapshots = new Dictionary<string, AudioMixerSnapshot> ();
+		foreach (AudioMixerSnapshot snapshot in snapshotList)
+			snapshots.Add (snapshot.name, snapshot);*/
+    }
+
+	public void PlayMusic (string musicEvent)
+	{
+		AudioSource musicSource = musicObject.GetComponent<AudioSource> ();
+
+		//Changes BGM depending on scene
+		if (musicEvent == "standardLevel") 
+		{
+			musicSource.clip = clips ["Menu_Music_2"];
+			musicSource.outputAudioMixerGroup = mixerGroups ["BGM"];
+			musicSource.loop = true;
+			musicSource.Play ();
+		}
+
+		if (musicEvent == "chaseLevel")
+		{
+			snapshots ["BossLevel"].TransitionTo (0.1f);
+
+			musicSource.clip = clips ["ChaseLevelMusic"];
+			musicSource.outputAudioMixerGroup = mixerGroups ["BossBGM"];
+			musicSource.loop = true;
+			musicSource.Play ();
+		}
+
+		if (musicEvent == "bossLevel") 
+		{
+			snapshots ["BossLevel"].TransitionTo (0.1f);
+
+			musicSource.clip = clips ["boss_music2"];
+			musicSource.outputAudioMixerGroup = mixerGroups ["BossBGM"];
+			musicSource.loop = true;
+			musicSource.Play ();
+		}
+
+		if (musicEvent == "opening")
+			musicSource.Stop ();
+	}
+
 	public void Play(string audioEvent)
 	{
 		//DEBUG
 		//print (audioEvent);
 
 		//Changes BGM depending on scene
-		if (audioEvent == "standardLevel") 
+		/*if (audioEvent == "standardLevel") 
 		{
-			
-			AudioSource musicSource = gameObject.GetComponent<AudioSource> ();
-			musicSource.Stop ();
-			musicSource.clip = clips ["Menu_Music_2"];
-			musicSource.loop = true;
+			//musicSource.clip = clips ["Menu_Music_2"];
+			//musicSource.outputAudioMixerGroup = mixerGroups ["BGM"];
+			//musicSource.loop = true;
 			musicSource.Play ();
-
 		}
 
 		if (audioEvent == "chaseLevel")
@@ -90,8 +156,6 @@ public class AudioManager : MonoBehaviour
 			musicSource.outputAudioMixerGroup = mixerGroups ["BossBGM"];
 			musicSource.loop = true;
 			musicSource.Play ();
-
-
 		}
 
 		if (audioEvent == "bossLevel") 
@@ -109,7 +173,7 @@ public class AudioManager : MonoBehaviour
 		{
 			AudioSource musicSource = gameObject.GetComponent<AudioSource> ();
 			musicSource.Stop ();
-		}
+		}*/
 			
 		//Stops death countdown SFX
 		if (audioEvent == "stopDeathCountdown") 
@@ -224,9 +288,7 @@ public class AudioManager : MonoBehaviour
 		}
 
 		if (audioEvent == "stopLowFuelAlarm") 
-		{
 			StartCoroutine (Delay (audioEvent, 1.2f));
-		}
 
 		if (audioEvent == "refuel") 
 		{
@@ -291,7 +353,8 @@ public class AudioManager : MonoBehaviour
             source.outputAudioMixerGroup = mixerGroups["Auras"];
             soundObject.SetActive(true);
         }
-        //For green floors speed up effect SFX
+        
+		//For green floors speed up effect SFX
         if (audioEvent == "speedUpAura")
         {
             source.volume = 0.5f;
@@ -637,16 +700,16 @@ public class AudioManager : MonoBehaviour
 			yield return new WaitForSeconds (time);
 	}
 
-	public void overrideBGMusic(string musicName)
+	/*public void overrideBGMusic(string musicName)
 	{
-		/*AudioSource audioSource = GetComponent<AudioSource> ();
-		audioSource.clip = clips [musicName];
-		audioSource.Play ();*/
+		//AudioSource audioSource = GetComponent<AudioSource> ();
+		//audioSource.clip = clips [musicName];
+		//audioSource.Play ();
 	}
 
 	public void DisableDeadCountDownSound()
 	{
 		//GetComponent<AudioSource> ().loop = false;
-	}
+	}*/
 
 }

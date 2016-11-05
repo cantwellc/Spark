@@ -9,12 +9,12 @@ public class OverrideSceneMusic : MonoBehaviour {
 	void Start () 
 	{
 		string sceneName = SceneManager.GetActiveScene ().name;
-		if (sceneName== "bossLevel")
-			AudioManager.instance.Play ("bossLevel");
+		if (sceneName == "bossLevel")
+			AudioManager.instance.PlayMusic ("bossLevel");
 		else if (sceneName == "ChaseLevel")
-			AudioManager.instance.Play ("chaseLevel");
+			AudioManager.instance.PlayMusic ("chaseLevel");
 		else
-			AudioManager.instance.Play ("standardLevel");
+			AudioManager.instance.PlayMusic ("standardLevel");
 	}
 	
 	// Update is called once per frame
