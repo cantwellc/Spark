@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyFollow : MonoBehaviour {
     public Transform follow;
     public float speed;
+
 	// Use this for initialization
 	void Start () {
 	}

@@ -642,6 +642,7 @@ GameObject:
   - 65: {fileID: 232084801}
   - 114: {fileID: 232084800}
   - 114: {fileID: 232084799}
+  - 114: {fileID: 232084802}
   m_Layer: 0
   m_Name: DroneHatchActivationArea (5)
   m_TagString: ExtraCollider
@@ -665,7 +666,7 @@ Transform:
   - {fileID: 12232218}
   - {fileID: 1793583199}
   m_Father: {fileID: 1718821803}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!114 &232084799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,12 +720,34 @@ MonoBehaviour:
       PublicKeyToken=null
   triggerStay:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1090241374}
+        m_MethodName: StartShooting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   triggerExit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1090241374}
+        m_MethodName: StopShooting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   validTargetTags:
@@ -741,6 +764,72 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 5, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &232084802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 232084797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed25d95782fc28341bf6e6e7bd8cdb78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTimerStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 232084801}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 232084799}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnTimerFinish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 232084801}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 232084799}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  timer: 4
 --- !u!1 &238051195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &394086466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1577,7 +1666,7 @@ Transform:
   - {fileID: 1864645674}
   - {fileID: 1295195194}
   m_Father: {fileID: 1718821803}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1001 &396701839
 Prefab:
   m_ObjectHideFlags: 0
@@ -2322,7 +2411,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012239026038, guid: c3af2542e400349f5a7593477d3fe401, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3af2542e400349f5a7593477d3fe401, type: 2}
@@ -2497,7 +2586,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!114 &531343847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2838,7 +2927,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013574986710, guid: 17039409d1f0349c98ef7528b3c5740c, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114000012792170920, guid: 17039409d1f0349c98ef7528b3c5740c,
         type: 2}
@@ -3173,7 +3262,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
 --- !u!1001 &738919122
 Prefab:
   m_ObjectHideFlags: 0
@@ -3271,7 +3360,7 @@ Prefab:
     - target: {fileID: 114000012331529484, guid: 4024b9be55dd57144aead35f61af7b09,
         type: 2}
       propertyPath: timeBetweenActions
-      value: 4
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 114000012331529484, guid: 4024b9be55dd57144aead35f61af7b09,
         type: 2}
@@ -3571,6 +3660,16 @@ Prefab:
       propertyPath: droneZone2
       value: 
       objectReference: {fileID: 232084797}
+    - target: {fileID: 114000012331529484, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: shootPhaseTime
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012331529484, guid: 4024b9be55dd57144aead35f61af7b09,
+        type: 2}
+      propertyPath: dronePhaseTime
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4024b9be55dd57144aead35f61af7b09, type: 2}
   m_IsPrefabParent: 0
@@ -3881,7 +3980,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!114 &773341011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4141,7 +4240,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1 &808996452
 GameObject:
   m_ObjectHideFlags: 0
@@ -4879,7 +4978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1006447054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4958,7 +5057,7 @@ Transform:
   - {fileID: 901766318}
   - {fileID: 740512661}
   m_Father: {fileID: 1718821803}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1001 &1010668958
 Prefab:
   m_ObjectHideFlags: 0
@@ -5582,7 +5681,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
 --- !u!1 &1126825434
 GameObject:
   m_ObjectHideFlags: 0
@@ -6584,7 +6683,7 @@ Transform:
   m_Children:
   - {fileID: 238051196}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 5
 --- !u!1 &1413798184
 GameObject:
   m_ObjectHideFlags: 0
@@ -7318,7 +7417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1538834162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7397,7 +7496,7 @@ Transform:
   - {fileID: 1592341507}
   - {fileID: 523038739}
   m_Father: {fileID: 1718821803}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!4 &1564676556 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011919075050, guid: fba825b119c9043c9801f7dd58f3e86c,
@@ -7531,7 +7630,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &1592341506
 GameObject:
   m_ObjectHideFlags: 0
@@ -7896,7 +7995,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1812594886}
   - {fileID: 394086468}
   - {fileID: 1006447056}
   - {fileID: 1538834164}
@@ -8070,64 +8168,7 @@ Transform:
   - {fileID: 23558766}
   - {fileID: 126612412}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
---- !u!4 &1812594886 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000010818120284, guid: 594137c91d27a394ab4c2be604ec37c7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1841596330}
---- !u!1001 &1841596330
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1718821803}
-    m_Modifications:
-    - target: {fileID: 4000010818120284, guid: 594137c91d27a394ab4c2be604ec37c7, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 13.219044
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010818120284, guid: 594137c91d27a394ab4c2be604ec37c7, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -4.8515625
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010818120284, guid: 594137c91d27a394ab4c2be604ec37c7, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -14.0457
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010818120284, guid: 594137c91d27a394ab4c2be604ec37c7, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010818120284, guid: 594137c91d27a394ab4c2be604ec37c7, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010818120284, guid: 594137c91d27a394ab4c2be604ec37c7, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010818120284, guid: 594137c91d27a394ab4c2be604ec37c7, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010818120284, guid: 594137c91d27a394ab4c2be604ec37c7, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000010593517338, guid: 594137c91d27a394ab4c2be604ec37c7,
-        type: 2}
-      propertyPath: triggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1400380326}
-    - target: {fileID: 114000010593517338, guid: 594137c91d27a394ab4c2be604ec37c7,
-        type: 2}
-      propertyPath: triggerEnter.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1400380326}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 594137c91d27a394ab4c2be604ec37c7, type: 2}
-  m_IsPrefabParent: 0
+  m_RootOrder: 8
 --- !u!1 &1864645673
 GameObject:
   m_ObjectHideFlags: 0
@@ -8395,6 +8436,7 @@ GameObject:
   - 65: {fileID: 1915582452}
   - 114: {fileID: 1915582451}
   - 114: {fileID: 1915582450}
+  - 114: {fileID: 1915582454}
   m_Layer: 0
   m_Name: DroneHatchActivationArea (4)
   m_TagString: ExtraCollider
@@ -8430,17 +8472,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1400380326}
-        m_MethodName: StartShooting
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1400380326}
         m_MethodName: Reload
         m_Mode: 1
         m_Arguments:
@@ -8451,19 +8482,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 1400380326}
+        m_MethodName: StartShooting
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8477,12 +8497,34 @@ MonoBehaviour:
       PublicKeyToken=null
   triggerStay:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1400380326}
+        m_MethodName: StartShooting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   triggerExit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1400380326}
+        m_MethodName: StopShooting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   validTargetTags:
@@ -8515,7 +8557,73 @@ Transform:
   - {fileID: 475218001}
   - {fileID: 1497090916}
   m_Father: {fileID: 1718821803}
-  m_RootOrder: 4
+  m_RootOrder: 3
+--- !u!114 &1915582454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1915582449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed25d95782fc28341bf6e6e7bd8cdb78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTimerStart:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1915582452}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1915582450}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnTimerFinish:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1915582452}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1915582450}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  timer: 4
 --- !u!1 &1928213007
 GameObject:
   m_ObjectHideFlags: 0
@@ -8626,7 +8734,7 @@ Transform:
   - {fileID: 423013243}
   - {fileID: 585366863}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
 --- !u!1001 &1943883161
 Prefab:
   m_ObjectHideFlags: 0

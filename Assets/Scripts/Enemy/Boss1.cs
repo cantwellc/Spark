@@ -3,7 +3,9 @@ using System.Collections;
 
 public class Boss1 : MonoBehaviour {
 
-    public float timeBetweenActions;
+//    public float timeBetweenActions;
+    public float shootPhaseTime;
+    public float dronePhaseTime;
     public float bulletFireCoolDown;
 
     public float bulletDamage;
@@ -27,6 +29,8 @@ public class Boss1 : MonoBehaviour {
     bool _isActivated;
     bool _bhbPos1;
     bool _bhbPos2;
+    float _changeActionProbability = 0.5f;
+    bool _shootPhase;
 
     enum Boss1Actions
     {
@@ -69,11 +73,13 @@ public class Boss1 : MonoBehaviour {
                     {
                         droneZone1.transform.position = this.transform.position;
                         droneZone1.SetActive(true);
+                        droneZone1.GetComponent<TimedEvent>().StartTimer();
                         _bhbPos1 = false;
                     } else
                     {
                         droneZone2.transform.position = this.transform.position;
                         droneZone2.SetActive(true);
+                        droneZone2.GetComponent<TimedEvent>().StartTimer();
                         _bhbPos1 = true;
                     }
                     /*_bulletFireCoolDownRemain = 100f;
@@ -117,6 +123,7 @@ public class Boss1 : MonoBehaviour {
             }
             else if(Boss1Actions.ShootTrackingBullet == action)
             {
+                
                 droneZone1.SetActive(false);
                 droneZone2.SetActive(false);
                 if (_bulletFireCoolDownRemain <= 0)
@@ -169,12 +176,32 @@ public class Boss1 : MonoBehaviour {
         else
         {
             float ran = Random.Range(0f, 1f);
-            if (ran >= 0.6f)
-                action = Boss1Actions.ShootBlackHole;
+            if(ran <= _changeActionProbability)
+            {
+                _changeActionProbability = 0.5f;
+                if (_shootPhase)
+                {
+                    action = Boss1Actions.ShootBlackHole;
+                    _timeRemainBetweenActions = dronePhaseTime;
+                    _shootPhase = false;
+                }
+                else
+                {
+                    action = Boss1Actions.ShootTrackingBullet;
+                    _timeRemainBetweenActions = shootPhaseTime;
+                    _shootPhase = true;
+                }
+            }
             else
-                action = Boss1Actions.ShootTrackingBullet; 
+            {
+                _changeActionProbability += 0.1f;
+            }
+            //if (ran >= 0.5f)
+            //    action = Boss1Actions.ShootBlackHole;
+            //else
+            //    action = Boss1Actions.ShootTrackingBullet; 
             _bulletFireCoolDownRemain = 0;
-            _timeRemainBetweenActions = timeBetweenActions;
+//            _timeRemainBetweenActions = timeBetweenActions;
         }
 
     }
