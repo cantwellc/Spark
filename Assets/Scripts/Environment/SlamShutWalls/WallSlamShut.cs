@@ -14,6 +14,7 @@ public class WallSlamShut : MonoBehaviour {
 	private float _slamShuttingSpeed;
 	private float _openingSpeed;
 
+	private bool canSound = false;
 
 
 
@@ -42,6 +43,8 @@ public class WallSlamShut : MonoBehaviour {
 		{
 			if (transform.position == slamShutCenter.position)
 			{
+				if (canSound)
+					AudioManager.instance.Play ("wallSlam", gameObject);
 				slamShutting = false;
 				Debug.Log ("Slam Shut");
 				StartOpening ();
@@ -80,11 +83,11 @@ public class WallSlamShut : MonoBehaviour {
 	public void StartOpening()
 	{
 		opening = true;
-
 	}
 
 	public void StopOpening()
 	{
+		canSound = true;
 		opening = false;
 		//Wait waitAfterOpening seconds before starting to shut
 		Invoke ("StartShutting", _waitAfterOpening);
@@ -103,5 +106,4 @@ public class WallSlamShut : MonoBehaviour {
 		_slamShuttingSpeed = 50;
 
 	}
-
 }
