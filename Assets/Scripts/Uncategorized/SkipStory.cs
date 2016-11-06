@@ -6,6 +6,8 @@ public class SkipStory : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        if (Input.anyKey) EventManager.TriggerEvent(EventManager.Events.LOAD_NEXT_SCENE);
+        if (!Input.anyKey) return;
+        // TODO kill audio
+        EventManager.TriggerEvent(EventManager.Events.LOAD_NEXT_SCENE);
     }
 }

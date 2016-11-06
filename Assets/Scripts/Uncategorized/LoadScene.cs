@@ -4,7 +4,7 @@ using System.Collections;
 using System;
 
 public class LoadScene : MonoBehaviour {
-    public string sceneName;
+    public string scene;
 
      void OnEnable()
     {
@@ -13,7 +13,7 @@ public class LoadScene : MonoBehaviour {
 
     private void OnLoadNextScene()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(scene);
     }
 
 }
