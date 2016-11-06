@@ -12,12 +12,13 @@ public class SlamShutWallsController : MonoBehaviour {
 	public  GameObject wall1;
 	public  GameObject wall2;
 
-
+    public bool hasTrigger;
 
 
 	void Awake () 
 	{
-		StartSlamming ();
+        if(!hasTrigger)
+		    StartSlamming ();
 	}
 	
 	// Update is called once per frame
