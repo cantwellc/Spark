@@ -55,7 +55,8 @@ public class StoryFrame : MonoBehaviour {
     {
 		if (nextFrame == null)
 		{
-			SceneManager.LoadScene ("TutorialLevel");
+            EventManager.TriggerEvent(EventManager.Events.LOAD_NEXT_SCENE);
+//			SceneManager.LoadScene ("TutorialLevel");
 			return;
 		}
         nextFrame.StartFrame();
