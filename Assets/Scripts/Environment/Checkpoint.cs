@@ -123,7 +123,6 @@ public class Checkpoint : MonoBehaviour {
 		{
 			if (child.name == "Lights")
 			{
-				Debug.Log ("Found the checkpoint model");
 				child.gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
 			}
 		}
