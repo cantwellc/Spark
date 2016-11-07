@@ -205,6 +205,7 @@ GameObject:
   - 114: {fileID: 114000010997286956}
   - 114: {fileID: 114000012818261270}
   - 114: {fileID: 114000012692527142}
+  - 114: {fileID: 114000013225065984}
   m_Layer: 8
   m_Name: Character
   m_TagString: Character
@@ -1325,7 +1326,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011880579934}
-  m_LocalRotation: {x: 0.6532816, y: 0.27059802, z: -0.270598, w: 0.6532815}
+  m_LocalRotation: {x: 0.65328157, y: 0.270598, z: -0.27059796, w: 0.65328145}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2872,6 +2873,18 @@ MonoBehaviour:
   intensityFloor: 1
   intensityCeiling: 3
   _pulse: 0
+--- !u!114 &114000013225065984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010904683788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0d0de6c7a75f3448e14e4b26a8a2f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxVelocity: 50
 --- !u!114 &114000013323801728
 MonoBehaviour:
   m_ObjectHideFlags: 1
