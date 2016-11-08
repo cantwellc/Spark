@@ -60,10 +60,11 @@ public class Checkpoint : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-		makeTheCheckPointGreen ();
+		
 		if(_isActivated == false && other.tag == "Character")
         {
-            if(currentData != null && currentData.currentPos == transform.position)
+			makeTheCheckPointGreen ();
+			if(currentData != null && currentData.currentPos == transform.position)
             {
                 print("spawn");
                 //StartCoroutine(ExecuteAfterTime(0.05f));
