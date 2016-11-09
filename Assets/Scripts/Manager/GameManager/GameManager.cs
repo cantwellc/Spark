@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
         {
             if (Checkpoint.currentData != null)
             {
-                GameObject charPrefab = (GameObject)Resources.Load("Prefabs/Character/Character");
+                GameObject charPrefab = (GameObject)Resources.Load("CharacterOld/Character");
                 GameObject character = Instantiate(charPrefab);
                 Character.current = character.GetComponent<Character>();
                 character.transform.position = Checkpoint.currentData.currentPos;
