@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 
     // public
 
+	private string _characterPrefabPath;
     public static GameManager current;
     public Transform characterBirthPoint;
 
@@ -25,7 +26,9 @@ public class GameManager : MonoBehaviour {
 
     void Awake()
     {
-        DontDestroyOnLoad(this);
+		_characterPrefabPath = "CharacterOld/Character";
+		//_characterPrefabPath = "Prefabs/Character/Character";
+		DontDestroyOnLoad(this);
         current = this;
 
         if (FindObjectsOfType(GetType()).Length > 1)
@@ -37,7 +40,7 @@ public class GameManager : MonoBehaviour {
         {
             if (Checkpoint.currentData != null)
             {
-                GameObject charPrefab = (GameObject)Resources.Load("CharacterOld/Character");
+				GameObject charPrefab = (GameObject)Resources.Load(_characterPrefabPath);
                 GameObject character = Instantiate(charPrefab);
                 Character.current = character.GetComponent<Character>();
                 character.transform.position = Checkpoint.currentData.currentPos;
@@ -78,7 +81,7 @@ public class GameManager : MonoBehaviour {
         {
             if (Checkpoint.currentData != null)
             {
-                GameObject charPrefab = (GameObject)Resources.Load("Prefabs/Character/Character");
+				GameObject charPrefab = (GameObject)Resources.Load(_characterPrefabPath);
                 GameObject character = Instantiate(charPrefab);
                 Character.current = character.GetComponent<Character>();
                 character.transform.position = Checkpoint.currentData.currentPos;
@@ -102,7 +105,7 @@ public class GameManager : MonoBehaviour {
         {
             if (Checkpoint.currentData != null)
             {
-                GameObject charPrefab = (GameObject)Resources.Load("Prefabs/Character/Character");
+				GameObject charPrefab = (GameObject)Resources.Load(_characterPrefabPath);
                 GameObject character = Instantiate(charPrefab);
                 Character.current = character.GetComponent<Character>();
                 character.transform.position = Checkpoint.currentData.currentPos;
