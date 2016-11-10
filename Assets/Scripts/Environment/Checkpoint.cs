@@ -60,9 +60,11 @@ public class Checkpoint : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if(_isActivated == false && other.tag == "Character")
+		
+		if(_isActivated == false && other.tag == "Character")
         {
-            if(currentData != null && currentData.currentPos == transform.position)
+			makeTheCheckPointGreen ();
+			if(currentData != null && currentData.currentPos == transform.position)
             {
                 print("spawn");
                 //StartCoroutine(ExecuteAfterTime(0.05f));
@@ -114,4 +116,16 @@ public class Checkpoint : MonoBehaviour {
     {
         currentData = null;
     }
+
+	public void makeTheCheckPointGreen()
+	{
+		Transform[] children = this.GetComponentsInChildren<Transform> ();
+		foreach (Transform child in children)
+		{
+			if (child.name == "Lights")
+			{
+				child.gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.green);
+			}
+		}
+	}
 }

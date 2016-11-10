@@ -5,7 +5,10 @@ using System.Collections;
 public class ChargeMeterFill : MonoBehaviour {
 
     public Image fillImage;
+    public float minChargingFill;
+    public float maxChargingFill;
     public FireBehavior fireBehavior;
+    public FuelReservoir fuelReservoir;
 
     public bool _charging;
 
@@ -13,6 +16,12 @@ public class ChargeMeterFill : MonoBehaviour {
 	{
 		fillImage.fillAmount = 0.0f;
 	}
+
+    void Start()
+    {
+        minChargingFill = fireBehavior.minChargeFuelCost / fuelReservoir.maxFuelCount;
+        maxChargingFill = fireBehavior.maxChargeFuelCost / fuelReservoir.maxFuelCount;
+    }
 
     public void Charging()
     {
@@ -31,6 +40,6 @@ public class ChargeMeterFill : MonoBehaviour {
     void Update()
     {
         if (!_charging) return;
-        fillImage.fillAmount = fireBehavior.ChargeRatio;
+        fillImage.fillAmount = (maxChargingFill - minChargingFill)*fireBehavior.ChargeRatio;
     }
 }

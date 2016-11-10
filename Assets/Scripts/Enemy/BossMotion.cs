@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System;
 using System.Collections;
 
 
 public class BossMotion : MonoBehaviour {
+    public UnityEvent OnMoveStart;
 
     public GameObject target1, target2, target3, target4;
     public float timeToReachNextTarget;
     public float timeToStayAtOneTarget;
-    public float staartMovingAtHealth;
+    public float startMovingAtHealth;
 
     private Vector3 velocity = Vector3.zero;
     private int target;
     private float tmr = 0;
     private System.Random r;
+    private bool _moving;
     
 	// Use this for initialization
 	void Start () {
@@ -25,7 +28,8 @@ public class BossMotion : MonoBehaviour {
 	void Update () {
         tmr += Time.deltaTime;
         Health h = gameObject.GetComponent<Health>();
-        if (h.HealthPercent < staartMovingAtHealth)
+        if (h.HealthPercent < startMovingAtHealth) StartMoving();
+        if(_moving)
         {
             if (target == 1)
             {
@@ -60,5 +64,11 @@ public class BossMotion : MonoBehaviour {
             }
 
         }
+    }
+
+    private void StartMoving()
+    {
+        _moving = true;
+        OnMoveStart.Invoke();
     }
 }

@@ -744,4 +744,12 @@ public class AudioManager : MonoBehaviour
 		//GetComponent<AudioSource> ().loop = false;
 	}*/
 
+	public void DisableAllSounds()
+	{
+		foreach(GameObject soundObject in soundObjectPool)
+		{
+			soundObject.SetActive (false);
+		}
+	}
+
 }

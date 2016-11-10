@@ -16,6 +16,7 @@ public class EventManager : MonoBehaviour {
         RESUME_GAME,
         CHARACTER_ENTERED_KEY_PEDESTAL_TRIGGER,
         KEY_COLLECTED,
+        LOAD_NEXT_SCENE,
 
         // keyboard input events
         B_KEY,
