@@ -8,6 +8,7 @@ public class ChargeMeterFill : MonoBehaviour {
     public float minChargingFill;
     public float maxChargingFill;
     public FireBehavior fireBehavior;
+    public FuelReservoir fuelReservoir;
 
     public bool _charging;
 
@@ -15,6 +16,12 @@ public class ChargeMeterFill : MonoBehaviour {
 	{
 		fillImage.fillAmount = 0.0f;
 	}
+
+    void Start()
+    {
+        minChargingFill = fireBehavior.minChargeFuelCost / fuelReservoir.maxFuelCount;
+        maxChargingFill = fireBehavior.maxChargeFuelCost / fuelReservoir.maxFuelCount;
+    }
 
     public void Charging()
     {
