@@ -669,6 +669,14 @@ public class AudioManager : MonoBehaviour
 			else
 				return;
 		}
+
+		if (audioEvent == "wallBounce")
+		{
+			source.clip = clips ["bouncyTest"];
+			source.outputAudioMixerGroup = mixerGroups ["Bounce"];
+			source.pitch = Random.Range (0.95f, 1.05f);
+			soundObject.SetActive (true);
+		}
 	}
 
 	//Use to set a delay between audio events, etc.

@@ -23,7 +23,8 @@ public class BounceWall : MonoBehaviour {
             Vector3 velocity = col.relativeVelocity;
             velocity = 2.0f * (Vector3.Dot(dir ,velocity)) * dir - velocity;
             col.rigidbody.velocity = -velocity*bounceBoost;
-            //col.rigidbody.AddForce(dir * bounceForce, ForceMode.Impulse);
+			AudioManager.instance.Play ("wallBounce", gameObject);
+			//col.rigidbody.AddForce(dir * bounceForce, ForceMode.Impulse);
         }
     }
 }

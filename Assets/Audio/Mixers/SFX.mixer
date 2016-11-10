@@ -44,9 +44,10 @@ AudioMixerController:
     - 1c5d721f7db5f4991b1cd9f6ab950abf
     - 581e3bec5ca1d4c2b823dbcbf402ca7d
     - 0db500e3f6eb44ce8a39c77a10e8aa3e
+    - 1d0543a89377948efa6311948fb17165
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 24500003}
+  m_TargetSnapshot: {fileID: 245000013391875432}
 --- !u!243 &24300001
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -75,6 +76,7 @@ AudioMixerGroupController:
   - {fileID: 243000013706733430}
   - {fileID: 243000011551633692}
   - {fileID: 243000011740507310}
+  - {fileID: 243000013861192334}
   m_Volume: 5a3dbb93aae254c818ffbf6141d8cda4
   m_Pitch: e7aa04d6aea814f3ba879f2c0042208d
   m_Effects:
@@ -480,6 +482,23 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!243 &243000013861192334
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Bounce
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 1d0543a89377948efa6311948fb17165
+  m_Children: []
+  m_Volume: 8e712f8aefe23447db99de42af52d2a5
+  m_Pitch: 63674cab3b78f4a83ab0c71376da3b6b
+  m_Effects:
+  - {fileID: 244000010363382064}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &243000013870036006
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -613,6 +632,19 @@ AudioMixerEffectController:
   m_MixLevel: 44ca44c470a344928bb8788760e0203f
   m_Parameters: []
   m_SendTarget: {fileID: 244000012555511840}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &244000010363382064
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: bc44da1e6f060485990a6c11319c2673
+  m_EffectName: Attenuation
+  m_MixLevel: 6450c2894c62441fc9ab1961c86510c9
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
 --- !u!244 &244000010474830278
