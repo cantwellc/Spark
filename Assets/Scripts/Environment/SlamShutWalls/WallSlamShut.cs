@@ -13,6 +13,7 @@ public class WallSlamShut : MonoBehaviour {
 	private float _waitAfterOpening;
 	private float _slamShuttingSpeed;
 	private float _openingSpeed;
+	private bool _init = false;
 
 
 
@@ -32,12 +33,19 @@ public class WallSlamShut : MonoBehaviour {
 		_waitAfterOpening = slamShutWallsController.delayOfSlammingAfterOpening;
 		_slamShuttingSpeed = slamShutWallsController.slamShuttingSpeed;
 		_openingSpeed = slamShutWallsController.openingSpeed;
-
 	}
 
 
 	void Update () 
 	{
+
+		if (!_init && slamShutWallsController!=null)
+		{
+			
+			_init = true;
+		}
+
+
 		if (slamShutting)
 		{
 			if (transform.position == slamShutCenter.position)

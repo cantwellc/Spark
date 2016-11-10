@@ -8,6 +8,7 @@ public class SkipStory : MonoBehaviour {
 	void Update () {
         if (!Input.anyKey) return;
         // TODO kill audio
+		AudioManager.instance.DisableAllSounds();
         EventManager.TriggerEvent(EventManager.Events.LOAD_NEXT_SCENE);
     }
 }
