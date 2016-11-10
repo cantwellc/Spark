@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour {
                 GameObject character = Instantiate(charPrefab);
                 Character.current = character.GetComponent<Character>();
                 character.transform.position = Checkpoint.currentData.currentPos;
+                character.GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
 				string sceneName = SceneManager.GetActiveScene ().name;
 				
 				character.GetComponent<FuelReservoir>().fuelCount = Checkpoint.currentData.currentStartFuel;
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour {
                 GameObject character = Instantiate(charPrefab);
                 Character.current = character.GetComponent<Character>();
                 character.transform.position = Checkpoint.currentData.currentPos;
+                character.GetComponent<Rigidbody>().velocity = new Vector3(0.0f, 0.0f, 0.0f);
                 character.GetComponent<FuelReservoir>().fuelCount = Checkpoint.currentData.currentStartFuel;
             }
         }
