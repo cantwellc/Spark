@@ -357,6 +357,20 @@ public class AudioManager : MonoBehaviour
             source.outputAudioMixerGroup = mixerGroups["Auras"];
             soundObject.SetActive(true);
         }
+
+		if (audioEvent == "pressButton")
+		{
+			source.clip = clips["activateTest"];
+			source.outputAudioMixerGroup = mixerGroups["SFX"];
+			soundObject.SetActive(true);
+		}
+
+		if (audioEvent == "checkpoint")
+		{
+			source.clip = clips["checkpointTest"];
+			source.outputAudioMixerGroup = mixerGroups["SFX"];
+			soundObject.SetActive(true);
+		}
         
 		//For green floors speed up effect SFX
         if (audioEvent == "speedUpAura")
@@ -675,6 +689,29 @@ public class AudioManager : MonoBehaviour
 			source.clip = clips ["bouncyTest"];
 			source.outputAudioMixerGroup = mixerGroups ["Bounce"];
 			source.pitch = Random.Range (0.95f, 1.05f);
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "openDoor")
+		{
+			source.clip = clips ["slidingDoorTest"];
+			source.outputAudioMixerGroup = mixerGroups ["SFX"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "closeDoor")
+		{
+			source.clip = clips ["keyDetatch"];
+			source.pitch = 0.90f;
+			source.outputAudioMixerGroup = mixerGroups ["KeyRelease"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "doorSlam")
+		{
+			source.clip = clips ["doorSlamTest"];
+			source.pitch = Random.Range (0.95f, 1.05f);
+			source.outputAudioMixerGroup = mixerGroups ["SFX"];
 			soundObject.SetActive (true);
 		}
 	}

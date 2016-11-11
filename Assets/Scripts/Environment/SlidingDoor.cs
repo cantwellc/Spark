@@ -35,6 +35,7 @@ public class SlidingDoor : MonoBehaviour {
             door.transform.localPosition = Vector3.MoveTowards(door.transform.localPosition, target, speed);
             if (door.transform.localPosition == target)
             {
+				AudioManager.instance.Play ("doorSlam", gameObject);
                 moving = false;
             }
         }
@@ -42,13 +43,15 @@ public class SlidingDoor : MonoBehaviour {
 
     public void OpenDoor()
     {
-        moving = true;
+		AudioManager.instance.Play ("openDoor", gameObject);
+		moving = true;
         opened = true;
     }
 
     public void CloseDoor()
     {
-        moving = true;
+		AudioManager.instance.Play ("closeDoor", gameObject);
+		moving = true;
         opened = false;
     }
 }

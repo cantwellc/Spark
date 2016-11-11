@@ -63,6 +63,7 @@ public class Checkpoint : MonoBehaviour {
 		
 		if(_isActivated == false && other.tag == "Character")
         {
+			AudioManager.instance.Play ("checkpoint");
 			makeTheCheckPointGreen ();
 			if(currentData != null && currentData.currentPos == transform.position)
             {
