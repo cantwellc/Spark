@@ -6894,8 +6894,8 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  _maxHealth: 700
-  _currentHealth: 700
+  _maxHealth: 400
+  _currentHealth: 400
 --- !u!114 &778736839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6960,7 +6960,7 @@ MonoBehaviour:
   target4: {fileID: 585366862}
   timeToReachNextTarget: 1
   timeToStayAtOneTarget: 1
-  startMovingAtHealth: 0.25
+  startMovingAtHealth: 0.3
 --- !u!114 &778736842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7136,6 +7136,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1718821803}
     m_Modifications:
+    - target: {fileID: 114000010934919110, guid: 4fd04641067d77343a9690f13f30aad4,
+        type: 2}
+      propertyPath: triggerExit.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011377530172, guid: 4fd04641067d77343a9690f13f30aad4, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.11904335
@@ -7211,6 +7216,21 @@ Prefab:
     - target: {fileID: 1000013063790028, guid: 4fd04641067d77343a9690f13f30aad4, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010934919110, guid: 4fd04641067d77343a9690f13f30aad4,
+        type: 2}
+      propertyPath: triggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010934919110, guid: 4fd04641067d77343a9690f13f30aad4,
+        type: 2}
+      propertyPath: triggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010934919110, guid: 4fd04641067d77343a9690f13f30aad4,
+        type: 2}
+      propertyPath: triggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4fd04641067d77343a9690f13f30aad4, type: 2}
@@ -14854,6 +14874,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1718821803}
     m_Modifications:
+    - target: {fileID: 114000010934919110, guid: 4fd04641067d77343a9690f13f30aad4,
+        type: 2}
+      propertyPath: triggerExit.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4000011377530172, guid: 4fd04641067d77343a9690f13f30aad4, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0.11904335
@@ -14933,6 +14958,21 @@ Prefab:
     - target: {fileID: 1000013063790028, guid: 4fd04641067d77343a9690f13f30aad4, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010934919110, guid: 4fd04641067d77343a9690f13f30aad4,
+        type: 2}
+      propertyPath: triggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010934919110, guid: 4fd04641067d77343a9690f13f30aad4,
+        type: 2}
+      propertyPath: triggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010934919110, guid: 4fd04641067d77343a9690f13f30aad4,
+        type: 2}
+      propertyPath: triggerExit.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4fd04641067d77343a9690f13f30aad4, type: 2}
