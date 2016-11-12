@@ -7570,11 +7570,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114000012781245206, guid: c3af2542e400349f5a7593477d3fe401,
-        type: 2}
-      propertyPath: clipList.Array.size
-      value: 37
-      objectReference: {fileID: 0}
     - target: {fileID: 4000012239026038, guid: c3af2542e400349f5a7593477d3fe401, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7607,16 +7602,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 114000012781245206, guid: c3af2542e400349f5a7593477d3fe401,
-        type: 2}
-      propertyPath: clipList.Array.data[35]
-      value: 
-      objectReference: {fileID: 8300000, guid: e2c6036cd697349afb7752d8c8c370f4, type: 3}
-    - target: {fileID: 114000012781245206, guid: c3af2542e400349f5a7593477d3fe401,
-        type: 2}
-      propertyPath: clipList.Array.data[36]
-      value: 
-      objectReference: {fileID: 8300000, guid: 686d31dfcf83b46e28615a586137f879, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c3af2542e400349f5a7593477d3fe401, type: 2}
   m_IsPrefabParent: 0
@@ -21674,6 +21659,7 @@ MonoBehaviour:
   targetLocation: {fileID: 0}
   targetLocation2: {fileID: 0}
   speed: 2
+  cameraPlayerFollowCoefficient: 1
 --- !u!81 &1661006568
 AudioListener:
   m_ObjectHideFlags: 0

@@ -354,11 +354,16 @@ public class AudioManager : MonoBehaviour
 
         if (audioEvent == "slowAura")
         {
-
-            source.volume = 0.1f;
-            source.clip = clips["refuel_raw3"];
-            source.outputAudioMixerGroup = mixerGroups["Auras"];
-            soundObject.SetActive(true);
+			/*if (pitchOffset != 0.0f)
+				StartCoroutine (Delay (audioEvent, 7.0f));
+			if (pitchOffset > 0.0f)
+				pitchOffset = 0.0f;*/
+			source.clip = clips["slowDownTest"];
+			//source.pitch = 1.0f + pitchOffset;
+			source.outputAudioMixerGroup = mixerGroups["Auras"];
+			soundObject.SetActive(true);
+			/*if (pitchOffset > -1.0)
+				pitchOffset = pitchOffset - 0.1f;*/
         }
 
 		if (audioEvent == "pressButton")
@@ -376,24 +381,34 @@ public class AudioManager : MonoBehaviour
 		}
         
 		//For green floors speed up effect SFX
-        if (audioEvent == "speedUpAura")
+        if (audioEvent == "speedAura")
         {
 			if (pitchOffset != 0.0f)
-				StartCoroutine (Delay (audioEvent, 5.0f));
+				StartCoroutine (Delay (audioEvent, 7.0f));
+			if (pitchOffset < 0.0f)
+				pitchOffset = 0.0f;
 			source.clip = clips["speedUpTest"];
 			source.pitch = 1.0f + pitchOffset;
 			source.outputAudioMixerGroup = mixerGroups["Auras"];
             soundObject.SetActive(true);
-			pitchOffset = pitchOffset + 0.2f;
+			if (pitchOffset < 1.0)
+				pitchOffset = pitchOffset + 0.2f;
         }
-        
-		if(audioEvent == "temporaryDrag")
+
+		if (audioEvent == "temporaryDrag")
         {
             source.volume = 0.5f;
             source.clip = clips["wormholeOpen_raw1"];
             source.outputAudioMixerGroup = mixerGroups["Auras"];
             soundObject.SetActive(true);
         }
+
+		if (audioEvent == "droneSpawn")
+		{
+			source.clip = clips["unassignedEffect"];
+			source.outputAudioMixerGroup = mixerGroups["SFX"];
+			soundObject.SetActive(true);
+		}
         
 		if (audioEvent == "evilLaugh")
 		{
