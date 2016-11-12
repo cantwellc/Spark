@@ -29,8 +29,11 @@ public class AudioManager : MonoBehaviour
 
 	private GameObject alarm;
 	private GameObject leechBeam;
+	private GameObject sprayFire;
 
 	private string previousScene;
+
+	private float pitchOffset = 0.0f;
 
 	void Awake ()
 	{
@@ -375,19 +378,24 @@ public class AudioManager : MonoBehaviour
 		//For green floors speed up effect SFX
         if (audioEvent == "speedUpAura")
         {
-            source.volume = 0.5f;
-            source.clip = clips["chargeUp_raw2"];
-            source.outputAudioMixerGroup = mixerGroups["Auras"];
+			if (pitchOffset != 0.0f)
+				StartCoroutine (Delay (audioEvent, 5.0f));
+			source.clip = clips["speedUpTest"];
+			source.pitch = 1.0f + pitchOffset;
+			source.outputAudioMixerGroup = mixerGroups["Auras"];
             soundObject.SetActive(true);
+			pitchOffset = pitchOffset + 0.2f;
         }
-        if(audioEvent == "temporaryDrag")
+        
+		if(audioEvent == "temporaryDrag")
         {
             source.volume = 0.5f;
             source.clip = clips["wormholeOpen_raw1"];
             source.outputAudioMixerGroup = mixerGroups["Auras"];
             soundObject.SetActive(true);
         }
-        if (audioEvent == "evilLaugh")
+        
+		if (audioEvent == "evilLaugh")
 		{
 			source.clip = clips ["evilLaugh" + (int)Random.Range(1,5)];
 			source.outputAudioMixerGroup = mixerGroups ["Laugh"];
@@ -714,6 +722,14 @@ public class AudioManager : MonoBehaviour
 			source.outputAudioMixerGroup = mixerGroups ["SFX"];
 			soundObject.SetActive (true);
 		}
+
+		if (audioEvent == "turretFire")
+		{
+			source.clip = clips ["turretFireTest"];
+			source.pitch = 0.8f;
+			source.outputAudioMixerGroup = mixerGroups ["BossFire"];
+			soundObject.SetActive (true);
+		}
 	}
 
 	//Use to set a delay between audio events, etc.
@@ -764,6 +780,11 @@ public class AudioManager : MonoBehaviour
 		{
 			yield return new WaitForSeconds (time);
 			canSlam = true;
+		}
+		else if (audioEvent == "speedUpAura")
+		{
+			yield return new WaitForSeconds (time);
+			pitchOffset = 0.0f;
 		}
 		else
 			yield return new WaitForSeconds (time);

@@ -48,6 +48,10 @@ public class Turret : MonoBehaviour {
     float _reloadTimeRemain = 0;
     float _bulletRemain;
 
+	public bool isFiring = false;
+
+	public float firingPitch = 0.0f;
+
 	// Use this for initialization
 	void Start () {
 	    switch(bulletType)
@@ -77,6 +81,8 @@ public class Turret : MonoBehaviour {
                 break;
         }
         _bulletRemain = bulletPerMagazine;
+
+		firingPitch = Random.Range (0.90f, 1.10f);
 	}
 	
 	// Update is called once per frame
@@ -211,7 +217,9 @@ public class Turret : MonoBehaviour {
         }
         else
         {
-            GameObject bulletInstance = Instantiate(_bulletPrefab, bulletSpawnPoint.position, transform.rotation) as GameObject;
+			GameObject bulletInstance = Instantiate(_bulletPrefab, bulletSpawnPoint.position, transform.rotation) as GameObject;
+			bulletInstance.GetComponent<AudioSource> ().pitch = firingPitch;
+			bulletInstance.GetComponent<AudioSource> ().Play();
             bulletInstance.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
             Rigidbody bulletRb = bulletInstance.GetComponent<Rigidbody>();
             bulletRb.velocity = bulletRb.transform.forward * bulletSpeed;
@@ -232,9 +240,10 @@ public class Turret : MonoBehaviour {
         if (_reloadTimeRemain > 0) return;
         for (int a=0;a!=3;++a)
         {
-            
             GameObject bulletInstance = Instantiate(_bulletPrefab, bulletSpawnPoint.position, transform.rotation) as GameObject;
-            bulletInstance.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+			bulletInstance.GetComponent<AudioSource> ().pitch = firingPitch;
+			bulletInstance.GetComponent<AudioSource> ().Play();
+			bulletInstance.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
             Rigidbody bulletRb = bulletInstance.GetComponent<Rigidbody>();
             bulletRb.transform.Rotate(0, -10f + 10f * a, 0);
             bulletRb.velocity = bulletRb.transform.forward * bulletSpeed;
@@ -247,12 +256,12 @@ public class Turret : MonoBehaviour {
 
     void StartShooting()
     {
-        _startShooting = true;
+		_startShooting = true;
     }
 
     void StopShooting()
     {
-        _startShooting = false;
+		_startShooting = false;
     }
 
 	public void TurretSound (string audioEvent)
