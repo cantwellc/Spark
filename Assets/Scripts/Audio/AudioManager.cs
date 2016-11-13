@@ -30,6 +30,7 @@ public class AudioManager : MonoBehaviour
 	private GameObject alarm;
 	private GameObject leechBeam;
 	private GameObject sprayFire;
+	private GameObject movement;
 
 	private string previousScene;
 
@@ -247,12 +248,36 @@ public class AudioManager : MonoBehaviour
 		}*/
 
 
-		if (audioEvent == "plasmaFire") 
+		/*if (audioEvent == "plasmaFire") 
 		{
-			source.clip = clips ["plasmaFire"];
+			source.clip = clips ["warpTest"];
 			source.outputAudioMixerGroup = mixerGroups ["PrimaryFire"];
-			source.pitch = Random.Range (0.95f, 1.05f);
+			//source.pitch = Random.Range (0.95f, 1.05f);
 			soundObject.SetActive (true);
+		}*/
+
+		if (audioEvent == "moveStart")
+		{
+			source.clip = clips ["engineTest"];
+			source.outputAudioMixerGroup = mixerGroups ["PrimaryFire"];
+			//source.pitch = Random.Range (0.95f, 1.05f);
+			source.loop = true;
+			soundObject.SetActive (true);
+			movement = soundObject;
+			Play ("launch");
+		}
+			
+		if (audioEvent == "launch")
+		{
+			source.clip = clips ["launchTest"];
+			source.outputAudioMixerGroup = mixerGroups ["PrimaryFire"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "moveEnd")
+		{
+			if (movement != null)
+				movement.SetActive (false);
 		}
 
 		if (audioEvent == "burstCharge") 
@@ -319,6 +344,7 @@ public class AudioManager : MonoBehaviour
 			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
 			source.pitch = Random.Range (0.95f, 1.05f);
 			Play ("stopDeathCountdown");
+			movement.SetActive (false);
 			soundObject.SetActive (true);
 		}
 
@@ -709,7 +735,7 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "wallBounce")
 		{
-			source.clip = clips ["bouncyTest"];
+			source.clip = clips ["warpTest"];
 			source.outputAudioMixerGroup = mixerGroups ["Bounce"];
 			source.pitch = Random.Range (0.95f, 1.05f);
 			soundObject.SetActive (true);

@@ -18,9 +18,9 @@ public class DeactivateObject : MonoBehaviour
 		if (source.loop != true) 
 		{
 			if (source.clip != null)
-				Invoke ("Deactivate", source.clip.length + 0.5f);
+				Invoke ("Deactivate", source.clip.length + 10.0f);
 			else
-				Invoke ("Deactivate", 1.0f);
+				Invoke ("Deactivate", 2.0f);
 		}
 	}
 
