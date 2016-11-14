@@ -17,7 +17,8 @@ public class DamageTakenEffect : MonoBehaviour
         _originalColors = new List<Color>();
         foreach(Renderer renderer in renderersOfObject)
         {
-            _originalColors.Add(renderer.material.color);
+            if(renderer.material.color != null)
+                _originalColors.Add(renderer.material.color);
         }
 		    
 	}
