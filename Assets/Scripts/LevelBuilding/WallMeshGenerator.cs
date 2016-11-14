@@ -14,7 +14,7 @@ public class WallMeshGenerator : MonoBehaviour {
 
     Vector3[] vertices;
     Vector2[] uvs;
-    Vector2[] normals;
+    Vector3[] normals;
     int[] triangles;
 
     Mesh mesh;
@@ -53,6 +53,7 @@ public class WallMeshGenerator : MonoBehaviour {
                 int childCount = WallPoints.transform.childCount;
                 vertices = new Vector3[childCount * 4];
                 uvs = new Vector2[childCount * 4];
+                normals = new Vector3[childCount * 4]; 
                 triangles = new int[childCount * 6 * 2*3];
 
                 int ind ;
@@ -84,15 +85,19 @@ public class WallMeshGenerator : MonoBehaviour {
                     pos1 = child[0].position;
                     pos2 = child[1].position;
                     vertices[4*a] = pos1;
+                    normals[4 * a] = -wallWidthDir;
                     vertices[4 * a+1] = pos1;
                     vertices[4 * a + 1].y += wallHeight;
+                    normals[4 * a+1] = -wallWidthDir;
                     vertices[4 * a+2] = pos1;
                     vertices[4 * a + 2] += wallWidth*wallWidthDir;
+                    normals[4 * a + 2] = wallWidthDir;
                     vertices[4 * a+3] = pos1;
                     vertices[4 * a + 3].y += wallHeight;
                     vertices[4 * a + 3] += wallWidth*wallWidthDir;
+                    normals[4 * a + 3] = wallWidthDir;
 
-                    if(a%2 == 0)
+                    if (a%2 == 0)
                     {
                         uvs[4 * a] = new Vector2(0.0f, 0.0f);
                         uvs[4 * a+1] = new Vector2(0.0f, 1.0f);
@@ -121,6 +126,7 @@ public class WallMeshGenerator : MonoBehaviour {
 
                 mesh.vertices = vertices;
                 mesh.uv = uvs;
+                mesh.normals = normals;
                 mesh.triangles = triangles;
 
                 mesh.name = "Generated mesh";
