@@ -54,7 +54,6 @@ public class WallSlamShut : MonoBehaviour {
 				if (canSound)
 					AudioManager.instance.Play ("wallSlam", gameObject);
 				slamShutting = false;
-				Debug.Log ("Slam Shut");
 				StartOpening ();
 				return;
 			}
