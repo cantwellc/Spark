@@ -13,15 +13,15 @@ public class DeactivateObject : MonoBehaviour
 		if (source.loop != true) 
 		{
 			if (source.clip != null)
-				Invoke ("Deactivate", source.clip.length + 10.0f);
+				Invoke ("Deactivate", source.clip.length + 2.0f);
 			else
 				Invoke ("Deactivate", 2.0f);
 		}
 	}
 
-	void Deactivate ()
+	public void Deactivate ()
 	{
-		if (canDeactivate == true)
+		if (canDeactivate == true && gameObject.activeInHierarchy == true)
 			StartCoroutine ("Fade");
 		else
 			return;
@@ -32,9 +32,9 @@ public class DeactivateObject : MonoBehaviour
 		source = gameObject.GetComponent<AudioSource> ();
 		while (source.volume > 0.0f)
 		{
-			source.volume -= Time.deltaTime / 1.0f;
+			source.volume -= Time.deltaTime * 2.0f;
+			yield return new WaitForSeconds (0.0001f);
 		}
 		gameObject.SetActive (false);
-		yield return null;
 	}
 }

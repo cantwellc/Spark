@@ -182,7 +182,7 @@ public class AudioManager : MonoBehaviour
 		//Plays the various SFX
 		if (audioEvent == "moveStart")
 		{
-			source.clip = clips ["engineTest"];
+			source.clip = clips ["engine"];
 			source.outputAudioMixerGroup = mixerGroups ["PrimaryFire"];
 			source.loop = true;
 			soundObject.SetActive (true);
@@ -192,7 +192,7 @@ public class AudioManager : MonoBehaviour
 			
 		if (audioEvent == "launch")
 		{
-			source.clip = clips ["launchTest"];
+			source.clip = clips ["launch"];
 			source.outputAudioMixerGroup = mixerGroups ["PrimaryFire"];
 			soundObject.SetActive (true);
 		}
@@ -200,7 +200,10 @@ public class AudioManager : MonoBehaviour
 		if (audioEvent == "moveEnd")
 		{
 			if (movement != null)
-				StartCoroutine (Delay(audioEvent, 0.0f));
+			{
+				//movement.GetComponent<AudioSource>().loop = false;
+				movement.GetComponent<DeactivateObject> ().Deactivate ();
+			}
 		}
 
 		if (audioEvent == "burstCharge") 
@@ -263,7 +266,8 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "death") 
 		{
-			source.clip = clips ["explosionPlayer" + (int)Random.Range(1,3)];
+			source.clip = clips ["explosionLg" + (int)Random.Range(1,3)];
+			//source.clip = clips ["explosionPlayer" + (int)Random.Range(1,3)];
 			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
 			source.pitch = Random.Range (0.95f, 1.05f);
 			Play ("stopDeathCountdown");
@@ -303,7 +307,7 @@ public class AudioManager : MonoBehaviour
 
         if (audioEvent == "slowAura")
         {
-			source.clip = clips["slowDownTest"];
+			source.clip = clips["slowDown"];
 			source.outputAudioMixerGroup = mixerGroups["Auras"];
 			soundObject.SetActive(true);
         }
@@ -311,14 +315,14 @@ public class AudioManager : MonoBehaviour
 		//May omit this sound
 		if (audioEvent == "pressButton")
 		{
-			source.clip = clips["activateTest"];
+			source.clip = clips["activate"];
 			source.outputAudioMixerGroup = mixerGroups["Checkpoints"];
 			soundObject.SetActive(true);
 		}
 
 		if (audioEvent == "checkpoint")
 		{
-			source.clip = clips["activateTest"];
+			source.clip = clips["activate"];
 			source.outputAudioMixerGroup = mixerGroups["Checkpoints"];
 			soundObject.SetActive(true);
 		}
@@ -330,7 +334,7 @@ public class AudioManager : MonoBehaviour
 				StartCoroutine (Delay (audioEvent, 7.0f));
 			if (pitchOffset < 0.0f)
 				pitchOffset = 0.0f;
-			source.clip = clips["speedUpTest"];
+			source.clip = clips["speedUp"];
 			source.pitch = 1.0f + pitchOffset;
 			source.outputAudioMixerGroup = mixerGroups["Auras"];
             soundObject.SetActive(true);
@@ -353,6 +357,14 @@ public class AudioManager : MonoBehaviour
 			soundObject.SetActive(true);
 		}
         
+		if (audioEvent == "wallBounce")
+		{
+			source.clip = clips ["warp"];
+			source.outputAudioMixerGroup = mixerGroups ["Bounce"];
+			source.pitch = Random.Range (0.95f, 1.05f);
+			soundObject.SetActive (true);
+		}
+
 		if (audioEvent == "evilLaugh")
 		{
 			source.clip = clips ["evilLaugh" + (int)Random.Range(1,5)];
@@ -363,13 +375,13 @@ public class AudioManager : MonoBehaviour
 		if (audioEvent == "characterDamage") 
 		{
 			source.clip = clips ["explosionSm" + (int)Random.Range (1, 3)];
-			source.outputAudioMixerGroup = mixerGroups ["TakeDamage"];
+			source.outputAudioMixerGroup = mixerGroups ["CharDamage"];
 			soundObject.SetActive (true);
 		}
 
 		if (audioEvent == "shock")
 		{
-			source.clip = clips["shockTest"];
+			source.clip = clips["shock"];
 			source.outputAudioMixerGroup = mixerGroups["Shock"];
 			soundObject.SetActive(true);
 		}
@@ -646,7 +658,7 @@ public class AudioManager : MonoBehaviour
 		{
 			if (canSlam == true)
 			{
-				source.clip = clips ["wallTest"];
+				source.clip = clips ["wall"];
 				source.outputAudioMixerGroup = mixerGroups ["Slam"];
 				source.pitch = Random.Range (0.95f, 1.05f);
 				soundObject.SetActive (true);
@@ -657,17 +669,9 @@ public class AudioManager : MonoBehaviour
 				return;
 		}
 
-		if (audioEvent == "wallBounce")
-		{
-			source.clip = clips ["warpTest"];
-			source.outputAudioMixerGroup = mixerGroups ["Bounce"];
-			source.pitch = Random.Range (0.95f, 1.05f);
-			soundObject.SetActive (true);
-		}
-
 		if (audioEvent == "openDoor")
 		{
-			source.clip = clips ["slidingDoorTest"];
+			source.clip = clips ["slidingDoor"];
 			source.outputAudioMixerGroup = mixerGroups ["Slam"];
 			soundObject.SetActive (true);
 		}
@@ -682,7 +686,7 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "doorSlam")
 		{
-			source.clip = clips ["doorSlamTest"];
+			source.clip = clips ["doorSlam"];
 			source.pitch = Random.Range (0.95f, 1.05f);
 			source.outputAudioMixerGroup = mixerGroups ["Slam"];
 			soundObject.SetActive (true);
@@ -690,9 +694,17 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "turretFire")
 		{
-			source.clip = clips ["turretFireTest"];
+			source.clip = clips ["turretFire"];
 			source.pitch = 0.8f;
 			source.outputAudioMixerGroup = mixerGroups ["BossFire"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "reflect")
+		{
+			source.clip = clips ["reflect"];
+			//source.pitch = Random.Range (0.95f, 1.05f);
+			source.outputAudioMixerGroup = mixerGroups ["Reflect"];
 			soundObject.SetActive (true);
 		}
 	}
@@ -750,16 +762,6 @@ public class AudioManager : MonoBehaviour
 		{
 			yield return new WaitForSeconds (time);
 			pitchOffset = 0.0f;
-		}
-		else if (audioEvent == "moveEnd")
-		{
-			AudioSource source = movement.GetComponent<AudioSource> ();
-			while (source.volume > 0.0f)
-			{
-				source.volume -= Time.deltaTime / 1.0f;
-			}
-			movement.SetActive (false);
-			yield return null;
 		}
 
 		else

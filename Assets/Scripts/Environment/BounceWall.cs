@@ -25,7 +25,7 @@ public class BounceWall : MonoBehaviour {
             velocity = 2.0f * (Vector3.Dot(dir ,velocity)) * dir - velocity;
             print(velocity);
             col.rigidbody.velocity = -velocity*bounceBoost;
-			AudioManager.instance.Play ("wallBounce", gameObject);
+			AudioManager.instance.Play ("wallBounce");
 			//col.rigidbody.AddForce(dir * bounceForce, ForceMode.Impulse);
         }
     }

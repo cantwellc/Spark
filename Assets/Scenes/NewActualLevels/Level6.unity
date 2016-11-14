@@ -541,6 +541,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &37969745
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1524,6 +1526,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &137086524
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2362,6 +2366,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: -135
   alternateShootingTime: 2
   _startShooting: 1
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &173938840
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3610,6 +3616,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &292461964
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3893,6 +3901,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &300057406
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4716,6 +4726,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &360944746
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5501,6 +5513,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &436723518
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6004,6 +6018,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &464552167
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6219,11 +6235,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114000012186160678, guid: fc1cbf90e1b3b7b4f9f1adf32c827bee,
-        type: 2}
-      propertyPath: OnKeyFinalPositionReached.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4000010782962910, guid: fc1cbf90e1b3b7b4f9f1adf32c827bee, type: 2}
       propertyPath: m_LocalPosition.x
       value: 275
@@ -6256,52 +6267,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114000012186160678, guid: fc1cbf90e1b3b7b4f9f1adf32c827bee,
-        type: 2}
-      propertyPath: OnKeyFinalPositionReached.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012186160678, guid: fc1cbf90e1b3b7b4f9f1adf32c827bee,
-        type: 2}
-      propertyPath: OnKeyFinalPositionReached.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012186160678, guid: fc1cbf90e1b3b7b4f9f1adf32c827bee,
-        type: 2}
-      propertyPath: OnKeyFinalPositionReached.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 491922978}
-    - target: {fileID: 114000012186160678, guid: fc1cbf90e1b3b7b4f9f1adf32c827bee,
-        type: 2}
-      propertyPath: OnKeyFinalPositionReached.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012186160678, guid: fc1cbf90e1b3b7b4f9f1adf32c827bee,
-        type: 2}
-      propertyPath: OnKeyFinalPositionReached.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011223330324, guid: fc1cbf90e1b3b7b4f9f1adf32c827bee, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -3.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000011223330324, guid: fc1cbf90e1b3b7b4f9f1adf32c827bee, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.84
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fc1cbf90e1b3b7b4f9f1adf32c827bee, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &491922978 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000010510043470, guid: fc1cbf90e1b3b7b4f9f1adf32c827bee,
-    type: 2}
-  m_PrefabInternal: {fileID: 491922977}
---- !u!4 &491922979 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4000010782962910, guid: fc1cbf90e1b3b7b4f9f1adf32c827bee,
-    type: 2}
-  m_PrefabInternal: {fileID: 491922977}
 --- !u!1001 &492392125
 Prefab:
   m_ObjectHideFlags: 0
@@ -6891,6 +6859,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &541855421
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7601,89 +7571,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fba825b119c9043c9801f7dd58f3e86c, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &640124818
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 491922979}
-    m_Modifications:
-    - target: {fileID: 4000012253748222, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 2.4136887
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012253748222, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012253748222, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -2.516899
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012253748222, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012253748222, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012253748222, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012253748222, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012253748222, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000013689483568, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000010005388732, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000011976622014, guid: 98afd9b513641419a97962647807bae2,
-        type: 2}
-      propertyPath: nextScene
-      value: Level7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013802501582, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013802501582, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -4.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013802501582, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 7.4124675
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013802501582, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -1.22
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000013802501582, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 0.38750592
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012253748222, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000012253748222, guid: 98afd9b513641419a97962647807bae2, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 98afd9b513641419a97962647807bae2, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &648944316
 Transform:
@@ -9312,6 +9199,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &820832746
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -10144,6 +10033,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &872055177
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -12199,6 +12090,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1060666804
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13186,6 +13079,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: -135
   alternateShootingTime: 2
   _startShooting: 1
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1161921508
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13516,6 +13411,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1171255753
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14783,6 +14680,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1316210882
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15606,6 +15505,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1406413065
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15949,6 +15850,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1435433750
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -16309,6 +16212,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 1
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1456390652
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -17466,6 +17371,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1567356963
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18166,6 +18073,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1606670893
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18585,6 +18494,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1636059088
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -19715,6 +19626,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1763877025
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20542,6 +20455,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1811038545
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -21371,6 +21286,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1852622554
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -22055,6 +21972,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1929177590
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -22410,6 +22329,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1939829979
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -23023,6 +22944,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1958818390
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -23533,6 +23456,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1978060673
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -23857,6 +23782,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &1983377799
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -24419,6 +24346,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &2006989065
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -24937,6 +24866,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &2015498103
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -25787,6 +25718,8 @@ MonoBehaviour:
   alternateShootingDirInDegree2: 90
   alternateShootingTime: 5
   _startShooting: 0
+  isFiring: 0
+  firingPitch: 0
 --- !u!135 &2100699644
 SphereCollider:
   m_ObjectHideFlags: 0
