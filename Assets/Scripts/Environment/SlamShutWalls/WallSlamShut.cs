@@ -51,7 +51,6 @@ public class WallSlamShut : MonoBehaviour {
 			if (transform.position == slamShutCenter.position)
 			{
 				slamShutting = false;
-				Debug.Log ("Slam Shut");
 				StartOpening ();
 				return;
 			}
