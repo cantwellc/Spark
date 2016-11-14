@@ -67,6 +67,7 @@ public class CharacterBulletCollision : MonoBehaviour
         {
             Rigidbody rigidbody = GetComponent<Rigidbody>();
             rigidbody.velocity = -0.3f *rigidbody.velocity;
+            Destroy(gameObject, 0.2f);
         }
     }
 
