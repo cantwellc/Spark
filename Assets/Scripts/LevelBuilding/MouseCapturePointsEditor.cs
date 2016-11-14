@@ -12,7 +12,6 @@ public class MouseCapturePointsEditor : Editor {
     MouseCapturePoints point;
 
     SerializedProperty toClear;
-    SerializedProperty toRename;
     SerializedProperty y;
 
     GameObject childPrefab;
@@ -26,7 +25,6 @@ public class MouseCapturePointsEditor : Editor {
     {
         point = (MouseCapturePoints)target;
         toClear = serializedObject.FindProperty("toClear");
-        toRename = serializedObject.FindProperty("toRename");
         y = serializedObject.FindProperty("y");
 
         childPrefab = (GameObject) Resources.Load("Prefabs/UI/CubeGizmos");
@@ -79,8 +77,7 @@ public class MouseCapturePointsEditor : Editor {
         //EditorGUILayout.PropertyField(lookAtPoint);
         //EditorGUILayout.LabelField("(Below this object)");
         EditorGUILayout.PropertyField(toClear);
-        EditorGUILayout.PropertyField(toRename);
-        EditorGUILayout.PropertyField(y);
+         EditorGUILayout.PropertyField(y);
         serializedObject.ApplyModifiedProperties();
     }
 }

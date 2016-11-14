@@ -7,7 +7,6 @@ public class MouseCapturePoints : MonoBehaviour {
     public float y;
 
     public bool toClear = false;
-    public bool toRename = false;
 
     // Use this for initialization
     void Start () {
@@ -48,15 +47,6 @@ public class MouseCapturePoints : MonoBehaviour {
             }
 
             toClear = false;
-        }
-        if(toRename)
-        {
-            for (int i = 0; i != transform.childCount; ++i)
-            {
-                transform.GetChild(i).gameObject.name = i.ToString();
-            }
-            toRename = false;
-
         }
     }
 }
