@@ -18,7 +18,7 @@ public class MakeCeilingWithTriangleStrip : MonoBehaviour {
 
     Vector3[] vertices;
     Vector2[] uvs;
-    Vector2[] normals;
+    Vector3[] normals;
     int[] triangles;
 
     Mesh mesh;
@@ -39,16 +39,19 @@ public class MakeCeilingWithTriangleStrip : MonoBehaviour {
 
                 int childCount = (endIndex-startIndex) + endPoints.transform.childCount+2;
                 vertices = new Vector3[childCount + 1];
+                normals = new Vector3[childCount + 1];
                 uvs = new Vector2[childCount + 1];
                 triangles = new int[childCount * 3];
                 
                 vertices[0] = centerPoint.position;
+                normals[0] = Vector3.up;
                 uvs[0] = new Vector2(0.5f, 0.0f);
                 for (int a = 0; a <= endIndex - startIndex; ++a)
                 {
                     Vector3 pos = wallPoints.transform.GetChild(a+startIndex).position;
                     pos.y += wallHeight;
                     vertices[a +1] = pos;
+                    normals[a+1] = Vector3.up;
 
                     if (a % 2 == 0)
                     {
