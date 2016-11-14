@@ -61,9 +61,8 @@ public class Checkpoint : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
 		
-		if(_isActivated == false && other.tag == "Character")
+		if(other.tag == "Character")
         {
-			makeTheCheckPointGreen ();
 			if(currentData != null && currentData.currentPos == transform.position)
             {
                 print("spawn");
@@ -72,9 +71,14 @@ public class Checkpoint : MonoBehaviour {
             }
             _isActivated = true;
             currentData.setData(transform.position, initialFuel);
-            if (hasKey) currentData.hasKey = true;
-            
-            this.GetComponent<MeshRenderer>().material.color = Color.green;
+            if (hasKey)
+            {
+                makeTheCheckPointGreen();
+                currentData.hasKey = true;
+            } else
+            {
+                makeTheCheckPointYellow();
+            }
             onCheckpointEnter.Invoke();
             if(currentData.hasKey)
             {
@@ -92,6 +96,7 @@ public class Checkpoint : MonoBehaviour {
 	
         }
     }
+    
 
     public void setChaserPos(Transform pos)
     {
@@ -128,4 +133,16 @@ public class Checkpoint : MonoBehaviour {
 			}
 		}
 	}
+
+    public void makeTheCheckPointYellow()
+    {
+        Transform[] children = this.GetComponentsInChildren<Transform>();
+        foreach (Transform child in children)
+        {
+            if (child.name == "Lights")
+            {
+                child.gameObject.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.yellow);
+            }
+        }
+    }
 }
