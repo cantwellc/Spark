@@ -69,7 +69,11 @@ public class Checkpoint : MonoBehaviour {
                 //StartCoroutine(ExecuteAfterTime(0.05f));
                 onCheckpointEnterOnSpawn.Invoke();
             }
-            _isActivated = true;
+
+			if (!isInitialCheckpoint && !_isActivated)
+				AudioManager.instance.Play ("checkpoint");
+
+			_isActivated = true;
             currentData.setData(transform.position, initialFuel);
             if (hasKey)
             {

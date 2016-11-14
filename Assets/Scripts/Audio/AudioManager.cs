@@ -87,6 +87,8 @@ public class AudioManager : MonoBehaviour
 		//Changes BGM depending on scene
 		if (musicEvent == "standardLevel") 
 		{
+			snapshots ["DefaultMX"].TransitionTo (0.1f);
+
 			musicSource.clip = clips ["Menu_Music_2"];
 			musicSource.outputAudioMixerGroup = mixerGroups ["BGM"];
 			musicSource.loop = true;
@@ -323,6 +325,7 @@ public class AudioManager : MonoBehaviour
 		if (audioEvent == "checkpoint")
 		{
 			source.clip = clips["activate"];
+			source.priority = 1;
 			source.outputAudioMixerGroup = mixerGroups["Checkpoints"];
 			soundObject.SetActive(true);
 		}
@@ -628,6 +631,7 @@ public class AudioManager : MonoBehaviour
 		if (audioEvent == "bossDeath") 
 		{
 			source.clip = clips ["bossDeath"];
+			source.spatialBlend = 0.0f;
 			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
 			soundObject.SetActive (true);
 		}
