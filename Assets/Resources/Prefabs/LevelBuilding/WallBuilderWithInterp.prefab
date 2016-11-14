@@ -9,50 +9,34 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1000011661804312}
+  m_RootGameObject: {fileID: 1000010632954616}
   m_IsPrefabParent: 1
---- !u!1 &1000011661804312
+--- !u!1 &1000010632954616
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 4000012338445264}
+  - 4: {fileID: 4000011511412978}
   m_Layer: 0
-  m_Name: WallBuilder
+  m_Name: WallBuilderWithInterp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1000013985238372
+--- !u!1 &1000012002392052
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 4000011939261024}
-  - 114: {fileID: 114000011050301952}
-  m_Layer: 0
-  m_Name: WallPointGenerator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1000014285071914
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 4000011795562550}
-  - 114: {fileID: 114000011805041974}
-  - 33: {fileID: 33000013640621918}
-  - 23: {fileID: 23000013842343798}
+  - 4: {fileID: 4000010646263064}
+  - 114: {fileID: 114000010336869888}
+  - 33: {fileID: 33000012131000648}
+  - 23: {fileID: 23000010668118288}
   m_Layer: 0
   m_Name: WallMeshGenerator
   m_TagString: Untagged
@@ -60,53 +44,70 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4000011795562550
+--- !u!1 &1000013420228458
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000011120689206}
+  - 114: {fileID: 114000011204001348}
+  - 114: {fileID: 114000011293389086}
+  m_Layer: 0
+  m_Name: WallPointGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4000010646263064
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014285071914}
+  m_GameObject: {fileID: 1000012002392052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 4000012338445264}
+  m_Father: {fileID: 4000011511412978}
   m_RootOrder: 1
---- !u!4 &4000011939261024
+--- !u!4 &4000011120689206
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013985238372}
+  m_GameObject: {fileID: 1000013420228458}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 4000012338445264}
+  m_Father: {fileID: 4000011511412978}
   m_RootOrder: 0
---- !u!4 &4000012338445264
+--- !u!4 &4000011511412978
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011661804312}
+  m_GameObject: {fileID: 1000010632954616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 4000011939261024}
-  - {fileID: 4000011795562550}
+  - {fileID: 4000011120689206}
+  - {fileID: 4000010646263064}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &23000013842343798
+--- !u!23 &23000010668118288
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014285071914}
+  m_GameObject: {fileID: 1000012002392052}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -130,33 +131,19 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33000013640621918
+--- !u!33 &33000012131000648
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014285071914}
+  m_GameObject: {fileID: 1000012002392052}
   m_Mesh: {fileID: 0}
---- !u!114 &114000011050301952
+--- !u!114 &114000010336869888
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013985238372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c0800ce6a2f2544d88557b63339de6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  y: 0
-  toClear: 0
-  toRename: 0
---- !u!114 &114000011805041974
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000014285071914}
+  m_GameObject: {fileID: 1000012002392052}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8932a01085b562248835eae290b53467, type: 3}
@@ -167,3 +154,35 @@ MonoBehaviour:
   clearMesh: 0
   wallHeight: 5
   wallWidth: 0.5
+--- !u!114 &114000011204001348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013420228458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c0800ce6a2f2544d88557b63339de6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  y: 0
+  toClear: 0
+  toRename: 0
+--- !u!114 &114000011293389086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013420228458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15f8377cbaab5645bf87fe45f11da6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toInterp: 0
+  firstPoint: 0
+  lastPoint: 0
+  interpDist: 1
+  interpCurveWeight: 0.5
+  childPrefab: {fileID: 1000011558396130, guid: e472a4ac20fcb7b458d6beb900dcdad3,
+    type: 2}
