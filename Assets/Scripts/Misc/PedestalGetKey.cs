@@ -24,8 +24,7 @@ public class PedestalGetKey : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
     {
         if (other.tag != "Key") return;
-		AudioManager.instance.Play ("keyRelease");
-        _key = other.gameObject.transform;
+		_key = other.gameObject.transform;
         _key.transform.SetParent(finalTarget, true);
         CalcTimeToStage();
         MoveKeyToStage();
@@ -38,7 +37,8 @@ public class PedestalGetKey : MonoBehaviour {
 
     void MoveKeyToStage()
     {
-        _moveToFinal = false;
+		AudioManager.instance.Play ("keyRelease");
+		_moveToFinal = false;
         _moveToStage = true;
         _toStageStartTime = Time.time;
     }

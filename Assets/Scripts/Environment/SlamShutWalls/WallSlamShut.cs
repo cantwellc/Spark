@@ -15,7 +15,7 @@ public class WallSlamShut : MonoBehaviour {
 	private float _openingSpeed;
 	private bool _init = false;
 
-	private bool canSound = false;
+	private bool canSound = true;
 
 
 
@@ -112,6 +112,5 @@ public class WallSlamShut : MonoBehaviour {
 	{
 		slamShutting = true;
 		_slamShuttingSpeed = 50;
-
 	}
 }

@@ -7,11 +7,6 @@ public class DeactivateObject : MonoBehaviour
 
 	public bool canDeactivate = true;
 
-	void Start ()
-	{
-		//source = gameObject.GetComponent<AudioSource> ();
-	}
-
 	void OnEnable()
 	{
 		source = gameObject.GetComponent<AudioSource> ();
@@ -27,6 +22,19 @@ public class DeactivateObject : MonoBehaviour
 	void Deactivate ()
 	{
 		if (canDeactivate == true)
-			gameObject.SetActive (false);
+			StartCoroutine ("Fade");
+		else
+			return;
+	}
+
+	IEnumerator Fade ()
+	{
+		source = gameObject.GetComponent<AudioSource> ();
+		while (source.volume > 0.0f)
+		{
+			source.volume -= Time.deltaTime / 1.0f;
+		}
+		gameObject.SetActive (false);
+		yield return null;
 	}
 }
