@@ -127,12 +127,12 @@ public class Boss1 : MonoBehaviour {
             }
             else if(Boss1Actions.ShootTrackingBullet == action)
             {
-                
                 droneZone1.SetActive(false);
                 droneZone2.SetActive(false);
                 if (_bulletFireCoolDownRemain <= 0)
                 {
-                    foreach(var trans in bulletSpawnTransforms)
+					AudioManager.instance.Play ("turretFire", gameObject);
+					foreach(var trans in bulletSpawnTransforms)
                     {
                         GameObject bulletInstance = Instantiate(_bulletPrefab, trans.position, transform.rotation) as GameObject;
                         bulletInstance.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
@@ -189,7 +189,8 @@ public class Boss1 : MonoBehaviour {
         }
         else
         {
-            float ran = Random.Range(0f, 1f);
+			//AudioManager.instance.Play ("bossNotShooting", gameObject);
+			float ran = Random.Range(0f, 1f);
             if(ran <= _changeActionProbability)
             {
                 _changeActionProbability = 0.5f;
@@ -201,7 +202,9 @@ public class Boss1 : MonoBehaviour {
                 }
                 else
                 {
-                    action = Boss1Actions.ShootTrackingBullet;
+					//AudioManager.instance.Play ("turretFire", gameObject);
+					//AudioManager.instance.Play ("bossShooting", gameObject);
+					action = Boss1Actions.ShootTrackingBullet;
                     _timeRemainBetweenActions = shootPhaseTime;
                     _shootPhase = true;
                 }

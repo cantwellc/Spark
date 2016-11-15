@@ -65,7 +65,8 @@ public class CharacterBulletCollision : MonoBehaviour
         }
         else if(Armor.ArmorType.Reflective == armorType)
         {
-            Rigidbody rigidbody = GetComponent<Rigidbody>();
+			AudioManager.instance.Play ("reflect", gameObject);
+			Rigidbody rigidbody = GetComponent<Rigidbody>();
             rigidbody.velocity = -0.3f *rigidbody.velocity;
             Destroy(gameObject, 0.2f);
         }

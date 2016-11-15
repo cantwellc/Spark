@@ -22,6 +22,7 @@ public class SuckFuelOnCollision : MonoBehaviour
         if (other.gameObject.tag == "Character")
         {
 			other.GetComponent<Health>().TakeDamage(suckAmount*Time.deltaTime);
+			AudioManager.instance.Play ("shock");
         }
     }
 

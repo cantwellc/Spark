@@ -168,7 +168,6 @@ public class GameManager : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.R))
                 {
                     EventManager.TriggerEvent(EventManager.Events.R_KEY);
-					AudioManager.instance.DisableDeadCountDownSound ();
                     StartGame();
                     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 

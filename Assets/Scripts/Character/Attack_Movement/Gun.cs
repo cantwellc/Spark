@@ -40,6 +40,11 @@ public class Gun : MonoBehaviour
 
     }
 
+	void Start()
+	{
+		AudioManager.instance.Play ("moveEnd");
+	}
+
     void OnEnable()
     {
         EventManager.StartListening(EventManager.Events.PAUSE_GAME, OnPause);
@@ -57,6 +62,12 @@ public class Gun : MonoBehaviour
         if (_isPause) return;
 		if (_inputEnabled)
 		{
+			if (Input.GetMouseButtonDown (0))
+				AudioManager.instance.Play ("moveStart");
+
+			if (Input.GetMouseButtonUp (0))
+				AudioManager.instance.Play ("moveEnd");
+
 			if (Input.GetMouseButton (0))
 			{
 				PrimaryFire ();

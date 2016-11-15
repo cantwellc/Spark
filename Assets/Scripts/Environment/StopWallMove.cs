@@ -8,5 +8,6 @@ public class StopWallMove : MonoBehaviour {
     {
         if (other.gameObject != wall) return;
         wall.GetComponent<MoveForward>().StopMoving();
+		AudioManager.instance.Play ("wallSlam", gameObject);
     }
 }

@@ -20,7 +20,7 @@ public class SlowDownCharacterOnCollision : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-
+		AudioManager.instance.Play("slowAura");
     }
 
     void OnTriggerStay(Collider other)
@@ -28,7 +28,6 @@ public class SlowDownCharacterOnCollision : MonoBehaviour
         if (other.gameObject.tag == "Character")
         {
 			_rigidBody = Character.current.GetComponent<Rigidbody>();
-			AudioManager.instance.Play("slowAura");
             if (_rigidBody.velocity.magnitude > slowDownThreshold)
             {
                 Vector3 reverseForce = (_rigidBody.velocity.normalized * force) * -3;

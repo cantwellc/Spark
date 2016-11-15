@@ -23,7 +23,8 @@ public class PressurePad : MonoBehaviour {
     void OnTriggerEnter(Collider col)
     {
         if (col.tag != "Character") return;
-        GetComponent<MeshRenderer>().material.color = Color.green;
+		//AudioManager.instance.Play ("pressButton");
+		GetComponent<MeshRenderer>().material.color = Color.green;
         onPress.Invoke();
     }
 

@@ -116,9 +116,9 @@ public class Character : MonoBehaviour
                 if (_alertSound)
                 {
                     //AudioSource.PlayClipAtPoint(soundEffects[1], Camera.main.transform.position, 0.4f);
-                    _alertSound = false;
+					AudioManager.instance.Play("lowFuel");
+					_alertSound = false;
 					lowFuel = true;
-                    AudioManager.instance.Play("lowFuel");
                 }
 
             }

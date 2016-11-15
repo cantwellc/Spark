@@ -35,6 +35,7 @@ public class DroneHatch : MonoBehaviour {
                 if(_smallSpawnIntervalRemain <= 0)
                 {
                     GameObject drone = (GameObject) Instantiate(dronePrefab);
+					AudioManager.instance.Play ("droneSpawn");
                     drone.transform.position = transform.position;
                     //Vector3 impulse = new Vector3(pushDroneForce * Mathf.Cos(droneSpawnDirectionInDegree * Mathf.Deg2Rad), 0, pushDroneForce * Mathf.Sin(droneSpawnDirectionInDegree * Mathf.Deg2Rad));
                     Vector3 impulse = transform.forward * pushDroneForce;

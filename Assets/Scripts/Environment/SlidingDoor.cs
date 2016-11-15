@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SlidingDoor : MonoBehaviour {
     public bool opened;
+	public bool canSlam;
 
     public float openSpeed;
     public float closeSpeed;
@@ -35,20 +36,38 @@ public class SlidingDoor : MonoBehaviour {
             door.transform.localPosition = Vector3.MoveTowards(door.transform.localPosition, target, speed);
             if (door.transform.localPosition == target)
             {
-                moving = false;
+				if (canSlam == true)
+				{
+					AudioManager.instance.Play ("doorSlam", gameObject);
+					canSlam = false;
+				}
+				               
+				moving = false;
             }
         }
 	}
 
     public void OpenDoor()
     {
-        moving = true;
+		if (!opened)
+		{
+			AudioManager.instance.Play ("openDoor", gameObject);
+			canSlam = true;
+		}
+
+		moving = true;
         opened = true;
     }
 
     public void CloseDoor()
     {
-        moving = true;
+		if (opened == true)
+		{
+			AudioManager.instance.Play ("closeDoor", gameObject);
+			canSlam = true;
+		}
+		
+		moving = true;
         opened = false;
     }
 }

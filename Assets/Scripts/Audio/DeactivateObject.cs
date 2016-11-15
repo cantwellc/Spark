@@ -7,26 +7,34 @@ public class DeactivateObject : MonoBehaviour
 
 	public bool canDeactivate = true;
 
-	void Start ()
-	{
-		//source = gameObject.GetComponent<AudioSource> ();
-	}
-
 	void OnEnable()
 	{
 		source = gameObject.GetComponent<AudioSource> ();
 		if (source.loop != true) 
 		{
 			if (source.clip != null)
-				Invoke ("Deactivate", source.clip.length + 0.5f);
+				Invoke ("Deactivate", source.clip.length + 2.0f);
 			else
-				Invoke ("Deactivate", 1.0f);
+				Invoke ("Deactivate", 2.0f);
 		}
 	}
 
-	void Deactivate ()
+	public void Deactivate ()
 	{
-		if (canDeactivate == true)
-			gameObject.SetActive (false);
+		if (canDeactivate == true && gameObject.activeInHierarchy == true)
+			StartCoroutine ("Fade");
+		else
+			return;
+	}
+
+	IEnumerator Fade ()
+	{
+		source = gameObject.GetComponent<AudioSource> ();
+		while (source.volume > 0.0f)
+		{
+			source.volume -= Time.deltaTime * 2.0f;
+			yield return new WaitForSeconds (0.0001f);
+		}
+		gameObject.SetActive (false);
 	}
 }
