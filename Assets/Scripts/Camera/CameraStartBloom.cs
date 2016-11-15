@@ -38,7 +38,7 @@ public class CameraStartBloom : MonoBehaviour {
 
 	IEnumerator DimVFX()
 	{
-		Debug.Log ("heeeeey!");
+		
 		Bloom bloom = this.GetComponent<Bloom>();
 		bloom.enabled = true;
 		float time = 0f, bloomTime = 2f;

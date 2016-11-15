@@ -31,7 +31,7 @@ public class SlowDownCharacterOnCollision : MonoBehaviour
             if (_rigidBody.velocity.magnitude > slowDownThreshold)
             {
                 Vector3 reverseForce = (_rigidBody.velocity.normalized * force) * -3;
-                _rigidBody.AddForce(reverseForce, ForceMode.Force);
+				_rigidBody.AddForce(reverseForce, ForceMode.Acceleration);
             }
 
         }

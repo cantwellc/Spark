@@ -7,8 +7,8 @@ public class CharacterAnimationPlay : MonoBehaviour {
 	public float rotationY = -90;
 	public float MovementSpeed = 5000;
 	private bool _collided = false;
-	public bool levelStart = true;
 	public bool playChargeEffect = false;
+	public bool applyContinousForce = false;
 	void Start () 
 	{
 	
@@ -20,7 +20,11 @@ public class CharacterAnimationPlay : MonoBehaviour {
 		if (_lockRotation)
 		{
 			lockRotation ();
-			Character.current.GetComponent<Rigidbody> ().AddRelativeForce (Vector3.forward * -MovementSpeed);
+			if (applyContinousForce)
+			{
+				Character.current.GetComponent<Rigidbody> ().AddRelativeForce (Vector3.forward * -MovementSpeed);
+
+			}
 		}
 	}
 
@@ -32,18 +36,19 @@ public class CharacterAnimationPlay : MonoBehaviour {
 			if (!_collided)
 			{
 				_collided = true;
+
+
 				if (playChargeEffect)
 				{
 					Character.current.GetComponent<VFX_Player> ().PlayEffect ();
 				}
 				lockRotation ();
+
 				Character.current.GetComponentInChildren<Gun> ().DisableInput ();
 
 				_lockRotation = true;
-				if(levelStart)
-				{
-					Invoke ("ReEnableInput", 4.0f);
-				}
+				Character.current.GetComponent<Rigidbody> ().AddRelativeForce (Vector3.forward * -MovementSpeed);
+		
 			}
 		}
 	}

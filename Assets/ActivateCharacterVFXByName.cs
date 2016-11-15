@@ -9,8 +9,11 @@ public class ActivateCharacterVFXByName : MonoBehaviour {
 	{
 		if (other.tag == "Character")
 		{
-			GameObject VFX = GameObject.Find(VFXname) as GameObject;
-			VFX.GetComponent<VFX_Player> ().PlayEffect ();
+			if (VFXname != "")
+			{
+				GameObject VFX = GameObject.Find (VFXname) as GameObject;
+				VFX.GetComponent<VFX_Player> ().PlayEffect ();
+			}
 		}
 	
 	}
