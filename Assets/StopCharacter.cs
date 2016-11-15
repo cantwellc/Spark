@@ -12,7 +12,7 @@ public class StopCharacter : MonoBehaviour {
 			GameObject initialCheckpoint = GameObject.Find ("InitialCheckpointWithAnimation");
 			initialCheckpoint.GetComponent<CharacterAnimationPlay> ().ReEnableInput ();
 			Vector3 normalizedVelocity = Character.current.GetComponent<Rigidbody> ().velocity.normalized;
-			Vector3 forceToApply = normalizedVelocity * -20;
+			Vector3 forceToApply = normalizedVelocity * -10;
 			Character.current.GetComponent<Rigidbody> ().AddForce(forceToApply, ForceMode.Impulse);
 			Debug.Log ("Running this");
 
