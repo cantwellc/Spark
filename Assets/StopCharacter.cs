@@ -6,7 +6,7 @@ public class StopCharacter : MonoBehaviour {
 
 	public void Stop()
 	{
-		if (Vector3.Magnitude (Character.current.GetComponent<Rigidbody> ().velocity) > 0.0f)
+		if (Vector3.Magnitude (Character.current.GetComponent<Rigidbody> ().velocity) > 2.0f)
 		{
 
 			GameObject initialCheckpoint = GameObject.Find ("InitialCheckpointWithAnimation");
