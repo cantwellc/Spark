@@ -20,7 +20,7 @@ public class EnemyBulletCollision : MonoBehaviour
         if (!other || _characterFuelReservoir == null) return;
 		if (other.gameObject.tag == "Character")
 		{
-            other.GetComponent<Health>().TakeDamage(_damage);
+			other.GetComponent<CharacterHealth>().TakeDamageWithVFX(_damage,"TurretDamage");
 			onCharacterCollision.Invoke ();
 			Destroy (gameObject);
 		}

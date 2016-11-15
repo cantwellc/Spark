@@ -24,6 +24,20 @@ public class CharacterHealth : Health {
 		}
 	}
 
+	public void TakeDamageWithVFX(float amount,string VFX)
+	{
+		GetComponent<FuelReservoir>().UseFuel(amount);
+		if (amount > 1 && onTakeDamageIntervalRemain <= 0)
+		{
+			onTakeDamageIntervalRemain = onTakeDamageInterval;
+			onTakeDamage.Invoke ();
+		}
+		string vfxPrefabName = "CharacterHitEffects/"+VFX;
+		GameObject vfxPrefab = (GameObject)Resources.Load (vfxPrefabName);
+		GameObject vfxInstance = Instantiate (vfxPrefab, transform.position, transform.rotation) as GameObject;
+		vfxInstance.transform.parent = gameObject.transform;
+	}
+
 	// Update is called once per frame
 	void Update () {
         if(onTakeDamageIntervalRemain > 0)
