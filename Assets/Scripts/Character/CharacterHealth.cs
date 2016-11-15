@@ -36,6 +36,7 @@ public class CharacterHealth : Health {
 		GameObject vfxPrefab = (GameObject)Resources.Load (vfxPrefabName);
 		GameObject vfxInstance = Instantiate (vfxPrefab, transform.position, transform.rotation) as GameObject;
 		vfxInstance.transform.parent = gameObject.transform;
+		Destroy (vfxInstance, 1.0f);
 	}
 
 	// Update is called once per frame
