@@ -97,6 +97,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000013621897708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000014103014834}
+  - 108: {fileID: 108000010077608804}
+  - 114: {fileID: 114000013622463388}
+  m_Layer: 0
+  m_Name: Point light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000014162755704
 GameObject:
   m_ObjectHideFlags: 1
@@ -107,6 +124,7 @@ GameObject:
   - 4: {fileID: 4000014170365104}
   - 33: {fileID: 33000013942726752}
   - 23: {fileID: 23000014083514230}
+  - 114: {fileID: 114000010298204770}
   m_Layer: 0
   m_Name: ForceFieldDoor
   m_TagString: Untagged
@@ -174,16 +192,30 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013323478834}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.1, y: 2.4, z: -89.9}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -1.15, y: 2.4, z: -181.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children:
   - {fileID: 4000011832767518}
   - {fileID: 4000011556885746}
   - {fileID: 4000012434780360}
+  - {fileID: 4000014103014834}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!4 &4000014103014834
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013621897708}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000012887192890}
+  m_RootOrder: 3
 --- !u!4 &4000014170365104
 Transform:
   m_ObjectHideFlags: 1
@@ -377,6 +409,55 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.294336, y: 3.3435411, z: 0.46876955}
   m_Center: {x: 0.14720155, y: 0.024770379, z: 0.0071869045}
+--- !u!108 &108000010077608804
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013621897708}
+  m_Enabled: 1
+  serializedVersion: 7
+  m_Type: 2
+  m_Color: {r: 1, g: 0.33283514, b: 0.076773405, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!114 &114000010298204770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014162755704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be8ba2b35d21bb4fac1479d14e92eb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pulseDuration: 2
+  emitFloor: 1
+  emitCeiling: 3
+  _pulse: 1
 --- !u!114 &114000010445677984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -388,11 +469,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772432c45ac35e14f9bed2857f89e64c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  opened: 1
+  opened: 0
   canSlam: 0
   openSpeed: 0.5
   closeSpeed: 0.15
   door: {fileID: 1000012564091096}
+--- !u!114 &114000013622463388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013621897708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695fd304d338de8449a05c99af0dcfb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pulseDuration: 2
+  intensityFloor: 1
+  intensityCeiling: 3
+  _pulse: 0
 --- !u!208 &208000011135078774
 NavMeshObstacle:
   m_ObjectHideFlags: 1
