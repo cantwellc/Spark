@@ -25,6 +25,7 @@ GameObject:
   - 81: {fileID: 81000013245212962}
   - 114: {fileID: 114000012933796710}
   - 114: {fileID: 114000012636383864}
+  - 114: {fileID: 114000011742389272}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -63,7 +64,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4000011523931444
 Transform:
   m_ObjectHideFlags: 1
@@ -163,7 +164,7 @@ Light:
   serializedVersion: 7
   m_Type: 1
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 0.4
+  m_Intensity: 0.3
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -202,6 +203,17 @@ MonoBehaviour:
   intensityFloor: 0.4
   intensityCeiling: 0.8
   _pulse: 0
+--- !u!114 &114000011742389272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011459648886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4787608bcc7cda34585e948f080bb835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012636383864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -254,6 +266,7 @@ MonoBehaviour:
   targetLocation: {fileID: 0}
   targetLocation2: {fileID: 0}
   speed: 0
+  cameraPlayerFollowCoefficient: 1
 --- !u!124 &124000014070650210
 Behaviour:
   m_ObjectHideFlags: 1
