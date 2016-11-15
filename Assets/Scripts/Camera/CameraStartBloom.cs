@@ -45,8 +45,11 @@ public class CameraStartBloom : MonoBehaviour {
 		bloom.bloomIntensity = 15.0f;
 		while (time <= bloomTime)
 		{
-			bloom.bloomIntensity -= 0.4f;
-			time += Time.deltaTime*2;
+			if (bloom.bloomIntensity >= 0.2)
+			{
+				bloom.bloomIntensity -= 0.2f;
+			}
+			time += Time.deltaTime;
 			yield return new WaitForEndOfFrame();
 		}
 		time = 0;
