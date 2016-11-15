@@ -81,7 +81,8 @@ public class Checkpoint : MonoBehaviour {
                 currentData.hasKey = true;
             } else
             {
-                makeTheCheckPointYellow();
+				makeTheCheckPointGreen();
+				//makeTheCheckPointYellow();
             }
             onCheckpointEnter.Invoke();
             if(currentData.hasKey)
