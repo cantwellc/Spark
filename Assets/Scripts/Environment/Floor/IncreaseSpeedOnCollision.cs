@@ -27,4 +27,16 @@ public class IncreaseSpeedOnCollision : MonoBehaviour {
 			_rigidBody.AddForce (speedForce, ForceMode.Force);
 		}
 	}
+
+    void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Character")
+        {
+            _rigidBody = Character.current.GetComponent<Rigidbody>();
+            //AudioManager.instance.Play("speedAura");
+            AudioManager.instance.Play("speedAura");
+            Vector3 speedForce = (_rigidBody.velocity.normalized * force);
+            _rigidBody.AddForce(speedForce, ForceMode.Force);
+        }
+    }
 }
