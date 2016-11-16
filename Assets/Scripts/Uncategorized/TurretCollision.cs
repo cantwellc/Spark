@@ -23,7 +23,7 @@ public class TurretCollision : MonoBehaviour
         {
             Rigidbody _rbCharacter = col.gameObject.GetComponent<Rigidbody>();
             float damageTaken = (2 * _rbCharacter.mass * _rbCharacter.velocity.magnitude * _rbCharacter.velocity.magnitude / _rbTurret.mass);
-			damageTaken = damageTaken / 170;
+			damageTaken = damageTaken / 100;
 			collisionTrigger.Invoke(damageTaken);
         }
 
