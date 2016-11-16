@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 
 public class BounceWall : MonoBehaviour {
+    public UnityEvent OnBounce;
     public float bounceBoost;
 	// Use this for initialization
 	void Start () {
@@ -26,6 +28,7 @@ public class BounceWall : MonoBehaviour {
             print(velocity);
             col.rigidbody.velocity = -velocity*bounceBoost;
 			AudioManager.instance.Play ("wallBounce");
+            OnBounce.Invoke();
 			//col.rigidbody.AddForce(dir * bounceForce, ForceMode.Impulse);
         }
     }
