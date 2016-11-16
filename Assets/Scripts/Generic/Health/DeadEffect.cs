@@ -10,7 +10,8 @@ public class DeadEffect : MonoBehaviour
 		if(enemyDeadEffect)
 		{
 			//AudioManager.instance.Play ("droneExplode", gameObject);
-			GameObject deadEffect = Instantiate(enemyDeadEffect, transform.position, transform.rotation) as GameObject;
+			Vector3 VFXInstantiation = new Vector3(transform.position.x,transform.position.y+1,transform.position.z);
+			GameObject deadEffect = Instantiate(enemyDeadEffect, VFXInstantiation, transform.rotation) as GameObject;
 			Destroy(deadEffect, destroyDeadEffectInSeconds);
 		}
 	}

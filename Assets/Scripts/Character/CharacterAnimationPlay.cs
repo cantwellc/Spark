@@ -9,6 +9,8 @@ public class CharacterAnimationPlay : MonoBehaviour {
 	private bool _collided = false;
 	public bool playChargeEffect = false;
 	public bool applyContinousForce = false;
+	public bool reEnableInput = false;
+	public float reEnableInputTime = 5.0f;
 	void Start () 
 	{
 	
@@ -48,7 +50,8 @@ public class CharacterAnimationPlay : MonoBehaviour {
 
 				_lockRotation = true;
 				Character.current.GetComponent<Rigidbody> ().AddRelativeForce (Vector3.forward * -MovementSpeed);
-		
+				if (reEnableInput)
+					Invoke ("ReEnableInput", reEnableInputTime);
 			}
 		}
 	}
