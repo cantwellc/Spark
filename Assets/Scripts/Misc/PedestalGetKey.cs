@@ -20,6 +20,7 @@ public class PedestalGetKey : MonoBehaviour {
     private float _timeToStage;
     private float _toStageStartTime;
     private float _toFinalStartTime;
+	private ParticleSystem _keyPedestalVFX;
 
 	void OnTriggerEnter(Collider other)
     {
@@ -72,9 +73,19 @@ public class PedestalGetKey : MonoBehaviour {
             var step = toFinalSpeed * Time.deltaTime;
             _key.position = Vector3.MoveTowards(_key.position, finalTarget.position, step);
 //            _key.rotation = Quaternion.RotateTowards(_key.rotation, finalTarget.rotation, step);
-            if (_key.position == finalTarget.position) StopMoveFinal();
+			if (_key.position == finalTarget.position)
+			{
+				StopMoveFinal ();
+				PlayKeyVFX ();
+			}
         }
         
     }
+	private void PlayKeyVFX()
+	{
+		GameObject VFXGameObject = (_key.FindChild ("CrystalVFXPedestal")).gameObject ;
+		ParticleSystem VFXParticle = VFXGameObject.GetComponent<ParticleSystem> ();
+		VFXParticle.Play ();
+	}
 
 }
