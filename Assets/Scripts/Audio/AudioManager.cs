@@ -75,7 +75,7 @@ public class AudioManager : MonoBehaviour
 		else if (sceneName == "ChaseLevel")
 			PlayMusic ("chaseLevel");
 		else if (sceneName == "GameStory")
-			return;
+			PlayMusic ("opening");
 		else
 			PlayMusic ("standardLevel");
     }
@@ -116,7 +116,14 @@ public class AudioManager : MonoBehaviour
 		}
 
 		if (musicEvent == "opening")
-			musicSource.Stop ();
+		{
+			snapshots ["Opening"].TransitionTo (0.1f);
+
+			musicSource.clip = clips ["openingMusic"];
+			musicSource.outputAudioMixerGroup = mixerGroups ["OpeningBGM"];
+			musicSource.loop = false;
+			musicSource.Play ();
+		}
 	}
 
 	public void Play(string audioEvent)
