@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using System.Collections;
 using System;
 
@@ -108,81 +109,176 @@ public class SplineWall : MonoBehaviour {
     private Vector3[] _normals;
     private int[] _triangles;
 
-    public bool createMesh;
-    public bool clearMesh;
+    private Vector3[] _ceilingVertices;
+    public Vector3[] ceilingVertices
+    {
+        get
+        {
+            return _ceilingVertices;
+        }
+    }
+
+    //public bool createMesh;
+    //public bool clearMesh;
 
     public int segments = 1;
     public float wallHeight = 1;
+    public bool reverseNormals;
 
     // Update is called once per frame
-    void Update()
+    //void Update()
+    //{
+    //    if (createMesh == true)
+    //    {
+    //        createMesh = false;
+    //        var shape = new WallExtrudeShape(wallHeight);
+    //        OrientedPoint[] path = GetPathFromSpline();
+    //        int edgeLoops = path.Length;
+    //        int vertsInShape = shape.verts.Length;
+    //        int vertCount = vertsInShape * edgeLoops;
+    //        int triCount = shape.lines.Length * segments;
+    //        int triIndexCount = triCount * 3;
+
+    //        _triangles = new int[triIndexCount];
+    //        _vertices = new Vector3[vertCount];
+    //        _normals = new Vector3[vertCount];
+    //        _uvs = new Vector2[vertCount];
+
+    //        _ceilingVertices = new Vector3[path.Length];
+
+    //        Vector3 vertexOffset = new Vector3(-path[0].position.x + 1, -path[0].position.y, -path[0].position.z);
+
+    //        // Add vertex information to arrays
+    //        for( int i=0; i<path.Length; ++i)
+    //        {
+    //            int offset = i * vertsInShape;
+    //            for(int j=0; j<vertsInShape; ++j)
+    //            {
+    //                int id = offset + j;
+    //                //_vertices[id] = path[i].position + new Vector3(shape.verts[j].x, shape.verts[j].y);
+    //                _vertices[id] = path[i].LocalToWorld(shape.verts[j]) + vertexOffset;
+    //                //_vertices[id] = path[i].WorldToLocal(shape.verts[j]);
+    //                _normals[id] = path[i].rotation * shape.normals[j];//path[i].LocalToWorldDirection(shape.normals[j]);
+    //                _uvs[id] = new Vector2(i / ((float)edgeLoops), shape.us[j]);
+    //                if (j == vertsInShape - 1) _ceilingVertices[i] = _vertices[id];
+    //            }
+    //        }
+
+    //        // Build triangles array
+    //        int ti = 0;
+    //        for(int i=0; i < segments; ++i)
+    //        {
+    //            int offset = i * vertsInShape;
+    //            for(int j = 0; j < shape.lines.Length; j += 2)
+    //            {
+    //                int a = offset + shape.lines[j] + vertsInShape;
+    //                int b = offset + shape.lines[j];
+    //                int c = offset + shape.lines[j + 1];
+    //                int d = offset + shape.lines[j + 1] + vertsInShape;
+    //                _triangles[ti] = a; ++ti;
+    //                _triangles[ti] = b; ++ti;
+    //                _triangles[ti] = c; ++ti;
+    //                _triangles[ti] = c; ++ti;
+    //                _triangles[ti] = d; ++ti;
+    //                _triangles[ti] = a; ++ti;
+    //            }
+    //        }
+
+    //        mesh.Clear();
+    //        mesh.vertices = _vertices;
+    //        mesh.triangles = _triangles;
+    //        mesh.normals = _normals;
+    //        mesh.uv = _uvs;
+
+    //        meshCollider.sharedMesh = mesh;
+    //        OnMeshDraw.Invoke();
+    //    }
+    //    if (clearMesh)
+    //    {
+    //        mesh.Clear();
+    //        clearMesh = false;
+    //        OnMeshClear.Invoke();
+    //    }
+    //}
+
+    public void DrawMesh()
     {
-        if (createMesh == true)
+        var shape = new WallExtrudeShape(wallHeight);
+        OrientedPoint[] path = GetPathFromSpline();
+        int edgeLoops = path.Length;
+        int vertsInShape = shape.verts.Length;
+        int vertCount = vertsInShape * edgeLoops;
+        int triCount = shape.lines.Length * segments;
+        int triIndexCount = triCount * 3;
+
+        _triangles = new int[triIndexCount];
+        _vertices = new Vector3[vertCount];
+        _normals = new Vector3[vertCount];
+        _uvs = new Vector2[vertCount];
+
+        _ceilingVertices = new Vector3[path.Length];
+
+        Vector3 vertexOffset = new Vector3(-path[0].position.x + 1, -path[0].position.y, -path[0].position.z);
+
+        // Add vertex information to arrays
+        for (int i = 0; i < path.Length; ++i)
         {
-            createMesh = false;
-            var shape = new WallExtrudeShape(wallHeight);
-            OrientedPoint[] path = GetPathFromSpline();
-            int edgeLoops = path.Length;
-            int vertsInShape = shape.verts.Length;
-            int vertCount = vertsInShape * edgeLoops;
-            int triCount = shape.lines.Length * segments;
-            int triIndexCount = triCount * 3;
-
-            _triangles = new int[triIndexCount];
-            _vertices = new Vector3[vertCount];
-            _normals = new Vector3[vertCount];
-            _uvs = new Vector2[vertCount];
-
-            Vector3 vertexOffset = new Vector3(-path[0].position.x + 1, -path[0].position.y, -path[0].position.z);
-
-            // Add vertex information to arrays
-            for( int i=0; i<path.Length; ++i)
+            int offset = i * vertsInShape;
+            for (int j = 0; j < vertsInShape; ++j)
             {
-                int offset = i * vertsInShape;
-                for(int j=0; j<vertsInShape; ++j)
-                {
-                    int id = offset + j;
-                    //_vertices[id] = path[i].position + new Vector3(shape.verts[j].x, shape.verts[j].y);
-                    _vertices[id] = path[i].LocalToWorld(shape.verts[j]) + vertexOffset;
-                    //_vertices[id] = path[i].WorldToLocal(shape.verts[j]);
-                    _normals[id] = path[i].rotation * shape.normals[j];//path[i].LocalToWorldDirection(shape.normals[j]);
-                    _uvs[id] = new Vector2(i / ((float)edgeLoops), shape.us[j]);
-                }
+                int id = offset + j;
+                //_vertices[id] = path[i].position + new Vector3(shape.verts[j].x, shape.verts[j].y);
+                _vertices[id] = path[i].LocalToWorld(shape.verts[j]) + vertexOffset;
+                //_vertices[id] = path[i].WorldToLocal(shape.verts[j]);
+                _normals[id] = path[i].rotation * shape.normals[j];//path[i].LocalToWorldDirection(shape.normals[j]);
+                _uvs[id] = new Vector2(i / ((float)edgeLoops), shape.us[j]);
+                if (j == vertsInShape - 1) _ceilingVertices[i] = _vertices[id];
             }
-
-            // Build triangles array
-            int ti = 0;
-            for(int i=0; i < segments; ++i)
-            {
-                int offset = i * vertsInShape;
-                for(int j = 0; j < shape.lines.Length; j += 2)
-                {
-                    int a = offset + shape.lines[j] + vertsInShape;
-                    int b = offset + shape.lines[j];
-                    int c = offset + shape.lines[j + 1];
-                    int d = offset + shape.lines[j + 1] + vertsInShape;
-                    _triangles[ti] = a; ++ti;
-                    _triangles[ti] = b; ++ti;
-                    _triangles[ti] = c; ++ti;
-                    _triangles[ti] = c; ++ti;
-                    _triangles[ti] = d; ++ti;
-                    _triangles[ti] = a; ++ti;
-                }
-            }
-
-            mesh.Clear();
-            mesh.vertices = _vertices;
-            mesh.triangles = _triangles;
-            mesh.normals = _normals;
-            mesh.uv = _uvs;
-
-            meshCollider.sharedMesh = mesh;
         }
-        if (clearMesh)
+
+        // Build triangles array
+        int ti = 0;
+        for (int i = 0; i < segments; ++i)
         {
-            mesh.Clear();
-            clearMesh = false;
+            int offset = i * vertsInShape;
+            for (int j = 0; j < shape.lines.Length; j += 2)
+            {
+                int a = offset + shape.lines[j] + vertsInShape;
+                int b = offset + shape.lines[j];
+                int c = offset + shape.lines[j + 1];
+                int d = offset + shape.lines[j + 1] + vertsInShape;
+                _triangles[ti] = a; ++ti;
+                _triangles[ti] = b; ++ti;
+                _triangles[ti] = c; ++ti;
+                _triangles[ti] = c; ++ti;
+                _triangles[ti] = d; ++ti;
+                _triangles[ti] = a; ++ti;
+            }
         }
+
+        if (reverseNormals)
+        {
+            for (int i = 0; i < _triangles.Length; i += 3)
+            {
+                int temp = _triangles[i + 0];
+                _triangles[i + 0] = _triangles[i + 1];
+                _triangles[i + 1] = temp;
+            }
+        }
+
+        mesh.Clear();
+        mesh.vertices = _vertices;
+        mesh.triangles = _triangles;
+        mesh.normals = _normals;
+        mesh.uv = _uvs;
+
+        meshCollider.sharedMesh = mesh;
+    }
+
+    public void ClearMesh()
+    {
+        mesh.Clear();
+        meshCollider.sharedMesh = mesh;
     }
 
     private OrientedPoint[] GetPathFromSpline()

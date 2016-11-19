@@ -37,7 +37,13 @@ public class BezierSplineInspector : Editor {
 			spline.AddCurve();
 			EditorUtility.SetDirty(spline);
 		}
-	}
+        if (GUILayout.Button("Clear Spline"))
+        {
+            Undo.RecordObject(spline, "Clear Spline");
+            spline.Reset();
+            EditorUtility.SetDirty(spline);
+        }
+    }
 
 	private void DrawSelectedPointInspector() {
 		GUILayout.Label("Selected Point");
