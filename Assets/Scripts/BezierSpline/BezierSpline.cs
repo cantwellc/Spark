@@ -88,10 +88,13 @@ public class BezierSpline : MonoBehaviour {
     public void BuildFromPivots()
     {
         var pivots = gameObject.GetComponentsInChildren<SplinePivot>();
+        bool tagLoop = Loop;
+        Loop = false;
         foreach(var pivot in pivots)
         {
             AddCurve(pivot.gameObject.transform.localPosition);
         }
+        Loop = tagLoop;
     }
 
     private void EnforceMode (int index) {
