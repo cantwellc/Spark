@@ -11,12 +11,12 @@ public class SplineWallEditor : Editor
         if (GUILayout.Button("Draw"))
         {
             var sc = target as SplineWall;
-            sc.DrawMesh();
+            sc.BroadcastDraw();
         }
         if (GUILayout.Button("Clear Mesh"))
         {
             var sc = target as SplineWall;
-            sc.ClearMesh();
+            sc.BroadcastClear();
         }
         base.OnInspectorGUI();
     }

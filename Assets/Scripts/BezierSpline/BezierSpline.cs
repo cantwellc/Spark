@@ -85,7 +85,16 @@ public class BezierSpline : MonoBehaviour {
 		EnforceMode(index);
 	}
 
-	private void EnforceMode (int index) {
+    public void BuildFromPivots()
+    {
+        var pivots = gameObject.GetComponentsInChildren<SplinePivot>();
+        foreach(var pivot in pivots)
+        {
+            AddCurve(pivot.gameObject.transform.localPosition);
+        }
+    }
+
+    private void EnforceMode (int index) {
 		int modeIndex = (index + 1) / 3;
 		BezierControlPointMode mode = modes[modeIndex];
 		if (mode == BezierControlPointMode.Free || !loop && (modeIndex == 0 || modeIndex == modes.Length - 1)) {
@@ -183,8 +192,29 @@ public class BezierSpline : MonoBehaviour {
 			EnforceMode(0);
 		}
 	}
-	
-	public void Reset () {
+
+    private void AddCurve(Vector3 position)
+    {
+        Vector3 previous = points[points.Length - 1];
+        Vector3 dir = (position - previous).normalized;
+        Array.Resize(ref points, points.Length + 3);
+        points[points.Length - 3] = previous + dir;
+        points[points.Length - 2] = position - dir;
+        points[points.Length - 1] = position;
+
+        Array.Resize(ref modes, modes.Length + 1);
+        modes[modes.Length - 1] = modes[modes.Length - 2];
+        EnforceMode(points.Length - 4);
+
+        if (loop)
+        {
+            points[points.Length - 1] = points[0];
+            modes[modes.Length - 1] = modes[0];
+            EnforceMode(0);
+        }
+    }
+
+    public void Reset () {
 		points = new Vector3[] {
 			new Vector3(1f, 0f, 0f),
 			new Vector3(2f, 0f, 0f),

@@ -43,6 +43,12 @@ public class BezierSplineInspector : Editor {
             spline.Reset();
             EditorUtility.SetDirty(spline);
         }
+        if (GUILayout.Button("Build From Pivots"))
+        {
+            Undo.RecordObject(spline, "Build From Pivots");
+            spline.BuildFromPivots();
+            EditorUtility.SetDirty(spline);
+        }
     }
 
 	private void DrawSelectedPointInspector() {
