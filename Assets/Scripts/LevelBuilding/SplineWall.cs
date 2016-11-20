@@ -273,6 +273,7 @@ public class SplineWall : MonoBehaviour {
         mesh.uv = _uvs;
 
         meshCollider.sharedMesh = mesh;
+        BroadcastMessage("DrawMesh");
     }
 
     public void ClearMesh()
