@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class BezierSpline : MonoBehaviour {
 
@@ -89,9 +90,25 @@ public class BezierSpline : MonoBehaviour {
 
     public void BuildFromPivots()
     {
+        // clear the point array
+        points = new Vector3[4];
         var pivots = gameObject.GetComponentsInChildren<SplinePivot>();
+        if(pivots.Length < 2)
+        {
+            Debug.Log(gameObject.name + " must have at least two children of type SplinePivot");
+        }
+        var p0 = pivots[0].transform.localPosition;
+        var p1 = pivots[1].transform.localPosition;
+        var dir = (p1 - p0).normalized;
+        var c0 = p0 + dir;
+        var c1 = p1 - dir;
         bool tagLoop = Loop;
         Loop = false;
+        points[0] = p0;
+        points[1] = c0;
+        points[2] = c1;
+        points[3] = p1;
+        pivots = pivots.Skip(2).Take(pivots.Length - 2).ToArray();
         foreach(var pivot in pivots)
         {
             AddCurve(pivot.gameObject.transform.localPosition);
@@ -220,12 +237,12 @@ public class BezierSpline : MonoBehaviour {
     }
 
     public void Reset () {
-		points = new Vector3[] {
-			new Vector3(1f, 0f, 0f),
-			new Vector3(2f, 0f, 0f),
-			new Vector3(3f, 0f, 0f),
-			new Vector3(4f, 0f, 0f)
-		};
+        points = new Vector3[] { Vector3.zero, Vector3.zero, Vector3.zero, Vector3.zero };
+		//	new Vector3(1f, 0f, 0f),
+		//	new Vector3(2f, 0f, 0f),
+		//	new Vector3(3f, 0f, 0f),
+		//	new Vector3(4f, 0f, 0f)
+		//};
 		modes = new BezierControlPointMode[] {
 			BezierControlPointMode.Free,
 			BezierControlPointMode.Free

@@ -149,7 +149,7 @@ public class SplineWall : MonoBehaviour {
 
         _ceilingVertices = new Vector3[path.Length];
 
-        Vector3 vertexOffset = new Vector3(-path[0].position.x + 1, -path[0].position.y, -path[0].position.z);
+        Vector3 vertexOffset = new Vector3(0.0f, -path[0].position.y, -path[0].position.z);
 
         // Add vertex information to arrays
         for (int i = 0; i < path.Length; ++i)
@@ -159,7 +159,7 @@ public class SplineWall : MonoBehaviour {
             {
                 int id = offset + j;
                 //_vertices[id] = path[i].position + new Vector3(shape.verts[j].x, shape.verts[j].y);
-                _vertices[id] = path[i].LocalToWorld(shape.verts[j]) + vertexOffset;
+                _vertices[id] = transform.InverseTransformPoint(path[i].LocalToWorld(shape.verts[j]));// + vertexOffset;
                 //_vertices[id] = path[i].WorldToLocal(shape.verts[j]);
                 _normals[id] = path[i].rotation * shape.normals[j];//path[i].LocalToWorldDirection(shape.normals[j]);
                 _uvs[id] = new Vector2(i / ((float)edgeLoops), shape.us[j]);

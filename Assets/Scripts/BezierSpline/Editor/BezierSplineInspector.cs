@@ -32,11 +32,11 @@ public class BezierSplineInspector : Editor {
 		if (selectedIndex >= 0 && selectedIndex < spline.ControlPointCount) {
 			DrawSelectedPointInspector();
 		}
-		if (GUILayout.Button("Add Curve")) {
-			Undo.RecordObject(spline, "Add Curve");
-			spline.AddCurve();
-			EditorUtility.SetDirty(spline);
-		}
+		//if (GUILayout.Button("Add Curve")) {
+		//	Undo.RecordObject(spline, "Add Curve");
+		//	spline.AddCurve();
+		//	EditorUtility.SetDirty(spline);
+		//}
         if (GUILayout.Button("Clear Spline"))
         {
             Undo.RecordObject(spline, "Clear Spline");
