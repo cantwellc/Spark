@@ -4,6 +4,23 @@ using System.Collections;
 
 public class SplinePivot : MonoBehaviour {
 
+    private bool _c1Set;
+    private Vector3 _controlPoint1;
+
+    private bool _c2Set;
+    private Vector3 _controlPoint2;
+
+    private BezierSpline _spline;
+    protected BezierSpline spline
+    {
+        get
+        {
+            _spline = spline == null ? GetComponentInParent<BezierSpline>() : _spline;
+            if (_spline == null) Debug.Log(gameObject.name + " must be a child of a GameObject with a BezierSpline component.");
+            return _spline;
+        }
+    }
+
     public Vector3 position
     {
         get
@@ -11,12 +28,6 @@ public class SplinePivot : MonoBehaviour {
             return transform.position;
         }
     }
-
-	//void OnDrawGizmos()
- //   {
- //       Gizmos.color = Color.yellow;
- //       Gizmos.DrawWireSphere(transform.position, 0.25f);
- //   }
 
 }
 

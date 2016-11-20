@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class BezierSpline : MonoBehaviour {
 
 	[SerializeField]
 	private Vector3[] points;
+    private List<Vector3> _pointsList;
 
 	[SerializeField]
 	private BezierControlPointMode[] modes;
@@ -67,7 +69,7 @@ public class BezierSpline : MonoBehaviour {
 		EnforceMode(index);
 	}
 
-	public BezierControlPointMode GetControlPointMode (int index) {
+    public BezierControlPointMode GetControlPointMode (int index) {
 		return modes[(index + 1) / 3];
 	}
 
