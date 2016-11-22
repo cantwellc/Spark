@@ -11,15 +11,15 @@ public class GameWon : MonoBehaviour
 
 	private bool _finishCheck = false;
 
-	void OnTriggerEnter(Collider col)
+
+	void OnTriggerStay(Collider col)
 	{
-		if (col.tag == "Character") 
+		if (col.tag == "Character" && !_finishCheck) 
 		{
 			_finishCheck = true;
-            StartCoroutine(loadNextScene());
+			StartCoroutine(loadNextScene());
 
 		}
-
 	}
 	void Update()
 	{
