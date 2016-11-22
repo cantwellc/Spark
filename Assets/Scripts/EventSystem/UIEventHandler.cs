@@ -83,9 +83,7 @@ public class UIEventHandler : MonoBehaviour {
 
     void DeadNotification()
     {
-		GameObject playerDead = GameObject.Find ("LevelText");
-		GameObject playerDeadImage = (playerDead.transform.Find ("Image")).gameObject;
-		playerDeadImage.SetActive (true);
+
        	// notificationText.text = "You have died!";
         //notificationText.color = Color.red;
         //notificationText.enabled = true;

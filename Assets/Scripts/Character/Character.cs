@@ -218,6 +218,9 @@ public class Character : MonoBehaviour
         GetComponent<CharacterHealth>().onDeath.Invoke();
 
         Destroy(gameObject, 2.0f);
+		GameObject playerDead = GameObject.Find ("LevelText");
+		GameObject playerDeadImage = (playerDead.transform.Find ("Image")).gameObject;
+		playerDeadImage.SetActive (true);
         EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
 		Invoke ("Restart", 1.0f);
         //AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
