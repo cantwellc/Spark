@@ -89,7 +89,7 @@ public class AudioManager : MonoBehaviour
 		{
 			snapshots ["DefaultMX"].TransitionTo (0.1f);
 
-			musicSource.clip = clips ["Menu_Music_2"];
+			musicSource.clip = clips ["bgmLow"];
 			musicSource.outputAudioMixerGroup = mixerGroups ["BGM"];
 			musicSource.loop = true;
 			musicSource.Play ();
