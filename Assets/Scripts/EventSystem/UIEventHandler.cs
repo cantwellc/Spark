@@ -82,7 +82,7 @@ public class UIEventHandler : MonoBehaviour {
 
     void DeadNotification()
     {
-        notificationText.text = "You have died! Press R to restart.";
+        notificationText.text = "You have died!";
         notificationText.color = Color.red;
         notificationText.enabled = true;
     }
