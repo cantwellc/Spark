@@ -216,8 +216,10 @@ public class Character : MonoBehaviour
     {
         //Character.current = null;
         GetComponent<CharacterHealth>().onDeath.Invoke();
+
         Destroy(gameObject, 2.0f);
         EventManager.TriggerEvent(EventManager.Events.PLAYER_DEAD);
+		Invoke ("Restart", 1.0f);
         //AudioSource.PlayClipAtPoint(soundEffects[0], Camera.main.transform.position, 0.8f);
 		//AudioManager.instance.Play("death");
 		Instantiate(outOfFuelPrefab, transform.position, transform.rotation);
@@ -232,6 +234,12 @@ public class Character : MonoBehaviour
 	public void CharacterSound(string audioEvent)
 	{
 		AudioManager.instance.Play (audioEvent);
+	}
+
+	void Restart()
+	{
+		EventManager.TriggerEvent(EventManager.Events.R_KEY);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
     
 }
