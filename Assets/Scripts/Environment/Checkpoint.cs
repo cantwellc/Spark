@@ -79,6 +79,8 @@ public class Checkpoint : MonoBehaviour {
             {
                 makeTheCheckPointGreen();
                 currentData.hasKey = true;
+				GameObject SecondaryCanvas = GameObject.Find ("LevelText");
+				SecondaryCanvas.transform.Find ("CrystalAcquired").gameObject.SetActive (true);
             } else
             {
 				makeTheCheckPointGreen();

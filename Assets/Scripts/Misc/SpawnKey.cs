@@ -19,6 +19,8 @@ public class SpawnKey : MonoBehaviour {
     private void KeyCollected()
     {
         keyCollected = true;
+		GameObject SecondaryCanvas = GameObject.Find ("LevelText");
+		SecondaryCanvas.transform.Find ("CrystalAcquired").gameObject.SetActive (true);
     }
 
     private void Spawn()
@@ -26,7 +28,7 @@ public class SpawnKey : MonoBehaviour {
         if (!keyCollected) OnSpawnKeyFailed.Invoke();
         else {
             key.SetActive(true);
-            OnSpawnKey.Invoke();
+			OnSpawnKey.Invoke();
         }
     }
 }
