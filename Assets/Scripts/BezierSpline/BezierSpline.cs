@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -249,3 +250,4 @@ public class BezierSpline : MonoBehaviour {
 		};
 	}
 }
+#endif

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 using System;
@@ -259,3 +260,4 @@ public class SplineWall : MonoBehaviour {
     }
 
 }
+#endif
