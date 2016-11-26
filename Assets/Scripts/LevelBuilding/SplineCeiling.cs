@@ -1,5 +1,6 @@
 ﻿#if UNITY_EDITOR
 using UnityEngine;
+using UnityEditor;
 using System.Collections.Generic;
 using System;
 using System.Linq;
@@ -111,7 +112,7 @@ public class SplineCeiling : MonoBehaviour
         mesh.RecalculateNormals();
         mesh.RecalculateBounds();
 
-
+        Undo.RecordObject(gameObject, "Change Mesh");
         meshCollider.sharedMesh = mesh;
         //var tr = new Triangulator(verts);
         //var triangles = tr.Triangulate();
@@ -136,6 +137,7 @@ public class SplineCeiling : MonoBehaviour
     public void ClearMesh()
     {
         mesh.Clear();
+        Undo.RecordObject(gameObject, "Change Mesh");
         meshCollider.sharedMesh = mesh;
     }
  

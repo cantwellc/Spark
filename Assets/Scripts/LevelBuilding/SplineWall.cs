@@ -1,6 +1,7 @@
 ﻿#if UNITY_EDITOR
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEditor;
 using System.Collections;
 using System;
 
@@ -203,7 +204,7 @@ public class SplineWall : MonoBehaviour {
         mesh.triangles = _triangles;
         mesh.normals = _normals;
         mesh.uv = _uvs;
-
+        
         meshCollider.sharedMesh = mesh;
     }
 
