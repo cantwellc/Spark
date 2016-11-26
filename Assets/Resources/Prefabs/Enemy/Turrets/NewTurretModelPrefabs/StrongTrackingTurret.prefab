@@ -86,7 +86,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013229418620}
   - 95: {fileID: 95000012499984958}
-  - 135: {fileID: 135000014113237848}
   - 114: {fileID: 114000011890786420}
   - 114: {fileID: 114000010898529172}
   - 114: {fileID: 114000012154462752}
@@ -97,6 +96,8 @@ GameObject:
   - 114: {fileID: 114000011731162440}
   - 114: {fileID: 114000010474443400}
   - 114: {fileID: 114000010974895842}
+  - 136: {fileID: 136000010540469730}
+  - 65: {fileID: 65000012418206086}
   m_Layer: 0
   m_Name: StrongTrackingTurret
   m_TagString: Enemy
@@ -270,7 +271,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012604935618}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 125.1, y: 0.73, z: -112.6}
+  m_LocalPosition: {x: 94.92, y: -0.59, z: -115.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children:
@@ -306,7 +307,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 308247bbea8924c0a8aecdb578683e7f, type: 2}
+  - {fileID: 2100000, guid: f6b86f8fc50ff41ef99ac8b5523df58e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -335,7 +336,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 95188c4054f2241c9a17892d6392f760, type: 2}
+  - {fileID: 2100000, guid: f6b86f8fc50ff41ef99ac8b5523df58e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -364,7 +365,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a0e8eee9ed4d043cc86834696431e6c5, type: 2}
+  - {fileID: 2100000, guid: f15a6860ddf0a1c4ea906d5273cc1864, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -393,7 +394,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7fecd54d42cdb4c70a0a2f36962ef21e, type: 2}
+  - {fileID: 2100000, guid: c11bc7ac9a734d54ab0334eff76f9b0e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -452,6 +453,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!65 &65000012418206086
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012604935618}
+  m_Material: {fileID: 13400000, guid: 7c2d620527eb59647bbd3ca993f6149c, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.51364994, z: 1.479206}
+  m_Center: {x: -0.00000023841858, y: 0.7683811, z: 1.5521548}
 --- !u!95 &95000012499984958
 Animator:
   serializedVersion: 3
@@ -706,8 +719,8 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 11.95578
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &135000014113237848
-SphereCollider:
+--- !u!136 &136000010540469730
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -715,6 +728,7 @@ SphereCollider:
   m_Material: {fileID: 13400000, guid: 7c2d620527eb59647bbd3ca993f6149c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.07
-  m_Center: {x: -0.02, y: 0.02, z: 0.47}
+  m_Radius: 0.92642975
+  m_Height: 2.9882545
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
