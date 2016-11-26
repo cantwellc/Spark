@@ -6,16 +6,23 @@ public class ContinueScript : MonoBehaviour {
 
 	public void LoadLastLevel()
 	{
-		if (!PlayerPrefs.HasKey ("LastLevel"))
-		{
-			//Make the btn not clickable
-		} 
-		else
+		
+		if (PlayerPrefs.HasKey ("LastLevel"))
 		{
 			string sceneName  = PlayerPrefs.GetString ("LastLevel");
 			StartCoroutine(LoadScene(sceneName));
-		}
+		} 
 
+
+	}
+
+	void Start()
+	{
+		//PlayerPrefs.DeleteAll ();
+		if (!PlayerPrefs.HasKey ("LastLevel"))
+		{
+			gameObject.SetActive (false);
+		}
 	}
 
 	IEnumerator LoadScene(string sceneName)
