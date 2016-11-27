@@ -12,6 +12,11 @@ using TriangleNet.Geometry;
 public class SplineCeiling : MonoBehaviour
 {
     public bool invertNormals;
+    public bool basicTriangulation;
+    //public TriangleNet.TriangulationAlgorithm triangulationAlgorithm;
+    //public float minTriangulationAngle = 20f;
+    //public bool conformingDelaunay = true;
+    //public bool refineAfterTriangulate = true;
 
     [HideInInspector]
     private int _ownerID;
@@ -63,89 +68,116 @@ public class SplineCeiling : MonoBehaviour
     {
         var verts = wall.ceilingVertices;
         if (invertNormals) Array.Reverse(verts);
+        if (basicTriangulation) BasicTriangulate(verts);
+        else AdvancedTriangulate(verts);
+    }
 
-
-        InputGeometry geometry = new InputGeometry();
-        List<Point> border = new List<Point>();
-        foreach (var vert in verts)
+    private void AdvancedTriangulate(Vector3[] verts)
+    {
+        List<int> indices;
+        List<Vector3> vertices;
+        if (!Triangulation.Triangulate(verts.ToList(), null, out indices, out vertices, verts[0].y))
         {
-            border.Add(new Point(vert.x, vert.z));
-            //            geometry.AddPoint(vert.x, vert.z);
+            Debug.Log("Error triangulating vertices");
+            return;
         }
 
-        geometry.AddRing(border);
+        GenerateMesh(vertices.ToArray(), indices.ToArray());
 
-        //        geometry.AddRegion()
-        float yOffset = verts[0].y;
-        TriangleNet.Mesh tMesh = new TriangleNet.Mesh();
+        //InputGeometry geometry = new InputGeometry();
+        //List<Point> border = new List<Point>();
+        //foreach (var vert in verts)
+        //{
+        //    border.Add(new Point(vert.x, vert.z));
+        //    //            geometry.AddPoint(vert.x, vert.z);
+        //}
 
-        try {
-        tMesh.Triangulate(geometry);
-        Debug.Log("Mesh is polygon: " + tMesh.IsPolygon);
+        //geometry.AddRing(border);
 
-        //        tMesh.Refine(true);
-        tMesh.Behavior.Algorithm = TriangleNet.TriangulationAlgorithm.SweepLine;
-        tMesh.Behavior.MinAngle = 10;
-        tMesh.Behavior.ConformingDelaunay = true;
-        tMesh.Refine();
-        } catch (Exception e)
-        {
-            Debug.Log("Error in triangulating ceiling.  Try few segments in the spline.  " + e.ToString());
-        }
- //       tMesh.Smooth();
+        ////        geometry.AddRegion()
+        //float yOffset = verts[0].y;
+        //TriangleNet.Mesh tMesh = new TriangleNet.Mesh();
 
-        List<Vector3> vertices = new List<Vector3>(tMesh.triangles.Count * 3);
-        List<int> triangles = new List<int>(tMesh.triangles.Count * 3);
-        int tIndex = 0;
+        //try
+        //{
 
-        foreach(var pair in tMesh.triangles)
-        {
-            var triangle = pair.Value;
-            var v0 = triangle.GetVertex(0);
-            var v1 = triangle.GetVertex(1);
-            var v2 = triangle.GetVertex(2);
+        //    //        tMesh.Refine(true);
+        //    tMesh.Behavior.Algorithm = triangulationAlgorithm;
+        //    //        tMesh.Behavior.MinAngle = minTriangulationAngle;
+        //    //        tMesh.Behavior.ConformingDelaunay = conformingDelaunay;
+        //    tMesh.Triangulate(geometry);
+        //    Debug.Log("Mesh is polygon: " + tMesh.IsPolygon);
+        //    //        if(refineAfterTriangulate) tMesh.Refine();
 
-            var p0 = new Vector3(v0.x, yOffset, v0.y);
-            var p1 = new Vector3(v1.x, yOffset, v1.y);
-            var p2 = new Vector3(v2.x, yOffset, v2.y);
+        //}
+        //catch (Exception e)
+        //{
+        //    Debug.Log("Error in triangulating ceiling.  Try few segments in the spline.  " + e.ToString());
+        //}
+        ////       tMesh.Smooth();
 
-            vertices.Add(p0);
-            vertices.Add(p1);
-            vertices.Add(p2);
+        //List<Vector3> vertices = new List<Vector3>(tMesh.triangles.Count * 3);
+        //List<int> triangles = new List<int>(tMesh.triangles.Count * 3);
+        //int tIndex = 0;
 
-            triangles.Add(tIndex + 2);
-            triangles.Add(tIndex + 1);
-            triangles.Add(tIndex + 0);
+        //foreach (var pair in tMesh.triangles)
+        //{
+        //    var triangle = pair.Value;
+        //    var v0 = triangle.GetVertex(0);
+        //    var v1 = triangle.GetVertex(1);
+        //    var v2 = triangle.GetVertex(2);
 
-            tIndex += 3;
-        }
+        //    var p0 = new Vector3(v0.x, yOffset, v0.y);
+        //    var p1 = new Vector3(v1.x, yOffset, v1.y);
+        //    var p2 = new Vector3(v2.x, yOffset, v2.y);
+
+        //    vertices.Add(p0);
+        //    vertices.Add(p1);
+        //    vertices.Add(p2);
+
+        //    triangles.Add(tIndex + 2);
+        //    triangles.Add(tIndex + 1);
+        //    triangles.Add(tIndex + 0);
+
+        //    tIndex += 3;
+        //}
+
+        //mesh.Clear();
+        //mesh.vertices = vertices.ToArray();
+        //mesh.triangles = indices.ToArray();
+        //mesh.Optimize();
+        //mesh.RecalculateNormals();
+        //mesh.RecalculateBounds();
+
+        //Undo.RecordObject(gameObject, "Change Mesh");
+        //meshCollider.sharedMesh = mesh;
+    }
+
+    private void GenerateMesh(Vector3[] vertices, int[] triangles)
+    {
 
         mesh.Clear();
         mesh.vertices = vertices.ToArray();
         mesh.triangles = triangles.ToArray();
+        mesh.Optimize();
         mesh.RecalculateNormals();
         mesh.RecalculateBounds();
-
-        Undo.RecordObject(gameObject, "Change Mesh");
         meshCollider.sharedMesh = mesh;
-        //var tr = new Triangulator(verts);
-        //var triangles = tr.Triangulate();
-        //for(int i=0; i<triangles.Length; i += 3)
-        //{
-        //    int temp = triangles[i + 0];
-        //    triangles[i + 0] = triangles[i + 1];
-        //    triangles[i + 1] = temp;
-        //}
 
-        //mesh.Clear();
-        //mesh.vertices = verts;
-        //mesh.triangles = triangles;
-        //mesh.RecalculateNormals();
-        //mesh.RecalculateBounds();
+    }
 
+    private void BasicTriangulate(Vector3[] verts)
+    {
+        var tr = new Triangulator(verts);
+        var triangles = tr.Triangulate();
+        for (int i = 0; i < triangles.Length; i += 3)
+        {
+            int temp = triangles[i + 0];
+            triangles[i + 0] = triangles[i + 1];
+            triangles[i + 1] = temp;
+        }
 
-        //meshCollider.sharedMesh = mesh;
-
+        GenerateMesh(verts, triangles);
     }
 
     public void ClearMesh()
