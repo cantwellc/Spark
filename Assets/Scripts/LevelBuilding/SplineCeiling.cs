@@ -62,23 +62,37 @@ public class SplineCeiling : MonoBehaviour
     public void DrawMesh()
     {
         var verts = wall.ceilingVertices;
-        if(invertNormals) Array.Reverse(verts);
+        if (invertNormals) Array.Reverse(verts);
 
-        
+
         InputGeometry geometry = new InputGeometry();
         List<Point> border = new List<Point>();
-        foreach(var vert in verts)
+        foreach (var vert in verts)
         {
             border.Add(new Point(vert.x, vert.z));
-//            geometry.AddPoint(vert.x, vert.z);
+            //            geometry.AddPoint(vert.x, vert.z);
         }
 
         geometry.AddRing(border);
-        
-//        geometry.AddRegion()
+
+        //        geometry.AddRegion()
         float yOffset = verts[0].y;
         TriangleNet.Mesh tMesh = new TriangleNet.Mesh();
+
+        try {
         tMesh.Triangulate(geometry);
+        Debug.Log("Mesh is polygon: " + tMesh.IsPolygon);
+
+        //        tMesh.Refine(true);
+        tMesh.Behavior.Algorithm = TriangleNet.TriangulationAlgorithm.SweepLine;
+        tMesh.Behavior.MinAngle = 10;
+        tMesh.Behavior.ConformingDelaunay = true;
+        tMesh.Refine();
+        } catch (Exception e)
+        {
+            Debug.Log("Error in triangulating ceiling.  Try few segments in the spline.");
+        }
+ //       tMesh.Smooth();
 
         List<Vector3> vertices = new List<Vector3>(tMesh.triangles.Count * 3);
         List<int> triangles = new List<int>(tMesh.triangles.Count * 3);
