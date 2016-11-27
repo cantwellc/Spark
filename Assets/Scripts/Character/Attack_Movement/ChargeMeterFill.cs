@@ -19,6 +19,7 @@ public class ChargeMeterFill : MonoBehaviour {
 
     void Start()
     {
+        if (fireBehavior == null || fuelReservoir == null) return;
         minChargingFill = fireBehavior.minChargeFuelCost / fuelReservoir.maxFuelCount;
         maxChargingFill = fireBehavior.maxChargeFuelCost / fuelReservoir.maxFuelCount;
     }
