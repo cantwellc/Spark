@@ -30,6 +30,8 @@ GameObject:
   - 114: {fileID: 114000011242709322}
   - 114: {fileID: 114000011853764248}
   - 114: {fileID: 114000014124011136}
+  - 136: {fileID: 136000011437215404}
+  - 65: {fileID: 65000013434880996}
   m_Layer: 0
   m_Name: StrongTripletTurret
   m_TagString: Enemy
@@ -295,7 +297,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010384006758}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 92.23, y: -0.08, z: -118.2}
+  m_LocalPosition: {x: 92.23, y: -0.57, z: -118.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_Children:
@@ -336,7 +338,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 95188c4054f2241c9a17892d6392f760, type: 2}
+  - {fileID: 2100000, guid: c11bc7ac9a734d54ab0334eff76f9b0e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -365,7 +367,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 308247bbea8924c0a8aecdb578683e7f, type: 2}
+  - {fileID: 2100000, guid: f6b86f8fc50ff41ef99ac8b5523df58e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -394,7 +396,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: a0e8eee9ed4d043cc86834696431e6c5, type: 2}
+  - {fileID: 2100000, guid: f15a6860ddf0a1c4ea906d5273cc1864, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -423,7 +425,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 95188c4054f2241c9a17892d6392f760, type: 2}
+  - {fileID: 2100000, guid: f6b86f8fc50ff41ef99ac8b5523df58e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -452,7 +454,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7fecd54d42cdb4c70a0a2f36962ef21e, type: 2}
+  - {fileID: 2100000, guid: c11bc7ac9a734d54ab0334eff76f9b0e, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -518,6 +520,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!65 &65000013434880996
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010384006758}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.893046, y: 0.8283367, z: 3.8324633}
+  m_Center: {x: -0.010146976, y: 1.0819732, z: 1.4241029}
 --- !u!95 &95000011625550698
 Animator:
   serializedVersion: 3
@@ -768,7 +782,20 @@ SphereCollider:
   m_GameObject: {fileID: 1000010384006758}
   m_Material: {fileID: 13400000, guid: 7c2d620527eb59647bbd3ca993f6149c, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 2.07
   m_Center: {x: -0.02, y: 0.02, z: 0.47}
+--- !u!136 &136000011437215404
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010384006758}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.4669571
+  m_Height: 4.347823
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}

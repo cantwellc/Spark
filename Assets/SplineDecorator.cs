@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 
 public class SplineDecorator : MonoBehaviour {
 
@@ -34,3 +35,4 @@ public class SplineDecorator : MonoBehaviour {
 		}
 	}
 }
+#endif

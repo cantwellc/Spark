@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 using System.Collections;
 
@@ -40,3 +41,4 @@ public class SplinePivotGizmoDrawer
         Gizmos.DrawWireSphere(sp.position, 0.25f);
     }
 }
+#endif

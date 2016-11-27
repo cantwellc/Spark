@@ -10,6 +10,7 @@ public class UIEventHandler : MonoBehaviour {
     public GameObject ESC_Panel;
     public GameObject inGameText;
 
+
     private bool _cheatMode = false;
 
 	// Use this for initialization
@@ -59,11 +60,11 @@ public class UIEventHandler : MonoBehaviour {
 
     IEnumerator Countdown(int seconds)
     {
-        notificationText.text = "You ran out fuel!";
+       /* notificationText.text = "You ran out fuel!";
         notificationText.color = Color.red;
         notificationText.enabled = true;
         countdownText.enabled = true;
-        countdownText.color = Color.red;
+        countdownText.color = Color.red;*/
         while (seconds > 0)
         {
             //countdownText.text = seconds.ToString();
@@ -82,9 +83,10 @@ public class UIEventHandler : MonoBehaviour {
 
     void DeadNotification()
     {
-        notificationText.text = "You have died! Press R to restart.";
-        notificationText.color = Color.red;
-        notificationText.enabled = true;
+
+       	// notificationText.text = "You have died!";
+        //notificationText.color = Color.red;
+        //notificationText.enabled = true;
     }
 
     void DeathCountdown()

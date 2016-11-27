@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 
 public class SplineWalker : MonoBehaviour {
 
@@ -44,3 +45,4 @@ public class SplineWalker : MonoBehaviour {
 		}
 	}
 }
+#endif
