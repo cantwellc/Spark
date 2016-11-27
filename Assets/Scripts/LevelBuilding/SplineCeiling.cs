@@ -90,7 +90,7 @@ public class SplineCeiling : MonoBehaviour
         tMesh.Refine();
         } catch (Exception e)
         {
-            Debug.Log("Error in triangulating ceiling.  Try few segments in the spline.");
+            Debug.Log("Error in triangulating ceiling.  Try few segments in the spline.  " + e.ToString());
         }
  //       tMesh.Smooth();
 
