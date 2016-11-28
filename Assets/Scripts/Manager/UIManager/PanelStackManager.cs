@@ -15,12 +15,14 @@ public class PanelStackManager : MonoBehaviour {
 	void OnEnable () {
         EventManager.StartListening(EventManager.Events.ESC_KEY, ESC_Click);
         EventManager.StartListening(EventManager.Events.R_KEY, OnRestart);
+		Debug.Log ("Started Listening");
 	}
 
     void OnDisable()
     {
         EventManager.StopListening(EventManager.Events.ESC_KEY, ESC_Click);
         EventManager.StopListening(EventManager.Events.R_KEY, OnRestart);
+		Debug.Log ("Stopped Listening");
     }
 
     public void ESC_Click()
