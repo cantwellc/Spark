@@ -39,7 +39,7 @@ public class Crosshair : MonoBehaviour {
 		Vector2 mouseInXZWorld = new Vector2 (mouseInWorldPosition.x, mouseInWorldPosition.z);
 		Vector2 characterInXZWorld = new Vector2 (character.position.x, character.position.z);
 
-		Collider [] objectsCrosshairIsHoveringOn = Physics.OverlapSphere(mouseInWorldPosition, 2);
+		Collider [] objectsCrosshairIsHoveringOn = Physics.OverlapSphere(mouseInWorldPosition, 2.0f);
 		bool crosshairHitsSomethingDestructible = false;
 		foreach (Collider collider in objectsCrosshairIsHoveringOn)
 		{
