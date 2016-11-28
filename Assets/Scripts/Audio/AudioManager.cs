@@ -34,6 +34,8 @@ public class AudioManager : MonoBehaviour
 
 	private string previousScene;
 
+	private string lastMusicEvent;
+
 	private float pitchOffset = 0.0f;
 
 	void Awake ()
@@ -64,66 +66,94 @@ public class AudioManager : MonoBehaviour
 		snapshots = new Dictionary<string, AudioMixerSnapshot> ();
 		foreach (AudioMixerSnapshot snapshot in snapshotList)
 			snapshots.Add (snapshot.name, snapshot);
+
+		//snapshots ["DefaultMX"].TransitionTo (0.0f);
     }
 
 	void Start () 
 	{
 		string sceneName = SceneManager.GetActiveScene ().name;
-
-		if (sceneName == "bossLevel")
+		/*if (sceneName == "Level1" || sceneName == "Level2" || sceneName == "Level3" || sceneName == "Level4")
+			PlayMusic ("standardLevel");
+		else if (sceneName == "excitedLevel")
+			AudioManager.instance.PlayMusic ("excitedLevel");
+		else if (sceneName == "bossLevel")
 			PlayMusic ("bossLevel");
-		else if (sceneName == "ChaseLevel")
-			PlayMusic ("chaseLevel");
 		else if (sceneName == "GameStory")
 			PlayMusic ("opening");
+		else if (sceneName == "MainMenu")
+			PlayMusic ("mainMenu");
 		else
-			PlayMusic ("standardLevel");
+			PlayMusic ("excitedLevel");*/
     }
 
 	public void PlayMusic (string musicEvent)
 	{
 		AudioSource musicSource = musicObject.GetComponent<AudioSource> ();
+		musicSource.pitch = 1.00f;
 
 		//Changes BGM depending on scene
-		if (musicEvent == "standardLevel") 
+		if (lastMusicEvent != musicEvent)
 		{
-			snapshots ["DefaultMX"].TransitionTo (0.1f);
+			if (musicEvent == "standardLevel")
+			{
+				snapshots ["Standard"].TransitionTo (0.2f);
 
-			musicSource.clip = clips ["bgmLow"];
-			musicSource.outputAudioMixerGroup = mixerGroups ["BGM"];
-			musicSource.loop = true;
-			musicSource.Play ();
+				musicSource.clip = clips ["mus_standardLow"];
+				musicSource.outputAudioMixerGroup = mixerGroups ["StandardBGM"];
+				musicSource.loop = true;
+				musicSource.Play ();
+				lastMusicEvent = musicEvent;
+			}
+
+			if (musicEvent == "excitedLevel")
+			{
+				snapshots ["Excited"].TransitionTo (0.2f);
+
+				musicSource.clip = clips ["mus_standardHigh"];
+				musicSource.outputAudioMixerGroup = mixerGroups ["ExcitedBGM"];
+				musicSource.loop = true;
+				musicSource.Play ();
+				lastMusicEvent = musicEvent;
+			}
+				
+
+			if (musicEvent == "bossLevel")
+			{
+				snapshots ["Boss"].TransitionTo (0.2f);
+
+				musicSource.clip = clips ["mus_boss"];
+				musicSource.outputAudioMixerGroup = mixerGroups ["BossBGM"];
+				musicSource.loop = true;
+				musicSource.Play ();
+				lastMusicEvent = musicEvent;
+			}
+
+			if (musicEvent == "opening")
+			{
+				snapshots ["Opening"].TransitionTo (0.2f);
+
+				musicSource.clip = clips ["mus_gameStory"];
+				musicSource.outputAudioMixerGroup = mixerGroups ["OpeningBGM"];
+				musicSource.loop = false;
+				musicSource.pitch = 1.01f;
+				musicSource.Play ();
+				lastMusicEvent = musicEvent;
+			}
+
+			if (musicEvent == "mainMenu")
+			{
+				snapshots ["MainMenu"].TransitionTo (0.2f);
+
+				musicSource.clip = clips ["mus_mainMenu"];
+				musicSource.outputAudioMixerGroup = mixerGroups ["MainMenuBGM"];
+				musicSource.loop = true;
+				musicSource.Play ();
+				lastMusicEvent = musicEvent;
+			}
 		}
-
-		if (musicEvent == "chaseLevel")
-		{
-			snapshots ["BossLevel"].TransitionTo (0.1f);
-
-			musicSource.clip = clips ["ChaseLevelMusic"];
-			musicSource.outputAudioMixerGroup = mixerGroups ["BossBGM"];
-			musicSource.loop = true;
-			musicSource.Play ();
-		}
-
-		if (musicEvent == "bossLevel") 
-		{
-			snapshots ["BossLevel"].TransitionTo (0.1f);
-
-			musicSource.clip = clips ["boss_music2"];
-			musicSource.outputAudioMixerGroup = mixerGroups ["BossBGM"];
-			musicSource.loop = true;
-			musicSource.Play ();
-		}
-
-		if (musicEvent == "opening")
-		{
-			snapshots ["Opening"].TransitionTo (0.1f);
-
-			musicSource.clip = clips ["openingMusic"];
-			musicSource.outputAudioMixerGroup = mixerGroups ["OpeningBGM"];
-			musicSource.loop = false;
-			musicSource.Play ();
-		}
+		else
+			return;
 	}
 
 	public void Play(string audioEvent)
@@ -277,7 +307,7 @@ public class AudioManager : MonoBehaviour
 		{
 			source.clip = clips ["explosionLg" + (int)Random.Range(1,3)];
 			//source.clip = clips ["explosionPlayer" + (int)Random.Range(1,3)];
-			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
+			source.outputAudioMixerGroup = mixerGroups ["CharDeath"];
 			source.pitch = Random.Range (0.95f, 1.05f);
 			Play ("stopDeathCountdown");
 			movement.SetActive (false);
@@ -345,7 +375,7 @@ public class AudioManager : MonoBehaviour
 			if (pitchOffset < 0.0f)
 				pitchOffset = 0.0f;
 			source.clip = clips["speedUp"];
-			source.pitch = 1.0f + pitchOffset;
+			source.pitch = source.pitch + pitchOffset;
 			source.outputAudioMixerGroup = mixerGroups["Auras"];
             soundObject.SetActive(true);
 			if (pitchOffset < 1.0)
@@ -371,7 +401,7 @@ public class AudioManager : MonoBehaviour
 		{
 			source.clip = clips ["warp"];
 			source.outputAudioMixerGroup = mixerGroups ["Bounce"];
-			source.pitch = Random.Range (0.95f, 1.05f);
+			//source.pitch = Random.Range (0.95f, 1.05f);
 			soundObject.SetActive (true);
 		}
 
@@ -394,6 +424,14 @@ public class AudioManager : MonoBehaviour
 			source.clip = clips["shock"];
 			source.outputAudioMixerGroup = mixerGroups["Shock"];
 			soundObject.SetActive(true);
+		}
+
+		if (audioEvent == "bossDeath") 
+		{
+			source.clip = clips ["bossDeath"];
+			source.spatialBlend = 0.0f;
+			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
+			soundObject.SetActive (true);
 		}
 
 		if (audioEvent == "labAmbiance") 
@@ -443,7 +481,7 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "storyF")
 		{
-			Play ("bgExp");
+			//Play ("bgExp");
 			StartCoroutine (Delay (audioEvent, 1.0f));
 		}
 
@@ -534,7 +572,7 @@ public class AudioManager : MonoBehaviour
 		if (audioEvent == "voComputerSoft")
 		{
 			source.clip = clips ["voComputer_newWarning"];
-			source.volume = 0.5f;
+			source.volume = 0.7f;
 			source.outputAudioMixerGroup = mixerGroups ["ComputerVO"];
 			soundObject.SetActive (true);
 		}
@@ -615,6 +653,7 @@ public class AudioManager : MonoBehaviour
 
 		//Initalizes source (3D)
 		source.spatialBlend = 1.0f;
+		source.pitch = 1.0f;
 		source.volume = 1.0f;
 		source.loop = false;
 

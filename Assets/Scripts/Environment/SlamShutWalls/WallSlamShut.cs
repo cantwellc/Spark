@@ -51,8 +51,8 @@ public class WallSlamShut : MonoBehaviour {
 		{
 			if (transform.position == slamShutCenter.position)
 			{
-				if (canSound)
-					AudioManager.instance.Play ("wallSlam", gameObject);
+				//if (canSound)
+				AudioManager.instance.Play ("wallSlam", gameObject);
 				slamShutting = false;
 				StartOpening ();
 				return;

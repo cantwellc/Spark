@@ -60,4 +60,8 @@ public class Health : MonoBehaviour
 		AudioManager.instance.Play (audioEvent, gameObject);
 	}
 
+	public void PlaySound2D (string audioEvent)
+	{
+		AudioManager.instance.Play (audioEvent);
+	}
 }
