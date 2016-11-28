@@ -22,8 +22,8 @@ public class OverrideSceneMusic : MonoBehaviour {
 
 		yield return new WaitForSeconds (delayTime);
 
-		if (sceneName == "Level1" || sceneName == "Level2" || sceneName == "Level3" || sceneName == "Level4" || sceneName == "Level5")
-			AudioManager.instance.PlayMusic ("standardLevel");
+		if (sceneName == "Level6D" || sceneName == "Level7" || sceneName == "Level8D" || sceneName == "Level9D")
+			AudioManager.instance.PlayMusic ("excitedLevel");
 		else if (sceneName == "bossLevel")
 			AudioManager.instance.PlayMusic ("bossLevel");
 		else if (sceneName == "GameStory")
@@ -31,6 +31,6 @@ public class OverrideSceneMusic : MonoBehaviour {
 		else if (sceneName == "MainMenu")
 			AudioManager.instance.PlayMusic ("mainMenu");
 		else
-			AudioManager.instance.PlayMusic ("excitedLevel");
+			AudioManager.instance.PlayMusic ("standardLevel");
 	}
 }
