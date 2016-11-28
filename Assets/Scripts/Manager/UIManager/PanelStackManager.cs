@@ -15,19 +15,21 @@ public class PanelStackManager : MonoBehaviour {
 	void OnEnable () {
         EventManager.StartListening(EventManager.Events.ESC_KEY, ESC_Click);
         EventManager.StartListening(EventManager.Events.R_KEY, OnRestart);
-		Debug.Log ("Started Listening");
+		Debug.Log ("Started Listening " +   GetInstanceID());
 	}
 
     void OnDisable()
     {
         EventManager.StopListening(EventManager.Events.ESC_KEY, ESC_Click);
         EventManager.StopListening(EventManager.Events.R_KEY, OnRestart);
-		Debug.Log ("Stopped Listening");
+		Debug.Log ("Stopped Listening "  +   GetInstanceID() );
     }
 
     public void ESC_Click()
     {
-        if(_panelStack.Count == 0)
+		Debug.Log ("Calling Escape "  +   GetInstanceID() );
+
+		if(_panelStack.Count == 0)
         {
             ESC_Panel.SetActive(true);
             in_Game_Text.SetActive(false);

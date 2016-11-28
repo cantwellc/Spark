@@ -13,7 +13,11 @@ public class ToMainMenuOnClick : MonoBehaviour {
     IEnumerator QuitToMainMenu()
     {
         Time.timeScale = 1;
-        float fadeTime = GameObject.Find("GameManager").GetComponent<SceneFader>().BeginFade(1);
+		GameObject gameManager = GameObject.Find ("GameManager") as GameObject;
+		float fadeTime =gameManager.GetComponent<SceneFader>().BeginFade(1);
+		gameManager.GetComponent<GameManager> ().UnPause ();
+
+
         yield return new WaitForSeconds(fadeTime);
         SceneManager.LoadScene(0);
     }

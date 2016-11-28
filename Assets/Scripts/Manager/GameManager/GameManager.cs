@@ -142,7 +142,8 @@ public class GameManager : MonoBehaviour {
 
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    if (!_isPaused)
+					
+					if (!_isPaused)
                     {
                         //Time.timeScale = 0;
                         _game_state = GAME_STATES.IN_GAME_MENU;
@@ -231,5 +232,9 @@ public class GameManager : MonoBehaviour {
             _game_state = GAME_STATES.PLAYING;
         }
     }
+	public void UnPause()
+	{
+		_isPaused = false;
+	}
 
 }
