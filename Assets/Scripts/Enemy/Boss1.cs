@@ -131,11 +131,12 @@ public class Boss1 : MonoBehaviour {
                 droneZone2.SetActive(false);
                 if (_bulletFireCoolDownRemain <= 0)
                 {
-					AudioManager.instance.Play ("turretFire", gameObject);
+					//AudioManager.instance.Play ("turretFire", gameObject);
 					foreach(var trans in bulletSpawnTransforms)
                     {
                         GameObject bulletInstance = Instantiate(_bulletPrefab, trans.position, transform.rotation) as GameObject;
-                        bulletInstance.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
+						bulletInstance.GetComponent<AudioSource>().spatialBlend = 0.90f;
+						bulletInstance.GetComponent<EnemyBulletCollision>().SetDamage(bulletDamage);
                         Rigidbody bulletRb = bulletInstance.GetComponent<Rigidbody>();
                         bulletRb.velocity = trans.forward.normalized * bulletSpeed;
                         Destroy(bulletInstance, bulletExistTime);

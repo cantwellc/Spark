@@ -428,10 +428,12 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "bossDeath") 
 		{
+
 			source.clip = clips ["bossDeath"];
-			source.spatialBlend = 0.0f;
-			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
+			snapshots ["DefaultMX"].TransitionTo (0.1f);
+			source.outputAudioMixerGroup = mixerGroups ["BossDeath"];
 			soundObject.SetActive (true);
+			StartCoroutine(Delay(audioEvent, clips["bossDeath"].length));
 		}
 
 		if (audioEvent == "labAmbiance") 
@@ -674,18 +676,20 @@ public class AudioManager : MonoBehaviour
 			soundObject.SetActive (true);
 		}
 
-		if (audioEvent == "bossDeath") 
+		/*if (audioEvent == "bossDeath") 
 		{
+			snapshots ["DefaultMX"].TransitionTo (0.2f);
 			source.clip = clips ["bossDeath"];
 			source.spatialBlend = 0.0f;
 			source.outputAudioMixerGroup = mixerGroups ["Explosions"];
 			soundObject.SetActive (true);
-		}
+		}*/
 
 		if (audioEvent == "takeDamage")
 		{
 			source.clip = clips ["explosionSm" + (int)Random.Range(1,3)];
 			source.outputAudioMixerGroup = mixerGroups ["TakeDamage"];
+			source.spatialBlend = 0.0f;
 			soundObject.SetActive (true);
 		}
 
@@ -812,6 +816,11 @@ public class AudioManager : MonoBehaviour
 		{
 			yield return new WaitForSeconds (time);
 			pitchOffset = 0.0f;
+		}
+		else if (audioEvent == "bossDeath")
+		{
+			yield return new WaitForSeconds (time);
+			PlayMusic ("standardLevel");
 		}
 
 		else
