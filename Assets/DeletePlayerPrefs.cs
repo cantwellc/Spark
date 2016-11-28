@@ -6,7 +6,7 @@ public class DeletePlayerPrefs : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		PlayerPrefs.DeleteAll ();
+		PlayerPrefs.DeleteKey ("LastLevel");
 	}
 
 }

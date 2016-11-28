@@ -11,7 +11,7 @@ public class StartButtonScript : MonoBehaviour {
 
 	IEnumerator LoadScene(string sceneName)
     {
-		PlayerPrefs.DeleteAll ();
+		PlayerPrefs.DeleteKey ("LastLevel");
 		float fadeTime = GameObject.Find("GameManager").GetComponent<SceneFader>().BeginFade(1);
         yield return new WaitForSeconds(fadeTime);
 		SceneManager.LoadScene(sceneName);
