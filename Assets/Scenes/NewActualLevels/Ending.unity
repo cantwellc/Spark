@@ -298,8 +298,8 @@ GameObject:
   - 224: {fileID: 1374852508}
   - 222: {fileID: 1374852510}
   - 114: {fileID: 1374852509}
-  - 114: {fileID: 1374852511}
   - 114: {fileID: 1374852512}
+  - 114: {fileID: 1374852513}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -364,19 +364,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1374852507}
---- !u!114 &1374852511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1374852507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493847ecd24c642af8568e5223f623c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeSpeed: 5
-  text: {fileID: 1374852509}
 --- !u!114 &1374852512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,8 +376,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   next: {fileID: 2091474157}
-  secondsAfterInitializing: 3
+  secondsAfterInitializing: 7
   changeScene: 0
+--- !u!114 &1374852513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1374852507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0b85bb463c64de7810add99247cc3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInSeconds: 5
+  fadeOutSeconds: 2
+  intervalBetween: 3
+  text: {fileID: 1374852509}
 --- !u!1 &1792595097
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,8 +528,8 @@ GameObject:
   - 224: {fileID: 2030113153}
   - 222: {fileID: 2030113157}
   - 114: {fileID: 2030113156}
-  - 114: {fileID: 2030113155}
   - 114: {fileID: 2030113154}
+  - 114: {fileID: 2030113155}
   m_Layer: 5
   m_Name: Text (3)
   m_TagString: Untagged
@@ -565,7 +567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   next: {fileID: 0}
-  secondsAfterInitializing: 2
+  secondsAfterInitializing: 7
   changeScene: 1
 --- !u!114 &2030113155
 MonoBehaviour:
@@ -575,10 +577,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2030113152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493847ecd24c642af8568e5223f623c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f0b85bb463c64de7810add99247cc3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeSpeed: 5
+  fadeInSeconds: 5
+  fadeOutSeconds: 2
+  intervalBetween: 3
   text: {fileID: 2030113156}
 --- !u!114 &2030113156
 MonoBehaviour:
@@ -737,8 +741,8 @@ GameObject:
   - 224: {fileID: 2091474158}
   - 222: {fileID: 2091474161}
   - 114: {fileID: 2091474160}
-  - 114: {fileID: 2091474159}
   - 114: {fileID: 2091474162}
+  - 114: {fileID: 2091474159}
   m_Layer: 5
   m_Name: Text (2)
   m_TagString: Untagged
@@ -772,10 +776,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2091474157}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493847ecd24c642af8568e5223f623c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f0b85bb463c64de7810add99247cc3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeSpeed: 5
+  fadeInSeconds: 5
+  fadeOutSeconds: 2
+  intervalBetween: 3
   text: {fileID: 2091474160}
 --- !u!114 &2091474160
 MonoBehaviour:
@@ -828,5 +834,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   next: {fileID: 2030113152}
-  secondsAfterInitializing: 3
+  secondsAfterInitializing: 7
   changeScene: 0
