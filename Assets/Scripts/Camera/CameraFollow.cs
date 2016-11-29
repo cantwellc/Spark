@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour
 
 	public Transform targetLocation;
     public Transform targetLocation2;
+	public bool bossLevel = false;
 
     public float speed;
 	public float cameraPlayerFollowCoefficient = 1.0f;
@@ -20,7 +21,11 @@ public class CameraFollow : MonoBehaviour
 	protected virtual void Start () 
 	{	//Offset between the players position and the cameras position
         mainCamera = this;
-        /*if (targetLocation == null)
+		if (!bossLevel)
+		{
+			transform.position = new Vector3 (transform.position.x, 21.0f, transform.position.z);
+		}
+		/*if (targetLocation == null)
         {
             if (Character.current == null)
                 return;
