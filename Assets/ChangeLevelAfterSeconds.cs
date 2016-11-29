@@ -7,7 +7,7 @@ public class ChangeLevelAfterSeconds : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		Invoke ("runCoroutine",44.0f);
+		Invoke ("runCoroutine",32.0f);
 	}
 	
 	IEnumerator LoadScene()
