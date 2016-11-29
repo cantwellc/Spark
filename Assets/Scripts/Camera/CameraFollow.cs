@@ -20,14 +20,14 @@ public class CameraFollow : MonoBehaviour
 	protected virtual void Start () 
 	{	//Offset between the players position and the cameras position
         mainCamera = this;
-        if (targetLocation == null)
+        /*if (targetLocation == null)
         {
             if (Character.current == null)
                 return;
             targetLocation = Character.current.transform;
         }
 		transform.position = new Vector3(targetLocation.position.x,transform.position.y,targetLocation.position.z);
-        _offset = transform.position - targetLocation.position;
+        _offset = transform.position - targetLocation.position;*/
 	}
 
     void Awake()
@@ -46,6 +46,7 @@ public class CameraFollow : MonoBehaviour
 				targetLocation = Character.current.transform;
                 transform.position = new Vector3(targetLocation.position.x, transform.position.y, targetLocation.position.z);
                 _offset = transform.position - targetLocation.position;
+                print(_offset);
             }
 			Vector3 newPosition;
 			/*We are gonna move to a new location now because player might have moved
