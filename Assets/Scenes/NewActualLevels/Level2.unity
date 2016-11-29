@@ -1652,11 +1652,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000013176017116, guid: db7f424d40fa44d9987e405d164c56b4, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 103.54
+      value: 105.28
       objectReference: {fileID: 0}
     - target: {fileID: 4000013176017116, guid: db7f424d40fa44d9987e405d164c56b4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.61
+      value: 1.73
       objectReference: {fileID: 0}
     - target: {fileID: 4000013176017116, guid: db7f424d40fa44d9987e405d164c56b4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1681,6 +1681,16 @@ Prefab:
     - target: {fileID: 4000013176017116, guid: db7f424d40fa44d9987e405d164c56b4, type: 2}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010091016290, guid: db7f424d40fa44d9987e405d164c56b4,
+        type: 2}
+      propertyPath: loadInSeconds
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000010091016290, guid: db7f424d40fa44d9987e405d164c56b4,
+        type: 2}
+      propertyPath: nextScene
+      value: Level3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db7f424d40fa44d9987e405d164c56b4, type: 2}
@@ -4032,6 +4042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLocation: {fileID: 0}
   targetLocation2: {fileID: 0}
+  bossLevel: 0
   speed: 0
   cameraPlayerFollowCoefficient: 1
 --- !u!81 &500551986
@@ -9020,7 +9031,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013802501582, guid: 98afd9b513641419a97962647807bae2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 14.6
+      value: 20.28
       objectReference: {fileID: 0}
     - target: {fileID: 114000011976622014, guid: 98afd9b513641419a97962647807bae2,
         type: 2}
@@ -9038,6 +9049,15 @@ Prefab:
     - target: {fileID: 1000010005388732, guid: 98afd9b513641419a97962647807bae2, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010277752970, guid: 98afd9b513641419a97962647807bae2, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000011203017818, guid: 98afd9b513641419a97962647807bae2,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 13.86
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 98afd9b513641419a97962647807bae2, type: 2}

@@ -3512,6 +3512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLocation: {fileID: 0}
   targetLocation2: {fileID: 0}
+  bossLevel: 0
   speed: 0
   cameraPlayerFollowCoefficient: 1
 --- !u!81 &494526960
@@ -5304,7 +5305,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000011498202060, guid: 127a2a990f2244643a40210a222fbd5a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 368
+      value: 370.71
       objectReference: {fileID: 0}
     - target: {fileID: 4000011498202060, guid: 127a2a990f2244643a40210a222fbd5a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -5346,6 +5347,20 @@ Prefab:
         type: 2}
       propertyPath: nextScene
       value: Level5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013999054030, guid: 127a2a990f2244643a40210a222fbd5a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000011526247448, guid: 127a2a990f2244643a40210a222fbd5a,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 17.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000011526247448, guid: 127a2a990f2244643a40210a222fbd5a,
+        type: 2}
+      propertyPath: m_Size.z
+      value: 2.74
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 127a2a990f2244643a40210a222fbd5a, type: 2}
@@ -7131,9 +7146,47 @@ Prefab:
       propertyPath: triggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StartBloomEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 4000011905883162, guid: 6b7dc29d66cd4471486718b7aad6cce3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -29.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011905883162, guid: 6b7dc29d66cd4471486718b7aad6cce3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011905883162, guid: 6b7dc29d66cd4471486718b7aad6cce3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000013112359200, guid: 6b7dc29d66cd4471486718b7aad6cce3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012159618270, guid: 6b7dc29d66cd4471486718b7aad6cce3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.82
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b7dc29d66cd4471486718b7aad6cce3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1043334018 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013430898516, guid: 6b7dc29d66cd4471486718b7aad6cce3,
+    type: 2}
+  m_PrefabInternal: {fileID: 1043334017}
+--- !u!114 &1043334019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1043334018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42729afa44ae3477e975639771cb85db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadInSeconds: 1.7
+  nextScene: Level5
 --- !u!1 &1048191551
 GameObject:
   m_ObjectHideFlags: 0

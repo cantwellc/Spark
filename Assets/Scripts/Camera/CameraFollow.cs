@@ -23,7 +23,7 @@ public class CameraFollow : MonoBehaviour
         mainCamera = this;
 		if (!bossLevel)
 		{
-			transform.position = new Vector3 (transform.position.x, 21.0f, transform.position.z);
+			transform.position = new Vector3 (transform.position.x, 24.0f, transform.position.z);
 		}
 		/*if (targetLocation == null)
         {

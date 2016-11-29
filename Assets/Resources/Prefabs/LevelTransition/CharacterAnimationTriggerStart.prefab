@@ -21,6 +21,7 @@ GameObject:
   - 4: {fileID: 4000013176017116}
   - 65: {fileID: 65000013836371718}
   - 114: {fileID: 114000012222366048}
+  - 114: {fileID: 114000010091016290}
   m_Layer: 0
   m_Name: CharacterAnimationTriggerStart
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010034886092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 128.94, y: 0.95, z: -75.18}
+  m_LocalPosition: {x: 129.17, y: 2.12, z: -75.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -53,6 +54,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.58, y: 3.31, z: 8.45}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114000010091016290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010034886092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42729afa44ae3477e975639771cb85db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadInSeconds: 9
+  nextScene: Level2
 --- !u!114 &114000012222366048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,3 +82,5 @@ MonoBehaviour:
   MovementSpeed: 500
   playChargeEffect: 1
   applyContinousForce: 1
+  reEnableInput: 0
+  reEnableInputTime: 5

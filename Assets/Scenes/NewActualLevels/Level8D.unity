@@ -3568,6 +3568,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLocation: {fileID: 0}
   targetLocation2: {fileID: 0}
+  bossLevel: 0
   speed: 0
   cameraPlayerFollowCoefficient: 1
 --- !u!81 &331381487
@@ -7936,9 +7937,35 @@ Prefab:
       propertyPath: triggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: StartBloomEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 4000011905883162, guid: 6b7dc29d66cd4471486718b7aad6cce3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -30.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011905883162, guid: 6b7dc29d66cd4471486718b7aad6cce3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.62
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b7dc29d66cd4471486718b7aad6cce3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &663536672 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013430898516, guid: 6b7dc29d66cd4471486718b7aad6cce3,
+    type: 2}
+  m_PrefabInternal: {fileID: 663536671}
+--- !u!114 &663536673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 663536672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42729afa44ae3477e975639771cb85db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadInSeconds: 1.9
+  nextScene: Level9D
 --- !u!1001 &673004432
 Prefab:
   m_ObjectHideFlags: 0
@@ -20512,7 +20539,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000011498202060, guid: 127a2a990f2244643a40210a222fbd5a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 289.77
+      value: 286.38
       objectReference: {fileID: 0}
     - target: {fileID: 4000011498202060, guid: 127a2a990f2244643a40210a222fbd5a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -20520,7 +20547,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011498202060, guid: 127a2a990f2244643a40210a222fbd5a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -48.5
+      value: -48.24
       objectReference: {fileID: 0}
     - target: {fileID: 4000011498202060, guid: 127a2a990f2244643a40210a222fbd5a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -20551,6 +20578,15 @@ Prefab:
         type: 2}
       propertyPath: m_Size.z
       value: 9.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013999054030, guid: 127a2a990f2244643a40210a222fbd5a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65000011526247448, guid: 127a2a990f2244643a40210a222fbd5a,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 28.42
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 127a2a990f2244643a40210a222fbd5a, type: 2}
