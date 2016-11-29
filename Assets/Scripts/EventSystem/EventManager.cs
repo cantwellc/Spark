@@ -17,6 +17,7 @@ public class EventManager : MonoBehaviour {
         CHARACTER_ENTERED_KEY_PEDESTAL_TRIGGER,
         KEY_COLLECTED,
         LOAD_NEXT_SCENE,
+        SHOW_BOSS_HINT,
 
         // keyboard input events
         B_KEY,
