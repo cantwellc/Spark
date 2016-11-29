@@ -21,8 +21,13 @@ public class ShowBossHint : MonoBehaviour {
 
     private void ShowHint()
     {
-        StartCoroutine(CoShowHint());
+		Invoke ("runHint", 1.2f);
     }
+
+	private void runHint()
+	{
+		StartCoroutine(CoShowHint());
+	}
 
     private IEnumerator CoShowHint()
     {
