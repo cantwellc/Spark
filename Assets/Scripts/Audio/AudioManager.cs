@@ -95,6 +95,8 @@ public class AudioManager : MonoBehaviour
 		//Changes BGM depending on scene
 		if (lastMusicEvent != musicEvent)
 		{
+			snapshots ["Default"].TransitionTo (0.2f);
+
 			if (musicEvent == "standardLevel")
 			{
 				snapshots ["Standard"].TransitionTo (0.2f);
@@ -149,6 +151,12 @@ public class AudioManager : MonoBehaviour
 				musicSource.outputAudioMixerGroup = mixerGroups ["MainMenuBGM"];
 				musicSource.loop = true;
 				musicSource.Play ();
+				lastMusicEvent = musicEvent;
+			}
+
+			if (musicEvent == "ending")
+			{
+				snapshots ["Ending"].TransitionTo (0.2f);
 				lastMusicEvent = musicEvent;
 			}
 		}
@@ -407,7 +415,7 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "evilLaugh")
 		{
-			source.clip = clips ["evilLaugh" + (int)Random.Range(1,5)];
+			source.clip = clips ["evilLaugh3"];
 			source.outputAudioMixerGroup = mixerGroups ["Laugh"];
 			soundObject.SetActive (true);
 		}
@@ -428,12 +436,11 @@ public class AudioManager : MonoBehaviour
 
 		if (audioEvent == "bossDeath") 
 		{
-
 			source.clip = clips ["bossDeath"];
 			snapshots ["DefaultMX"].TransitionTo (0.1f);
 			source.outputAudioMixerGroup = mixerGroups ["BossDeath"];
 			soundObject.SetActive (true);
-			StartCoroutine(Delay(audioEvent, clips["bossDeath"].length));
+			//StartCoroutine(Delay(audioEvent, clips["bossDeath"].length));
 		}
 
 		if (audioEvent == "labAmbiance") 
@@ -611,6 +618,28 @@ public class AudioManager : MonoBehaviour
 		{
 			source.clip = clips ["voNano_Change4"];
 			source.outputAudioMixerGroup = mixerGroups ["NanoVO"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "Text")
+		{
+			source.clip = clips ["voEnd_finally"];
+			source.outputAudioMixerGroup = mixerGroups ["PlayerVerbVO"];
+			soundObject.SetActive (true);
+		}
+
+		if (audioEvent == "Text (2)")
+		{
+			source.clip = clips ["voEnd_goHome"];
+			source.outputAudioMixerGroup = mixerGroups ["PlayerVerbVO"];
+			soundObject.SetActive (true);
+			StartCoroutine (Delay (audioEvent, 3.75f));
+		}
+
+		if (audioEvent == "Text (3)")
+		{
+			source.clip = clips ["voEnd_gasp"];
+			source.outputAudioMixerGroup = mixerGroups ["PlayerVerbVO"];
 			soundObject.SetActive (true);
 		}
 	}
@@ -821,6 +850,11 @@ public class AudioManager : MonoBehaviour
 		{
 			yield return new WaitForSeconds (time);
 			PlayMusic ("standardLevel");
+		}
+		else if (audioEvent == "Text (2)")
+		{
+			yield return new WaitForSeconds (time);
+			Play ("evilLaugh");
 		}
 
 		else

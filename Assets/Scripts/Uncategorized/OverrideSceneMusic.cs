@@ -30,6 +30,8 @@ public class OverrideSceneMusic : MonoBehaviour {
 			AudioManager.instance.PlayMusic ("opening");
 		else if (sceneName == "MainMenu" || sceneName == "Credits")
 			AudioManager.instance.PlayMusic ("mainMenu");
+		else if (sceneName == "Ending")
+			AudioManager.instance.PlayMusic ("ending");
 		else
 			AudioManager.instance.PlayMusic ("standardLevel");
 	}

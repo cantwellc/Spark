@@ -11,6 +11,7 @@ public class TriggerOtherText : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		StartCoroutine (AudioDelay ());
 		Invoke ("Activate", secondsAfterInitializing);
 	}
 	
@@ -20,13 +21,17 @@ public class TriggerOtherText : MonoBehaviour {
 		next.SetActive (true);
 		if (changeScene)
 			StartCoroutine (loadNextScene());
-		
 	}
 
 	IEnumerator  loadNextScene()
 	{
-		
 		yield return new WaitForSeconds(0.0f);
 		SceneManager.LoadScene("Credits");
+	}
+
+	IEnumerator  AudioDelay()
+	{
+		yield return new WaitForSeconds(0.5f);
+		AudioManager.instance.Play (gameObject.name);
 	}
 }
