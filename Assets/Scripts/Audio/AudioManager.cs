@@ -157,7 +157,6 @@ public class AudioManager : MonoBehaviour
 			if (musicEvent == "ending")
 			{
 				snapshots ["Ending"].TransitionTo (0.2f);
-				lastMusicEvent = musicEvent;
 			}
 		}
 		else
@@ -248,7 +247,7 @@ public class AudioManager : MonoBehaviour
 		{
 			if (movement != null)
 			{
-				//movement.GetComponent<AudioSource>().loop = false;
+				movement.GetComponent<AudioSource>().loop = false;
 				movement.GetComponent<DeactivateObject> ().Deactivate ();
 			}
 		}
@@ -626,6 +625,7 @@ public class AudioManager : MonoBehaviour
 			source.clip = clips ["voEnd_finally"];
 			source.outputAudioMixerGroup = mixerGroups ["PlayerVerbVO"];
 			soundObject.SetActive (true);
+			StartCoroutine (Delay(audioEvent, 2.0f));
 		}
 
 		if (audioEvent == "Text (2)")
@@ -641,6 +641,7 @@ public class AudioManager : MonoBehaviour
 			source.clip = clips ["voEnd_gasp"];
 			source.outputAudioMixerGroup = mixerGroups ["PlayerVerbVO"];
 			soundObject.SetActive (true);
+			snapshots ["CreditsMX"].TransitionTo (8.0f);
 		}
 	}
 
@@ -850,6 +851,11 @@ public class AudioManager : MonoBehaviour
 		{
 			yield return new WaitForSeconds (time);
 			PlayMusic ("standardLevel");
+		}
+		else if (audioEvent == "Text")
+		{
+			yield return new WaitForSeconds (time);
+			PlayMusic ("opening");
 		}
 		else if (audioEvent == "Text (2)")
 		{

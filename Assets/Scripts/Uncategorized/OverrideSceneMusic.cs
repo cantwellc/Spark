@@ -28,9 +28,9 @@ public class OverrideSceneMusic : MonoBehaviour {
 			AudioManager.instance.PlayMusic ("bossLevel");
 		else if (sceneName == "GameStory")
 			AudioManager.instance.PlayMusic ("opening");
-		else if (sceneName == "MainMenu" || sceneName == "Credits")
+		else if (sceneName == "MainMenu")
 			AudioManager.instance.PlayMusic ("mainMenu");
-		else if (sceneName == "Ending")
+		else if (sceneName == "Ending" || sceneName == "Credits")
 			AudioManager.instance.PlayMusic ("ending");
 		else
 			AudioManager.instance.PlayMusic ("standardLevel");
